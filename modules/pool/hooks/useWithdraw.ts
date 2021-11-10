@@ -3,16 +3,13 @@ import { useAddress, useTransaction, TxStep, num } from "@arthuryeti/terra";
 
 import { ONE_TOKEN } from "constants/constants";
 import { getTokenDenom } from "modules/common";
-import { useTokenPriceInUst } from "modules/swap";
 import { createWithdrawMsgs, useGetPool } from "modules/pool";
 
 export type WithdrawState = {
   token1?: string;
   token1Amount?: string;
-  token1Price: string;
   token2?: string;
   token2Amount?: string;
-  token2Price: string;
   error: any;
   fee: any;
   txHash?: string;
@@ -68,11 +65,6 @@ export const useWithdraw = ({
     };
   }, [pool, ratio, amount]);
 
-  // @ts-expect-error
-  const token1Price = useTokenPriceInUst(tokens.token1);
-  // @ts-expect-error
-  const token2Price = useTokenPriceInUst(tokens.token2);
-
   const msgs = useMemo(() => {
     if (amount == null) {
       return [];
@@ -89,6 +81,7 @@ export const useWithdraw = ({
   }, [address, contract, lpToken, amount]);
 
   const { submit, ...rest } = useTransaction({
+    // @ts-expect-error
     msgs,
     onSuccess,
     onError,
@@ -96,8 +89,6 @@ export const useWithdraw = ({
 
   return {
     ...tokens,
-    token1Price,
-    token2Price,
     ...rest,
     withdraw: submit,
   };

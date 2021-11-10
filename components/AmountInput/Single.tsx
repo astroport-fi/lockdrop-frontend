@@ -3,7 +3,6 @@ import { Box, Text, Flex, Image } from "@chakra-ui/react";
 import { fromTerraAmount } from "@arthuryeti/terra";
 
 import { useTokenInfo } from "modules/common";
-import { useTokenPriceInUst } from "modules/swap";
 
 type Props = {
   asset: string;
@@ -11,7 +10,6 @@ type Props = {
 
 const Single: FC<Props> = ({ asset }) => {
   const { getIcon, getSymbol } = useTokenInfo();
-  const price = useTokenPriceInUst(asset);
   const icon = getIcon(asset);
 
   return (
@@ -38,10 +36,6 @@ const Single: FC<Props> = ({ asset }) => {
         <Box ml="3" fontWeight="500" flex="1">
           <Text fontSize="2xl" color="white">
             {getSymbol(asset)}
-          </Text>
-          <Text fontSize="xs" color="white.400">
-            {/* TODO: Fix issue */}
-            Price: ${fromTerraAmount(price as any, "uusd")}
           </Text>
         </Box>
       </Flex>

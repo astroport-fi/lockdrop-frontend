@@ -5,7 +5,6 @@ import { TxStep } from "@arthuryeti/terra";
 
 import useDebounceValue from "hooks/useDebounceValue";
 import { PairResponse } from "modules/common";
-import { PoolFormType, ProvideFormMode } from "types/common";
 import { toAmount } from "libs/parse";
 import { useWithdraw } from "modules/pool";
 
@@ -24,28 +23,17 @@ type FormValues = {
 };
 
 type Props = {
-  pair: PairResponse;
+  pair: any;
   pool: any;
-  mode: ProvideFormMode;
-  type: PoolFormType;
-  onModeClick: (v: ProvideFormMode) => void;
-  onTypeClick: (v: PoolFormType) => void;
 };
 
-const WithdrawForm: FC<Props> = ({
-  pair,
-  pool,
-  mode,
-  type,
-  onModeClick,
-  onTypeClick,
-}) => {
+const WithdrawForm: FC<Props> = ({ pair, pool }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const methods = useForm<FormValues>({
     defaultValues: {
       token: {
         amount: undefined,
-        asset: pair.liquidity_token,
+        asset: "uusd",
       },
     },
   });
@@ -55,8 +43,8 @@ const WithdrawForm: FC<Props> = ({
   const debouncedAmount = useDebounceValue(token.amount, 500);
 
   const state = useWithdraw({
-    contract: pair.contract_addr,
-    lpToken: pair.liquidity_token,
+    contract: pair.contract,
+    lpToken: pair.lpToken,
     amount: toAmount(debouncedAmount),
   });
 
@@ -92,9 +80,7 @@ const WithdrawForm: FC<Props> = ({
           <FormSummary
             label1="You are receving"
             label2="and"
-            // @ts-expect-error
             token1={{ asset: token1, amount: token1Amount }}
-            // @ts-expect-error
             token2={{ asset: token2, amount: token2Amount }}
           />
         }
@@ -122,16 +108,12 @@ const WithdrawForm: FC<Props> = ({
         {!showConfirm && (
           <WithdrawFormInitial
             pool={pool}
-            mode={mode}
-            type={type}
-            onModeClick={onModeClick}
-            onTypeClick={onTypeClick}
             token={token}
             state={state}
+            ratio={0.3}
             onClick={() => setShowConfirm(true)}
           />
         )}
-
         {showConfirm && (
           <FormConfirm
             fee={fee}
@@ -140,9 +122,7 @@ const WithdrawForm: FC<Props> = ({
               <FormSummary
                 label1="You are receving"
                 label2="and"
-                // @ts-expect-error
                 token1={{ asset: token1, amount: token1Amount }}
-                // @ts-expect-error
                 token2={{ asset: token2, amount: token2Amount }}
               />
             }

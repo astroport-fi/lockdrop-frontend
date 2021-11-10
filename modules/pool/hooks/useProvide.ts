@@ -55,6 +55,7 @@ export const useProvide = ({
   }, [address, contract, pool, token1, token2, amount1, amount2]);
 
   const { submit, ...rest } = useTransaction({
+    // @ts-expect-error
     msgs,
     onSuccess,
     onError,

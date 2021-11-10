@@ -1,3 +1,4 @@
+/* eslint-disable no-ternary */
 import React, { FC, ReactNode } from "react";
 import { Box, BoxProps } from "@chakra-ui/react";
 

@@ -1,17 +1,28 @@
 const styles = {
   variants: {
     spaced: {
-      fontWeight: "bold",
-      fontSize: "xs",
-      letterSpacing: "widest",
+      fontWeight: "700",
+      fontSize: "10px",
+      letterSpacing: "2px",
       textTransform: "uppercase",
       color: "brand.dark",
+      lineHeight:"1.2"
+    },
+    content: {
+      color: "#B5BAC7",
+      fontSize: "sm",
+      fontWeight: "500",
     },
     light: {
       color: "white.500",
       fontSize: "sm",
       fontWeight: "500",
     },
+    cardHeader: {
+      color: "white",
+      fontFamily: "WhyteInktrap",
+      fontSize: "16px",
+    }
   },
 };
 

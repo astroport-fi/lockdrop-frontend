@@ -10,11 +10,8 @@ type Props = {
 const SingleLP: FC<Props> = ({ asset }) => {
   const { pairs } = useAstroswap();
   const { getIcon, getSymbol } = useTokenInfo();
-  //@ts-expect-error
   const pair = pairs.find((v) => v.liquidity_token == asset);
-  //@ts-expect-error
   const [token1, token2] = getTokenDenoms(pair.asset_infos);
-  // const lpTokenPrice = useLpTokenPrice(pair, String(ONE_TOKEN));
   const icon1 = getIcon(token1);
   const symbol1 = getSymbol(token1);
   const icon2 = getIcon(token2);

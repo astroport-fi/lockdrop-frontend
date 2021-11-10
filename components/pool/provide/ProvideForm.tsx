@@ -28,26 +28,11 @@ type FormValues = {
 };
 
 type Props = {
-  pair: PairResponse;
+  pair: string;
   pool: any;
-  mode: ProvideFormMode;
-  type: PoolFormType;
-  onModeClick: (v: ProvideFormMode) => void;
-  onTypeClick: (v: PoolFormType) => void;
-  isChartOpen: boolean;
-  onChartClick: () => void;
 };
 
-const ProvideForm: FC<Props> = ({
-  pair,
-  pool,
-  mode,
-  onModeClick,
-  type,
-  onTypeClick,
-  isChartOpen,
-  onChartClick,
-}) => {
+const ProvideForm: FC<Props> = ({ pair, pool }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const methods = useForm<FormValues>({
     defaultValues: {
@@ -69,7 +54,7 @@ const ProvideForm: FC<Props> = ({
   const debouncedAmount2 = useDebounceValue(token2.amount, 200);
 
   const state = useProvide({
-    contract: pair.contract_addr,
+    contract: pair,
     pool: pool,
     token1: token1.asset,
     token2: token2.asset,
@@ -131,12 +116,6 @@ const ProvideForm: FC<Props> = ({
             token1={token1}
             token2={token2}
             pool={pool}
-            mode={mode}
-            onModeClick={onModeClick}
-            type={type}
-            onTypeClick={onTypeClick}
-            isChartOpen={isChartOpen}
-            onChartClick={onChartClick}
             state={state}
             onClick={() => setShowConfirm(true)}
           />

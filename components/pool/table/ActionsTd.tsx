@@ -9,21 +9,15 @@ type Props = {
 };
 
 const ActionsTd: FC<Props> = ({ row }) => {
-  const { contract_addr } = row.original;
+  const { name } = row.original;
 
   return (
     <Flex justify="flex-end" align="center">
-      <Link href={`/pools/${contract_addr}`} passHref>
+      <Link href={`/lock/${name}`} passHref>
         <Button as="a" variant="primary" size="sm">
-          Add Liquidity
+          Lock Lp Tokens
         </Button>
       </Link>
-      <IconButton
-        aria-label="Graph"
-        icon={<GraphIcon />}
-        variant="icon"
-        {...row.getToggleRowExpandedProps()}
-      />
     </Flex>
   );
 };

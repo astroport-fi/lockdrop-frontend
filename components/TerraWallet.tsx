@@ -35,7 +35,8 @@ const TerraWallet: FC = () => {
           color="white"
           bg="brand.lightBlue"
           py="2"
-          px="3"
+          pl="5"
+          pr="3"
           borderTopLeftRadius="full"
           borderBottomLeftRadius="full"
           mr="0.5"
@@ -51,11 +52,12 @@ const TerraWallet: FC = () => {
           color="white"
           bg="brand.lightBlue"
           py="2"
-          px="3"
+          pl="3"
+          pr="5"
           borderTopRightRadius="full"
           borderBottomRightRadius="full"
         >
-          <HStack spacing="3">
+          <HStack spacing="1">
             <Text fontSize="sm" color="white">
               UST
             </Text>

@@ -3,7 +3,6 @@ import { Box, Flex, BoxProps, Text, HStack } from "@chakra-ui/react";
 
 import { format } from "libs/parse";
 import { useTokenInfo } from "modules/common";
-import { useTokenPriceInUst } from "modules/swap";
 
 type Props = {
   token: string;
@@ -12,8 +11,6 @@ type Props = {
 
 const WithdrawFormItem: FC<Props> = ({ token, amount, ...props }) => {
   const { getSymbol } = useTokenInfo();
-  const price = useTokenPriceInUst(token);
-  const totalPrice = String(Number(price) * Number(amount));
 
   return (
     <Flex
@@ -27,13 +24,9 @@ const WithdrawFormItem: FC<Props> = ({ token, amount, ...props }) => {
         <HStack>
           <Text>{getSymbol(token)}</Text>
         </HStack>
-        <Box>
-          <Text variant="light">Price: ${format(totalPrice, "uusd")}</Text>
-        </Box>
       </Box>
       <Box textAlign="right">
         <Text>{format(amount)}</Text>
-        <Text variant="light">Price: ${format(price, "uusd")}</Text>
       </Box>
     </Flex>
   );

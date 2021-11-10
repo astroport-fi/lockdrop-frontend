@@ -12,7 +12,8 @@ const simpleVariant = (props: Dict) => {
   return {
     th: {
       color: "white.600",
-      fontSize: "sm",
+      whiteSpace: "nowrap",
+      fontSize: "11px",
       fontWeight: "500",
       textTransform: "none",
       ...numericStyles,
@@ -22,11 +23,9 @@ const simpleVariant = (props: Dict) => {
         py: "6",
         border: "none",
       },
-      td: {
-        bg: "white.900",
-      },
     },
     td: {
+      fontSize: "13px",
       ...numericStyles,
     },
     caption: {

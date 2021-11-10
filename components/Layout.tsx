@@ -7,6 +7,7 @@ import { useWallet, WalletStatus } from "@terra-money/wallet-provider";
 import Navbar from "components/Navbar";
 import whitelist from "constants/whitelist.json";
 import { AstroswapProvider } from "modules/common";
+import dayjs from "dayjs";
 
 const Layout: FC = ({ children }) => {
   const wallet = useWallet();
@@ -17,7 +18,7 @@ const Layout: FC = ({ children }) => {
       <Global
         styles={{
           "html,body": {
-            height: "100%",
+            // height: "100%",
             width: "100%",
             overflowX: "hidden",
             position: "relative",
@@ -35,6 +36,10 @@ const Layout: FC = ({ children }) => {
           "#chakra-toast-manager-bottom-right": {
             right: "32px!important",
             bottom: "32px!important",
+          },
+          "@font-face": {
+            fontFamily: "WhyteInktrap",
+            src: "url('/WhyteInktrap-Regular.woff') format('woff')",
           },
         }}
       />

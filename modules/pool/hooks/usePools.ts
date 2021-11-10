@@ -4,12 +4,14 @@ import BigNumber from "bignumber.js";
 
 import { useLpBalances } from "modules/pool";
 import { useAstroswap } from "modules/common";
+import { useLockState } from "modules/lockdrop";
 
 export const usePools = () => {
   const [all, setAll] = useState([]);
   const { client } = useTerraWebapp();
   const { pairs } = useAstroswap();
   const lpBalances = useLpBalances();
+  const state = useLockState();
 
   // TODO: Move it to the backend
   const getAll = useCallback(async () => {
@@ -46,7 +48,6 @@ export const usePools = () => {
     }
 
     return pairs.filter((v) => {
-      // @ts-expect-error
       return new BigNumber(lpBalances[v.liquidity_token]).isGreaterThan(0);
     });
   }, [lpBalances, pairs]);

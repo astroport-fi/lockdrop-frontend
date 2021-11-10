@@ -1,15 +1,19 @@
 import { extendTheme } from "@chakra-ui/react";
 
+import Alert from "./alert";
 import Modal from "./modal";
 import Badge from "./badge";
 import Tooltip from "./tooltip";
 import Text from "./text";
 import Button from "./button";
 import Tabs from "./tabs";
+import Table from "./table";
 import NumberInput from "./numberInput";
 import Heading from "./heading";
 import Menu from "./menu";
+import List from "./list";
 import Slider from "./slider";
+import Input from "./input";
 
 export default extendTheme({
   fonts: {
@@ -19,14 +23,18 @@ export default extendTheme({
     mono: "Menlo, monospace",
   },
   components: {
+    Alert,
     Modal,
     Tooltip,
     Text,
     Badge,
     Button,
     Heading,
+    Input,
     NumberInput,
+    List,
     Slider,
+    Table,
     Tabs,
     Menu,
   },
@@ -54,11 +62,11 @@ export default extendTheme({
       blue: "rgba(22,41,230,0.8)",
     },
     brand: {
-      purple: "#5643F2",
+      purple: "#705CFD",
       lightPurple: "#83B3FD",
       teal: "#A1F4EF",
       dark: "#000D37",
-      turquoise: "#59B7DD",
+      turquoise: "#A1F4EF",
       blue: "#1629E6",
       lightBlue: "rgba(131,179,253,0.3)",
     },

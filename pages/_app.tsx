@@ -16,6 +16,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import Layout from "components/Layout";
 import theme from "../theme";
+import "./styles.css";
 
 dayjs.extend(timezone);
 dayjs.extend(localizedFormat);

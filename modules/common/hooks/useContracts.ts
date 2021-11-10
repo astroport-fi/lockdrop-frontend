@@ -3,12 +3,10 @@ import { useWallet } from "@terra-money/wallet-provider";
 
 type Contracts = {
   astroToken: string;
-  factory: string;
-  router: string;
-  vesting: string;
-  staking: string;
-  maker: string;
   generator: string;
+  airdrop: string;
+  lockdrop: string;
+  auction: string;
 };
 
 type Networks = {
@@ -18,22 +16,18 @@ type Networks = {
 
 const defaultContracts: { [key: string]: any } = {
   mainnet: {
-    astroToken: "terra14z0vngwxczcvqjw6k3pl5tj9zuaky2svwxp52g",
-    factory: "terra1q5fku2rf8mcdjz4ud9rsjf2srcd9mhz2d7mwxw",
-    router: "terra1n5wm7mehc2xrkm02pzsvvz8cxacwpgjzxn6sv6",
-    vesting: "terra1cprn5wzs2zjt7d53yc5k9x7428tdn238u0708a",
-    staking: "terra12spzaqkfjmce6fe0llpz97nmwsn8jznwacw97r",
-    maker: "terra14ynfe88j53xg2lrprdf2g9enghlyv7ag0p3drn",
-    generator: "terra109ksx0vmvh2efjlh4j4sxkr027xctmkhxa2825",
+    astroToken: "terra1ntwxrg374cazaquyrz9jnscq02yl8evsj0jx8e",
+    generator: "terra1ymekq0sglcvlnp0u5fvrtugqd04qru33vpd50d",
+    airdrop: "terra1pu3ajuesdwwxsh2k20mk3ujhdqfpfy0ps59n5u",
+    lockdrop: "terra1wdn2l6f9wyw0lux64sa2k94qw0ldxclc4err9d",
+    auction: "terra19z8az0uwlems4k6de04uc8wx8cze0mwsn5pgj9",
   },
   testnet: {
-    astroToken: "terra14z0vngwxczcvqjw6k3pl5tj9zuaky2svwxp52g",
-    factory: "terra1q5fku2rf8mcdjz4ud9rsjf2srcd9mhz2d7mwxw",
-    router: "terra1n5wm7mehc2xrkm02pzsvvz8cxacwpgjzxn6sv6",
-    vesting: "terra1cprn5wzs2zjt7d53yc5k9x7428tdn238u0708a",
-    staking: "terra12spzaqkfjmce6fe0llpz97nmwsn8jznwacw97r",
-    maker: "terra14ynfe88j53xg2lrprdf2g9enghlyv7ag0p3drn",
-    generator: "terra109ksx0vmvh2efjlh4j4sxkr027xctmkhxa2825",
+    astroToken: "terra1ntwxrg374cazaquyrz9jnscq02yl8evsj0jx8e",
+    generator: "terra1ymekq0sglcvlnp0u5fvrtugqd04qru33vpd50d",
+    airdrop: "terra1pu3ajuesdwwxsh2k20mk3ujhdqfpfy0ps59n5u",
+    lockdrop: "terra1wdn2l6f9wyw0lux64sa2k94qw0ldxclc4err9d",
+    auction: "terra19z8az0uwlems4k6de04uc8wx8cze0mwsn5pgj9",
   },
 };
 

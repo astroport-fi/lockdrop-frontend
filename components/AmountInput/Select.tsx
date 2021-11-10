@@ -13,7 +13,6 @@ import { fromTerraAmount } from "@arthuryeti/terra";
 
 import ChevronDownIcon from "components/icons/ChevronDownIcon";
 import { List } from "components/AmountInput";
-import { useTokenPriceInUst } from "modules/swap";
 import { useTokenInfo } from "modules/common";
 
 type Props = {
@@ -24,7 +23,6 @@ type Props = {
 
 const Select: FC<Props> = ({ value, onClick, tokens }) => {
   const { getIcon, getSymbol } = useTokenInfo();
-  const price = useTokenPriceInUst(value);
 
   const renderButton = () => {
     const icon = getIcon(value);
@@ -39,10 +37,6 @@ const Select: FC<Props> = ({ value, onClick, tokens }) => {
           <Box ml="3" fontWeight="500" flex="1">
             <Text fontSize="2xl" color="white">
               {getSymbol(value)}
-            </Text>
-            <Text fontSize="xs" color="white.400">
-              {/* TODO: Fix type */}
-              Price: ${fromTerraAmount(price as string)}
             </Text>
           </Box>
 
