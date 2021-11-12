@@ -216,7 +216,7 @@ const Phase1LockdropAccordion = () => {
                         for, the more ASTRO you will receive. Upon conclusion of
                         Phase 1, Phase 2 will begin with the ASTRO-UST liquidity
                         bootstrapping pool opening for deposits.{" "}
-                        <Link color="#85F7F0" fontWeight="bold">
+                        <Link color="#85F7F0" fontWeight="bold" href="/phase-2">
                           Learn more about Phase 2
                         </Link>
                       </Text>
