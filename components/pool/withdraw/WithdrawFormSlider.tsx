@@ -8,14 +8,13 @@ import {
   SliderFilledTrack,
   SliderThumb,
 } from "@chakra-ui/react";
-import { useFormContext, Controller } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { useBalance } from "@arthuryeti/terra";
 
 import { lookup } from "libs/parse";
 import { WithdrawState } from "modules/pool";
 
 import Card from "components/Card";
-import WithdrawFormItem from "components/pool/withdraw/WithdrawFormItem";
 
 type Props = {
   pool: any;
@@ -40,31 +39,7 @@ const WithdrawFormSlider: FC<Props> = ({ pool, token, state, ratio = 0.3 }) => {
     });
   };
 
-  const renderWithdrawFormItem1 = () => {
-    if (state.token1 == null || state.token1Amount == null) {
-      return;
-    }
-
-    return (
-      <WithdrawFormItem
-        token={state.token1}
-        amount={state.token1Amount}
-        mb="4"
-      />
-    );
-  };
-
-  const renderWithdrawFormItem2 = () => {
-    if (state.token2 == null || state.token2Amount == null) {
-      return;
-    }
-
-    return (
-      <WithdrawFormItem token={state.token2} amount={state.token2Amount} />
-    );
-  };
-
-  const maxUnlockableLiquidity = () => {
+  const renderMaxUnlockableLiquidity = () => {
     if (ratio < 1) {
       return (
         <Box w={(1 - ratio) * 100 + "%"}>
@@ -119,7 +94,7 @@ const WithdrawFormSlider: FC<Props> = ({ pool, token, state, ratio = 0.3 }) => {
             <SliderThumb />
           </Slider>
         </Box>
-        {maxUnlockableLiquidity()}
+        {renderMaxUnlockableLiquidity()}
       </Flex>
     </Card>
   );
