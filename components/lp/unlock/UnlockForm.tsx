@@ -3,9 +3,7 @@ import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { TxStep } from "@arthuryeti/terra";
 
-import { useUnlockLpToken } from "modules/pool";
-import { useFeeToString } from "hooks/useFeeToString";
-import { PairResponse } from "modules/common";
+import { useUnlock } from "modules/lockdrop";
 
 import FormLoading from "components/common/FormLoading";
 import FormError from "components/common/FormError";
@@ -22,25 +20,25 @@ type FormValues = {
 };
 
 type Props = {
-  pair: PairResponse;
+  lpToken: string;
 };
 
-const UnlockForm: FC<Props> = ({ pair }) => {
+const UnlockForm: FC<Props> = ({ lpToken }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const methods = useForm<FormValues>({
     defaultValues: {
       lpToken: {
         amount: undefined,
-        asset: pair.liquidity_token,
+        asset: lpToken,
       },
     },
   });
 
   const { watch, handleSubmit } = methods;
-  const lpToken = watch("lpToken");
+  const token = watch("lpToken");
 
-  const state = useUnlockLpToken(lpToken);
+  const state = useUnlock({ token });
 
   const submit = async () => {
     state.submit();
@@ -52,8 +50,6 @@ const UnlockForm: FC<Props> = ({ pair }) => {
     }
   }, [state.txStep]);
 
-  const feeString = useFeeToString(state.fee);
-
   if (state.txStep == TxStep.Broadcasting || state.txStep == TxStep.Posting) {
     return <FormLoading txHash={state.txHash} />;
   }
@@ -62,7 +58,7 @@ const UnlockForm: FC<Props> = ({ pair }) => {
     return (
       <FormSuccess
         contentComponent={
-          <FormSummary label1="You are staking" token1={lpToken} />
+          <FormSummary label1="You are staking" token1={token} />
         }
         details={[{ label: "APY", value: "12%" }]}
         onCloseClick={state.reset}
@@ -95,7 +91,7 @@ const UnlockForm: FC<Props> = ({ pair }) => {
             fee={state.fee}
             actionLabel="Confirm Unstaking LP Token"
             contentComponent={
-              <FormSummary label1="You are staking" token1={lpToken} />
+              <FormSummary label1="You are staking" token1={token} />
             }
             details={[{ label: "APY", value: "12%" }]}
             onCloseClick={() => setShowConfirm(false)}

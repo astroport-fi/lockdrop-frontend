@@ -1,14 +1,16 @@
 import React, { useMemo } from "react";
 import { Box } from "@chakra-ui/react";
 
+import { useAstroPools } from "modules/lockdrop";
+
 import CardHeader from "components/CardHeader";
 import Card from "components/Card";
 import PoolTable from "components/pool/table/PoolTable";
 import PoolNameTd from "components/pool/table/PoolNameTd";
+import PoolTotalTd from "components/pool/table/PoolTotalTd";
 import LockEndTd from "components/pool/table/LockEndTd";
 import NumberTd from "components/pool/table/NumberTd";
-import ActionsTd from "components/pool/table/ActionsTd";
-import { useAstroPools } from "modules/lockdrop";
+import MyActionsTd from "components/pool/table/MyActionsTd";
 
 const MyLockedAstroLiquidity = () => {
   const pools = useAstroPools();
@@ -26,6 +28,7 @@ const MyLockedAstroLiquidity = () => {
       },
       {
         Header: "Total Locked Astroport Liquidity",
+        Cell: ({ row }: any) => <PoolTotalTd value={row.original.name} />,
         accessor: "totalLockedAstroportLiquidity",
       },
       {
@@ -44,7 +47,7 @@ const MyLockedAstroLiquidity = () => {
       },
       {
         Header: "",
-        Cell: ({ row }: any) => <ActionsTd row={row} />,
+        Cell: ({ row }: any) => <MyActionsTd name={row.original.name} />,
         accessor: "actions",
       },
     ],

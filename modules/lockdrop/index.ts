@@ -1,4 +1,5 @@
 export * from "./hooks/useLock";
+export * from "./hooks/useUnlock";
 export * from "./hooks/useLockState";
 export * from "./hooks/useConfig";
 export * from "./hooks/usePool";
@@ -10,3 +11,4 @@ export * from "./hooks/useMyLiquidityAdded";
 export * from "./hooks/useStakedLpAmount";
 
 export * from "./createLockMsgs";
+export * from "./createUnlockMsgs";

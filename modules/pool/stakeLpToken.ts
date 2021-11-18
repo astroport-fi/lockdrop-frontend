@@ -139,12 +139,12 @@ export const createWithdrawExecuteMsg = (
 
 export const createEmergencyWithdrawExecuteMsg = (
   sender: string,
-  generator: string,
+  lockdrop: string,
   tokenAddr: string,
   amount: string
 ) => {
-  const executeMsg = new MsgExecuteContract(sender, generator, {
-    emergency_withdraw: {
+  const executeMsg = new MsgExecuteContract(sender, lockdrop, {
+    WithdrawFromLockup: {
       amount,
       lp_token: tokenAddr,
     },

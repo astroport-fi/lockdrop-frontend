@@ -7,14 +7,19 @@ type Params = {
   variables?: {
     [key: string]: any;
   };
+  options?: any;
 };
 
-export const useHive = ({ name, query, variables }: Params) => {
+export const useHive = ({ name, query, variables, options }: Params) => {
   const GRAPHQL = "https://testnet-hive.terra.dev/graphql";
 
-  const { data, isLoading } = useQuery(name, () => {
-    return request(GRAPHQL, query, variables);
-  });
+  const { data, isLoading } = useQuery(
+    name,
+    () => {
+      return request(GRAPHQL, query, variables);
+    },
+    options
+  );
 
   if (isLoading || data == null) {
     return null;

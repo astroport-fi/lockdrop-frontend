@@ -2,7 +2,6 @@ export * from "./createProvideMsgs";
 export * from "./createWithdrawMsgs";
 export * from "./hooks/useLpBalances";
 export * from "./hooks/useUnlockLpToken";
-export * from "./hooks/useLockLpToken";
 export * from "./hooks/usePool";
 export * from "./hooks/useShareOfPool";
 export * from "./hooks/useLpToTokens";

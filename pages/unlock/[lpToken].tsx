@@ -5,26 +5,25 @@ import Head from "next/head";
 import { Flex } from "@chakra-ui/react";
 
 import Unlock from "components/pages/Unlock";
-import { useAstroswap } from "modules/common";
 
-const PoolPage: NextPage = () => {
+const UnlockPage: NextPage = () => {
   const { query } = useRouter();
-  const { pairs } = useAstroswap();
+  const lpToken = query?.lpToken as string;
 
-  const pair =
-    pairs &&
-    pairs.find(({ contract_addr }) => {
-      return query?.pair === contract_addr;
-    });
+  if (lpToken == null) {
+    return null;
+  }
 
   return (
     <>
       <Head>
         <title>Astroport</title>
       </Head>
-      <Flex>{pair != null && <Unlock pair={pair} />}</Flex>
+      <Flex>
+        <Unlock lpToken={lpToken} />
+      </Flex>
     </>
   );
 };
 
-export default PoolPage;
+export default UnlockPage;

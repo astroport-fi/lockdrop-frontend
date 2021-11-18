@@ -18,6 +18,7 @@ type Response = {
     unlock_timestamp: string;
     astroport_lp_units?: string;
     astroport_lp_token?: string;
+    terraswap_lp_token?: string;
   }[];
 };
 
@@ -37,6 +38,8 @@ export const useUserInfo = () => {
   if (isLoading || data == null) {
     return null;
   }
+
+  console.log(data);
 
   return {
     estimatedAstroReward: +data.total_astro_rewards / ONE_TOKEN,

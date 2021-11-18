@@ -8,11 +8,11 @@ type Props = {
   row: any;
 };
 
-const PoolItem: FC<Props> = ({ row }) => {
+const PoolNameTd: FC<Props> = ({ row }) => {
   const { name } = row.original;
   const { getIcon, getSymbol } = useTokenInfo();
 
   return <Text fontSize="sm">{getSymbol(name)}</Text>;
 };
 
-export default PoolItem;
+export default PoolNameTd;

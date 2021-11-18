@@ -43,25 +43,7 @@ const createQuery = (contract, lpTokens) => {
 };
 
 export const useAstroPools = () => {
-  const { lockdrop } = useContracts();
   const userInfo = useUserInfo();
-
-  const balance = useBalance(
-    "terra1phlrl6anpvmy98ukrnhrcexgnhj2kpfe6lxete",
-    lockdrop
-  );
-
-  console.log(balance);
-
-  const query = createQuery(lockdrop, [
-    "terra1phlrl6anpvmy98ukrnhrcexgnhj2kpfe6lxete",
-    "terra1smdjuw864plvjehr74s53qd83y8pqdytssucnv",
-  ]);
-
-  const pools = useHive({
-    name: "astro-pools",
-    query,
-  });
 
   if (userInfo == null) {
     return [];
@@ -69,10 +51,10 @@ export const useAstroPools = () => {
 
   return userInfo.lockup_infos.map((info) => {
     return {
-      name: info.astro_rewards,
+      name: info.terraswap_lp_token,
       myLiquidity: +info.lp_units_locked / ONE_TOKEN,
       lockEnd: info.unlock_timestamp,
-      astroRewards: +info.astro_rewards / ONE_TOKEN,
+      astroRewards: null,
     };
   });
 
@@ -84,8 +66,6 @@ export const useAstroPools = () => {
   //   "Est. ASTRO Rewards": "LockUpInfoResponse.astro_rewards",
   //   "dualRewards": "",
   // }
-
-  return "ouii";
 };
 
 export default useAstroPools;

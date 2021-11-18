@@ -6,11 +6,11 @@ import { Flex } from "@chakra-ui/react";
 
 import Lock from "components/pages/Lock";
 
-const PoolPage: NextPage = () => {
+const LockPage: NextPage = () => {
   const { query } = useRouter();
-  const pair = query?.pair as string;
+  const lpToken = query?.lpToken as string;
 
-  if (pair == null) {
+  if (lpToken == null) {
     return null;
   }
 
@@ -20,10 +20,10 @@ const PoolPage: NextPage = () => {
         <title>Astroport</title>
       </Head>
       <Flex>
-        <Lock lpToken={pair} />
+        <Lock lpToken={lpToken} />
       </Flex>
     </>
   );
 };
 
-export default PoolPage;
+export default LockPage;

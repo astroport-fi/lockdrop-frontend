@@ -1,6 +1,4 @@
-import { useTerraWebapp } from "@arthuryeti/terra";
 import { gql } from "graphql-request";
-import { useQuery } from "react-query";
 
 import { useContracts } from "modules/common";
 import { useHive } from "hooks/useHive";
@@ -41,12 +39,9 @@ const createQuery = (contract, lpTokens) => {
 `;
 };
 
-export const useTerraswapPools = (pools) => {
-  const { lockdrop } = useContracts();
-  const query = createQuery(lockdrop, [
-    "terra1phlrl6anpvmy98ukrnhrcexgnhj2kpfe6lxete",
-    "terra1smdjuw864plvjehr74s53qd83y8pqdytssucnv",
-  ]);
+export const useTerraswapPools = () => {
+  const { lockdrop, terraswapLps } = useContracts();
+  const query = createQuery(lockdrop, terraswapLps);
 
   const result = useHive({
     name: "terraswap-pools",
@@ -61,20 +56,22 @@ export const useTerraswapPools = (pools) => {
   //   "dualRewards": "",
   // }
 
-  if (pools == null || result == null) {
+  if (result == null) {
     return [];
   }
 
-  return pools.map((pool) => {
-    const { incentives_share, terraswap_amount_in_lockups } =
-      result[pool.liquidity_token].contractQuery;
+  return Object.keys(result).map((key) => {
+    const { incentives_share, terraswap_amount_in_lockups, terraswap_pool } =
+      result[key].contractQuery;
+
     // TODO: change to use parse terra amount
     const astroAllocated = incentives_share / ONE_TOKEN;
     return {
-      name: pool.liquidity_token,
+      name: key,
       totalMigrated: +terraswap_amount_in_lockups / ONE_TOKEN,
       myMigrated: 0,
       dualRewards: true,
+      terraswapPool: terraswap_pool,
       astroAllocated,
     };
   });

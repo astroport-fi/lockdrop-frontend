@@ -1,48 +1,21 @@
-import { useTerraWebapp } from "@arthuryeti/terra";
 import { gql } from "graphql-request";
-import { useQuery } from "react-query";
 import { forEach } from "lodash";
 
-import { useAstroswap, useContracts } from "modules/common";
-import useHive from "hooks/useHive";
+import { useTerraswapPools } from "modules/lockdrop";
+import { useHive } from "hooks/useHive";
 import { getUusdAmount } from "libs/helpers";
 import { ONE_TOKEN } from "constants/constants";
 
-type Response = {
-  terraswap_pool: string;
-  terraswap_amount_in_lockups: string;
-  incentives_share: string;
-  weighted_amount: string;
-  generator_astro_per_share: string;
-  generator_proxy_per_share: string;
-  is_staked: boolean;
-  migration_info: {
-    terraswap_migrated_amount: string;
-    astroport_lp_token: string;
-  };
-};
-
-const createQuery = (contract, pairs) => {
+const createQuery = (pools) => {
   return gql`
     {
-      ${pairs.map((pair) => {
+      ${pools.map((pool) => {
         return `
-          balance${pair.lp}: wasm {
+          ${pool}: wasm {
             contractQuery(
-              contractAddress: "${pair.lp}"
+              contractAddress: "${pool}"
               query: {
-                balance: {
-                  address: "${contract}"
-                }
-              }
-            )
-          }
-
-          pool${pair.contract}: wasm {
-            contractQuery(
-              contractAddress: "${pair.contract}"
-              query: {
-                pool: { }
+                pool: {}
               }
             )
           }
@@ -53,40 +26,42 @@ const createQuery = (contract, pairs) => {
 };
 
 export const useTotalLiquidityAdded = () => {
-  const { lockdrop } = useContracts();
-  const { pairs } = useAstroswap();
+  const items = useTerraswapPools();
 
-  const formattedPairs = pairs.map((pair) => ({
-    lp: pair.liquidity_token,
-    contract: pair.contract_addr,
-  }));
-
-  const query = createQuery(lockdrop, formattedPairs);
-
-  const response = useHive({
-    name: "total-liquidity-added",
-    query,
+  const variables = items.map((item) => {
+    return item.terraswapPool;
   });
 
-  if (response == null) {
+  const query = createQuery(variables);
+
+  const result = useHive({
+    name: "total-liquidity-added",
+    query,
+    options: {
+      enabled: variables.length > 0,
+    },
+  });
+
+  if (result == null) {
     return null;
   }
 
-  let totalLiquidityAdded = 0;
+  let total = 0;
 
-  forEach(formattedPairs, (pair) => {
-    const balance =
-      +response[`balance${pair.lp}`].contractQuery.balance / ONE_TOKEN;
-    const pool = response[`pool${pair.contract}`].contractQuery;
+  forEach(items, (item) => {
+    const balance = item.totalMigrated;
+    const pool = result[item.terraswapPool].contractQuery;
     const totalShare = +pool.total_share / ONE_TOKEN;
     const uusdAmount = getUusdAmount(pool);
 
     const uusdAmountOfLp = (balance * uusdAmount) / totalShare;
 
-    totalLiquidityAdded += uusdAmountOfLp * 2;
+    if (uusdAmountOfLp > 0) {
+      total += uusdAmountOfLp * 2;
+    }
   });
 
-  return totalLiquidityAdded;
+  return total;
 };
 
 export default useTotalLiquidityAdded;
