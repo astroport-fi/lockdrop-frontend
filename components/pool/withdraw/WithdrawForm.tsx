@@ -32,7 +32,7 @@ const WithdrawForm: FC<Props> = ({ pair, pool }) => {
   const methods = useForm<FormValues>({
     defaultValues: {
       token: {
-        amount: undefined,
+        amount: "",
         asset: "uusd",
       },
     },
@@ -110,7 +110,6 @@ const WithdrawForm: FC<Props> = ({ pair, pool }) => {
             pool={pool}
             token={token}
             state={state}
-            ratio={0.3}
             onClick={() => setShowConfirm(true)}
           />
         )}
