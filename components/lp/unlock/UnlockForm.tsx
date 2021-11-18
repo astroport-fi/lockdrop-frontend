@@ -38,7 +38,7 @@ const UnlockForm: FC<Props> = ({ lpToken }) => {
   const { watch, handleSubmit } = methods;
   const token = watch("lpToken");
 
-  const state = useUnlock({ token });
+  const state = useUnlock({ token, duration: 0 });
 
   const submit = async () => {
     state.submit();

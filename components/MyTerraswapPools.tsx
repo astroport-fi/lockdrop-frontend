@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-import { usePools } from "modules/pool";
 import { useTerraswapPools } from "modules/lockdrop";
 
 import CardHeader from "components/CardHeader";
@@ -12,8 +11,7 @@ import NumberTd from "components/pool/table/NumberTd";
 import ActionsTd from "components/pool/table/ActionsTd";
 
 const MyTerraswapPools = () => {
-  const pairs = usePools();
-  const pools = useTerraswapPools(pairs.mine);
+  const pools = useTerraswapPools();
 
   const columns = useMemo(
     () => [

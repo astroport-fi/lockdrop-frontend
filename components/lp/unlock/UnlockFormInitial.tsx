@@ -11,7 +11,7 @@ import {
 import { useFormContext, Controller } from "react-hook-form";
 import { num, TxStep } from "@arthuryeti/terra";
 
-import { LockLpTokenState } from "modules/pool";
+import { useStakedLpAmount, UnlockState } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
 import { useFeeToString } from "hooks/useFeeToString";
 
@@ -19,11 +19,10 @@ import Card from "components/Card";
 import FormFee from "components/common/FormFee";
 import AmountInput from "components/AmountInput";
 
-import { useStakedLpAmount } from "modules/lockdrop";
 import LockActions from "components/lp/lock/LockActions";
 
 type Params = {
-  state: LockLpTokenState;
+  state: UnlockState;
   onClick: () => void;
 };
 

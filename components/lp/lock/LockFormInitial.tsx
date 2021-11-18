@@ -11,11 +11,9 @@ import {
 } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { num, TxStep, useBalance } from "@arthuryeti/terra";
-import dayjs from "dayjs";
 
-import { LockLpTokenState } from "modules/pool";
+import { LockState } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
-import { useFeeToString } from "hooks/useFeeToString";
 
 import Card from "components/Card";
 import FormFee from "components/common/FormFee";
@@ -25,7 +23,7 @@ import DateInput from "components/DateInput";
 import LockActions from "components/lp/lock/LockActions";
 
 type Params = {
-  state: LockLpTokenState;
+  state: LockState;
   onClick: () => void;
 };
 
