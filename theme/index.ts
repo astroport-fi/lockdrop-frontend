@@ -62,7 +62,7 @@ export default extendTheme({
       blue: "rgba(22,41,230,0.8)",
     },
     brand: {
-      purple: "#705CFD",
+      purple: "#5643F2",
       lightPurple: "#83B3FD",
       teal: "#A1F4EF",
       dark: "#000D37",

@@ -1,3 +1,39 @@
 .plusTranslate {
     transform: translateY(40px);
 }
+
+@keyframes dex2 {
+    0% {
+        transform: rotate(360deg)
+    }
+    
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
+.intro-2 {
+    animation: dex2 200s infinite linear;
+}
+
+@keyframes dex3 {
+    0% {
+        transform: translatey(-10px);
+    }
+    
+    50% {
+        transform: translatey(10px) rotate(-10deg);
+    }
+    
+    100% {
+        transform: translatey(-10px);
+    }
+}
+
+.intro-3 {
+    animation: dex3 20s infinite linear;
+}
+
+.intro-2 {
+    animation: dex2 200s infinite linear;
+}
