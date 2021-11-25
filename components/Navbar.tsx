@@ -46,9 +46,7 @@ const Navbar: FC = () => {
           </HStack>
         </Box>
         <HStack spacing="5" justify="flex-end">
-          <Box display={["none", null, "block"]}>
-            <TerraWallet />
-          </Box>
+          <TerraWallet />
           <Box display={[null, null, null, "none"]}>
             <Button variant="icon" ref={btnRef} onClick={onOpen} pr="0" mr="-2">
               <BurgerIcon color="white" width="1.5rem" height="1.5rem" />
