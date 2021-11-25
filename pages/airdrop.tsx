@@ -13,9 +13,7 @@ const AirdropPage: NextPage = () => {
       <Head>
         <title>Astroport</title>
       </Head>
-      <Container px={["6", null, "12"]} maxWidth="container.md">
-        <Airdrop />
-      </Container>
+      <Airdrop />
       {/* <Swap /> */}
       {/* <Dashboard /> */}
     </>
