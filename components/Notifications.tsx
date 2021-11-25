@@ -9,7 +9,7 @@ const Notifications = () => {
       <Alert status="info">
         <Box flex="1">
           Thank you for participating in phase 1, 3,000 ASTRO were added to your
-          ASTRO Balance. <Link>[Learn More]</Link>
+          ASTRO Balance. <Link>Learn More</Link>
         </Box>
         <Button variant="icon">
           <CloseIcon color="white" w="6" h="6" />
@@ -18,7 +18,7 @@ const Notifications = () => {
       <Alert status="error">
         <Box flex="1">
           Thank you for participating in phase 1, 3,000 ASTRO were added to your
-          ASTRO Balance. <Link>[Learn More]</Link>
+          ASTRO Balance. <Link>Learn More</Link>
         </Box>
         <Button variant="icon">
           <CloseIcon color="white" w="6" h="6" />
@@ -27,7 +27,7 @@ const Notifications = () => {
       <Alert status="success">
         <Box flex="1">
           Thank you for participating in phase 1, 3,000 ASTRO were added to your
-          ASTRO Balance. <Link>[Learn More]</Link>
+          ASTRO Balance. <Link>Learn More</Link>
         </Box>
         <Button variant="icon">
           <CloseIcon color="white" w="6" h="6" />

@@ -1,12 +1,5 @@
 import React, { FC } from "react";
-import {
-  Box,
-  Text,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-} from "@chakra-ui/react";
+import { Box, Text, Link } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { fromTerraAmount, num, useBalance } from "@arthuryeti/terra";
 
@@ -96,7 +89,7 @@ const ProvideFormInitial: FC<Props> = ({
         <Text variant="light">
           Provide liquidity to the ASTRO - UST bootstrapping pool. Make sure to
           read the phase 2 explainer to fully understand the potential risks and
-          rewards. [learn more]
+          rewards. <Link>[learn more]</Link>
         </Text>
       </Card>
       <Card>

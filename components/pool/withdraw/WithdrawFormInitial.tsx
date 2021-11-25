@@ -76,7 +76,7 @@ const WithdrawFormInitial: FC<Props> = ({ pool, token, state, onClick }) => {
             target="_blank"
             color="#51947B"
           >
-            [learn more]
+            learn more
           </Link>
         </Text>
       </Card>
