@@ -4,6 +4,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { useTerraswapPools } from "modules/lockdrop";
 
 import CardHeader from "components/CardHeader";
+import CheckIcon from "components/icons/CheckIcon";
 import Card from "components/Card";
 import PoolTable from "components/pool/table/PoolTable";
 import PoolNameTd from "components/pool/table/PoolNameTd";
@@ -21,14 +22,16 @@ const MyTerraswapPools = () => {
         accessor: "name",
       },
       {
-        Header: "Total migrated Terraswap liquidity",
-        Cell: ({ row }: any) => <NumberTd value={row.original.totalMigrated} />,
-        accessor: "totalMigrated",
+        Header: "Total Terraswap Liquidity",
+        Cell: ({ row }: any) => (
+          <NumberTd value={row.original.totalLiquidity} />
+        ),
+        accessor: "totalLiquidity",
       },
       {
-        Header: "My migrated Terraswap liquidity",
-        // Cell: () => <Text>xxxx</Text>,
-        accessor: "myMigrated",
+        Header: "My Terraswap Liquidity",
+        Cell: ({ row }: any) => <NumberTd value={row.original.myLiquidity} />,
+        accessor: "myLiquidity",
       },
       {
         Header: "Astro Allocated to Pool",
@@ -42,6 +45,11 @@ const MyTerraswapPools = () => {
       },
       {
         Header: "Dual Rewards",
+        Cell: () => (
+          <Box>
+            <CheckIcon />
+          </Box>
+        ),
         accessor: "dualRewards",
       },
       {

@@ -9,15 +9,40 @@ type Props = {
 };
 
 const ActionsTd: FC<Props> = ({ row }) => {
-  const { name } = row.original;
+  const { name, myLiquidity } = row.original;
 
-  return (
-    <Flex justify="flex-end" align="center">
+  const renderLock = () => {
+    if (myLiquidity == 0) {
+      return;
+    }
+
+    return (
       <Link href={`/lock/${name}`} passHref>
-        <Button as="a" variant="primary" size="sm">
+        <Button as="a" variant="primary" size="sm" isFullWidth>
           Lock Lp Tokens
         </Button>
       </Link>
+    );
+  };
+
+  const renderProvide = () => {
+    if (myLiquidity > 0) {
+      return;
+    }
+
+    return (
+      <Link href={`/lock/${name}`} passHref>
+        <Button as="a" variant="secondary" size="sm" isFullWidth>
+          Provide Liquidity
+        </Button>
+      </Link>
+    );
+  };
+
+  return (
+    <Flex justify={{ md: "flex-end" }}>
+      {renderLock()}
+      {renderProvide()}
     </Flex>
   );
 };

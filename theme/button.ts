@@ -2,7 +2,7 @@ const button = {
   baseStyle: {
     fontWeight: "500",
     borderRadius: "full",
-    height:"7",
+    height: "7",
     border: "1px",
   },
   variants: {
@@ -18,6 +18,26 @@ const button = {
         bg: "white",
         borderColor: "white",
         color: "brand.purple",
+      },
+      _focus: {
+        boxShadow: "none",
+      },
+    },
+    secondary: {
+      outline: "none",
+      fontSize: "sm",
+      bg: "rgba(255, 255, 255, 0.2)",
+      color: "white",
+      px: "6",
+      py: "2",
+      _hover: {
+        bg: "white",
+        borderColor: "white",
+        color: "brand.dark",
+      },
+      _active: {
+        bg: "white",
+        color: "brand.dark",
       },
       _focus: {
         boxShadow: "none",
@@ -72,25 +92,7 @@ const button = {
         color: "white",
       },
     },
-    secondary: {
-      outline: "none",
-      bg: "rgba(255, 255, 255, 0.2)",
-      fontSize: "sm",
-      color: "white",
-      px: "6",
-      _hover: {
-        bg: "white",
-        borderColor: "white",
-        color: "brand.dark",
-      },
-      _active: {
-        bg: "white",
-        color: "brand.dark",
-      },
-      _focus: {
-        boxShadow: "none",
-      },
-    },
+
     icon: {
       bg: "transparent",
       outline: "none",

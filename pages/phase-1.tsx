@@ -4,19 +4,19 @@ import { NextPage } from "next";
 
 import { Container } from "@chakra-ui/react";
 
-import Phase2 from "components/pages/Phase2";
+import Phase1 from "components/pages/Phase1";
 
-const Phase2Page: NextPage = () => {
+const Phase1Page: NextPage = () => {
   return (
     <>
       <Head>
         <title>Astroport</title>
       </Head>
       <Container px={["6", null, "12"]} maxWidth="container.xl">
-        <Phase2 />
+        <Phase1 />
       </Container>
     </>
   );
 };
 
-export default Phase2Page;
+export default Phase1Page;

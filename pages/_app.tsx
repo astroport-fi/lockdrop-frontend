@@ -1,10 +1,11 @@
 import React from "react";
 import {
-  NetworkInfo,
+  WalletControllerChainOptions,
+  getChainOptions,
   StaticWalletProvider,
   WalletProvider,
 } from "@terra-money/wallet-provider";
-import { AppProps } from "next/app";
+import App, { AppProps } from "next/app";
 import Head from "next/head";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { Hydrate } from "react-query/hydration";
@@ -23,26 +24,14 @@ dayjs.extend(localizedFormat);
 dayjs.extend(relativeTime);
 dayjs.extend(advancedFormat);
 
-const mainnet = {
-  name: "mainnet",
-  chainID: "columbus-4",
-  lcd: "https://lcd.terra.dev",
-};
+const MyApp = ({
+  Component,
+  pageProps,
+  defaultNetwork,
+  walletConnectChainIds,
+}: AppProps & WalletControllerChainOptions) => {
+  const [queryClient] = React.useState(() => new QueryClient());
 
-const testnet = {
-  name: "testnet",
-  chainID: "tequila-0004",
-  lcd: "https://tequila-lcd.terra.dev",
-};
-
-const walletConnectChainIds: Record<number, NetworkInfo> = {
-  0: testnet,
-  1: mainnet,
-};
-
-export const queryClient = new QueryClient();
-
-const App = ({ Component, pageProps }: AppProps) => {
   const main = (
     <>
       <Head>
@@ -63,14 +52,22 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return process.browser ? (
     <WalletProvider
-      defaultNetwork={mainnet}
+      defaultNetwork={defaultNetwork}
       walletConnectChainIds={walletConnectChainIds}
     >
       {main}
     </WalletProvider>
   ) : (
-    <StaticWalletProvider defaultNetwork={mainnet}>{main}</StaticWalletProvider>
+    <StaticWalletProvider defaultNetwork={defaultNetwork}>
+      {main}
+    </StaticWalletProvider>
   );
 };
 
-export default App;
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  const chainOptions = await getChainOptions();
+  return { ...appProps, ...chainOptions };
+};
+
+export default MyApp;

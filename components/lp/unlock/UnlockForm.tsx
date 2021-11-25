@@ -21,15 +21,16 @@ type FormValues = {
 
 type Props = {
   lpToken: string;
+  duration: string;
 };
 
-const UnlockForm: FC<Props> = ({ lpToken }) => {
+const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const methods = useForm<FormValues>({
     defaultValues: {
       lpToken: {
-        amount: undefined,
+        amount: "",
         asset: lpToken,
       },
     },
@@ -38,7 +39,7 @@ const UnlockForm: FC<Props> = ({ lpToken }) => {
   const { watch, handleSubmit } = methods;
   const token = watch("lpToken");
 
-  const state = useUnlock({ token, duration: 0 });
+  const state = useUnlock({ token, duration: +duration });
 
   const submit = async () => {
     state.submit();

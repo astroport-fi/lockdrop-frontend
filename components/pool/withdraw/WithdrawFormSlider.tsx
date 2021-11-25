@@ -8,37 +8,22 @@ import {
   SliderFilledTrack,
   SliderThumb,
 } from "@chakra-ui/react";
-import { useFormContext } from "react-hook-form";
-import { useBalance } from "@arthuryeti/terra";
-
-import { lookup } from "libs/parse";
-import { WithdrawState } from "modules/pool";
 
 import Card from "components/Card";
 
 type Props = {
-  pool: any;
+  value: number;
+  max: number;
   ratio?: number;
-  token: {
-    asset: string;
-    amount: string;
-  };
-  state: WithdrawState;
+  onChange: (value: number) => void;
 };
 
-const WithdrawFormSlider: FC<Props> = ({ pool, token, state, ratio = 0.3 }) => {
-  const { control, setValue } = useFormContext();
-
-  const balance = useBalance(token.asset);
-  const amount = lookup(balance, token.asset);
-
-  const handleChange = (value: number) => {
-    setValue("token", {
-      ...token,
-      amount: String(value),
-    });
-  };
-
+const WithdrawFormSlider: FC<Props> = ({
+  value,
+  max,
+  ratio = 0.8,
+  onChange,
+}) => {
   const renderMaxUnlockableLiquidity = () => {
     if (ratio < 1) {
       return (
@@ -67,7 +52,7 @@ const WithdrawFormSlider: FC<Props> = ({ pool, token, state, ratio = 0.3 }) => {
               top="0"
               zIndex={2}
               transform="translateX(-50%)"
-            ></Box>
+            />
           </Box>
         </Box>
       );
@@ -75,7 +60,7 @@ const WithdrawFormSlider: FC<Props> = ({ pool, token, state, ratio = 0.3 }) => {
   };
 
   return (
-    <Card mt="2">
+    <Box>
       <Flex align="flex-end">
         <Box flex="1" position="relative" zIndex={10}>
           <Slider
@@ -83,10 +68,10 @@ const WithdrawFormSlider: FC<Props> = ({ pool, token, state, ratio = 0.3 }) => {
             size="lg"
             min={0}
             defaultValue={0}
-            value={Number(token.amount)}
+            value={value}
             focusThumbOnChange={false}
-            max={Number(amount) * ratio}
-            onChange={handleChange}
+            max={max * ratio}
+            onChange={onChange}
           >
             <SliderTrack>
               <SliderFilledTrack />
@@ -96,7 +81,7 @@ const WithdrawFormSlider: FC<Props> = ({ pool, token, state, ratio = 0.3 }) => {
         </Box>
         {renderMaxUnlockableLiquidity()}
       </Flex>
-    </Card>
+    </Box>
   );
 };
 

@@ -52,7 +52,7 @@ const WalletModal: FC<Props> = ({ isOpen, onClose }) => {
               }}
               onClick={() => {
                 onClose();
-                connect(ConnectType.CHROME_EXTENSION);
+                connect(ConnectType.EXTENSION);
               }}
             >
               <HStack justify="space-between">

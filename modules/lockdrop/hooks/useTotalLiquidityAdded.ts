@@ -49,7 +49,7 @@ export const useTotalLiquidityAdded = () => {
   let total = 0;
 
   forEach(items, (item) => {
-    const balance = item.totalMigrated;
+    const balance = item.totalLiquidity;
     const pool = result[item.terraswapPool].contractQuery;
     const totalShare = +pool.total_share / ONE_TOKEN;
     const uusdAmount = getUusdAmount(pool);

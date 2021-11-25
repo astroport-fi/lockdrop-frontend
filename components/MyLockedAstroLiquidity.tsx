@@ -4,6 +4,7 @@ import { Box } from "@chakra-ui/react";
 import { useAstroPools } from "modules/lockdrop";
 
 import CardHeader from "components/CardHeader";
+import CheckIcon from "components/icons/CheckIcon";
 import Card from "components/Card";
 import PoolTable from "components/pool/table/PoolTable";
 import PoolNameTd from "components/pool/table/PoolNameTd";
@@ -22,12 +23,12 @@ const MyLockedAstroLiquidity = () => {
         accessor: "name",
       },
       {
-        Header: "My Locked Astroport Liquidity",
+        Header: "My Locked Liquidity",
         Cell: ({ row }: any) => <NumberTd value={row.original.myLiquidity} />,
         accessor: "myLiquidity",
       },
       {
-        Header: "Total Locked Astroport Liquidity",
+        Header: "Total Locked Liquidity",
         Cell: ({ row }: any) => <PoolTotalTd value={row.original.name} />,
         accessor: "totalLockedAstroportLiquidity",
       },
@@ -43,11 +44,21 @@ const MyLockedAstroLiquidity = () => {
       },
       {
         Header: "Dual Rewards",
+        Cell: () => (
+          <Box>
+            <CheckIcon />
+          </Box>
+        ),
         accessor: "dualRewards",
       },
       {
-        Header: "",
-        Cell: ({ row }: any) => <MyActionsTd name={row.original.name} />,
+        Header: () => <Box width="167px" />,
+        Cell: ({ row }: any) => (
+          <MyActionsTd
+            name={row.original.name}
+            duration={row.original.duration}
+          />
+        ),
         accessor: "actions",
       },
     ],

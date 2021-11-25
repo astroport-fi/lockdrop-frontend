@@ -33,12 +33,12 @@ const PoolTable: FC<Props> = ({ columns, data }) => {
                 <Text fontSize="xs" variant="light">
                   {column.render("Header")}
                 </Text>
-                {column.isSorted &&
+                {/* {column.isSorted &&
                   (column.isSortedDesc ? (
                     <ChevronDownIcon />
                   ) : (
                     <ChevronDownIcon style={{ transform: "rotate(180deg)" }} />
-                  ))}
+                  ))} */}
               </HStack>
             </Td>
           ))}

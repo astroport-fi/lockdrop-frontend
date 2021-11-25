@@ -9,8 +9,9 @@ import Unlock from "components/pages/Unlock";
 const UnlockPage: NextPage = () => {
   const { query } = useRouter();
   const lpToken = query?.lpToken as string;
+  const duration = query?.duration as string;
 
-  if (lpToken == null) {
+  if (lpToken == null || duration == null) {
     return null;
   }
 
@@ -20,7 +21,7 @@ const UnlockPage: NextPage = () => {
         <title>Astroport</title>
       </Head>
       <Flex>
-        <Unlock lpToken={lpToken} />
+        <Unlock lpToken={lpToken} duration={duration} />
       </Flex>
     </>
   );

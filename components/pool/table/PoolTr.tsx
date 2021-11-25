@@ -12,7 +12,7 @@ const PoolTr: FC<Props> = ({ row }) => {
     <Tr {...row.getRowProps()}>
       {row.cells.map((cell) => {
         return (
-          <Td key={cell} {...cell.getCellProps()}>
+          <Td key={cell} fontSize="xs" {...cell.getCellProps()}>
             {cell.render("Cell")}
           </Td>
         );

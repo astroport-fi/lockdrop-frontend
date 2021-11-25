@@ -8,7 +8,7 @@ export * from "./hooks/useAstroPools";
 export * from "./hooks/useTerraswapPools";
 export * from "./hooks/useTotalLiquidityAdded";
 export * from "./hooks/useMyLiquidityAdded";
-export * from "./hooks/useStakedLpAmount";
+export * from "./hooks/useLockedLpAmount";
 
 export * from "./createLockMsgs";
 export * from "./createUnlockMsgs";

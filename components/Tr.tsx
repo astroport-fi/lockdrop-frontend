@@ -7,24 +7,12 @@ type Props = {
 } & BoxProps;
 
 const Tr: FC<Props> = ({ children, isHead = false, ...rest }) => {
-  let extraProps: any = {
-    py: "4",
-    fontWeight: "500",
-    align: "center",
-    borderBottomWidth: "1px",
-    borderBottomColor: "white.200",
-    px: "2",
-    _last: {
-      mb: 0,
-      borderBottomWidth: "0px",
-    },
-  };
+  let extraProps: any = {};
 
   if (isHead) {
     extraProps = {
       fontSize: "sm",
       py: "8",
-      px: "2",
       _notLast: {
         borderBottomWidth: "1px",
         borderBottomColor: "white.200",
@@ -33,7 +21,23 @@ const Tr: FC<Props> = ({ children, isHead = false, ...rest }) => {
   }
 
   return (
-    <Flex justify="space-between" {...extraProps} {...rest}>
+    <Flex
+      wrap="nowrap"
+      direction={{ base: "column", md: "row" }}
+      align={{ base: "normal", md: "center" }}
+      fontWeight="500"
+      borderBottomWidth="1px"
+      borderBottomColor="white.200"
+      borderCollapse="collapse"
+      py="4"
+      px="8"
+      _last={{
+        mb: 0,
+        borderBottomWidth: "0",
+      }}
+      {...extraProps}
+      {...rest}
+    >
       {children}
     </Flex>
   );

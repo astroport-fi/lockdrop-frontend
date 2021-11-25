@@ -30,7 +30,6 @@ export const useUnlock = ({
   onError,
 }: Params): UnlockState => {
   const address = useAddress();
-  // TODO: Change to the right contract
   const { lockdrop } = useContracts();
 
   const msgs = useMemo(() => {
@@ -53,7 +52,6 @@ export const useUnlock = ({
   }, [address, lockdrop, token, duration]);
 
   const { submit, ...rest } = useTransaction({
-    //@ts-expect-error
     msgs,
     onSuccess,
     onError,

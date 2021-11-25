@@ -9,7 +9,7 @@ type Props = {
 
 const LockEndTd: FC<Props> = ({ row }) => {
   const { lockEnd } = row.original;
-  const date = dayjs.unix(lockEnd).format("LL");
+  const date = dayjs.unix(lockEnd).format("MM/DD/YY");
 
   return <Text fontSize="sm">{date}</Text>;
 };

@@ -16,7 +16,7 @@ const Td: FC<Props> = ({ children, isRight = false, ...props }) => {
   }
 
   return (
-    <Box flex="1" px="6" {...extraProps} {...props}>
+    <Box flex="1" py={{ base: 1, md: 0 }} {...extraProps} {...props}>
       {children}
     </Box>
   );

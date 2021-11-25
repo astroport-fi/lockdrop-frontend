@@ -4,22 +4,21 @@ import { NextPage } from "next";
 
 import { Container } from "@chakra-ui/react";
 
-// import Swap from "components/pages/Swap";
-import Phase1 from "components/pages/Phase1";
+import LaunchPlan from "components/pages/LaunchPlan";
+import LaunchTimelineIntro from "components/LaunchTimelineIntro";
 
-const DashboardPage: NextPage = () => {
+const LaunchPlanPage: NextPage = () => {
   return (
     <>
       <Head>
         <title>Astroport</title>
       </Head>
-      <Container px={["6", null, "12"]} maxWidth="container.xl">
-        <Phase1 />
+      <Container my="12" px={["6", null, "12"]} maxWidth="container.xl">
+        <LaunchPlan />
+        <LaunchTimelineIntro />
       </Container>
-      {/* <Swap /> */}
-      {/* <Dashboard /> */}
     </>
   );
 };
 
-export default DashboardPage;
+export default LaunchPlanPage;

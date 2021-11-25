@@ -2,6 +2,12 @@ import React from "react";
 import {
   Text,
   Flex,
+  Box,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
   Button,
   Slider,
   SliderTrack,
@@ -11,15 +17,13 @@ import {
 import { useFormContext, Controller } from "react-hook-form";
 import { num, TxStep } from "@arthuryeti/terra";
 
-import { useStakedLpAmount, UnlockState } from "modules/lockdrop";
+import { useLockedLpAmount, UnlockState } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
-import { useFeeToString } from "hooks/useFeeToString";
 
 import Card from "components/Card";
 import FormFee from "components/common/FormFee";
 import AmountInput from "components/AmountInput";
-
-import LockActions from "components/lp/lock/LockActions";
+import WithdrawFormSlider from "components/pool/withdraw/WithdrawFormSlider";
 
 type Params = {
   state: UnlockState;
@@ -30,24 +34,42 @@ const UnlockFormInitial = ({ state, onClick }: Params) => {
   const { control, watch, setValue } = useFormContext();
 
   const lpToken = watch("lpToken");
-  const stakedAmount = useStakedLpAmount(lpToken.asset);
+  const stakedAmount = useLockedLpAmount(lpToken.asset);
   const max = num(stakedAmount).div(ONE_TOKEN).toNumber();
 
   const handleChange = (value: number) => {
-    setValue("lpToken.amount", String(value));
+    setValue("lpToken", {
+      ...lpToken,
+      amount: String(value),
+    });
   };
-
-  const feeString = useFeeToString(state.fee);
 
   return (
     <>
-      <LockActions />
+      <Flex justify="space-between" color="white" mb="4" px="6">
+        <Box flex="1">
+          <Text fontSize="xl" color="white">
+            Unlock LP Tokens
+          </Text>
+        </Box>
+      </Flex>
 
       <Card mb="2">
-        <Text variant="light">
-          ASTRO Generators support &quot;dual liquidity mining.&quot; Lock your
-          Astroport LP tokens here to receive ASTRO governance tokens AND
-          third-party governance tokens.[Read More]
+        <Text fontSize="xs" color="white.500">
+          <UnorderedList fontWeight="500">
+            <ListItem>
+              Deposits and withdraws are possible during the first 5 days.
+            </ListItem>
+            <ListItem>Deposits close at the end of Day 5.</ListItem>
+            <ListItem>
+              On Day 6, users can withdraw up to 50% of their deposits.
+            </ListItem>
+            <ListItem>
+              On Day 7, the final day, the max withdrawable amount decreases
+              linearly, starting at 50% and decreasing to 0% at the end of the
+              lockdrop.
+            </ListItem>
+          </UnorderedList>
         </Text>
       </Card>
 
@@ -60,25 +82,15 @@ const UnlockFormInitial = ({ state, onClick }: Params) => {
             <AmountInput balance={stakedAmount} {...field} isLpToken isSingle />
           )}
         />
-      </Card>
 
-      <Card mt="2">
-        <Slider
-          variant="brand"
-          size="lg"
-          min={0}
-          defaultValue={0}
-          value={Number(lpToken.amount)}
-          max={max}
-          focusThumbOnChange={false}
-          step={0.0001}
-          onChange={handleChange}
-        >
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
+        <Box mt="8">
+          <WithdrawFormSlider
+            value={+lpToken.amount}
+            max={+max}
+            ratio={0.5}
+            onChange={handleChange}
+          />
+        </Box>
       </Card>
 
       {state.error && (

@@ -3,6 +3,7 @@ import { gql } from "graphql-request";
 import { useContracts } from "modules/common";
 import { useHive } from "hooks/useHive";
 import { ONE_TOKEN } from "constants/constants";
+import { useAddress } from "@arthuryeti/terra";
 
 type Response = {
   terraswap_pool: string;
@@ -18,7 +19,11 @@ type Response = {
   };
 };
 
-const createQuery = (contract, lpTokens) => {
+const createQuery = (contract, lpTokens, address) => {
+  if (lpTokens.length === 0) {
+    return;
+  }
+
   return gql`
     {
       ${lpTokens.map((lp) => {
@@ -33,6 +38,17 @@ const createQuery = (contract, lpTokens) => {
               }
             )
           }
+
+          balance${lp}: wasm {
+            contractQuery(
+              contractAddress: "${lp}"
+              query: {
+                balance: {
+                  address: "${address}"
+                }
+              }
+            )
+          }
         `;
       })}
     }
@@ -41,35 +57,35 @@ const createQuery = (contract, lpTokens) => {
 
 export const useTerraswapPools = () => {
   const { lockdrop, terraswapLps } = useContracts();
-  const query = createQuery(lockdrop, terraswapLps);
+  const address = useAddress();
+
+  const query = createQuery(lockdrop, terraswapLps, address);
 
   const result = useHive({
     name: "terraswap-pools",
     query,
+    options: {
+      enabled: !!query,
+    },
   });
-
-  // {
-  //   "poolName": ""
-  //   "totalMigratedTerraswapLiquidity": "PoolResponse.migration_info.migration_info",
-  //   "myMigratedTerraswapLiquidity": "LockUpInfoResponse.lp_units_locked",
-  //   "astroAllocatedToPool": "PoolResponse.incentives_share",
-  //   "dualRewards": "",
-  // }
 
   if (result == null) {
     return [];
   }
 
-  return Object.keys(result).map((key) => {
+  return terraswapLps.map((key) => {
     const { incentives_share, terraswap_amount_in_lockups, terraswap_pool } =
       result[key].contractQuery;
+    const { balance } = result[`balance${key}`].contractQuery;
+
+    console.log(balance);
 
     // TODO: change to use parse terra amount
     const astroAllocated = incentives_share / ONE_TOKEN;
     return {
       name: key,
-      totalMigrated: +terraswap_amount_in_lockups / ONE_TOKEN,
-      myMigrated: 0,
+      totalLiquidity: +terraswap_amount_in_lockups / ONE_TOKEN,
+      myLiquidity: +balance / ONE_TOKEN,
       dualRewards: true,
       terraswapPool: terraswap_pool,
       astroAllocated,

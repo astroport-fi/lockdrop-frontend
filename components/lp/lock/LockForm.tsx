@@ -3,16 +3,14 @@ import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { TxStep } from "@arthuryeti/terra";
 
-import { useFeeToString } from "hooks/useFeeToString";
 import { useLock } from "modules/lockdrop";
-import { PairResponse } from "modules/common";
 
 import FormLoading from "components/common/FormLoading";
 import FormError from "components/common/FormError";
-import FormConfirm from "components/common/FormConfirm";
 import FormSuccess from "components/common/FormSuccess";
 import FormSummary from "components/common/FormSummary";
 import LockFormInitial from "components/lp/lock/LockFormInitial";
+import LockFormDisclaimer from "components/lp/lock/LockFormDisclaimer";
 
 type FormValues = {
   token: {
@@ -90,15 +88,7 @@ const LockForm: FC<Props> = ({ lpToken }) => {
         )}
 
         {showConfirm && (
-          <FormConfirm
-            fee={state.fee}
-            actionLabel="Confirm Staking LP Token"
-            contentComponent={
-              <FormSummary label1="You are staking" token1={token} />
-            }
-            details={[{ label: "APY", value: "12%" }]}
-            onCloseClick={() => setShowConfirm(false)}
-          />
+          <LockFormDisclaimer onCloseClick={() => setShowConfirm(false)} />
         )}
       </chakra.form>
     </FormProvider>

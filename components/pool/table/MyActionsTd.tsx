@@ -4,13 +4,14 @@ import { Button, Flex } from "@chakra-ui/react";
 
 type Props = {
   name: string;
+  duration: number;
 };
 
-const MyActionsTd: FC<Props> = ({ name }) => {
+const MyActionsTd: FC<Props> = ({ name, duration }) => {
   return (
-    <Flex justify="flex-end" align="center">
-      <Link href={`/unlock/${name}`} passHref>
-        <Button as="a" variant="primary" size="sm">
+    <Flex justify={{ md: "flex-end" }}>
+      <Link href={`/unlock/${name}/${duration}`} passHref>
+        <Button as="a" variant="secondary" size="sm" isFullWidth>
           Unlock LP Tokens
         </Button>
       </Link>
