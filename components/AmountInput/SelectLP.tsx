@@ -11,7 +11,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-import { useAstroswap, useTokenInfo, getTokenDenoms } from "modules/common";
+import { useAstro, useTokenInfo, getTokenDenoms } from "modules/common";
 
 import ChevronDownIcon from "components/icons/ChevronDownIcon";
 import { ListLP } from "components/AmountInput";
@@ -22,7 +22,7 @@ type Props = {
 };
 
 const SelectLP: FC<Props> = ({ value, onClick }) => {
-  const { pairs } = useAstroswap();
+  const { pairs } = useAstro();
   const { getIcon, getSymbol } = useTokenInfo();
   const pair = pairs.find((v) => v.liquidity_token == value);
   const [token1, token2] = getTokenDenoms(pair.asset_infos);

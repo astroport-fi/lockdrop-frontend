@@ -20,7 +20,7 @@ import FormFee from "components/common/FormFee";
 import AmountInput from "components/AmountInput";
 import DateInput from "components/DateInput";
 
-import LockActions from "components/lp/lock/LockActions";
+import LockActions from "components/lockdrop/lock/LockActions";
 
 type Params = {
   state: LockState;

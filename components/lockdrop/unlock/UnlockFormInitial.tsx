@@ -3,16 +3,9 @@ import {
   Text,
   Flex,
   Box,
-  List,
   ListItem,
-  ListIcon,
-  OrderedList,
   UnorderedList,
   Button,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
 } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { num, TxStep } from "@arthuryeti/terra";
@@ -23,7 +16,7 @@ import { ONE_TOKEN } from "constants/constants";
 import Card from "components/Card";
 import FormFee from "components/common/FormFee";
 import AmountInput from "components/AmountInput";
-import WithdrawFormSlider from "components/pool/withdraw/WithdrawFormSlider";
+import FormSlider from "components/FormSlider";
 
 type Params = {
   state: UnlockState;
@@ -84,7 +77,7 @@ const UnlockFormInitial = ({ state, onClick }: Params) => {
         />
 
         <Box mt="8">
-          <WithdrawFormSlider
+          <FormSlider
             value={+lpToken.amount}
             max={+max}
             ratio={0.5}

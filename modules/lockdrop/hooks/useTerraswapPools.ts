@@ -78,8 +78,6 @@ export const useTerraswapPools = () => {
       result[key].contractQuery;
     const { balance } = result[`balance${key}`].contractQuery;
 
-    console.log(balance);
-
     // TODO: change to use parse terra amount
     const astroAllocated = incentives_share / ONE_TOKEN;
     return {

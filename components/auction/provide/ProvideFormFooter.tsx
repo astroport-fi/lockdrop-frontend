@@ -16,16 +16,16 @@ const ProvideFormFooter: FC<Props> = ({ data, onConfirmClick }) => {
 
   const cells = [
     {
-      title: "Liquidity",
-      value: "20,000",
-    },
-    {
       title: "Share of Pool",
       value: `${shareOfPool || "0"}%`,
     },
     {
-      title: "TX Fee",
-      value: feeString || "0.00",
+      title: "Est. ASTRO Rewards",
+      value: "20,000",
+    },
+    {
+      title: "Lock ends",
+      value: "17/11/21",
     },
   ];
 

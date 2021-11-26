@@ -1,9 +1,7 @@
 import { useMemo } from "react";
-import { Coin } from "@terra-money/terra.js";
 import { useAddress, useTransaction, TxStep } from "@arthuryeti/terra";
 
-import { createProvideMsgs } from "modules/pool";
-import { Pool } from "types/common";
+import { createProvideMsgs } from "modules/auction";
 import { useContracts } from "modules/common";
 
 export type ProvideState = {

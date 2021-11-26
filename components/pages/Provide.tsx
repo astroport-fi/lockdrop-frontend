@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
-import ProvideForm from "components/pool/provide/ProvideForm";
+import ProvideForm from "components/auction/provide/ProvideForm";
 
 const Provide: FC = () => {
   return (

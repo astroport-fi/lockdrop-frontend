@@ -16,12 +16,7 @@ type Props = {
   onChange: (value: number) => void;
 };
 
-const WithdrawFormSlider: FC<Props> = ({
-  value,
-  max,
-  ratio = 0.8,
-  onChange,
-}) => {
+const FormSlider: FC<Props> = ({ value, max, ratio = 0.8, onChange }) => {
   const renderMaxUnlockableLiquidity = () => {
     if (ratio < 1) {
       return (
@@ -83,4 +78,4 @@ const WithdrawFormSlider: FC<Props> = ({
   );
 };
 
-export default WithdrawFormSlider;
+export default FormSlider;

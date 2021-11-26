@@ -6,12 +6,12 @@ import { useAstroPools } from "modules/lockdrop";
 import CardHeader from "components/CardHeader";
 import CheckIcon from "components/icons/CheckIcon";
 import Card from "components/Card";
-import PoolTable from "components/pool/table/PoolTable";
-import PoolNameTd from "components/pool/table/PoolNameTd";
-import PoolTotalTd from "components/pool/table/PoolTotalTd";
-import LockEndTd from "components/pool/table/LockEndTd";
-import NumberTd from "components/pool/table/NumberTd";
-import MyActionsTd from "components/pool/table/MyActionsTd";
+import PoolTable from "components/auction/table/PoolTable";
+import PoolNameTd from "components/auction/table/PoolNameTd";
+import PoolTotalTd from "components/auction/table/PoolTotalTd";
+import LockEndTd from "components/auction/table/LockEndTd";
+import NumberTd from "components/auction/table/NumberTd";
+import MyActionsTd from "components/auction/table/MyActionsTd";
 
 const MyLockedAstroLiquidity = () => {
   const pools = useAstroPools();

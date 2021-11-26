@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useAddress, useTransaction, TxStep, num } from "@arthuryeti/terra";
 
 import { useContracts } from "modules/common";
-import { createWithdrawMsgs } from "modules/pool";
+import { createWithdrawMsgs } from "modules/auction";
 
 export type WithdrawState = {
   error: any;

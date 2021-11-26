@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
-import UnlockForm from "components/lp/unlock/UnlockForm";
+import UnlockForm from "components/lockdrop/unlock/UnlockForm";
 
 type Props = {
   lpToken: string;

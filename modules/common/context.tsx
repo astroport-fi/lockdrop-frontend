@@ -9,17 +9,19 @@ import {
 } from "react";
 import { useWallet } from "@terra-money/wallet-provider";
 
+import { useConfig } from "modules/lockdrop";
+
 import { PairResponse, Routes, Tokens, Data } from "./types";
 import { formatPairsToRoutes } from "./helpers";
 
-type Astroswap = {
+type Astro = {
   pairs: PairResponse[] | null;
   routes: Routes | null;
   tokens: Tokens | null;
   data: Data | null;
 };
 
-export const AstroswapContext: Context<Astroswap> = createContext<Astroswap>({
+export const AstroContext: Context<Astro> = createContext<Astro>({
   pairs: [],
   routes: null,
   tokens: null,
@@ -31,10 +33,11 @@ type Props = {
   data: Data;
 };
 
-export const AstroswapProvider: FC<Props> = ({ children, data }) => {
+export const AstroProvider: FC<Props> = ({ children, data }) => {
   const {
     network: { name },
   } = useWallet();
+  const config = useConfig();
 
   const pairs = useMemo(() => {
     return data[name].pairs;
@@ -52,7 +55,7 @@ export const AstroswapProvider: FC<Props> = ({ children, data }) => {
   }, [pairs]);
 
   return (
-    <AstroswapContext.Provider
+    <AstroContext.Provider
       value={{
         pairs,
         routes,
@@ -61,12 +64,12 @@ export const AstroswapProvider: FC<Props> = ({ children, data }) => {
       }}
     >
       {children}
-    </AstroswapContext.Provider>
+    </AstroContext.Provider>
   );
 };
 
-export function useAstroswap(): Astroswap {
-  return useContext(AstroswapContext);
+export function useAstro(): Astro {
+  return useContext(AstroContext);
 }
 
-export const AstroswapConsumer: Consumer<Astroswap> = AstroswapContext.Consumer;
+export const AstroConsumer: Consumer<Astro> = AstroContext.Consumer;

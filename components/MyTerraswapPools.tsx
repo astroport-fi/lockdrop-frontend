@@ -6,10 +6,10 @@ import { useTerraswapPools } from "modules/lockdrop";
 import CardHeader from "components/CardHeader";
 import CheckIcon from "components/icons/CheckIcon";
 import Card from "components/Card";
-import PoolTable from "components/pool/table/PoolTable";
-import PoolNameTd from "components/pool/table/PoolNameTd";
-import NumberTd from "components/pool/table/NumberTd";
-import ActionsTd from "components/pool/table/ActionsTd";
+import PoolTable from "components/auction/table/PoolTable";
+import PoolNameTd from "components/auction/table/PoolNameTd";
+import NumberTd from "components/auction/table/NumberTd";
+import ActionsTd from "components/auction/table/ActionsTd";
 
 const MyTerraswapPools = () => {
   const pools = useTerraswapPools();

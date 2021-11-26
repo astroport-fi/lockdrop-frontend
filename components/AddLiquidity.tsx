@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import { fromTerraAmount } from "@arthuryeti/terra";
 
-import { useUserInfo, useAuctionState } from "modules/auction";
+import { useUserInfo, useAuctionState, useAstroPrice } from "modules/auction";
 
 import KPITitle from "components/KPITitle";
 import CardHeader from "components/CardHeader";
@@ -22,6 +22,7 @@ import FrameBorder from "components/FrameBorder";
 const AddLiquidity = () => {
   const userInfo = useUserInfo();
   const auctionState = useAuctionState();
+  const price = useAstroPrice();
 
   return (
     <Box>
@@ -100,7 +101,7 @@ const AddLiquidity = () => {
                       fontSize={["16px", null, "32px"]}
                       textAlign="center"
                     >
-                      1 ASTRO = 8.10 UST
+                      1 ASTRO = {price} UST
                     </Text>
                     <Text variant="spaced" color="white" opacity="0.4">
                       If all remains equal
@@ -153,7 +154,10 @@ const AddLiquidity = () => {
                 mt={[null, null, "8", null, "0"]}
               >
                 <KPITitle
-                  value="1,250.00 ASTRO"
+                  value={`${fromTerraAmount(
+                    userInfo?.auction_incentive_amount,
+                    "0,0.00"
+                  )} ASTRO`}
                   label="My one time estimated ASTRO rewards from ASTRO-UST bootstrapping pool"
                 />
               </Box>

@@ -1,34 +1,20 @@
 import React, { FC } from "react";
 import { Box, Text, Link } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
-import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
-import { ProvideState } from "modules/pool";
+import { ProvideState } from "modules/auction";
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
-import ProvideFormFooter from "components/pool/provide/ProvideFormFooter";
+import ProvideFormFooter from "components/auction/provide/ProvideFormFooter";
 
 type Props = {
-  astro: {
-    amount: string;
-    asset: string;
-  };
-  uusd: {
-    amount: string;
-    asset: string;
-  };
   state: ProvideState;
   onClick: () => void;
 };
 
-const ProvideFormInitial: FC<Props> = ({ astro, uusd, state, onClick }) => {
-  const astroBalance = useBalance(astro.asset);
-  const uusdBalance = useBalance(uusd.asset);
-  const { control, setValue } = useFormContext();
-
-  const balance = useBalance(astro.asset);
-  const amount = fromTerraAmount(balance, "0.00");
+const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
+  const { control } = useFormContext();
 
   return (
     <>
@@ -41,9 +27,18 @@ const ProvideFormInitial: FC<Props> = ({ astro, uusd, state, onClick }) => {
         <Text variant="light">
           Provide liquidity to the ASTRO - UST bootstrapping pool. Make sure to
           read the phase 2 explainer to fully understand the potential risks and
-          rewards. <Link>[learn more]</Link>
+          benefits. To supply a single asset, leave the second asset&apos;s
+          field blank or type &apos;0&apos;.{" "}
+          <Link
+            href="https://astroport.medium.com/hello-astro-announcing-the-astroport-governance-token-drops-a07a1bf3ed94"
+            target="_blank"
+            color="#51947B"
+          >
+            learn more
+          </Link>
         </Text>
       </Card>
+
       <Card>
         <Controller
           name="astro"

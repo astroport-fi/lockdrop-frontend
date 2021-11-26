@@ -6,7 +6,7 @@ import { useTable, useSortBy } from "react-table";
 import Table from "components/Table";
 import Tr from "components/Tr";
 import Td from "components/Td";
-import PoolTr from "components/pool/table/PoolTr";
+import PoolTr from "components/auction/table/PoolTr";
 import ChevronDownIcon from "components/icons/ChevronDownIcon";
 
 type Props = {
@@ -51,7 +51,13 @@ const PoolTable: FC<Props> = ({ columns, data }) => {
             return <PoolTr row={row} />;
           })}
         </Box>
-      ) : null}
+      ) : (
+        <Tr>
+          <Text fontSize="sm">
+            Migrate Terraswap LP Tokens to get ASTRO rewards. [Learn More]
+          </Text>
+        </Tr>
+      )}
     </Table>
   );
 };

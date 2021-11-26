@@ -4,12 +4,11 @@ import { useForm, FormProvider } from "react-hook-form";
 import { TxStep } from "@arthuryeti/terra";
 
 import { toAmount } from "libs/parse";
-import { PairResponse, useContracts } from "modules/common";
-import { PoolFormType, ProvideFormMode } from "types/common";
-import { useProvide } from "modules/pool";
+import { useContracts } from "modules/common";
+import { useProvide } from "modules/auction";
 import useDebounceValue from "hooks/useDebounceValue";
 
-import ProvideFormInitial from "components/pool/provide/ProvideFormInitial";
+import ProvideFormInitial from "components/auction/provide/ProvideFormInitial";
 import FormConfirm from "components/common/FormConfirm";
 import FormLoading from "components/common/FormLoading";
 import FormSuccess from "components/common/FormSuccess";
@@ -105,8 +104,6 @@ const ProvideForm: FC = () => {
       <chakra.form onSubmit={methods.handleSubmit(submit)} width="full">
         {!showConfirm && (
           <ProvideFormInitial
-            astro={astro}
-            uusd={uusd}
             state={state}
             onClick={() => setShowConfirm(true)}
           />

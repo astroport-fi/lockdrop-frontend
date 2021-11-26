@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
 import { ListItem } from "components/AmountInput";
-import { useAstroswap } from "modules/common";
+import { useAstro } from "modules/common";
 
 type Props = {
   onClick: (token: string) => void;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const List: FC<Props> = ({ tokens, onClick }) => {
-  const { tokens: terraTokens } = useAstroswap();
+  const { tokens: terraTokens } = useAstro();
 
   if (tokens && tokens.length > 0) {
     return (

@@ -1,36 +1,34 @@
 import React, { FC } from "react";
-import { fromTerraAmount, toTerraAmount, TxStep } from "@arthuryeti/terra";
+import { fromTerraAmount, TxStep } from "@arthuryeti/terra";
 
 import { useFeeToString } from "hooks/useFeeToString";
-import { useShareOfPool } from "modules/pool";
 
 import CommonFooter, { ConfirmButton } from "components/CommonFooter";
 
 type Props = {
-  pool: any;
   data: any;
-  amount: string;
   onConfirmClick: () => void;
 };
 
-const WithdrawFormFooter: FC<Props> = ({
-  pool,
-  data,
-  amount,
-  onConfirmClick,
-}) => {
-  const shareOfPool = useShareOfPool({ pool, amount1: toTerraAmount(amount) });
+const WithdrawFormFooter: FC<Props> = ({ data, onConfirmClick }) => {
   const feeString = useFeeToString(data.fee);
 
   const cells = [
     {
-      title: "Liquidity",
-      value: fromTerraAmount(pool.total.shareInUst),
+      title: "My ASTRO in the pool",
+      value: fromTerraAmount("12222"),
     },
-    { title: "Share of Pool", value: `${shareOfPool || "0"}%` },
     {
-      title: "TX Fee",
-      value: feeString || "0.00",
+      title: "My new UST in the pool",
+      value: fromTerraAmount("12222"),
+    },
+    {
+      title: "My new share of pool",
+      value: fromTerraAmount("12222"),
+    },
+    {
+      title: "Lock ends",
+      value: fromTerraAmount("12222"),
     },
   ];
 

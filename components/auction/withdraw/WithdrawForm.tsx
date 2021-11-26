@@ -4,16 +4,15 @@ import { useForm, FormProvider } from "react-hook-form";
 import { TxStep } from "@arthuryeti/terra";
 
 import useDebounceValue from "hooks/useDebounceValue";
-import { PairResponse } from "modules/common";
 import { toAmount } from "libs/parse";
-import { useWithdraw } from "modules/pool";
+import { useWithdraw } from "modules/auction";
 
 import FormError from "components/common/FormError";
 import FormSummary from "components/common/FormSummary";
 import FormLoading from "components/common/FormLoading";
 import FormSuccess from "components/common/FormSuccess";
 import FormConfirm from "components/common/FormConfirm";
-import WithdrawFormInitial from "components/pool/withdraw/WithdrawFormInitial";
+import WithdrawFormInitial from "components/auction/withdraw/WithdrawFormInitial";
 
 type FormValues = {
   token: {
@@ -22,12 +21,7 @@ type FormValues = {
   };
 };
 
-type Props = {
-  pair: any;
-  pool: any;
-};
-
-const WithdrawForm: FC<Props> = ({ pool }) => {
+const WithdrawForm: FC = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const methods = useForm<FormValues>({
     defaultValues: {
@@ -91,7 +85,6 @@ const WithdrawForm: FC<Props> = ({ pool }) => {
       <chakra.form onSubmit={methods.handleSubmit(submit)} width="full">
         {!showConfirm && (
           <WithdrawFormInitial
-            pool={pool}
             token={token}
             state={state}
             onClick={() => setShowConfirm(true)}

@@ -3,7 +3,7 @@ import { Box, Flex } from "@chakra-ui/react";
 
 import { PairResponse } from "modules/common";
 
-import LockForm from "components/lp/lock/LockForm";
+import LockForm from "components/lockdrop/lock/LockForm";
 
 type Props = {
   lpToken: string;

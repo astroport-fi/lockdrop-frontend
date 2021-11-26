@@ -3,43 +3,46 @@ import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { TxStep } from "@arthuryeti/terra";
 
-import { useUnlock } from "modules/lockdrop";
+import { useLock } from "modules/lockdrop";
 
 import FormLoading from "components/common/FormLoading";
 import FormError from "components/common/FormError";
-import FormConfirm from "components/common/FormConfirm";
 import FormSuccess from "components/common/FormSuccess";
 import FormSummary from "components/common/FormSummary";
-import UnlockFormInitial from "components/lp/unlock/UnlockFormInitial";
+import LockFormInitial from "components/lockdrop/lock/LockFormInitial";
+import LockFormDisclaimer from "components/lockdrop/lock/LockFormDisclaimer";
 
 type FormValues = {
-  lpToken: {
+  token: {
     amount: string;
     asset: string;
   };
+  duration: number;
 };
 
 type Props = {
   lpToken: string;
-  duration: string;
 };
 
-const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
+const LockForm: FC<Props> = ({ lpToken }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const methods = useForm<FormValues>({
     defaultValues: {
-      lpToken: {
+      token: {
         amount: "",
         asset: lpToken,
       },
+      duration: 0,
     },
+    mode: "all",
   });
 
   const { watch, handleSubmit } = methods;
-  const token = watch("lpToken");
+  const token = watch("token");
+  const duration = watch("duration");
 
-  const state = useUnlock({ token, duration: +duration });
+  const state = useLock({ token, duration });
 
   const submit = async () => {
     state.submit();
@@ -81,26 +84,15 @@ const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
     <FormProvider {...methods}>
       <chakra.form onSubmit={handleSubmit(submit)} width="full">
         {!showConfirm && (
-          <UnlockFormInitial
-            state={state}
-            onClick={() => setShowConfirm(true)}
-          />
+          <LockFormInitial state={state} onClick={() => setShowConfirm(true)} />
         )}
 
         {showConfirm && (
-          <FormConfirm
-            fee={state.fee}
-            actionLabel="Confirm Unstaking LP Token"
-            contentComponent={
-              <FormSummary label1="You are staking" token1={token} />
-            }
-            details={[{ label: "APY", value: "12%" }]}
-            onCloseClick={() => setShowConfirm(false)}
-          />
+          <LockFormDisclaimer onCloseClick={() => setShowConfirm(false)} />
         )}
       </chakra.form>
     </FormProvider>
   );
 };
 
-export default UnlockForm;
+export default LockForm;

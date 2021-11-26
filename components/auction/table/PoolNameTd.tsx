@@ -1,8 +1,7 @@
 import React, { FC } from "react";
-import { Box, Text, Image, HStack } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 
 import { useTokenInfo } from "modules/common";
-import { usePool } from "modules/pool";
 
 type Props = {
   row: any;
@@ -10,7 +9,7 @@ type Props = {
 
 const PoolNameTd: FC<Props> = ({ row }) => {
   const { name } = row.original;
-  const { getIcon, getSymbol } = useTokenInfo();
+  const { getSymbol } = useTokenInfo();
 
   return <Text fontSize="sm">{getSymbol(name)}</Text>;
 };

@@ -22,23 +22,23 @@ interface Props {
 const CommonFooter: FC<Props> = ({ cells, confirmButton }) => {
   return (
     <Box>
-      <Flex justify="space-between" px="12" my="8">
+      <Flex justify="space-between" my="8">
         {cells.map((cell) => (
           <Box
             key={cell.title}
             flex="1"
             borderRightColor="whiteAlpha.600"
             borderRightWidth="1px"
-            pl="4"
             _first={{
               borderLeftColor: "whiteAlpha.600",
               borderLeftWidth: "1px",
             }}
+            textAlign="center"
           >
             <Text color="white" fontSize="sm">
               {cell.value}
             </Text>
-            <Text variant="light" color="white.400" fontSize="sm">
+            <Text variant="light" color="white.400" fontSize="xs">
               {cell.title}
             </Text>
           </Box>
