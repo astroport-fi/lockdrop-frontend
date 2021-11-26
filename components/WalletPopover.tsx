@@ -14,14 +14,14 @@ import CloseIcon from "components/icons/CloseIcon";
 
 type Props = {
   title?: string;
-  button?: ReactNode;
+  triggerElement: () => React.ReactElement;
   children: ReactNode;
 };
 
-const WalletPopover: FC<Props> = ({ title, button, children }) => {
+const WalletPopover: FC<Props> = ({ title, triggerElement, children }) => {
   return (
     <Popover>
-      <PopoverTrigger>{button}</PopoverTrigger>
+      <PopoverTrigger>{triggerElement()}</PopoverTrigger>
       <PopoverContent w="368px">
         <Flex align="center" justify="space-between" pt="6" pr="6">
           <PopoverHeader>{title}</PopoverHeader>

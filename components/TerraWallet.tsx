@@ -28,7 +28,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import ConnectWalletButton from "components/ConnectWalletButton";
 import ConnectWalletModal from "components/modals/ConnectWalletModal";
 import WalletInfoPopover from "components/popovers/WalletInfoPopover";
 import TerraIcon from "components/icons/TerraIcon";
@@ -133,13 +132,37 @@ const TerraWallet: FC = () => {
             </Flex>
           </chakra.button>
         )}
-      ></WalletInfoPopover>
+      />
     );
   }
 
   return (
     <>
-      <WalletPopover title="Terms of Service" button={<ConnectWalletButton />}>
+      <WalletPopover
+        title="Terms of Service"
+        triggerElement={() => (
+          <chakra.button
+            type="button"
+            color="white"
+            _focus={{
+              outline: "none",
+              boxShadow: "none",
+            }}
+            _hover={{
+              bg: "brand.purple",
+            }}
+            bg="brand.lightBlue"
+            py="2"
+            px="4"
+            borderRadius="full"
+          >
+            <HStack spacing="3">
+              <TerraIcon width="1.25rem" height="1.25rem" />
+              <Text>Connect your wallet</Text>
+            </HStack>
+          </chakra.button>
+        )}
+      >
         <Text>
           By connecting a wallet, you agree to Astroport’s Terms of Service and
           acknowledge that you have read and understand the protocol’s
