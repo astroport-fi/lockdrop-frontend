@@ -9,8 +9,6 @@ import {
   SliderThumb,
 } from "@chakra-ui/react";
 
-import Card from "components/Card";
-
 type Props = {
   value: number;
   max: number;

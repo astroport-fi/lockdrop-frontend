@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Text,
-  Stack,
-  VStack,
-  HStack,
-  StackDivider,
-  AspectRatio,
-} from "@chakra-ui/react";
+import { Box, Stack, VStack, StackDivider } from "@chakra-ui/react";
 import numeral from "numeral";
 
 import {

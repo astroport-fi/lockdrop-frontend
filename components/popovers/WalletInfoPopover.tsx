@@ -24,7 +24,6 @@ import { useWallet } from "@terra-money/wallet-provider";
 import { truncate } from "libs/text";
 import { useTokenInfo } from "modules/common";
 import useFinder from "hooks/useFinder";
-import { useTokenPriceInUst } from "modules/swap";
 
 import CopyIcon from "components/icons/CopyIcon";
 import ViewIcon from "components/icons/ViewIcon";
@@ -40,7 +39,6 @@ const WalletInfoPopover: FC<Props> = ({ triggerElement }) => {
   const icon = getIcon("uusd");
   const symbol = getSymbol("uusd");
   const balance = useBalance("uusd");
-  const price = useTokenPriceInUst("uusd");
   const terraAddress = useAddress();
   const finder = useFinder();
 
@@ -82,14 +80,14 @@ const WalletInfoPopover: FC<Props> = ({ triggerElement }) => {
                   </Text>
                   <Text textStyle="small">$ {fromTerraAmount(balance)}</Text>
                 </HStack>
-                <HStack justify="space-between">
+                {/* <HStack justify="space-between">
                   <Text flex={1} textStyle="small" variant="dimmed">
                     Price:{" "}
                   </Text>
                   <Text textStyle="small" variant="dimmed">
                     {fromTerraAmount(price)}
                   </Text>
-                </HStack>
+                </HStack> */}
               </Flex>
             </Flex>
             <VStack mt={6} align="flex-start">

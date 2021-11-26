@@ -3,11 +3,13 @@ import { Box, Flex } from "@chakra-ui/react";
 
 import ProvideForm from "components/pool/provide/ProvideForm";
 import { usePool } from "modules/pool";
+import { useConfig } from "modules/auction";
 
 const Provide: FC = () => {
+  const config = useConfig();
   const pool = usePool({
-    pairContract: "terra1n6ppcp9ehr3jsyeynpey3mq9dqsq49lf8uxgg5",
-    lpTokenContract: "terra1phlrl6anpvmy98ukrnhrcexgnhj2kpfe6lxete",
+    pairContract: config?.pool_info.astro_ust_pool_address,
+    lpTokenContract: config?.pool_info.astro_ust_lp_token_address,
   });
 
   if (pool == null) {
@@ -20,7 +22,7 @@ const Provide: FC = () => {
         <Box w="container.sm">
           <ProvideForm
             pool={pool}
-            pair="terra1n6ppcp9ehr3jsyeynpey3mq9dqsq49lf8uxgg5"
+            pair={config?.pool_info.astro_ust_pool_address}
           />
         </Box>
       </Flex>

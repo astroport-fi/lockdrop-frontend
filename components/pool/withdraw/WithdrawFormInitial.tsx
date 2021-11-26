@@ -92,7 +92,14 @@ const WithdrawFormInitial: FC<Props> = ({ pool, token, state, onClick }) => {
         />
       </Card>
 
-      <WithdrawFormSlider pool={pool} token={token} state={state} ratio={0.3} />
+      <Card mt="2">
+        <WithdrawFormSlider
+          value={+token.amount}
+          max={+amount}
+          ratio={0.5}
+          onChange={handleChange}
+        />
+      </Card>
 
       <WithdrawFormFooter
         pool={pool}

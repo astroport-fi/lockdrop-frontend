@@ -53,7 +53,6 @@ export const useLock = ({
   }, [address, lockdrop, token, duration]);
 
   const { submit, ...rest } = useTransaction({
-    //@ts-expect-error
     msgs,
     onSuccess,
     onError,

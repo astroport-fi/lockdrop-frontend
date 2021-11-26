@@ -75,12 +75,12 @@ export const usePool = ({
       token1: {
         asset: token1,
         share: pool.assets[0].amount,
-        amount: tokenAmounts?.[token1],
+        amount: tokenAmounts?.[token1] ?? "0",
       },
       token2: {
         asset: token2,
         share: pool.assets[1].amount,
-        amount: tokenAmounts?.[token2],
+        amount: tokenAmounts?.[token2] ?? "0",
       },
     };
   }, [pool, myShare, shareOfPool, tokenAmounts, token1, token2]);

@@ -11,6 +11,10 @@ import {
   Image,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { fromTerraAmount } from "@arthuryeti/terra";
+
+import { useConfig } from "modules/auction";
+import { usePool } from "modules/pool";
 
 import KPITitle from "components/KPITitle";
 import CardHeader from "components/CardHeader";
@@ -18,6 +22,12 @@ import Card from "components/Card";
 import FrameBorder from "components/FrameBorder";
 
 const AddLiquidity = () => {
+  const config = useConfig();
+  const pool = usePool({
+    pairContract: config?.pool_info.astro_ust_pool_address,
+    lpTokenContract: config?.pool_info.astro_ust_lp_token_address,
+  });
+
   return (
     <Box>
       <CardHeader label="Add liquidity to the ASTRO-UST bootstrapping pool" />
@@ -40,7 +50,10 @@ const AddLiquidity = () => {
           >
             <Box px="5" order={1} w={["100%", "50%", "auto"]}>
               <KPITitle
-                value="1,000.00 ASTRO"
+                value={`${fromTerraAmount(
+                  pool?.token1?.share,
+                  "0,0.00"
+                )} ASTRO`}
                 label="Total ASTRO in bootstrapping pool"
               />
             </Box>
@@ -108,7 +121,7 @@ const AddLiquidity = () => {
               w={["100%", "50%", "auto"]}
             >
               <KPITitle
-                value="100,000.00 ASTRO"
+                value={`${fromTerraAmount(pool?.token2?.share, "0,0.00")} UST`}
                 label="Total UST in bootstrapping pool"
               />
             </Box>
@@ -123,7 +136,10 @@ const AddLiquidity = () => {
           >
             <Box px="5" order={1} w={["100%", "auto"]}>
               <KPITitle
-                value="3,000.00 ASTRO"
+                value={`${fromTerraAmount(
+                  pool?.token1?.amount,
+                  "0,0.00"
+                )} ASTRO`}
                 label="My ASTRO in bootstrapping pool"
               />
             </Box>
@@ -166,7 +182,7 @@ const AddLiquidity = () => {
               w={["100%", "auto"]}
             >
               <KPITitle
-                value="200,000.00 ASTRO"
+                value={`${fromTerraAmount(pool?.token2?.amount, "0,0.00")} UST`}
                 label="My UST in bootstrapping pool"
               />
             </Box>

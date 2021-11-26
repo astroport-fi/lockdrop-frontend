@@ -47,7 +47,6 @@ export const useUnlockLpToken = ({
   }, [address, amount, generator, asset]);
 
   return useTransaction({
-    // @ts-expect-error
     msgs,
     onSuccess,
     onError,

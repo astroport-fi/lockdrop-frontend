@@ -10,13 +10,17 @@ import {
   Heading,
   StackDivider,
   Image,
-  AspectRatio,
   UnorderedList,
   ListItem,
   Accordion,
   AccordionItem,
   AccordionPanel,
 } from "@chakra-ui/react";
+import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
+
+import { useContracts } from "modules/common";
+import { useUserInfo, useConfig } from "modules/auction";
+import { useUserInfo as useAirdropUserInfo } from "modules/airdrop";
 
 import KPITitle from "components/KPITitle";
 import CardHeader from "components/CardHeader";
@@ -26,10 +30,16 @@ import FrameBorder from "components/FrameBorder";
 import Timer from "components/Timer";
 import PlusIcon from "components/icons/PlusIcon";
 
-const Phase1Lockdrop = () => {
+const Phase2Bootstrap = () => {
+  const { astroToken } = useContracts();
+  const config = useConfig();
+  const userInfo = useUserInfo();
+  const airdropUserInfo = useAirdropUserInfo();
+  const astroBalance = useBalance(astroToken);
+
   return (
     <Box>
-      <CardHeader label="Phase 1 : Lockdrop" />
+      <CardHeader label="Phase 2: ASTRO-UST Bootstrapping Pool" />
       <Card noPadding pt="12" pb="8">
         <Stack
           mx="-5"
@@ -52,14 +62,17 @@ const Phase1Lockdrop = () => {
           >
             <Box pr={[null, null, null, null, "24"]}>
               <KPITitle
-                label="Total ASTRO rewards allocated to lockdrop"
-                value="100,000.00 ASTRO"
+                label="My available ASTRO balance"
+                value={`${fromTerraAmount(astroBalance, "0,0.00")} ASTRO`}
               />
             </Box>
             <Box pr={[null, null, null, null, "24"]}>
               <KPITitle
-                label="My estimated ASTRO rewards"
-                value="333,000.00 ASTRO"
+                label="My total estimated ASTRO upon launch"
+                value={`${fromTerraAmount(
+                  userInfo?.auction_incentive_amount,
+                  "0,0.00"
+                )} ASTRO`}
               />
             </Box>
           </VStack>
@@ -85,14 +98,21 @@ const Phase1Lockdrop = () => {
           >
             <Box pl={[null, null, null, null, "24"]}>
               <KPITitle
-                label="Total liquidity added to lockdrop"
-                value="$ 100,000,000.00"
+                label="Total ASTRO rewards allocated to ASTRO-UST Bootstrapping Pool"
+                value={`${fromTerraAmount(
+                  config?.astro_incentive_amount,
+                  "0,0.00"
+                )} ASTRO`}
               />
             </Box>
             <Box pl={[null, null, null, null, "24"]}>
               <KPITitle
-                label="My liquidity added to lockdrop"
-                value="$ 1,000.00"
+                label="Total ASTRO rewards allocated
+                to airdrop"
+                value={`${fromTerraAmount(
+                  airdropUserInfo?.airdrop_amount,
+                  "0,0.00"
+                )} ASTRO`}
               />
             </Box>
           </VStack>
@@ -510,4 +530,4 @@ const Phase1Lockdrop = () => {
   );
 };
 
-export default Phase1Lockdrop;
+export default Phase2Bootstrap;
