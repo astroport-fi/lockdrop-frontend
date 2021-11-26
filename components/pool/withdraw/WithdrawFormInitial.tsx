@@ -35,30 +35,6 @@ const WithdrawFormInitial: FC<Props> = ({ pool, token, state, onClick }) => {
     });
   };
 
-  const renderWithdrawFormItem1 = () => {
-    if (state.token1 == null || state.token1Amount == null) {
-      return;
-    }
-
-    return (
-      <WithdrawFormItem
-        token={state.token1}
-        amount={state.token1Amount}
-        mb="4"
-      />
-    );
-  };
-
-  const renderWithdrawFormItem2 = () => {
-    if (state.token2 == null || state.token2Amount == null) {
-      return;
-    }
-
-    return (
-      <WithdrawFormItem token={state.token2} amount={state.token2Amount} />
-    );
-  };
-
   return (
     <>
       <Box px="6" mb="4">
@@ -100,6 +76,12 @@ const WithdrawFormInitial: FC<Props> = ({ pool, token, state, onClick }) => {
           onChange={handleChange}
         />
       </Card>
+
+      {state.error && (
+        <Card mt="3">
+          <Text variant="light">{state.error}</Text>
+        </Card>
+      )}
 
       <WithdrawFormFooter
         pool={pool}

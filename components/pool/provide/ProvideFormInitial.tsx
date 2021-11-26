@@ -1,21 +1,20 @@
 import React, { FC } from "react";
 import { Box, Text, Link } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
-import { fromTerraAmount, num, useBalance } from "@arthuryeti/terra";
+import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
-import { calculateTokenAmount, ProvideState } from "modules/pool";
+import { ProvideState } from "modules/pool";
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
 import ProvideFormFooter from "components/pool/provide/ProvideFormFooter";
 
 type Props = {
-  pool: any;
-  token1: {
+  astro: {
     amount: string;
     asset: string;
   };
-  token2: {
+  uusd: {
     amount: string;
     asset: string;
   };
@@ -23,18 +22,12 @@ type Props = {
   onClick: () => void;
 };
 
-const ProvideFormInitial: FC<Props> = ({
-  pool,
-  token1,
-  token2,
-  state,
-  onClick,
-}) => {
-  const token1Balance = useBalance(token1.asset);
-  const token2Balance = useBalance(token2.asset);
+const ProvideFormInitial: FC<Props> = ({ astro, uusd, state, onClick }) => {
+  const astroBalance = useBalance(astro.asset);
+  const uusdBalance = useBalance(uusd.asset);
   const { control, setValue } = useFormContext();
 
-  const balance = useBalance(token1.asset);
+  const balance = useBalance(astro.asset);
   const amount = fromTerraAmount(balance, "0.00");
 
   return (
@@ -53,7 +46,7 @@ const ProvideFormInitial: FC<Props> = ({
       </Card>
       <Card>
         <Controller
-          name="token1"
+          name="astro"
           control={control}
           rules={{ required: true }}
           render={({ field }) => <AmountInput {...field} isSingle />}
@@ -62,19 +55,20 @@ const ProvideFormInitial: FC<Props> = ({
 
       <Card mt="2">
         <Controller
-          name="token2"
+          name="uusd"
           control={control}
           rules={{ required: true }}
           render={({ field }) => <AmountInput {...field} isSingle />}
         />
       </Card>
 
-      <ProvideFormFooter
-        pool={pool}
-        amount={token1.amount}
-        data={state}
-        onConfirmClick={onClick}
-      />
+      {state.error && (
+        <Card mt="3">
+          <Text variant="light">{state.error}</Text>
+        </Card>
+      )}
+
+      <ProvideFormFooter data={state} onConfirmClick={onClick} />
     </>
   );
 };

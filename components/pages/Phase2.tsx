@@ -10,7 +10,7 @@ import AstroAirdrop from "components/AstroAirdrop";
 const Phase2 = () => {
   return (
     <VStack my="12" spacing="16" align="stretch">
-      <Notification variant="info">
+      {/* <Notification variant="info">
         Thank you for participating in phase 1, 3,000 ASTRO were added to your
         ASTRO Balance. <Link>Learn More</Link>
       </Notification>
@@ -21,7 +21,7 @@ const Phase2 = () => {
       <Notification variant="success">
         Thank you for participating in phase 1, 3,000 ASTRO were added to your
         ASTRO Balance. <Link>Learn More</Link>
-      </Notification>
+      </Notification> */}
       <LaunchTimeline phase={2} />
       <Phase2Bootstrap />
       <AddLiquidity />

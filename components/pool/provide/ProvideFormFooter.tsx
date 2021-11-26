@@ -1,31 +1,23 @@
 import React, { FC } from "react";
-import { fromTerraAmount, toTerraAmount, TxStep } from "@arthuryeti/terra";
+import { TxStep } from "@arthuryeti/terra";
 
 import { useFeeToString } from "hooks/useFeeToString";
-import { useShareOfPool } from "modules/pool";
 
 import CommonFooter, { ConfirmButton } from "components/CommonFooter";
 
 type Props = {
-  pool: any;
   data: any;
-  amount: string;
   onConfirmClick: () => void;
 };
 
-const ProvideFormFooter: FC<Props> = ({
-  pool,
-  amount,
-  data,
-  onConfirmClick,
-}) => {
+const ProvideFormFooter: FC<Props> = ({ data, onConfirmClick }) => {
   const feeString = useFeeToString(data.fee);
-  const shareOfPool = useShareOfPool({ pool, amount1: toTerraAmount(amount) });
+  const shareOfPool = "1.02";
 
   const cells = [
     {
       title: "Liquidity",
-      value: fromTerraAmount(pool.total.shareInUst),
+      value: "20,000",
     },
     {
       title: "Share of Pool",

@@ -5,7 +5,6 @@ import {
   Button,
   Text,
   VStack,
-  HStack,
   Stack,
   StackDivider,
   Image,
@@ -13,8 +12,7 @@ import {
 import Link from "next/link";
 import { fromTerraAmount } from "@arthuryeti/terra";
 
-import { useConfig } from "modules/auction";
-import { usePool } from "modules/pool";
+import { useUserInfo, useAuctionState } from "modules/auction";
 
 import KPITitle from "components/KPITitle";
 import CardHeader from "components/CardHeader";
@@ -22,11 +20,8 @@ import Card from "components/Card";
 import FrameBorder from "components/FrameBorder";
 
 const AddLiquidity = () => {
-  const config = useConfig();
-  const pool = usePool({
-    pairContract: config?.pool_info.astro_ust_pool_address,
-    lpTokenContract: config?.pool_info.astro_ust_lp_token_address,
-  });
+  const userInfo = useUserInfo();
+  const auctionState = useAuctionState();
 
   return (
     <Box>
@@ -51,7 +46,7 @@ const AddLiquidity = () => {
             <Box px="5" order={1} w={["100%", "50%", "auto"]}>
               <KPITitle
                 value={`${fromTerraAmount(
-                  pool?.token1?.share,
+                  auctionState?.total_astro_delegated,
                   "0,0.00"
                 )} ASTRO`}
                 label="Total ASTRO in bootstrapping pool"
@@ -121,7 +116,10 @@ const AddLiquidity = () => {
               w={["100%", "50%", "auto"]}
             >
               <KPITitle
-                value={`${fromTerraAmount(pool?.token2?.share, "0,0.00")} UST`}
+                value={`${fromTerraAmount(
+                  auctionState?.total_ust_delegated,
+                  "0,0.00"
+                )} UST`}
                 label="Total UST in bootstrapping pool"
               />
             </Box>
@@ -137,7 +135,7 @@ const AddLiquidity = () => {
             <Box px="5" order={1} w={["100%", "auto"]}>
               <KPITitle
                 value={`${fromTerraAmount(
-                  pool?.token1?.amount,
+                  userInfo?.astro_delegated,
                   "0,0.00"
                 )} ASTRO`}
                 label="My ASTRO in bootstrapping pool"
@@ -182,7 +180,10 @@ const AddLiquidity = () => {
               w={["100%", "auto"]}
             >
               <KPITitle
-                value={`${fromTerraAmount(pool?.token2?.amount, "0,0.00")} UST`}
+                value={`${fromTerraAmount(
+                  userInfo?.ust_delegated,
+                  "0,0.00"
+                )} UST`}
                 label="My UST in bootstrapping pool"
               />
             </Box>

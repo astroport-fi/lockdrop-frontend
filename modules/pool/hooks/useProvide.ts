@@ -4,6 +4,7 @@ import { useAddress, useTransaction, TxStep } from "@arthuryeti/terra";
 
 import { createProvideMsgs } from "modules/pool";
 import { Pool } from "types/common";
+import { useContracts } from "modules/common";
 
 export type ProvideState = {
   error: any;
@@ -11,59 +12,47 @@ export type ProvideState = {
   txHash?: string;
   txStep: TxStep;
   reset: () => void;
-  provideLiquidity: () => void;
+  submit: () => void;
 };
 
 type Params = {
-  pool: Pool;
-  contract: string;
-  token1: string;
-  amount1: string | null;
-  token2: string;
-  amount2: string | null;
+  uusdAmount: string | null;
+  astroAmount: string | null;
   onSuccess?: (txHash: string) => void;
   onError?: (txHash?: string) => void;
 };
 
 export const useProvide = ({
-  contract,
-  pool,
-  token1,
-  token2,
-  amount1,
-  amount2,
+  uusdAmount,
+  astroAmount,
   onSuccess,
   onError,
 }: Params): ProvideState => {
+  const { astroToken, auction } = useContracts();
   const address = useAddress();
 
   const msgs = useMemo(() => {
-    if (amount1 == null || amount2 == null || pool == null) {
+    if (uusdAmount == null && astroAmount == null) {
       return null;
     }
 
     return createProvideMsgs(
       {
-        contract,
-        pool,
-        coin1: new Coin(token1, amount1),
-        coin2: new Coin(token2, amount2),
-        slippage: "0.02",
+        contract: auction,
+        address,
+        astroToken,
+        uusdAmount,
+        astroAmount,
       },
       address
     );
-  }, [address, contract, pool, token1, token2, amount1, amount2]);
+  }, [address, auction, astroToken, uusdAmount, astroAmount]);
 
-  const { submit, ...rest } = useTransaction({
+  return useTransaction({
     msgs,
     onSuccess,
     onError,
   });
-
-  return {
-    ...rest,
-    provideLiquidity: submit,
-  };
 };
 
 export default useProvide;

@@ -1,61 +1,52 @@
+import { num, toBase64 } from "@arthuryeti/terra";
 import { Coin, MsgExecuteContract } from "@terra-money/terra.js";
 
-import {
-  PoolResponse,
-  getTokenDenom,
-  isNativeAsset,
-  isTypeNativeAssetInfo,
-} from "modules/common";
-
 type CreateProvideMsgsOptions = {
-  pool: PoolResponse;
-  coin1: Coin;
-  coin2: Coin;
+  astroAmount: string;
+  uusdAmount: string;
+  astroToken: string;
+  address: string;
   contract: string;
-  slippage: string;
 };
 
 export const createProvideMsgs = (
   options: CreateProvideMsgsOptions,
   sender: string
 ): MsgExecuteContract[] => {
-  const { contract, pool, coin1, coin2, slippage } = options;
+  const msgs = [];
+  const { address, astroToken, contract, astroAmount, uusdAmount } = options;
 
-  const assets = pool.assets.map((asset) => ({
-    info: asset.info,
-    amount:
-      getTokenDenom(asset.info) === coin1.denom
-        ? coin1.amount.toString()
-        : coin2.amount.toString(),
-  }));
+  const coins = [new Coin("uusd", uusdAmount)];
 
-  const coins = assets
-    .filter((asset) => isNativeAsset(asset.info))
-    .map((asset) => new Coin(getTokenDenom(asset.info), asset.amount));
-
-  const allowanceMsgs = assets.reduce<MsgExecuteContract[]>((acc, asset) => {
-    if (isTypeNativeAssetInfo(asset.info)) {
-      return acc;
-    }
-
-    return [
-      ...acc,
-      new MsgExecuteContract(sender, asset.info.token.contract_addr, {
-        increase_allowance: {
-          amount: asset.amount,
-          spender: contract,
-        },
-      }),
-    ];
-  }, []);
-
-  const executeMsg = {
-    provide_liquidity: { assets, slippage_tolerance: slippage },
+  const executeUstMsg = {
+    deposit_ust: {},
   };
 
-  const msg = new MsgExecuteContract(sender, contract, executeMsg, coins);
+  const ustMsg = new MsgExecuteContract(sender, contract, executeUstMsg, coins);
 
-  return [...allowanceMsgs, msg];
+  const executeAstroMsg = {
+    send: {
+      contract: contract,
+      amount: astroAmount,
+      msg: toBase64({
+        delegate_astro_tokens: {
+          user_address: address,
+        },
+      }),
+    },
+  };
+
+  const astroMsg = new MsgExecuteContract(sender, astroToken, executeAstroMsg);
+
+  if (num(uusdAmount).gt(0)) {
+    msgs.push(ustMsg);
+  }
+
+  if (num(astroAmount).gt(0)) {
+    msgs.push(astroMsg);
+  }
+
+  return msgs;
 };
 
 export default createProvideMsgs;

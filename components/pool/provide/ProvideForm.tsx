@@ -4,7 +4,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { TxStep } from "@arthuryeti/terra";
 
 import { toAmount } from "libs/parse";
-import { PairResponse } from "modules/common";
+import { PairResponse, useContracts } from "modules/common";
 import { PoolFormType, ProvideFormMode } from "types/common";
 import { useProvide } from "modules/pool";
 import useDebounceValue from "hooks/useDebounceValue";
@@ -17,53 +17,45 @@ import FormSummary from "components/common/FormSummary";
 import FormError from "components/common/FormError";
 
 type FormValues = {
-  token1: {
+  astro: {
     amount: string;
     asset: string;
   };
-  token2: {
+  uusd: {
     amount: string;
     asset: string;
   };
 };
 
-type Props = {
-  pair: string;
-  pool: any;
-};
-
-const ProvideForm: FC<Props> = ({ pair, pool }) => {
+const ProvideForm: FC = () => {
+  const { astroToken } = useContracts();
   const [showConfirm, setShowConfirm] = useState(false);
   const methods = useForm<FormValues>({
     defaultValues: {
-      token1: {
-        amount: undefined,
-        asset: pool?.token1.asset,
+      astro: {
+        amount: "",
+        asset: astroToken,
       },
-      token2: {
-        amount: undefined,
-        asset: pool?.token2.asset,
+      uusd: {
+        amount: "",
+        asset: "uusd",
       },
     },
   });
 
-  const token1 = methods.watch("token1");
-  const token2 = methods.watch("token2");
+  const astro = methods.watch("astro");
+  const uusd = methods.watch("uusd");
 
-  const debouncedAmount1 = useDebounceValue(token1.amount, 200);
-  const debouncedAmount2 = useDebounceValue(token2.amount, 200);
+  const debouncedAstroAmount = useDebounceValue(astro.amount, 200);
+  const debouncedUusdAmount = useDebounceValue(uusd.amount, 200);
 
   const state = useProvide({
-    contract: pair,
-    pool: pool,
-    token1: token1.asset,
-    token2: token2.asset,
-    amount1: toAmount(debouncedAmount1),
-    amount2: toAmount(debouncedAmount2),
+    astroAmount: toAmount(debouncedAstroAmount),
+    uusdAmount: toAmount(debouncedUusdAmount),
   });
 
   const submit = async () => {
-    state.provideLiquidity();
+    state.submit();
   };
 
   useEffect(() => {
@@ -88,8 +80,8 @@ const ProvideForm: FC<Props> = ({ pair, pool }) => {
           <FormSummary
             label1="You are providing"
             label2="and"
-            token1={token1}
-            token2={token2}
+            token1={astro}
+            token2={uusd}
           />
         }
         details={[{ label: "APY", value: "12%" }]}
@@ -113,9 +105,8 @@ const ProvideForm: FC<Props> = ({ pair, pool }) => {
       <chakra.form onSubmit={methods.handleSubmit(submit)} width="full">
         {!showConfirm && (
           <ProvideFormInitial
-            token1={token1}
-            token2={token2}
-            pool={pool}
+            astro={astro}
+            uusd={uusd}
             state={state}
             onClick={() => setShowConfirm(true)}
           />
@@ -129,8 +120,8 @@ const ProvideForm: FC<Props> = ({ pair, pool }) => {
               <FormSummary
                 label1="You are providing"
                 label2="and"
-                token1={token1}
-                token2={token2}
+                token1={astro}
+                token2={uusd}
               />
             }
             details={[{ label: "APY", value: "12%" }]}

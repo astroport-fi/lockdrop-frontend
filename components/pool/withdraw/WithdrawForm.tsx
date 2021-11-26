@@ -27,7 +27,7 @@ type Props = {
   pool: any;
 };
 
-const WithdrawForm: FC<Props> = ({ pair, pool }) => {
+const WithdrawForm: FC<Props> = ({ pool }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const methods = useForm<FormValues>({
     defaultValues: {
@@ -43,25 +43,10 @@ const WithdrawForm: FC<Props> = ({ pair, pool }) => {
   const debouncedAmount = useDebounceValue(token.amount, 500);
 
   const state = useWithdraw({
-    contract: pair.contract,
-    lpToken: pair.lpToken,
     amount: toAmount(debouncedAmount),
   });
 
-  const {
-    fee,
-    txStep,
-    withdraw,
-    token1,
-    token1Amount,
-    token2,
-    token2Amount,
-    reset,
-  } = state;
-
-  const submit = async () => {
-    withdraw();
-  };
+  const { fee, txStep, submit, reset } = state;
 
   useEffect(() => {
     if (txStep == TxStep.Broadcasting) {
@@ -80,8 +65,7 @@ const WithdrawForm: FC<Props> = ({ pair, pool }) => {
           <FormSummary
             label1="You are receving"
             label2="and"
-            token1={{ asset: token1, amount: token1Amount }}
-            token2={{ asset: token2, amount: token2Amount }}
+            token1={{ asset: "uusd", amount: "10000" }}
           />
         }
         details={[{ label: "Price Impact", value: "0.02%" }]}
@@ -121,8 +105,7 @@ const WithdrawForm: FC<Props> = ({ pair, pool }) => {
               <FormSummary
                 label1="You are receving"
                 label2="and"
-                token1={{ asset: token1, amount: token1Amount }}
-                token2={{ asset: token2, amount: token2Amount }}
+                token1={{ asset: "uusd", amount: "10000" }}
               />
             }
             details={[{ label: "Price Impact", value: "0.02%" }]}

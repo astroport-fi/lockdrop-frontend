@@ -1,9 +1,7 @@
-import { toBase64 } from "@arthuryeti/terra";
 import { MsgExecuteContract } from "@terra-money/terra.js";
 
 type CreateWithdrawMsgsOptions = {
   contract: string;
-  lpToken: string;
   amount: string;
 };
 
@@ -11,19 +9,15 @@ export const createWithdrawMsgs = (
   options: CreateWithdrawMsgsOptions,
   sender: string
 ) => {
-  const { contract, lpToken, amount } = options;
+  const { contract, amount } = options;
 
   const executeMsg = {
-    send: {
-      contract,
+    withdraw_ust: {
       amount,
-      msg: toBase64({
-        withdraw_liquidity: {},
-      }),
     },
   };
 
-  const msg = new MsgExecuteContract(sender, lpToken, executeMsg);
+  const msg = new MsgExecuteContract(sender, contract, executeMsg);
 
   return [msg];
 };
