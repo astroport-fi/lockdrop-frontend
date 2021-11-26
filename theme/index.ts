@@ -14,6 +14,7 @@ import Menu from "./menu";
 import List from "./list";
 import Slider from "./slider";
 import Input from "./input";
+import Popover from "./popover";
 
 export default extendTheme({
   fonts: {
@@ -37,6 +38,7 @@ export default extendTheme({
     Table,
     Tabs,
     Menu,
+    Popover,
   },
   colors: {
     green: { 500: "#7FE6A2" },
@@ -69,6 +71,8 @@ export default extendTheme({
       turquoise: "#A1F4EF",
       blue: "#1629E6",
       lightBlue: "rgba(131,179,253,0.3)",
+      deepBlue: "#000D37",
+      overlay: "#C2D9FF",
     },
   },
 });
