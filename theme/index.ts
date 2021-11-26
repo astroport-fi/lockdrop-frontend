@@ -15,6 +15,7 @@ import List from "./list";
 import Slider from "./slider";
 import Input from "./input";
 import Popover from "./popover";
+import Checkbox from "./checkbox";
 
 export default extendTheme({
   fonts: {
@@ -39,6 +40,7 @@ export default extendTheme({
     Tabs,
     Menu,
     Popover,
+    Checkbox,
   },
   colors: {
     green: { 500: "#7FE6A2" },
@@ -73,6 +75,30 @@ export default extendTheme({
       lightBlue: "rgba(131,179,253,0.3)",
       deepBlue: "#000D37",
       overlay: "#C2D9FF",
+    },
+  },
+  textStyles: {
+    h3: {
+      fontWeight: "medium",
+      fontSize: "xl",
+      lineHeight: 1.6,
+    },
+    minibutton: {
+      fontWeight: "bold",
+      fontSize: "2xs",
+      lineHeight: "1.2",
+      letterSpacing: "0.18rem",
+      textTransform: "uppercase",
+    },
+    medium: {
+      fontWeight: "medium",
+      fontSize: "sm",
+      lineHeight: "16px",
+    },
+    small: {
+      fontWeight: "medium",
+      fontSize: "xs",
+      lineHeight: "shorter",
     },
   },
 });

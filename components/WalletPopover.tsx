@@ -7,7 +7,7 @@ import {
   PopoverCloseButton,
   PopoverBody,
   PopoverTrigger,
-  Button,
+  PopoverProps,
 } from "@chakra-ui/react";
 
 import CloseIcon from "components/icons/CloseIcon";
@@ -16,14 +16,19 @@ type Props = {
   title?: string;
   triggerElement: () => React.ReactElement;
   children: ReactNode;
-};
+} & PopoverProps;
 
-const WalletPopover: FC<Props> = ({ title, triggerElement, children }) => {
+const WalletPopover: FC<Props> = ({
+  title,
+  triggerElement,
+  children,
+  ...props
+}) => {
   return (
-    <Popover>
+    <Popover {...props}>
       <PopoverTrigger>{triggerElement()}</PopoverTrigger>
-      <PopoverContent w="368px">
-        <Flex align="center" justify="space-between" pt="6" pr="6">
+      <PopoverContent w="96">
+        <Flex align="center" justify="space-between" mb="4">
           <PopoverHeader>{title}</PopoverHeader>
           <PopoverCloseButton position="static">
             <CloseIcon w="6" h="6" color="#000D37" BackgroundOpacity="0" />
