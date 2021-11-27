@@ -11,7 +11,6 @@ import {
   useDisclosure,
   VStack,
   Box,
-  Text,
   Link,
 } from "@chakra-ui/react";
 

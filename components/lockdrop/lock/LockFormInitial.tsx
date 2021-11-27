@@ -92,11 +92,6 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           <Box flex="1" mr="4">
             <Text variant="light" fontSize="xs">
               The longer you lock, the more ASTRO rewards you will receive.
-              <br />
-              <br />
-              If you withdraw your liquidity prematurely, you’ll have to return
-              your one-time ASTRO reward, rewarded to you for participating in
-              the lockdrop
             </Text>
           </Box>
           <Controller

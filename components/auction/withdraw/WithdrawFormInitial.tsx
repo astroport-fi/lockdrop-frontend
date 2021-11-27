@@ -80,8 +80,8 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
         <Box mt="8">
           <FormSlider
             value={+token.amount}
-            max={+amount}
-            ratio={0.5}
+            max={+max}
+            ratio={1}
             onChange={handleChange}
           />
         </Box>
@@ -93,7 +93,11 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
         </Card>
       )}
 
-      <WithdrawFormFooter data={state} onConfirmClick={onClick} />
+      <WithdrawFormFooter
+        data={state}
+        amount={+token.amount}
+        onConfirmClick={onClick}
+      />
     </>
   );
 };

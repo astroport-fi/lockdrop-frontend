@@ -52,33 +52,27 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
     return phase;
   }
 
-  const phase1 = printDate(1, 14, 7);
+  const phase1 = printDate(1, 21, 7);
   const phase2 = printDate(2, 7, 0);
+
   return (
     <Box>
       <CardHeader label="Launch Timeline" />
+
       <Card px={["6", null, null, "12"]}>
         <Flex align="center" mt="-24" display={["none", null, null, "flex"]}>
           <Flex justify="center" flex="2">
-            <Image
-              src="/phase-1.png"
-              srcSet="/phase-1@2x.png 2x"
-              alt=""
-            ></Image>
+            <Image src="/phase-1.png" srcSet="/phase-1@2x.png 2x" alt="" />
           </Flex>
           <Flex justify="center" flex="2">
-            <Image
-              src="/phase-2.png"
-              srcSet="/phase-2@2x.png 2x"
-              alt=""
-            ></Image>
+            <Image src="/phase-2.png" srcSet="/phase-2@2x.png 2x" alt="" />
           </Flex>
           <Flex justify="center" flex="1">
             <Image
               src="/astrolaunch.png"
               srcSet="/astrolaunch@2x.png 2x"
               alt=""
-            ></Image>
+            />
           </Flex>
         </Flex>
         <Stack
@@ -94,11 +88,7 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
               display={["flex", null, null, "none"]}
               mb="4"
             >
-              <Image
-                src="/phase-1.png"
-                srcSet="/phase-1@2x.png 2x"
-                alt=""
-              ></Image>
+              <Image src="/phase-1.png" srcSet="/phase-1@2x.png 2x" alt="" />
             </Flex>
             <Box opacity={phase != 1 && "0.4"}>
               <HStack

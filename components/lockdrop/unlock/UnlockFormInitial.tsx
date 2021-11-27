@@ -80,7 +80,7 @@ const UnlockFormInitial = ({ state, onClick }: Params) => {
           <FormSlider
             value={+lpToken.amount}
             max={+max}
-            ratio={0.5}
+            ratio={1}
             onChange={handleChange}
           />
         </Box>

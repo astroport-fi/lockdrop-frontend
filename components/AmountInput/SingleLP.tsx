@@ -37,9 +37,6 @@ const SingleLP: FC<Props> = ({ asset }) => {
           <Text fontSize="xl" color="white">
             {symbol}
           </Text>
-          <Text fontSize="xs" color="white.400">
-            Astro - Terra
-          </Text>
         </Box>
       </Flex>
     </Box>

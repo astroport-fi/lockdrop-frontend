@@ -1,34 +1,34 @@
 import React, { FC } from "react";
-import { fromTerraAmount, TxStep } from "@arthuryeti/terra";
+import { fromTerraAmount, num, TxStep } from "@arthuryeti/terra";
 
 import { useFeeToString } from "hooks/useFeeToString";
 
 import CommonFooter, { ConfirmButton } from "components/CommonFooter";
+import { useUserInfo } from "modules/auction";
+import { ONE_TOKEN } from "constants/constants";
 
 type Props = {
   data: any;
+  amount: number;
   onConfirmClick: () => void;
 };
 
-const WithdrawFormFooter: FC<Props> = ({ data, onConfirmClick }) => {
+const WithdrawFormFooter: FC<Props> = ({ data, amount, onConfirmClick }) => {
   const feeString = useFeeToString(data.fee);
+  const userInfo = useUserInfo();
+  const newUst = num(userInfo?.ust_delegated)
+    .div(ONE_TOKEN)
+    .minus(amount)
+    .toString();
 
   const cells = [
     {
       title: "My ASTRO in the pool",
-      value: fromTerraAmount("12222"),
+      value: fromTerraAmount(userInfo?.astro_delegated, "0,0.00"),
     },
     {
       title: "My new UST in the pool",
-      value: fromTerraAmount("12222"),
-    },
-    {
-      title: "My new share of pool",
-      value: fromTerraAmount("12222"),
-    },
-    {
-      title: "Lock ends",
-      value: fromTerraAmount("12222"),
+      value: fromTerraAmount(newUst, "0,0.00"),
     },
   ];
 

@@ -17,11 +17,10 @@ type Response = {
 
 export const useConfig = () => {
   const { client } = useTerraWebapp();
-  const address = useAddress();
-  const { generator } = useContracts();
+  const { lockdrop } = useContracts();
 
   const { data, isLoading } = useQuery("config", () => {
-    return client.wasm.contractQuery<Response>(generator, {
+    return client.wasm.contractQuery<Response>(lockdrop, {
       config: {},
     });
   });

@@ -2,14 +2,14 @@ import React, { FC } from "react";
 import { Box } from "@chakra-ui/react";
 
 import { ListLPItem } from "components/AmountInput";
-import { useAstro } from "modules/common";
+import { useAstroApp } from "modules/common";
 
 type Props = {
   onClick: (v: string) => void;
 };
 
 const ListLP: FC<Props> = ({ onClick }) => {
-  const { pairs } = useAstro();
+  const { pairs } = useAstroApp();
 
   if (pairs == null) {
     return null;

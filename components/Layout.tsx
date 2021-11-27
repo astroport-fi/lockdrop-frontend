@@ -6,7 +6,7 @@ import { useWallet, WalletStatus } from "@terra-money/wallet-provider";
 
 import Navbar from "components/Navbar";
 import whitelist from "constants/whitelist.json";
-import { AstroProvider } from "modules/common";
+import { AstroAppProvider } from "modules/common";
 
 const Layout: FC = ({ children }) => {
   const wallet = useWallet();
@@ -44,12 +44,12 @@ const Layout: FC = ({ children }) => {
       />
       {!isInitializing && (
         <TerraWebappProvider>
-          <AstroProvider data={whitelist}>
+          <AstroAppProvider data={whitelist}>
             <Box>
               <Navbar />
             </Box>
             <Box flex="1">{children}</Box>
-          </AstroProvider>
+          </AstroAppProvider>
         </TerraWebappProvider>
       )}
     </Flex>
