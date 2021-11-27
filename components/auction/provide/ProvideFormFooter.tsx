@@ -11,22 +11,19 @@ type Props = {
 };
 
 const ProvideFormFooter: FC<Props> = ({ data, onConfirmClick }) => {
-  const feeString = useFeeToString(data.fee);
-  const shareOfPool = "1.02";
-
   const cells = [
-    {
-      title: "Share of Pool",
-      value: `${shareOfPool || "0"}%`,
-    },
-    {
-      title: "Est. ASTRO Rewards",
-      value: "20,000",
-    },
-    {
-      title: "Lock ends",
-      value: "17/11/21",
-    },
+    // {
+    //   title: "Share of Pool",
+    //   value: `${shareOfPool || "0"}%`,
+    // },
+    // {
+    //   title: "Est. ASTRO Rewards",
+    //   value: "20,000",
+    // },
+    // {
+    //   title: "Lock ends",
+    //   value: "17/11/21",
+    // },
   ];
 
   const confirmButton: ConfirmButton = {
@@ -37,7 +34,9 @@ const ProvideFormFooter: FC<Props> = ({ data, onConfirmClick }) => {
     onClick: onConfirmClick,
   };
 
-  return <CommonFooter cells={cells} confirmButton={confirmButton} />;
+  return (
+    <CommonFooter cells={cells} fee={data.fee} confirmButton={confirmButton} />
+  );
 };
 
 export default ProvideFormFooter;

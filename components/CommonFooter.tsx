@@ -1,5 +1,8 @@
 import React, { FC } from "react";
 import { Box, Flex, Button, Text } from "@chakra-ui/react";
+import { Fee } from "@terra-money/terra.js";
+
+import FormFee from "components/common/FormFee";
 
 export interface Cell {
   title: string;
@@ -16,35 +19,38 @@ export interface ConfirmButton {
 
 interface Props {
   cells: Cell[];
+  fee: Fee;
   confirmButton: ConfirmButton;
 }
 
-const CommonFooter: FC<Props> = ({ cells, confirmButton }) => {
+const CommonFooter: FC<Props> = ({ cells, fee, confirmButton }) => {
   return (
     <Box>
-      <Flex justify="space-between" my="8">
-        {cells.map((cell) => (
-          <Box
-            key={cell.title}
-            flex="1"
-            borderRightColor="whiteAlpha.600"
-            borderRightWidth="1px"
-            _first={{
-              borderLeftColor: "whiteAlpha.600",
-              borderLeftWidth: "1px",
-            }}
-            textAlign="center"
-          >
-            <Text color="white" fontSize="sm">
-              {cell.value}
-            </Text>
-            <Text variant="light" color="white.400" fontSize="xs">
-              {cell.title}
-            </Text>
-          </Box>
-        ))}
-      </Flex>
-      <Flex flex="1" align="center" flexDirection="column">
+      {cells.length > 0 && (
+        <Flex justify="space-between" mt="8">
+          {cells.map((cell) => (
+            <Box
+              key={cell.title}
+              flex="1"
+              borderRightColor="whiteAlpha.600"
+              borderRightWidth="1px"
+              _first={{
+                borderLeftColor: "whiteAlpha.600",
+                borderLeftWidth: "1px",
+              }}
+              textAlign="center"
+            >
+              <Text color="white" fontSize="sm">
+                {cell.value}
+              </Text>
+              <Text variant="light" color="white.400" fontSize="xs">
+                {cell.title}
+              </Text>
+            </Box>
+          ))}
+        </Flex>
+      )}
+      <Flex flex="1" align="center" flexDirection="column" mt="8">
         <Button
           variant="primary"
           type={confirmButton.type || "button"}
@@ -55,6 +61,7 @@ const CommonFooter: FC<Props> = ({ cells, confirmButton }) => {
           {confirmButton.title}
         </Button>
       </Flex>
+      <FormFee fee={fee} />
     </Box>
   );
 };

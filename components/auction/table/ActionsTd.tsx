@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import { Button, IconButton, Flex } from "@chakra-ui/react";
-
-import GraphIcon from "components/icons/GraphIcon";
+import { Button, Flex } from "@chakra-ui/react";
 
 type Props = {
   row: any;
@@ -31,11 +29,16 @@ const ActionsTd: FC<Props> = ({ row }) => {
     }
 
     return (
-      <Link href={`/lock/${name}`} passHref>
-        <Button as="a" variant="secondary" size="sm" isFullWidth>
-          Provide Liquidity
-        </Button>
-      </Link>
+      <Button
+        as="a"
+        href="https://app.terraswap.io"
+        target="_blank"
+        variant="secondary"
+        size="sm"
+        isFullWidth
+      >
+        Provide Liquidity
+      </Button>
     );
   };
 

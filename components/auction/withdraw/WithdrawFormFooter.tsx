@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import { fromTerraAmount, num, TxStep } from "@arthuryeti/terra";
 
-import { useFeeToString } from "hooks/useFeeToString";
-
 import CommonFooter, { ConfirmButton } from "components/CommonFooter";
 import { useUserInfo } from "modules/auction";
 import { ONE_TOKEN } from "constants/constants";
@@ -14,7 +12,6 @@ type Props = {
 };
 
 const WithdrawFormFooter: FC<Props> = ({ data, amount, onConfirmClick }) => {
-  const feeString = useFeeToString(data.fee);
   const userInfo = useUserInfo();
   const newUst = num(userInfo?.ust_delegated)
     .div(ONE_TOKEN)
@@ -40,7 +37,9 @@ const WithdrawFormFooter: FC<Props> = ({ data, amount, onConfirmClick }) => {
     onClick: onConfirmClick,
   };
 
-  return <CommonFooter cells={cells} confirmButton={confirmButton} />;
+  return (
+    <CommonFooter cells={cells} fee={data.fee} confirmButton={confirmButton} />
+  );
 };
 
 export default WithdrawFormFooter;
