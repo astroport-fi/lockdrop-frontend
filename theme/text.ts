@@ -6,7 +6,7 @@ const styles = {
       letterSpacing: "2px",
       textTransform: "uppercase",
       color: "brand.dark",
-      lineHeight:"1.2"
+      lineHeight: "1.2",
     },
     content: {
       color: "#B5BAC7",
@@ -22,7 +22,10 @@ const styles = {
       color: "white",
       fontFamily: "WhyteInktrap",
       fontSize: "16px",
-    }
+    },
+    dimmed: {
+      opacity: 0.4,
+    },
   },
 };
 

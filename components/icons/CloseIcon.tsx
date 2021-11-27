@@ -1,20 +1,24 @@
-import React from "react";
-import { Icon } from "@chakra-ui/react";
+import React, { FC } from "react";
+import { Icon, IconProps } from "@chakra-ui/react";
 
-export default function CloseIcon(props) {
+type Props = {
+  BackgroundOpacity?: string;
+} & IconProps;
+
+const CloseIcon: FC<Props> = ({ BackgroundOpacity = "0.1", ...props }) => {
   return (
     <Icon viewBox="0 0 24 24" {...props}>
       <path
         d="M0 12C0 5.37258 5.37258 0 12 0V0C18.6274 0 24 5.37258 24 12V12C24 18.6274 18.6274 24 12 24V24C5.37258 24 0 18.6274 0 12V12Z"
         fill="currentColor"
-        fillOpacity="0.1"
+        fillOpacity={BackgroundOpacity}
       />
       <path
         d="M0.500001 12C0.500002 5.64873 5.64873 0.500002 12 0.500003C18.3513 0.500003 23.5 5.64873 23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.500001 12Z"
         stroke="currentColor"
         fill="currentColor"
         strokeOpacity="0.9"
-        fillOpacity="0.1"
+        fillOpacity={BackgroundOpacity}
       />
       <path
         fillRule="evenodd"
@@ -30,4 +34,6 @@ export default function CloseIcon(props) {
       />
     </Icon>
   );
-}
+};
+
+export default CloseIcon;
