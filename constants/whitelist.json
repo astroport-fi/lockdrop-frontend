@@ -97,53 +97,11 @@
   },
   "testnet": {
     "tokens": {
-      "terra14a5s44tgk0erkmqg35msrl08tsegkv7tly93xv": {
-        "protocol": "Mirror",
-        "symbol": "MIR",
-        "token": "terra14a5s44tgk0erkmqg35msrl08tsegkv7tly93xv",
-        "icon": "https://whitelist.mirror.finance/icon/MIR.png"
-      },
-      "terra1kmgk72wetuz6gxwatks5r6al048tn6rlxy3t68": {
+      "terra1y5zwzjppw49e7d0ruj9099vuen8a0jw8vedr9a": {
         "protocol": "Astroport",
         "symbol": "ASTRO",
-        "token": "terra1kmgk72wetuz6gxwatks5r6al048tn6rlxy3t68",
-        "icon": "https://whitelist.mirror.finance/icon/MIR.png"
-      },
-      "terra1u0t35drzyy0mujj8rkdyzhe264uls4ug3wdp3x": {
-        "protocol": "Anchor",
-        "symbol": "bLUNA",
-        "token": "terra1u0t35drzyy0mujj8rkdyzhe264uls4ug3wdp3x",
-        "icon": "https://whitelist.anchorprotocol.com/logo/bLUNA.png"
-      },
-      "terra12w6pgpt88ue26vajvfxcwppnhrdzd7jlskxpq5": {
-        "protocol": "Anchor",
-        "symbol": "ANC",
-        "token": "terra12w6pgpt88ue26vajvfxcwppnhrdzd7jlskxpq5",
-        "icon": "https://whitelist.anchorprotocol.com/logo/ANC.png"
-      },
-      "terra10zutpsay8h35rhq7rr7qjah4gngy5vuvnu99wf": {
-        "protocol": "Astroport",
-        "symbol": "ANC",
-        "token": "terra10zutpsay8h35rhq7rr7qjah4gngy5vuvnu99wf",
-        "icon": "https://whitelist.anchorprotocol.com/logo/ANC.png"
-      },
-      "terra1sjml5dphe9c082j87xq6zdnftt865ljwvcq5cm": {
-        "protocol": "Nexus",
-        "symbol": "Psi",
-        "token": "terra1sjml5dphe9c082j87xq6zdnftt865ljwvcq5cm",
-        "icon": "https://terra.nexusprotocol.app/assets/psi.png"
-      },
-      "terra1hsezcsgmsmh70dp03jltnl4wtklcxsl9g42q2d": {
-        "protocol": "Astroport",
-        "symbol": "Psi",
-        "token": "terra1hsezcsgmsmh70dp03jltnl4wtklcxsl9g42q2d",
-        "icon": "https://terra.nexusprotocol.app/assets/psi.png"
-      },
-      "terra19mkj9nec6e3y5754tlnuz4vem7lzh4n0lc2s3l": {
-        "protocol": "Anchor",
-        "symbol": "bETH",
-        "token": "terra19mkj9nec6e3y5754tlnuz4vem7lzh4n0lc2s3l",
-        "icon": "https://whitelist.anchorprotocol.com/logo/bETH.png"
+        "token": "terra1y5zwzjppw49e7d0ruj9099vuen8a0jw8vedr9a",
+        "icon": "/tokens/astro.svg"
       },
       "uluna": {
         "protocol": "Native",
@@ -157,16 +115,16 @@
         "token": "uusd",
         "icon": "https://assets.terra.money/icon/60/UST.png"
       },
-      "terra1vg0qyq92ky9z9dp0j9fv5rmr2s80sg605dah6f": {
+      "terra1rsnp6j656wefqwfnj94z8e3vkm69tq7jzj5jxl": {
         "protocol": "Terraswap",
         "symbol": "ANC-UST LP",
-        "token": "terra1vg0qyq92ky9z9dp0j9fv5rmr2s80sg605dah6f",
+        "token": "terra1rsnp6j656wefqwfnj94z8e3vkm69tq7jzj5jxl",
         "icon": "https://assets.terra.money/icon/60/UST.png"
       },
-      "terra1yp7rl8p2elwem2pxew58fjc29cmwmzfsax94pf": {
-        "protocol": "Astroport",
+      "terra1mj9lhunxhzzulsl39cvmjsx0yqrg3xdjfps72w": {
+        "protocol": "Terraswap",
         "symbol": "Psi-UST LP",
-        "token": "terra1yp7rl8p2elwem2pxew58fjc29cmwmzfsax94pf",
+        "token": "terra1mj9lhunxhzzulsl39cvmjsx0yqrg3xdjfps72w",
         "icon": "https://assets.terra.money/icon/60/UST.png"
       }
     },

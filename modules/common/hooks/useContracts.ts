@@ -17,22 +17,22 @@ type Networks = {
 
 const defaultContracts: { [key: string]: any } = {
   mainnet: {
-    astroToken: "terra1kmgk72wetuz6gxwatks5r6al048tn6rlxy3t68",
-    generator: "terra1ymekq0sglcvlnp0u5fvrtugqd04qru33vpd50d",
-    airdrop: "terra13p3z5n40kqvj982wj9uueqkruetf6z27uh4h5l",
-    lockdrop: "terra1w025z6yxp6p0q0yu0k98nsh6cxdpk25y9xnend",
-    auction: "terra1xhrfnxa5kua8z4rt0aahlw6yppu3ay70n3strl",
+    astroToken: "terra1y5zwzjppw49e7d0ruj9099vuen8a0jw8vedr9a",
+    generator: "terra1ht5htgr5rsp477kere2q4mwuv2w5ae5un0h3x8",
+    airdrop: "terra1frw0vlt4sgae86mfqtczgrmf7fdr5698xk4hwt",
+    lockdrop: "terra1vfzd5s4jw3q3jten4yhfntm48vl4sr8ev6ss0m",
+    auction: "terra1qapvjut23rhrdx7g82j4e036n7rjsdnd7sshcz",
     terraswapLps: [],
   },
   testnet: {
-    astroToken: "terra1kmgk72wetuz6gxwatks5r6al048tn6rlxy3t68",
-    generator: "terra1ymekq0sglcvlnp0u5fvrtugqd04qru33vpd50d",
-    airdrop: "terra13p3z5n40kqvj982wj9uueqkruetf6z27uh4h5l",
-    lockdrop: "terra1w025z6yxp6p0q0yu0k98nsh6cxdpk25y9xnend",
-    auction: "terra1xhrfnxa5kua8z4rt0aahlw6yppu3ay70n3strl",
+    astroToken: "terra1y5zwzjppw49e7d0ruj9099vuen8a0jw8vedr9a",
+    generator: "terra1ht5htgr5rsp477kere2q4mwuv2w5ae5un0h3x8",
+    airdrop: "terra1frw0vlt4sgae86mfqtczgrmf7fdr5698xk4hwt",
+    lockdrop: "terra1vfzd5s4jw3q3jten4yhfntm48vl4sr8ev6ss0m",
+    auction: "terra1qapvjut23rhrdx7g82j4e036n7rjsdnd7sshcz",
     terraswapLps: [
-      "terra1vg0qyq92ky9z9dp0j9fv5rmr2s80sg605dah6f",
-      "terra1yp7rl8p2elwem2pxew58fjc29cmwmzfsax94pf",
+      "terra1rsnp6j656wefqwfnj94z8e3vkm69tq7jzj5jxl",
+      "terra1mj9lhunxhzzulsl39cvmjsx0yqrg3xdjfps72w",
     ],
   },
 };
