@@ -97,10 +97,10 @@
   },
   "testnet": {
     "tokens": {
-      "terra1y5zwzjppw49e7d0ruj9099vuen8a0jw8vedr9a": {
+      "terra1fedtv6nwy9ttn522rh3njmpkxs4ftvezfsyg4g": {
         "protocol": "Astroport",
         "symbol": "ASTRO",
-        "token": "terra1y5zwzjppw49e7d0ruj9099vuen8a0jw8vedr9a",
+        "token": "terra1fedtv6nwy9ttn522rh3njmpkxs4ftvezfsyg4g",
         "icon": "/tokens/astro.svg"
       },
       "uluna": {
@@ -115,16 +115,16 @@
         "token": "uusd",
         "icon": "https://assets.terra.money/icon/60/UST.png"
       },
-      "terra1rsnp6j656wefqwfnj94z8e3vkm69tq7jzj5jxl": {
+      "terra18z9d58j4knthyeqskfwae9rw05hmw5dd5hxsq8": {
         "protocol": "Terraswap",
         "symbol": "ANC-UST LP",
-        "token": "terra1rsnp6j656wefqwfnj94z8e3vkm69tq7jzj5jxl",
+        "token": "terra18z9d58j4knthyeqskfwae9rw05hmw5dd5hxsq8",
         "icon": "https://assets.terra.money/icon/60/UST.png"
       },
-      "terra1mj9lhunxhzzulsl39cvmjsx0yqrg3xdjfps72w": {
+      "terra1tk2384u4rh3lmnrj5888xznc0ch9tamrvr3ca0": {
         "protocol": "Terraswap",
         "symbol": "Psi-UST LP",
-        "token": "terra1mj9lhunxhzzulsl39cvmjsx0yqrg3xdjfps72w",
+        "token": "terra1tk2384u4rh3lmnrj5888xznc0ch9tamrvr3ca0",
         "icon": "https://assets.terra.money/icon/60/UST.png"
       }
     },

@@ -20,7 +20,7 @@ type Props = {
 
 const LaunchTimeline: FC<Props> = ({ phase }) => {
   const todayDate = dayjs().format("D");
-  const endDate = dayjs("2021-11-21:00:00.000Z");
+  const endDate = dayjs("2021-12-15:00:00.000Z");
   const endFormattedDate = endDate.format("DD/MM/YY");
   const startPhase1Date = endDate.subtract(14, "days").format("DD/MM/YY");
   const startPhase2Date = endDate.subtract(7, "days").format("DD/MM/YY");
@@ -52,7 +52,7 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
     return phase;
   }
 
-  const phase1 = printDate(1, 21, 7);
+  const phase1 = printDate(1, 14, 7);
   const phase2 = printDate(2, 7, 0);
 
   return (
