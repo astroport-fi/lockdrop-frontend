@@ -91,6 +91,14 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
               <Image src="/phase-1.png" srcSet="/phase-1@2x.png 2x" alt="" />
             </Flex>
             <Box opacity={phase != 1 && "0.4"}>
+              <Text
+                mb="1"
+                fontSize="xs"
+                textTransform="uppercase"
+                fontWeight="bold"
+              >
+                Days
+              </Text>
               <HStack
                 spacing="0"
                 align="stretch"
@@ -128,6 +136,14 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
               ></Image>
             </Flex>
             <Box opacity={phase != 2 && "0.4"}>
+              <Text
+                mb="1"
+                fontSize="xs"
+                textTransform="uppercase"
+                fontWeight="bold"
+              >
+                Days
+              </Text>
               <HStack
                 spacing="0"
                 align="stretch"
@@ -167,8 +183,8 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
                 alt=""
               ></Image>
             </Flex>
-            <Box opacity={phase != 3 && "0.4"}>
-              <HStack spacing="0" align="stretch" w="100%" height="4" mb="1">
+            <Box opacity={phase != 3 && "0.4"} pt="22px">
+              <HStack spacing="0" align="stretch" w="100%" height="5" mb="1">
                 <Box flex="1" bg="#83FFCB"></Box>
               </HStack>
               <Box>

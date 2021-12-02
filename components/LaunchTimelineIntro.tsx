@@ -74,6 +74,14 @@ const LaunchTimelineIntro = () => {
               <Text fontSize="12px">The Lockdrop</Text>
             </VStack>
             <Box>
+              <Text
+                mb="1"
+                fontSize="xs"
+                textTransform="uppercase"
+                fontWeight="bold"
+              >
+                Days
+              </Text>
               <HStack
                 spacing="0"
                 align="stretch"
@@ -122,6 +130,14 @@ const LaunchTimelineIntro = () => {
               <Text fontSize="12px">The ASTRO-UST Bootstraping Pool</Text>
             </VStack>
             <Box>
+              <Text
+                mb="1"
+                fontSize="xs"
+                textTransform="uppercase"
+                fontWeight="bold"
+              >
+                Days
+              </Text>
               <HStack
                 spacing="0"
                 align="stretch"
@@ -181,17 +197,19 @@ const LaunchTimelineIntro = () => {
                 <Text fontSize="20px">Phase 3</Text>
                 <Text fontSize="12px">Astroport launch!</Text>
               </VStack>
-              <HStack spacing="0" align="stretch" w="100%" height="4" mb="1">
-                <Box flex="1" bg="#83FFCB"></Box>
-              </HStack>
-              <Box>
-                <Text
-                  fontSize="12px"
-                  color="#6C758F"
-                  mb={["0", null, null, "6"]}
-                >
-                  {endFormattedDate}
-                </Text>
+              <Box pt="22px">
+                <HStack spacing="0" align="stretch" w="100%" height="5" mb="1">
+                  <Box flex="1" bg="#83FFCB"></Box>
+                </HStack>
+                <Box>
+                  <Text
+                    fontSize="12px"
+                    color="#6C758F"
+                    mb={["0", null, null, "6"]}
+                  >
+                    {endFormattedDate}
+                  </Text>
+                </Box>
               </Box>
             </Box>
             <Flex mt={["6", null, null, "auto"]} justify="center">
