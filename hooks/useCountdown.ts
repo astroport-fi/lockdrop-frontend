@@ -39,17 +39,25 @@ export const useCountdown: (options: CountdownOptions) => number = ({
   return ms;
 };
 
-export const useFormattedCountdown: (options: CountdownOptions) => {
-  d: number;
-  h: number;
-  m: number;
-} = (options) => {
+export const useFormattedCountdown = (
+  options: CountdownOptions
+): {
+  d: string;
+  h: string;
+  m: string;
+} => {
   const countdown = useCountdown(options);
 
   const calcDelta = (ms: number) => ({
-    d: Math.floor(ms / (1000 * 60 * 60 * 24)),
-    h: Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-    m: Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)),
+    d: Math.floor(ms / (1000 * 60 * 60 * 24))
+      .toString()
+      .padStart(2, "0"),
+    h: Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      .toString()
+      .padStart(2, "0"),
+    m: Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60))
+      .toString()
+      .padStart(2, "0"),
   });
 
   return calcDelta(countdown);

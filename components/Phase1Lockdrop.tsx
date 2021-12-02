@@ -3,13 +3,12 @@ import { Box, Stack, VStack, StackDivider } from "@chakra-ui/react";
 import numeral from "numeral";
 
 import {
-  useConfig,
   useUserInfo,
   useTotalLiquidityAdded,
   useMyLiquidityAdded,
   useLockState,
 } from "modules/lockdrop";
-import { useFormattedCountdown } from "hooks/useCountdown";
+import { useAstroApp } from "modules/common";
 
 import KPITitle from "components/KPITitle";
 import Card from "components/Card";
@@ -18,7 +17,7 @@ import Phase1LockdropAccordion from "components/Phase1LockdropAccordion";
 import Timer from "components/Timer";
 
 const Phase1Lockdrop = () => {
-  const config = useConfig();
+  const { phase1StartDate, phase1EndDate } = useAstroApp();
   const lockState = useLockState();
   const userInfo = useUserInfo();
   const total = numeral(lockState?.astroRewardsAllocated).format("0,0.00");
@@ -28,10 +27,6 @@ const Phase1Lockdrop = () => {
   const totalLiquidityAddedFormatted =
     numeral(totalLiquidityAdded).format("0,0.00");
   const myLiquidityAddedFormatted = numeral(myLiquidityAdded).format("0,0.00");
-  // TODO: change target time
-  const time = useFormattedCountdown({
-    targetTime: 1645999329004,
-  });
 
   return (
     <Box>
@@ -79,7 +74,11 @@ const Phase1Lockdrop = () => {
             order={[2, null, 3, 2]}
             flex={[null, null, null, "1"]}
           >
-            <Timer />
+            <Timer
+              phase="1"
+              phaseStartDate={phase1StartDate}
+              phaseEndDate={phase1EndDate}
+            />
           </VStack>
           <VStack
             align={["center", null, "flex-end", null]}

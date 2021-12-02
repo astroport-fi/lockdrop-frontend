@@ -4,15 +4,18 @@ import { useQuery } from "react-query";
 import { useContracts } from "modules/common";
 
 type Response = {
-  auction_contract_address: string;
-  generator_address: string;
-  astro_token_address: string;
-  init_timestamp: string;
-  deposit_window: string;
-  withdrawal_window: string;
-  min_lock_duration: string;
-  max_lock_duration: string;
+  astro_token: string;
+  auction_contract: string;
+  deposit_window: number;
+  generator: string;
+  init_timestamp: number;
   lockdrop_incentives: string;
+  max_lock_duration: number;
+  min_lock_duration: number;
+  owner: string;
+  weekly_divider: number;
+  weekly_multiplier: number;
+  withdrawal_window: number;
 };
 
 export const useConfig = () => {

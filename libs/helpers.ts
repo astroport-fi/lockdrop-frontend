@@ -10,5 +10,9 @@ export function getUusdAmount(pool: PoolResponse) {
     }
   });
 
+  if (pool.assets[index] == null) {
+    return 0;
+  }
+
   return +pool.assets[index].amount / ONE_TOKEN;
 }

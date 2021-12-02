@@ -1,10 +1,8 @@
 import React from "react";
-import Head from "next/head";
 import { NextPage } from "next";
+import Head from "next/head";
+import { Flex } from "@chakra-ui/react";
 
-import { Container } from "@chakra-ui/react";
-
-// import Swap from "components/pages/Swap";
 import Airdrop from "components/pages/Airdrop";
 
 const AirdropPage: NextPage = () => {
@@ -13,9 +11,9 @@ const AirdropPage: NextPage = () => {
       <Head>
         <title>Astroport</title>
       </Head>
-      <Airdrop />
-      {/* <Swap /> */}
-      {/* <Dashboard /> */}
+      <Flex>
+        <Airdrop />
+      </Flex>
     </>
   );
 };

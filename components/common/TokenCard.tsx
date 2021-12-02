@@ -5,10 +5,14 @@ import { fromTerraAmount } from "@arthuryeti/terra";
 import { useTokenInfo } from "modules/common";
 
 type Props = {
-  token: any;
+  token: {
+    asset: string;
+    amount: string | number;
+  };
+  description?: string;
 };
 
-const TokenCard: FC<Props> = ({ token }) => {
+const TokenCard: FC<Props> = ({ token, description }) => {
   const { getIcon, getSymbol } = useTokenInfo();
 
   return (
@@ -36,6 +40,7 @@ const TokenCard: FC<Props> = ({ token }) => {
               <Text fontSize="2xl" color="white">
                 {getSymbol(token.asset)}
               </Text>
+              {description && <Text variant="light">{description}</Text>}
             </Box>
           </HStack>
         </Box>

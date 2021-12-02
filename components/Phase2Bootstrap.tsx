@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
-import { useContracts } from "modules/common";
+import { useAstroApp, useContracts } from "modules/common";
 import { useUserInfo, useConfig } from "modules/auction";
 import { useUserInfo as useAirdropUserInfo } from "modules/airdrop";
 
@@ -32,6 +32,7 @@ import PlusIcon from "components/icons/PlusIcon";
 
 const Phase2Bootstrap = () => {
   const { astroToken } = useContracts();
+  const { phase2StartDate, phase2EndDate } = useAstroApp();
   const config = useConfig();
   const userInfo = useUserInfo();
   const airdropUserInfo = useAirdropUserInfo();
@@ -84,7 +85,11 @@ const Phase2Bootstrap = () => {
             order={[2, null, 3, 2]}
             flex={[null, null, null, "1"]}
           >
-            <Timer />
+            <Timer
+              phase="2"
+              phaseStartDate={phase2StartDate}
+              phaseEndDate={phase2EndDate}
+            />
           </VStack>
           <VStack
             align={["center", null, "flex-end", null]}
@@ -140,10 +145,11 @@ const Phase2Bootstrap = () => {
                           </Heading>
                           <Box w={["100%", null, null, "70%", "50%"]}>
                             <Text variant="content">
-                              You can provide your airdrop to the ASTRO-UST
-                              bootstrapping pool. If you do not provide your
-                              ASTRO tokens to the ASTRO-UST pool during Phase 2,
-                              you can claim them upon Astroport’s launch.
+                              You can deposit your airdropped ASTRO tokens in
+                              the ASTRO-UST bootstrapping pool. If you do not
+                              deposit your ASTRO tokens in the ASTRO-UST pool
+                              during Phase 2, you can claim them upon
+                              Astroport’s launch.
                             </Text>
                           </Box>
                         </Box>
@@ -154,7 +160,7 @@ const Phase2Bootstrap = () => {
                             fontSize="lg"
                             my="2"
                           >
-                            Step 2: Lock your liquidity
+                            Step 2: Lock Your Liquidity
                           </Heading>
                           <Box w={["100%", null, null, "70%", "50%"]}>
                             <Text variant="content">
@@ -341,7 +347,7 @@ const Phase2Bootstrap = () => {
                                 your ASTRO tokens once they’ve been deposited.
                               </Text>
                             </Box>
-                            <Box>
+                            {/* <Box>
                               <Heading
                                 as="h2"
                                 fontFamily="WhyteInktrap"
@@ -356,7 +362,7 @@ const Phase2Bootstrap = () => {
                                 prematurely you have to return all your ASTRO
                                 rewards.
                               </Text>
-                            </Box>
+                            </Box> */}
                           </VStack>
                         </Box>
                         <Box
@@ -452,20 +458,19 @@ const Phase2Bootstrap = () => {
                           >
                             <UnorderedList variant="content">
                               <ListItem>
-                                From day 6 on, deposits are closed.{" "}
+                                Deposits close at the end of Day 5.
                               </ListItem>
                               <ListItem>
-                                On day 6 users can withdraw 50% of their UST.
+                                On Day 6, users can withdraw 50% of their UST.
                               </ListItem>
                               <ListItem>
-                                On day 7, the final day, the max withdrawable
+                                On Day 7, the final day, the max withdrawable
                                 amount decreases linearly, starting at 50% and
-                                decreasing to 0% at the end of phase 2.
+                                decreasing to 0% at the end of Phase 2.
                               </ListItem>
                               <ListItem>
-                                Be aware: Only 1 withdrawal tx can be made
-                                during the last 2 days after deposits are
-                                disabled
+                                Be aware: Only 1 withdrawal can be made during
+                                the last 2 days after deposits are disabled.
                               </ListItem>
                             </UnorderedList>
                           </Box>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Flex,
@@ -9,12 +9,21 @@ import {
   InputLeftElement,
   Input,
 } from "@chakra-ui/react";
+import { useAddress } from "@arthuryeti/terra";
+import Link from "next/link";
 
 import CardHeader from "components/CardHeader";
 import Card from "components/Card";
 import SearchIcon from "components/icons/SearchIcon";
 
 const AstroAirdrop = () => {
+  const address = useAddress();
+  const [value, setValue] = useState("");
+
+  const handleChange = (evt) => {
+    setValue(evt.target.value);
+  };
+
   return (
     <Box>
       <CardHeader label="ASTRO Airdrop" />
@@ -44,11 +53,20 @@ const AstroAirdrop = () => {
                   type="text"
                   placeholder="Paste your Terra address"
                   variant="filled"
+                  value={value}
+                  onChange={handleChange}
                 />
               </InputGroup>
-              <Button variant="primary" width="192px" mt="6">
-                Check
-              </Button>
+              <Link href={`/airdrop/${address}`} passHref>
+                <Button
+                  variant="primary"
+                  width="192px"
+                  mt="6"
+                  isDisabled={value.length === 0}
+                >
+                  Check
+                </Button>
+              </Link>
             </Box>
           </Box>
           <Box

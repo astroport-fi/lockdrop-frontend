@@ -54,7 +54,7 @@ const PoolTable: FC<Props> = ({ columns, data }) => {
       ) : (
         <Tr>
           <Text fontSize="sm">
-            Migrate Terraswap LP Tokens to get ASTRO rewards. [Learn More]
+            Migrate Terraswap LP Tokens to get ASTRO rewards. Learn More
           </Text>
         </Tr>
       )}

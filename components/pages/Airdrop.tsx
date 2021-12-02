@@ -1,22 +1,40 @@
-import React from "react";
-import { VStack, Container, Link } from "@chakra-ui/react";
+import React, { FC } from "react";
+import { Box, Flex } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
-import Notification from "components/Notification";
-import AstroAirdrop2 from "components/AstroAirdrop2";
+import { useAirdrop } from "modules/airdrop";
+import AirdropSuccess from "components/AirdropSuccess";
+import AirdropFailed from "components/AirdropFailed";
 
-const Airdrop = () => {
+const Airdrop: FC = () => {
+  const { query } = useRouter();
+  const address = query.address as string;
+  const { data, isLoading } = useAirdrop(address);
+
+  const renderAirdrop = () => {
+    if (data.airdrop == null) {
+      return <AirdropFailed onCloseClick={() => {}} />;
+    }
+
+    return (
+      <AirdropSuccess
+        amount={data.airdrop?.amount}
+        address={address}
+        onCloseClick={() => {}}
+      />
+    );
+  };
+
+  if (isLoading) {
+    return null;
+  }
+
   return (
-    <VStack my="12" spacing="10">
-      <Container px={["6", null, "12"]} maxWidth="container.xl">
-        <Notification variant="info">
-          You can claim 3,000 ASTRO in your rewards center.{" "}
-          <Link>Learn More</Link>
-        </Notification>
-      </Container>
-      <Container px={["6", null, "12"]} maxWidth="container.md">
-        <AstroAirdrop2 />
-      </Container>
-    </VStack>
+    <Box m="0 auto" pt="12">
+      <Flex gridGap="8">
+        <Box w="container.sm">{renderAirdrop()}</Box>
+      </Flex>
+    </Box>
   );
 };
 

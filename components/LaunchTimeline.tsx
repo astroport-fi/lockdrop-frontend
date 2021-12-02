@@ -13,20 +13,22 @@ import {
 import DateNumber from "components/DateNumber";
 import CardHeader from "components/CardHeader";
 import Card from "components/Card";
+import { useAstroApp } from "modules/common";
 
 type Props = {
   phase: number;
 };
 
 const LaunchTimeline: FC<Props> = ({ phase }) => {
-  const todayDate = dayjs().format("D");
-  const endDate = dayjs("2021-12-15:00:00.000Z");
-  const endFormattedDate = endDate.format("DD/MM/YY");
-  const startPhase1Date = endDate.subtract(14, "days").format("DD/MM/YY");
-  const startPhase2Date = endDate.subtract(7, "days").format("DD/MM/YY");
+  const { phase1StartDate, phase2StartDate } = useAstroApp();
+  const endDate = phase1StartDate?.add(14, "day");
+  const startPhase1Date = phase1StartDate?.format("DD/MM/YY");
+  const startPhase2Date = phase2StartDate?.format("DD/MM/YY");
+  const formattedEndDate = endDate?.format("DD/MM/YY");
 
   function checkToday(index) {
-    return endDate.subtract(index, "days").format("D") === todayDate;
+    const today = dayjs();
+    return endDate?.subtract(index, "days").isSame(today, "day");
   }
 
   function printDate(phaseNumber, start, end) {
@@ -177,7 +179,7 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
                   color={phase == 3 && "#6C758F"}
                   mb={["0", null, null, "3"]}
                 >
-                  {endFormattedDate}
+                  {formattedEndDate}
                 </Text>
                 <Text fontSize="20px">ASTRO Launch</Text>
                 <Text fontSize="14px">

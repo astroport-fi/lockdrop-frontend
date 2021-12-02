@@ -42,11 +42,11 @@ const Phase1LockdropAccordion = () => {
                     fontSize="lg"
                     my="2"
                   >
-                    Move and lock liquidity from Terraswap
+                    Migrate and lock liquidity from Terraswap
                   </Heading>
                   <Box w={["100%", null, null, "70%", "50%"]}>
                     <Text variant="content">
-                      During the first phase, you can deposit and lock your
+                      During the Phase 1, you can deposit and lock your
                       Terraswap liquidity (LP tokens) on Astroport. In doing so
                       you receive:
                     </Text>
@@ -122,9 +122,10 @@ const Phase1LockdropAccordion = () => {
                   </Box>
                   <Box w={["100%", null, null, "70%", "50%"]}>
                     <Text variant="content">
-                      The more liquidity you lock and the longer you lock for,
+                      The more liquidity you lock and the longer you lock it,
                       the more ASTRO you will receive. Be aware that certain
-                      pools receive a higher amount of ASTRO than others.
+                      pools receive a higher amount of ASTRO than others as
+                      shown in the table at the bottom of the page.
                     </Text>
                   </Box>
                   <Heading
@@ -259,7 +260,7 @@ const Phase1LockdropAccordion = () => {
                             </Link>
                           </Text>
                         </Box>
-                        <Box>
+                        {/* <Box>
                           <Heading
                             as="h2"
                             fontFamily="WhyteInktrap"
@@ -274,7 +275,7 @@ const Phase1LockdropAccordion = () => {
                             prematurely you have to return all your ASTRO
                             rewards.
                           </Text>
-                        </Box>
+                        </Box> */}
                       </VStack>
                     </Box>
                     <Box
@@ -367,20 +368,20 @@ const Phase1LockdropAccordion = () => {
                       <Box width={["100%", null, "120%"]} mt={["8", null, "4"]}>
                         <UnorderedList variant="content">
                           <ListItem>
-                            From day 6 on, deposits are closed.{" "}
+                            Deposits close at the end of Day 5.
                           </ListItem>
                           <ListItem>
-                            On day 6, users can withdraw up to 50% of their
-                            deposits.{" "}
+                            On Day 6, users can withdraw up to 50% of their
+                            deposits.
                           </ListItem>
                           <ListItem>
-                            On day 7, the final day, the max withdrawable amount
+                            On Day 7, the final day, the max withdrawable amount
                             decreases linearly, starting at 50% and decreasing
                             to 0% at the end of the lockdrop.
                           </ListItem>
                           <ListItem>
-                            Be aware: Only 1 withdrawal transaction can be made
-                            during the last 2 days.
+                            Be aware: Only 1 withdrawal can be made during the
+                            last 2 days.
                           </ListItem>
                         </UnorderedList>
                       </Box>
