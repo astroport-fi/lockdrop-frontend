@@ -63,7 +63,10 @@ const MyTerraswapPools = () => {
 
   return (
     <Box>
-      <CardHeader label="My Eligible Terraswap Pools" />
+      <CardHeader
+        label="My Eligible Terraswap Pools"
+        description="The table below shows Terraswap pools eligible for ASTRO tokens if you migrate them to Astroport during Phase 1."
+      />
       <Card noPadding>
         <PoolTable columns={columns} data={pools} />
       </Card>
