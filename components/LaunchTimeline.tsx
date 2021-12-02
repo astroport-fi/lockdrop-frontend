@@ -195,7 +195,7 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
                 >
                   {endFormattedDate}
                 </Text>
-                <Text fontSize="20px">ASTRO Launch</Text>
+                <Text fontSize="20px">Astroport Launch</Text>
                 <Text fontSize="14px">
                   Claim your airdrops and add liquidty to pools.
                 </Text>
