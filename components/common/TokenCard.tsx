@@ -25,7 +25,7 @@ const TokenCard: FC<Props> = ({ token, description }) => {
       py="3"
       lineHeight="1.3"
     >
-      <Flex justify="space-between">
+      <Flex justify="space-between" align="center">
         <Box>
           <HStack spacing="4">
             <Box>

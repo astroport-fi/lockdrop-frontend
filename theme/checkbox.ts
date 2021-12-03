@@ -1,14 +1,23 @@
-import { checkboxAnatomy as parts } from "@chakra-ui/anatomy"
+import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
 import type {
   PartsStyleFunction,
   PartsStyleObject,
   SystemStyleFunction,
   SystemStyleObject,
-} from "@chakra-ui/theme-tools"
-import { mode } from "@chakra-ui/theme-tools"
+} from "@chakra-ui/theme-tools";
+import { mode } from "@chakra-ui/theme-tools";
 
 const baseStyleControl: SystemStyleFunction = (props) => {
-  const { colorScheme: c } = props
+  const { colorScheme: c } = props;
+  let idleColor = "brand.deepBlue";
+  let checkedColor = "brand.purple";
+  let checkedTextColor = "white";
+
+  if (c == "green") {
+    idleColor = "white";
+    checkedColor = "green.500";
+    checkedTextColor = "black";
+  }
 
   return {
     w: "100%",
@@ -16,15 +25,15 @@ const baseStyleControl: SystemStyleFunction = (props) => {
     transitionDuration: "normal",
     border: "2px solid",
     borderRadius: "sm",
-    borderColor: "brand.deepBlue",
+    borderColor: idleColor,
     color: "white",
     boxShadow: "none",
     outline: "none",
 
     _checked: {
-      bg: "brand.purple",
-      borderColor: "brand.purple",
-      // color: mode("white", "gray.900")(props),
+      bg: checkedColor,
+      borderColor: checkedColor,
+      color: checkedTextColor,
 
       _hover: {
         bg: mode(`${c}.600`, `${c}.300`)(props),
@@ -56,24 +65,24 @@ const baseStyleControl: SystemStyleFunction = (props) => {
     _invalid: {
       borderColor: mode("red.500", "red.300")(props),
     },
-  }
-}
+  };
+};
 
 const baseStyleLabel: SystemStyleObject = {
   userSelect: "none",
   _disabled: { opacity: 0.4 },
-}
+};
 
 const baseStyleIcon: SystemStyleObject = {
   transitionProperty: "transform",
   transitionDuration: "normal",
-}
+};
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   icon: baseStyleIcon,
   control: baseStyleControl(props),
   label: baseStyleLabel,
-})
+});
 
 const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   sm: {
@@ -91,16 +100,16 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
     label: { fontSize: "lg" },
     icon: { fontSize: "0.625rem" },
   },
-}
+};
 
 const defaultProps = {
   size: "md",
   colorScheme: "blue",
-}
+};
 
 export default {
   parts: parts.keys,
   baseStyle,
   sizes,
   defaultProps,
-}
+};

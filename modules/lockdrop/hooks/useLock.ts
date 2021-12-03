@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { TxInfo } from "@terra-money/terra.js";
 import { useAddress, useTransaction, TxStep, num } from "@arthuryeti/terra";
 
 import { createLockMsgs } from "modules/lockdrop";
@@ -9,6 +10,7 @@ export type LockState = {
   fee: any;
   txHash?: string;
   txStep: TxStep;
+  txInfo: TxInfo;
   reset: () => void;
   submit: () => void;
 };
