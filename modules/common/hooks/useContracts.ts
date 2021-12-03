@@ -22,7 +22,7 @@ const defaultContracts: { [key: string]: any } = {
     airdrop: "terra1fjenf9jkxaw2jn8hl0wl5t9uvuepx63mf5a4mj",
     lockdrop: "terra1gt0cxpel896kr08sjqwfchpz2tlcaem2n35mx0",
     auction: "terra1rzzkyaj6ufk7kuzqf7kfqeta88xgklp9edm8aw",
-    terraswapLps: [],
+    terraswapLps: ["terra169fyg8l7lz0r5rpue0zqze6ql3w7jt4w6na5av"],
   },
   testnet: {
     astroToken: "terra169fyg8l7lz0r5rpue0zqze6ql3w7jt4w6na5av",
