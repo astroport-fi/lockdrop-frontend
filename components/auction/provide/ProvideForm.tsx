@@ -83,7 +83,6 @@ const ProvideForm: FC = () => {
             token2={uusd}
           />
         }
-        details={[{ label: "APY", value: "12%" }]}
         onCloseClick={resetForm}
       />
     );
@@ -121,7 +120,6 @@ const ProvideForm: FC = () => {
                 token2={uusd}
               />
             }
-            details={[{ label: "APY", value: "12%" }]}
             onCloseClick={() => setShowConfirm(false)}
           />
         )}

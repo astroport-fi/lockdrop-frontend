@@ -39,9 +39,6 @@ const MyTerraswapPools = () => {
           <NumberTd value={row.original.astroAllocated} />
         ),
         accessor: "astroAllocated",
-        // sortType: (rowA, rowB) => {
-        //   return rowB.original.total_share - rowA.original.total_share;
-        // },
       },
       {
         Header: "Dual Rewards",
@@ -51,6 +48,7 @@ const MyTerraswapPools = () => {
           </Box>
         ),
         accessor: "dualRewards",
+        disableSortBy: true,
       },
       {
         Header: "",

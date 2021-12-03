@@ -58,11 +58,9 @@ const WithdrawForm: FC = () => {
         contentComponent={
           <FormSummary
             label1="You are receving"
-            label2="and"
-            token1={{ asset: "uusd", amount: "10000" }}
+            token1={{ asset: "uusd", amount: debouncedAmount }}
           />
         }
-        details={[{ label: "Price Impact", value: "0.02%" }]}
         onCloseClick={reset}
       />
     );
@@ -71,9 +69,7 @@ const WithdrawForm: FC = () => {
   if (txStep == TxStep.Failed) {
     return (
       <FormError
-        content="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        sed diam voluptua."
+        content={state.error}
         onCloseClick={state.reset}
         onClick={state.reset}
       />
@@ -97,11 +93,9 @@ const WithdrawForm: FC = () => {
             contentComponent={
               <FormSummary
                 label1="You are receving"
-                label2="and"
-                token1={{ asset: "uusd", amount: "10000" }}
+                token1={{ asset: "uusd", amount: debouncedAmount }}
               />
             }
-            details={[{ label: "Price Impact", value: "0.02%" }]}
             onCloseClick={reset}
           />
         )}

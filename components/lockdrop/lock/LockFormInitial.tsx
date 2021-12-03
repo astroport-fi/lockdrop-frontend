@@ -108,8 +108,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           <Slider
             variant="brand"
             size="lg"
-            min={1}
-            defaultValue={0}
+            min={2}
             value={duration}
             max={52}
             focusThumbOnChange={false}

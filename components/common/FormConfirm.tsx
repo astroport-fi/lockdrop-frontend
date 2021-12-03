@@ -4,7 +4,7 @@ import { Fee } from "@terra-money/terra.js";
 import { motion } from "framer-motion";
 
 import Card from "components/Card";
-import CloseIcon from "components/icons/CloseIcon";
+import CloseModalIcon from "components/icons/CloseModalIcon";
 import FormFee from "components/common/FormFee";
 
 type Props = {
@@ -40,7 +40,7 @@ const FormConfirm: FC<Props> = ({
           <Text fontSize="lg">Confirm</Text>
           <IconButton
             aria-label="Close"
-            icon={<CloseIcon />}
+            icon={<CloseModalIcon w="1.5rem" h="1.5rem" />}
             variant="icon"
             onClick={onCloseClick}
           />
@@ -74,14 +74,6 @@ const FormConfirm: FC<Props> = ({
             </Box>
           </>
         )}
-
-        <Text variant="light" fontSize="xs" mt="6" px="2" lineHeight="1.2">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet.
-        </Text>
 
         <Flex flexDir="column" align="center" mt="8">
           <Button variant="primary" minW="64" size="sm" type="submit">

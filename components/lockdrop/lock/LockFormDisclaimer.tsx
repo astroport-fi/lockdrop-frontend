@@ -70,7 +70,7 @@ const LockFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
             pt="2"
             isChecked={checkedItems[1]}
             onChange={(e) =>
-              setCheckedItems([e.target.checked, checkedItems[0]])
+              setCheckedItems([checkedItems[0], e.target.checked])
             }
           >
             <Text fontSize="sm" ml="4" lineHeight="1.2" fontWeight="bold">
