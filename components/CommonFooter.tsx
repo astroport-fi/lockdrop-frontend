@@ -57,6 +57,7 @@ const CommonFooter: FC<Props> = ({ cells, fee, confirmButton }) => {
           isDisabled={confirmButton.isDisabled}
           isLoading={confirmButton.isLoading}
           onClick={confirmButton.onClick}
+          minW="64"
         >
           {confirmButton.title}
         </Button>

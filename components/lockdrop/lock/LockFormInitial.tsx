@@ -16,10 +16,9 @@ import { LockState } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
 
 import Card from "components/Card";
-import FormFee from "components/common/FormFee";
 import AmountInput from "components/AmountInput";
+import LockFormFooter from "components/lockdrop/lock/LockFormFooter";
 import DateInput from "components/DateInput";
-
 import LockActions from "components/lockdrop/lock/LockActions";
 
 type Params = {
@@ -46,7 +45,6 @@ const LockFormInitial = ({ state, onClick }: Params) => {
   return (
     <>
       <LockActions />
-
       <Card mb="2">
         <Text variant="light">
           Select how much liquidity you want to migrate from Terraswap to
@@ -57,7 +55,6 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           the same pool.
         </Text>
       </Card>
-
       <Card>
         <Controller
           name="token"
@@ -85,7 +82,6 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           </Slider>
         </Box>
       </Card>
-
       <Card mt="2">
         <Text>Select Lock End Date</Text>
         <Flex mt="4">
@@ -122,25 +118,19 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           </Slider>
         </Box>
       </Card>
-
       {state.error && (
         <Card mt="3">
           <Text variant="light">{state.error}</Text>
         </Card>
       )}
 
-      <Flex flex="1" align="center" flexDirection="column" mt="8">
-        <Button
-          variant="primary"
-          isLoading={state.txStep == TxStep.Estimating}
-          isDisabled={state.txStep != TxStep.Ready}
-          minW="64"
-          onClick={onClick}
-        >
-          Lock LP Token
-        </Button>
-        {state.txStep == TxStep.Ready && <FormFee fee={state.fee} />}
-      </Flex>
+      <LockFormFooter
+        amount={token.amount}
+        lpToken={token.asset}
+        duration={duration}
+        data={state}
+        onConfirmClick={onClick}
+      />
     </>
   );
 };

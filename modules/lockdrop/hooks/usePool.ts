@@ -4,12 +4,13 @@ import { useQuery } from "react-query";
 import { useContracts } from "modules/common";
 
 type Response = {
+  generator_astro_per_share: string;
+  generator_proxy_per_share: string;
+  incentives_share: number;
+  is_staked: boolean;
   terraswap_pool: string;
   terraswap_amount_in_lockups: string;
-  incentives_share: string;
   weighted_amount: string;
-  generator_astro_per_share: string;
-  is_staked: boolean;
   migration_info: {
     terraswap_migrated_amount: string;
     astroport_lp_token: string;
@@ -18,10 +19,10 @@ type Response = {
 
 export const usePool = (lpToken: string) => {
   const { client } = useTerraWebapp();
-  const { generator } = useContracts();
+  const { lockdrop } = useContracts();
 
   const { data, isLoading } = useQuery(["pool", lpToken], () => {
-    return client.wasm.contractQuery<Response>(generator, {
+    return client.wasm.contractQuery<Response>(lockdrop, {
       pool: {
         terraswap_lp_token: lpToken,
       },

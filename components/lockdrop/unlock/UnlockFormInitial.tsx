@@ -1,34 +1,29 @@
 import React from "react";
-import {
-  Text,
-  Flex,
-  Box,
-  ListItem,
-  UnorderedList,
-  Button,
-} from "@chakra-ui/react";
+import { Text, Flex, Box, ListItem, UnorderedList } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
-import { num, TxStep } from "@arthuryeti/terra";
+import { num } from "@arthuryeti/terra";
 
 import { useLockedLpAmount, UnlockState } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
 
 import Card from "components/Card";
-import FormFee from "components/common/FormFee";
 import AmountInput from "components/AmountInput";
 import FormSlider from "components/FormSlider";
+import UnlockFormFooter from "components/lockdrop/unlock/UnlockFormFooter";
 
 type Params = {
   state: UnlockState;
+  duration: number;
   onClick: () => void;
 };
 
-const UnlockFormInitial = ({ state, onClick }: Params) => {
+const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
   const { control, watch, setValue } = useFormContext();
 
   const lpToken = watch("lpToken");
   const stakedAmount = useLockedLpAmount(lpToken.asset);
   const max = num(stakedAmount).div(ONE_TOKEN).toNumber();
+  const amount = num(max).minus(lpToken.amount).toString();
 
   const handleChange = (value: number) => {
     setValue("lpToken", {
@@ -92,18 +87,13 @@ const UnlockFormInitial = ({ state, onClick }: Params) => {
         </Card>
       )}
 
-      <Flex flex="1" align="center" flexDirection="column" mt="8">
-        <Button
-          variant="primary"
-          isLoading={state.txStep == TxStep.Estimating}
-          isDisabled={state.txStep != TxStep.Ready}
-          minW="64"
-          onClick={onClick}
-        >
-          Unlock LP Token
-        </Button>
-        {state.txStep == TxStep.Ready && <FormFee fee={state.fee} />}
-      </Flex>
+      <UnlockFormFooter
+        amount={amount}
+        lpToken={lpToken.asset}
+        duration={duration}
+        data={state}
+        onConfirmClick={onClick}
+      />
     </>
   );
 };

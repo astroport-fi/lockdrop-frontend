@@ -42,7 +42,11 @@ const LockForm: FC<Props> = ({ lpToken }) => {
   const token = watch("token");
   const duration = watch("duration");
 
-  const state = useLock({ token, duration });
+  const state = useLock({
+    asset: token.asset,
+    amount: token.amount,
+    duration,
+  });
 
   const submit = async () => {
     state.submit();

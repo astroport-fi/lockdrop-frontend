@@ -5,7 +5,7 @@ import UnlockForm from "components/lockdrop/unlock/UnlockForm";
 
 type Props = {
   lpToken: string;
-  duration: string;
+  duration: number;
 };
 
 const Unlock: FC<Props> = ({ lpToken, duration }) => {

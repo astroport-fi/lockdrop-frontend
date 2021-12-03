@@ -21,7 +21,7 @@ type FormValues = {
 
 type Props = {
   lpToken: string;
-  duration: string;
+  duration: number;
 };
 
 const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
@@ -82,6 +82,7 @@ const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
         {!showConfirm && (
           <UnlockFormInitial
             state={state}
+            duration={duration}
             onClick={() => setShowConfirm(true)}
           />
         )}

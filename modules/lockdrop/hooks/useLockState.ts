@@ -5,10 +5,10 @@ import { useContracts } from "modules/common";
 import { ONE_TOKEN } from "constants/constants";
 
 type Response = {
-  total_incentives_share: string;
-  total_astro_delegated: string;
-  total_astro_returned_available: string;
   are_claims_allowed: boolean;
+  supported_pairs_list: string[];
+  total_astro_delegated: string;
+  total_incentives_share: number;
 };
 
 export const useLockState = () => {
@@ -27,6 +27,7 @@ export const useLockState = () => {
 
   return {
     astroRewardsAllocated: +data.total_incentives_share / ONE_TOKEN,
+    ...data,
   };
 };
 

@@ -16,43 +16,40 @@ export type LockState = {
 };
 
 type Params = {
+  amount: string;
+  asset: string;
   duration: number;
-  token: {
-    asset: string;
-    amount: string;
-  };
   onSuccess?: (txHash: string) => void;
   onError?: (txHash?: string) => void;
 };
 
 export const useLock = ({
-  token,
+  asset,
+  amount,
   duration,
   onSuccess,
   onError,
 }: Params): LockState => {
   const address = useAddress();
-  // TODO: Change to the right contract
   const { lockdrop } = useContracts();
 
   const msgs = useMemo(() => {
-    if (
-      token.amount == "" ||
-      num(token.amount).isEqualTo("0") ||
-      duration == null
-    ) {
+    if (amount == "" || num(amount).isEqualTo("0") || duration == null) {
       return null;
     }
 
     return createLockMsgs(
       {
         contract: lockdrop,
-        token,
+        asset,
+        amount,
         duration,
       },
       address
     );
-  }, [address, lockdrop, token, duration]);
+  }, [address, lockdrop, asset, amount, duration]);
+
+  console.log("msgs", msgs);
 
   const { submit, ...rest } = useTransaction({
     msgs,

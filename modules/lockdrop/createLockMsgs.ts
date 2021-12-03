@@ -2,10 +2,8 @@ import { toBase64, toTerraAmount } from "@arthuryeti/terra";
 import { MsgExecuteContract } from "@terra-money/terra.js";
 
 type CreateLockMsgsOptions = {
-  token: {
-    asset: string;
-    amount: string;
-  };
+  asset: string;
+  amount: string;
   duration: number;
   contract: string;
 };
@@ -14,11 +12,7 @@ export const createLockMsgs = (
   options: CreateLockMsgsOptions,
   sender: string
 ): MsgExecuteContract[] => {
-  const {
-    contract,
-    token: { asset, amount },
-    duration,
-  } = options;
+  const { contract, asset, amount, duration } = options;
 
   const terraAmount = toTerraAmount(amount);
 
