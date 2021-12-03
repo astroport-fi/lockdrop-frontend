@@ -7,11 +7,17 @@ import { lookup, formatAsset } from "libs/parse";
 
 type Props = {
   asset: string;
+  label?: string;
   initial?: string;
   onChange: (value: string) => void;
 };
 
-const Balance: FC<Props> = ({ asset, initial, onChange }) => {
+const Balance: FC<Props> = ({
+  asset,
+  initial,
+  label = "In Wallet",
+  onChange,
+}) => {
   const { getSymbol } = useTokenInfo();
   const balance = useBalance(asset);
   const amount = lookup(balance, asset);
@@ -21,7 +27,7 @@ const Balance: FC<Props> = ({ asset, initial, onChange }) => {
       <Box>
         <Text>
           <Text as="span" fontSize="sm" fontWeight="500" color="white.400">
-            In Wallet:
+            {label}:
           </Text>{" "}
           <Text as="span" fontSize="sm" color="white" ml="2">
             {formatAsset(initial ?? balance, getSymbol(asset))}

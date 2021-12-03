@@ -97,10 +97,10 @@
   },
   "testnet": {
     "tokens": {
-      "terra1fedtv6nwy9ttn522rh3njmpkxs4ftvezfsyg4g": {
+      "terra169fyg8l7lz0r5rpue0zqze6ql3w7jt4w6na5av": {
         "protocol": "Astroport",
         "symbol": "ASTRO",
-        "token": "terra1fedtv6nwy9ttn522rh3njmpkxs4ftvezfsyg4g",
+        "token": "terra169fyg8l7lz0r5rpue0zqze6ql3w7jt4w6na5av",
         "icon": "/tokens/astro.png"
       },
       "uluna": {

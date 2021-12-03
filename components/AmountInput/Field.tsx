@@ -14,6 +14,7 @@ import {
 type Props = {
   tokens?: string[];
   balance?: string;
+  balanceLabel?: string;
   isLpToken?: boolean;
   isSingle?: boolean;
   onBlur: any;
@@ -27,7 +28,17 @@ type Props = {
 
 const Field: FC<Props> = forwardRef(
   (
-    { onChange, onBlur, value, limit, isSingle, isLpToken, balance, tokens },
+    {
+      onChange,
+      onBlur,
+      value,
+      limit,
+      isSingle,
+      isLpToken,
+      balance,
+      balanceLabel,
+      tokens,
+    },
     ref
   ) => {
     const handleClick = (asset: string) => {
@@ -56,6 +67,7 @@ const Field: FC<Props> = forwardRef(
           <BalanceLP
             asset={value.asset}
             initial={balance}
+            label={balanceLabel}
             onChange={(v: string) => onChange({ ...value, amount: v })}
           />
         );
@@ -65,6 +77,7 @@ const Field: FC<Props> = forwardRef(
         <Balance
           asset={value.asset}
           initial={balance}
+          label={balanceLabel}
           onChange={(v: string) => onChange({ ...value, amount: v })}
         />
       );

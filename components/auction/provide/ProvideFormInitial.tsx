@@ -1,8 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { Box, Text, Link } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
+import { num } from "@arthuryeti/terra";
 
 import { ProvideState } from "modules/auction";
+import { useUserInfo } from "modules/lockdrop";
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
@@ -15,6 +17,17 @@ type Props = {
 
 const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
   const { control } = useFormContext();
+  const userInfo = useUserInfo();
+
+  const balance = useMemo(() => {
+    if (userInfo == null) {
+      return null;
+    }
+
+    return num(userInfo.total_astro_rewards)
+      .minus(userInfo.delegated_astro_rewards)
+      .toString();
+  }, [userInfo]);
 
   return (
     <>
@@ -40,11 +53,36 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
       </Card>
 
       <Card>
+        <Text variant="light" mb="2">
+          ASTRO from Lockdrop
+        </Text>
         <Controller
-          name="astro"
+          name="astroLockdrop"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => <AmountInput {...field} isSingle />}
+          render={({ field }) => (
+            <AmountInput
+              balance={balance}
+              {...field}
+              balanceLabel="In Lockdrop"
+              isSingle
+            />
+          )}
+        />
+      </Card>
+
+      <Card mt="2">
+        <Text variant="light" mb="2">
+          ASTRO from Airdrop
+        </Text>
+
+        <Controller
+          name="astroAirdrop"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <AmountInput {...field} balanceLabel="In Airdrop" isSingle />
+          )}
         />
       </Card>
 

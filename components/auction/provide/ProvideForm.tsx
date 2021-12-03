@@ -16,7 +16,11 @@ import FormSummary from "components/common/FormSummary";
 import FormError from "components/common/FormError";
 
 type FormValues = {
-  astro: {
+  astroLockdrop: {
+    amount: string;
+    asset: string;
+  };
+  astroAirdrop: {
     amount: string;
     asset: string;
   };
@@ -31,7 +35,11 @@ const ProvideForm: FC = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const methods = useForm<FormValues>({
     defaultValues: {
-      astro: {
+      astroLockdrop: {
+        amount: "",
+        asset: astroToken,
+      },
+      astroAirdrop: {
         amount: "",
         asset: astroToken,
       },
@@ -42,14 +50,23 @@ const ProvideForm: FC = () => {
     },
   });
 
-  const astro = methods.watch("astro");
+  const astroLockdrop = methods.watch("astroLockdrop");
+  const astroAirdrop = methods.watch("astroAirdrop");
   const uusd = methods.watch("uusd");
 
-  const debouncedAstroAmount = useDebounceValue(astro.amount, 200);
+  const debouncedAstroAirdropAmount = useDebounceValue(
+    astroAirdrop.amount,
+    200
+  );
+  const debouncedAstroLockdropAmount = useDebounceValue(
+    astroLockdrop.amount,
+    200
+  );
   const debouncedUusdAmount = useDebounceValue(uusd.amount, 200);
 
   const state = useProvide({
-    astroAmount: toAmount(debouncedAstroAmount),
+    astroLockdropAmount: toAmount(debouncedAstroLockdropAmount),
+    astroAirdropAmount: toAmount(debouncedAstroAirdropAmount),
     uusdAmount: toAmount(debouncedUusdAmount),
   });
 
@@ -79,7 +96,7 @@ const ProvideForm: FC = () => {
           <FormSummary
             label1="You are providing"
             label2="and"
-            token1={astro}
+            token1={astroLockdrop}
             token2={uusd}
           />
         }
@@ -116,7 +133,7 @@ const ProvideForm: FC = () => {
               <FormSummary
                 label1="You are providing"
                 label2="and"
-                token1={astro}
+                token1={astroLockdrop}
                 token2={uusd}
               />
             }

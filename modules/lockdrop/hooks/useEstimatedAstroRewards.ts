@@ -17,8 +17,6 @@ export const useEstimatedAstroRewards = ({
   amount,
   lpToken,
 }: Options) => {
-  const { client } = useTerraWebapp();
-  const { lockdrop } = useContracts();
   const config = useConfig();
   const pool = usePool(lpToken);
   const lockState = useLockState();
@@ -34,7 +32,7 @@ export const useEstimatedAstroRewards = ({
   }, [config, duration]);
 
   const amountWeight = useMemo(() => {
-    if (lockupWeight == null || num(amount).eq(0) || amount == "") {
+    if (lockupWeight == null || num(amount).eq(0) || amount == null) {
       return null;
     }
 

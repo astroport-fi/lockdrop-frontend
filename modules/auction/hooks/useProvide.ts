@@ -15,36 +15,51 @@ export type ProvideState = {
 
 type Params = {
   uusdAmount: string | null;
-  astroAmount: string | null;
+  astroAirdropAmount: string | null;
+  astroLockdropAmount: string | null;
   onSuccess?: (txHash: string) => void;
   onError?: (txHash?: string) => void;
 };
 
 export const useProvide = ({
   uusdAmount,
-  astroAmount,
+  astroAirdropAmount,
+  astroLockdropAmount,
   onSuccess,
   onError,
 }: Params): ProvideState => {
-  const { astroToken, auction } = useContracts();
+  const { astroToken, auction, lockdrop } = useContracts();
   const address = useAddress();
 
   const msgs = useMemo(() => {
-    if (uusdAmount == null && astroAmount == null) {
+    if (
+      uusdAmount == null &&
+      astroLockdropAmount == null &&
+      astroAirdropAmount == null
+    ) {
       return null;
     }
 
     return createProvideMsgs(
       {
-        contract: auction,
+        auctionContract: auction,
+        lockdropContract: lockdrop,
         address,
         astroToken,
         uusdAmount,
-        astroAmount,
+        astroAirdropAmount,
+        astroLockdropAmount,
       },
       address
     );
-  }, [address, auction, astroToken, uusdAmount, astroAmount]);
+  }, [
+    address,
+    auction,
+    astroToken,
+    uusdAmount,
+    astroAirdropAmount,
+    astroLockdropAmount,
+  ]);
 
   return useTransaction({
     msgs,

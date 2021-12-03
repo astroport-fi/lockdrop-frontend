@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Text, Flex, Box, ListItem, UnorderedList } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { num } from "@arthuryeti/terra";
@@ -23,7 +23,14 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
   const lpToken = watch("lpToken");
   const stakedAmount = useLockedLpAmount(lpToken.asset);
   const max = num(stakedAmount).div(ONE_TOKEN).toNumber();
-  const amount = num(max).minus(lpToken.amount).toString();
+
+  const amount = useMemo(() => {
+    if (num(lpToken.amount).eq(0) || lpToken.amount == "") {
+      return null;
+    }
+
+    return num(max).minus(lpToken.amount).toString();
+  }, [max, lpToken.amount]);
 
   const handleChange = (value: number) => {
     setValue("lpToken", {
