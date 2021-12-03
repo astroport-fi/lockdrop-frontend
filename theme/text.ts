@@ -21,7 +21,12 @@ const styles = {
     cardHeader: {
       color: "white",
       fontFamily: "WhyteInktrap",
-      fontSize: "16px",
+      fontSize: "md",
+    },
+    cardDescription: {
+      color: "white",
+      fontSize: "sm",
+      mt: "1",
     },
     dimmed: {
       opacity: 0.4,

@@ -1,0 +1,172 @@
+.heading__sup {
+  font-size: 20px;
+  padding-left: 1rem;
+  vertical-align: middle;
+}
+
+@media screen and (min-width: 48em) {
+  .heading__sup {
+    font-size: 28px;
+  }
+}
+
+@keyframes carousel {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.translate-carousel {
+  animation: carousel 15s infinite linear;
+}
+
+@media screen and (min-width: 48em) {
+  .translate-carousel {
+    animation: carousel 45s infinite linear;
+  }
+}
+
+.wrapper-after-translate {
+  float: none;
+  clear: both;
+}
+
+@keyframes dex2 {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.dex-2 {
+  animation: dex2 200s infinite linear;
+}
+
+@keyframes dex3 {
+  0% {
+    transform: translatey(-10px);
+  }
+
+  50% {
+    transform: translatey(10px) rotate(-10deg);
+  }
+
+  100% {
+    transform: translatey(-10px);
+  }
+}
+
+.dex-3 {
+  animation: dex3 20s infinite linear;
+}
+
+.dex-2 {
+  animation: dex2 200s infinite linear;
+}
+
+@keyframes lp2 {
+  0% {
+    transform: translatey(-10px);
+  }
+
+  50% {
+    transform: translatey(10px);
+  }
+
+  100% {
+    transform: translatey(-10px);
+  }
+}
+
+.lp-2 {
+  animation: lp2 14s infinite linear;
+}
+
+.lp-3 {
+  animation: lp2 6s infinite linear;
+}
+
+.prose {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "WhyteInktrap";
+  }
+
+  h1 {
+    font-size: 2.5rem;
+
+    @media screen and (min-width: 62em) {
+      font-size: 3.5rem;
+    }
+  }
+
+  h2 {
+    font-size: 2rem;
+
+    @media screen and (min-width: 62em) {
+      font-size: 2.25rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.5rem;
+
+    @media screen and (min-width: 62em) {
+      font-size: 1.75rem;
+    }
+  }
+
+  h4 {
+    font-size: 1.25rem;
+
+    @media screen and (min-width: 62em) {
+      font-size: 1.25rem;
+    }
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  a {
+    color: #59b7dd;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul {
+    padding-left: 1rem;
+    list-style-type: disc;
+
+    &.second {
+      padding-left: 2rem;
+      list-style-type: circle;
+    }
+  }
+
+  p,
+  ul,
+  div {
+    & + h3 {
+      padding-top: 2rem;
+    }
+  }
+
+  p,
+  ul,
+  div {
+    & + h4 {
+      padding-top: 0.5rem;
+    }
+  }
+}

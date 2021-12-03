@@ -53,9 +53,9 @@ const WalletDisclaimerPopover: FC<Props> = ({ onClick }) => {
         acknowledge that you have read and understand the protocol’s
         disclaimers. Please check the boxes below to confirm your agreement to
         the{" "}
-        <NextLink href="terms-and-conditions" passHref>
-          <Link color="brand.purple">Astroport Terms and Conditions</Link>
-        </NextLink>
+        <Link href="/terms-and-conditions" color="brand.purple" isExternal>
+          Astroport Terms and Conditions
+        </Link>
       </Text>
       <VStack mt="10" spacing="10" align="stretch">
         <VStack spacing="6" fontWeight="500">
