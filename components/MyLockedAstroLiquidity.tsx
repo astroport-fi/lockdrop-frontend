@@ -50,6 +50,7 @@ const MyLockedAstroLiquidity = () => {
           </Box>
         ),
         accessor: "dualRewards",
+        disableSortBy: true,
       },
       {
         Header: () => <Box width="167px" />,

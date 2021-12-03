@@ -33,7 +33,7 @@ const LockForm: FC<Props> = ({ lpToken }) => {
         amount: "",
         asset: lpToken,
       },
-      duration: 0,
+      duration: 2,
     },
     mode: "all",
   });
@@ -59,12 +59,11 @@ const LockForm: FC<Props> = ({ lpToken }) => {
   }
 
   if (state.txStep == TxStep.Success) {
+    const duration = state.txInfo.logs[1].eventsByType.wasm.duration[0];
     return (
       <FormSuccess
-        contentComponent={
-          <FormSummary label1="You are staking" token1={token} />
-        }
-        details={[{ label: "APY", value: "12%" }]}
+        contentComponent={<FormSummary label1="You've locked" token1={token} />}
+        details={[{ label: "Duration", value: `${duration} weeks` }]}
         onCloseClick={state.reset}
       />
     );

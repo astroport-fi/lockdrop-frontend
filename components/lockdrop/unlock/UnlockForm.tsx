@@ -59,9 +59,8 @@ const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
     return (
       <FormSuccess
         contentComponent={
-          <FormSummary label1="You are staking" token1={token} />
+          <FormSummary label1="You've unlocked" token1={token} />
         }
-        details={[{ label: "APY", value: "12%" }]}
         onCloseClick={state.reset}
       />
     );
@@ -90,11 +89,10 @@ const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
         {showConfirm && (
           <FormConfirm
             fee={state.fee}
-            actionLabel="Confirm Unstaking LP Token"
+            actionLabel="Confirm Unlocking LP Token"
             contentComponent={
-              <FormSummary label1="You are staking" token1={token} />
+              <FormSummary label1="You are unlocking" token1={token} />
             }
-            details={[{ label: "APY", value: "12%" }]}
             onCloseClick={() => setShowConfirm(false)}
           />
         )}
