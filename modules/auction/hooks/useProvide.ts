@@ -3,6 +3,7 @@ import { useAddress, useTransaction, TxStep } from "@arthuryeti/terra";
 
 import { createProvideMsgs } from "modules/auction";
 import { useContracts } from "modules/common";
+import { useAirdrop } from "modules/airdrop";
 
 export type ProvideState = {
   error: any;
@@ -17,6 +18,8 @@ type Params = {
   uusdAmount: string | null;
   astroAirdropAmount: string | null;
   astroLockdropAmount: string | null;
+  merkleProof?: string[] | null;
+  rootIndex?: string | null;
   onSuccess?: (txHash: string) => void;
   onError?: (txHash?: string) => void;
 };
@@ -25,11 +28,14 @@ export const useProvide = ({
   uusdAmount,
   astroAirdropAmount,
   astroLockdropAmount,
+  merkleProof,
+  rootIndex,
   onSuccess,
   onError,
 }: Params): ProvideState => {
-  const { astroToken, auction, lockdrop } = useContracts();
+  const { astroToken, auction, lockdrop, airdrop } = useContracts();
   const address = useAddress();
+  const airdropData = useAirdrop(address);
 
   const msgs = useMemo(() => {
     if (
@@ -44,18 +50,25 @@ export const useProvide = ({
       {
         auctionContract: auction,
         lockdropContract: lockdrop,
+        airdropContract: airdrop,
         address,
         astroToken,
         uusdAmount,
         astroAirdropAmount,
         astroLockdropAmount,
+        airdropClaimAmount: airdropData?.amount,
+        merkleProof: airdropData?.merkle_proof,
+        rootIndex: airdropData?.index,
       },
       address
     );
   }, [
     address,
     auction,
+    airdrop,
+    lockdrop,
     astroToken,
+    airdropData,
     uusdAmount,
     astroAirdropAmount,
     astroLockdropAmount,

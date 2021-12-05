@@ -1,17 +1,18 @@
 import React, { FC } from "react";
 import { Box, Flex, HStack, Text, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { fromTerraAmount } from "@arthuryeti/terra";
 
+import { truncate } from "libs/text";
 import { useContracts } from "modules/common";
 
 import Card from "components/Card";
 import CloseIcon from "components/icons/CloseIcon";
 import SuccessIcon from "components/icons/SuccessIcon";
 import TokenCard from "components/common/TokenCard";
-import { truncate } from "libs/text";
 
 type Props = {
-  amount: number;
+  amount: string;
   address: string;
   onCloseClick: () => void;
 };
@@ -50,7 +51,10 @@ const AirdropSuccess: FC<Props> = ({ amount, address, onCloseClick }) => {
           Available Airdrop
         </Text>
         <TokenCard
-          token={{ asset: astroToken, amount }}
+          token={{
+            asset: astroToken,
+            amount: fromTerraAmount(amount, "0,0.00"),
+          }}
           description={truncatedAddress}
         />
       </Card>

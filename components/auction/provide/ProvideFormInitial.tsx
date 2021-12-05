@@ -4,6 +4,7 @@ import { useFormContext, Controller } from "react-hook-form";
 import { num } from "@arthuryeti/terra";
 
 import { ProvideState } from "modules/auction";
+import { useAirdropBalance } from "modules/airdrop";
 import { useUserInfo } from "modules/lockdrop";
 
 import Card from "components/Card";
@@ -18,8 +19,9 @@ type Props = {
 const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
   const { control } = useFormContext();
   const userInfo = useUserInfo();
+  const airdropBalance = useAirdropBalance();
 
-  const balance = useMemo(() => {
+  const lockdropBalance = useMemo(() => {
     if (userInfo == null) {
       return null;
     }
@@ -62,8 +64,8 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
           rules={{ required: true }}
           render={({ field }) => (
             <AmountInput
-              balance={balance}
               {...field}
+              balance={lockdropBalance}
               balanceLabel="In Lockdrop"
               isSingle
             />
@@ -81,7 +83,12 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
-            <AmountInput {...field} balanceLabel="In Airdrop" isSingle />
+            <AmountInput
+              {...field}
+              balance={airdropBalance}
+              balanceLabel="In Airdrop"
+              isSingle
+            />
           )}
         />
       </Card>

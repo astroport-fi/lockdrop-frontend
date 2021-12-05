@@ -9,25 +9,26 @@ import AirdropFailed from "components/AirdropFailed";
 const Airdrop: FC = () => {
   const { query } = useRouter();
   const address = query.address as string;
-  const { data, isLoading } = useAirdrop(address);
+  // const { data, isLoading } = useAirdrop(address);
+  const airdrop = useAirdrop(address);
 
   const renderAirdrop = () => {
-    if (data.airdrop == null) {
+    if (airdrop == null) {
       return <AirdropFailed onCloseClick={() => {}} />;
     }
 
     return (
       <AirdropSuccess
-        amount={data.airdrop?.amount}
+        amount={airdrop?.amount}
         address={address}
         onCloseClick={() => {}}
       />
     );
   };
 
-  if (isLoading) {
-    return null;
-  }
+  // if (isLoading) {
+  //   return null;
+  // }
 
   return (
     <Box m="0 auto" pt="12">

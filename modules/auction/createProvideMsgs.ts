@@ -4,11 +4,15 @@ import { Coin, MsgExecuteContract } from "@terra-money/terra.js";
 type CreateProvideMsgsOptions = {
   astroAirdropAmount: string;
   astroLockdropAmount: string;
+  airdropClaimAmount: string;
+  merkleProof?: string[];
+  rootIndex?: number;
   uusdAmount: string;
   astroToken: string;
   address: string;
   auctionContract: string;
   lockdropContract: string;
+  airdropContract: string;
 };
 
 export const createProvideMsgs = (
@@ -21,9 +25,13 @@ export const createProvideMsgs = (
     astroToken,
     auctionContract,
     lockdropContract,
+    airdropContract,
     astroAirdropAmount,
+    airdropClaimAmount,
     astroLockdropAmount,
     uusdAmount,
+    merkleProof,
+    rootIndex,
   } = options;
 
   if (num(uusdAmount).gt(0)) {
@@ -58,6 +66,40 @@ export const createProvideMsgs = (
 
     msgs.push(astroLockdropMsg);
   }
+
+  if (num(astroAirdropAmount).gt(0)) {
+    const executeClaimAirdropMsg = {
+      claim: {
+        claim_amount: airdropClaimAmount,
+        merkle_proof: merkleProof,
+        root_index: rootIndex,
+      },
+    };
+
+    const claimAirdropMsg = new MsgExecuteContract(
+      sender,
+      airdropContract,
+      executeClaimAirdropMsg
+    );
+
+    msgs.push(claimAirdropMsg);
+
+    const executeDelegateAirdropMsg = {
+      delegate_astro_to_bootstrap_auction: {
+        amount_to_delegate: astroAirdropAmount,
+      },
+    };
+
+    const delegateAirdropMsg = new MsgExecuteContract(
+      sender,
+      airdropContract,
+      executeDelegateAirdropMsg
+    );
+
+    msgs.push(delegateAirdropMsg);
+  }
+
+  console.log(msgs);
 
   return msgs;
 };
