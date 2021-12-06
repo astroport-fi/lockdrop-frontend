@@ -49,8 +49,6 @@ export const useLock = ({
     );
   }, [address, lockdrop, asset, amount, duration]);
 
-  console.log("msgs", msgs);
-
   const { submit, ...rest } = useTransaction({
     msgs,
     onSuccess,
