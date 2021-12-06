@@ -3,7 +3,7 @@ import { Box, Flex, HStack, Text, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import Card from "components/Card";
-import CloseIcon from "components/icons/CloseIcon";
+import CloseModalIcon from "components/icons/CloseModalIcon";
 import FailedIcon from "components/icons/FailedIcon";
 
 type Props = {
@@ -33,7 +33,7 @@ const AirdropSuccess: FC<Props> = ({ onCloseClick }) => {
           </HStack>
           <IconButton
             aria-label="Close"
-            icon={<CloseIcon />}
+            icon={<CloseModalIcon w="1.5rem" h="1.5rem" />}
             variant="icon"
             onClick={onCloseClick}
           />

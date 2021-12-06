@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Box, Flex, Text, IconButton, Button, HStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import CloseIcon from "components/icons/CloseIcon";
+import CloseModalIcon from "components/icons/CloseModalIcon";
 import FailedIcon from "components/icons/FailedIcon";
 import Card from "components/Card";
 
@@ -44,7 +44,7 @@ const FormError: FC<Props> = ({
           </HStack>
           <IconButton
             aria-label="Close"
-            icon={<CloseIcon />}
+            icon={<CloseModalIcon w="1.5rem" h="1.5rem" />}
             variant="icon"
             onClick={onCloseClick}
           />
