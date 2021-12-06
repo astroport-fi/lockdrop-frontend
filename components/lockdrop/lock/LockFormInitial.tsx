@@ -10,7 +10,7 @@ import {
   SliderThumb,
 } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
-import { num, TxStep, useBalance } from "@arthuryeti/terra";
+import { num, useBalance } from "@arthuryeti/terra";
 
 import { LockState } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
@@ -35,12 +35,14 @@ const LockFormInitial = ({ state, onClick }: Params) => {
   const max = num(balance).div(ONE_TOKEN).toNumber();
 
   const handleChange = (value: number) => {
-    setValue("token.amount", String(value));
+    setValue("token", { ...token, amount: value.toString() });
   };
 
   const handleDurationChange = (value: number) => {
     setValue("duration", value);
   };
+
+  console.log(token);
 
   return (
     <>

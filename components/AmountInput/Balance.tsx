@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Box, Text, Flex, chakra } from "@chakra-ui/react";
-import { useBalance } from "@arthuryeti/terra";
+import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
 import { useTokenInfo } from "modules/common";
 import { lookup, formatAsset } from "libs/parse";
@@ -20,7 +20,7 @@ const Balance: FC<Props> = ({
 }) => {
   const { getSymbol } = useTokenInfo();
   const balance = useBalance(asset);
-  const amount = lookup(balance, asset);
+  const amount = fromTerraAmount(initial ?? balance, "0.00[0000]");
 
   return (
     <Flex align="center" justify="space-between" mt="1">

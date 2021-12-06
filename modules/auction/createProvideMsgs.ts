@@ -8,8 +8,6 @@ type CreateProvideMsgsOptions = {
   merkleProof?: string[];
   rootIndex?: number;
   uusdAmount: string;
-  astroToken: string;
-  address: string;
   auctionContract: string;
   lockdropContract: string;
   airdropContract: string;
@@ -21,8 +19,6 @@ export const createProvideMsgs = (
 ): MsgExecuteContract[] => {
   const msgs = [];
   const {
-    address,
-    astroToken,
     auctionContract,
     lockdropContract,
     airdropContract,
@@ -99,7 +95,9 @@ export const createProvideMsgs = (
     msgs.push(delegateAirdropMsg);
   }
 
-  console.log(msgs);
+  if (msgs.length == 0) {
+    return null;
+  }
 
   return msgs;
 };

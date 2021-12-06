@@ -29,26 +29,16 @@ export const useProvide = ({
   onSuccess,
   onError,
 }: Params): ProvideState => {
-  const { astroToken, auction, lockdrop, airdrop } = useContracts();
+  const { auction, lockdrop, airdrop } = useContracts();
   const address = useAddress();
   const airdropData = useAirdrop(address);
 
   const msgs = useMemo(() => {
-    if (
-      uusdAmount == null &&
-      astroLockdropAmount == null &&
-      astroAirdropAmount == null
-    ) {
-      return null;
-    }
-
     return createProvideMsgs(
       {
         auctionContract: auction,
         lockdropContract: lockdrop,
         airdropContract: airdrop,
-        address,
-        astroToken,
         uusdAmount,
         astroAirdropAmount,
         astroLockdropAmount,
@@ -63,7 +53,6 @@ export const useProvide = ({
     auction,
     airdrop,
     lockdrop,
-    astroToken,
     airdropData,
     uusdAmount,
     astroAirdropAmount,

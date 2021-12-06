@@ -34,9 +34,13 @@ const LockdropIntroduction = () => {
             Your courage will be rewarded with Astroport governance tokens and
             power over the fate of the ship. Our voyage is separated into 3
             different phases. Join below or{" "}
-            <NextLink href="#" passHref>
-              <Link color="#83B3FD">fly here</Link>
-            </NextLink>{" "}
+            <Link
+              color="#83B3FD"
+              href="https://docs.astroport.fi/astroport/astroport/astro-faq#lockdrop"
+              isExternal
+            >
+              fly here
+            </Link>{" "}
             to learn more about Astroport.
           </Text>
           <NextLink href="/phase-1" passHref>

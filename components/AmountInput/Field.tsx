@@ -93,6 +93,8 @@ const Field: FC<Props> = forwardRef(
       );
     };
 
+    console.log("value", value);
+
     return (
       <Box ref={ref}>
         <Flex justify="space-between">
