@@ -1,9 +1,8 @@
 import React, { FC } from "react";
 import { Box, Text, UnorderedList, ListItem } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
-import { num, useBalance } from "@arthuryeti/terra";
+import { num } from "@arthuryeti/terra";
 
-import { lookup } from "libs/parse";
 import { ONE_TOKEN } from "constants/constants";
 import { WithdrawState, useUserInfo } from "modules/auction";
 
@@ -24,10 +23,7 @@ type Props = {
 const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
   const { control, setValue } = useFormContext();
   const userInfo = useUserInfo();
-
-  const balance = useBalance(token.asset);
-  const amount = lookup(balance, token.asset);
-  const max = num(userInfo?.ust_delegated).div(ONE_TOKEN).toFixed(2);
+  const balance = num(userInfo?.ust_delegated).div(ONE_TOKEN).toFixed(2);
 
   const handleChange = (value: number) => {
     setValue("token", {
@@ -73,14 +69,14 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
-            <AmountInput {...field} balance={max} isSingle />
+            <AmountInput {...field} balance={balance} isSingle />
           )}
         />
 
         <Box mt="8">
           <FormSlider
             value={+token.amount}
-            max={+max}
+            max={+balance}
             ratio={1}
             onChange={handleChange}
           />

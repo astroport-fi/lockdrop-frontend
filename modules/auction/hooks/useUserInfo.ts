@@ -2,7 +2,6 @@ import { useAddress, useTerraWebapp } from "@arthuryeti/terra";
 import { useQuery } from "react-query";
 
 import { useContracts } from "modules/common";
-import { ONE_TOKEN } from "constants/constants";
 
 type Response = {
   astro_delegated: string;

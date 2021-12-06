@@ -42,8 +42,6 @@ const LockFormInitial = ({ state, onClick }: Params) => {
     setValue("duration", value);
   };
 
-  console.log(token);
-
   return (
     <>
       <LockActions />
