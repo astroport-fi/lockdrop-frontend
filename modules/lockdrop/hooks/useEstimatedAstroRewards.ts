@@ -1,9 +1,6 @@
 import { useMemo } from "react";
-import { num, useTerraWebapp } from "@arthuryeti/terra";
-import { useQuery } from "react-query";
+import { num } from "@arthuryeti/terra";
 
-import { useContracts } from "modules/common";
-import { ONE_TOKEN } from "constants/constants";
 import { useConfig, useLockState, usePool } from "modules/lockdrop";
 
 type Options = {
@@ -32,11 +29,11 @@ export const useEstimatedAstroRewards = ({
   }, [config, duration]);
 
   const amountWeight = useMemo(() => {
-    if (lockupWeight == null || num(amount).eq(0) || amount == null) {
+    if (lockupWeight == null || num(amount).eq(0) || amount == "") {
       return null;
     }
 
-    return num(amount).times(lockupWeight).toNumber();
+    return num(amount).times(lockupWeight);
   }, [amount, lockupWeight]);
 
   return useMemo(() => {

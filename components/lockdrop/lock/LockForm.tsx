@@ -2,7 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useQueryClient } from "react-query";
-import { TxStep } from "@arthuryeti/terra";
+import { TxStep, useTerraWebapp } from "@arthuryeti/terra";
+import { useRouter } from "next/router";
 
 import { useLock } from "modules/lockdrop";
 
@@ -27,6 +28,8 @@ type Props = {
 
 const LockForm: FC<Props> = ({ lpToken }) => {
   const [showConfirm, setShowConfirm] = useState(false);
+  const { client, accountInfo } = useTerraWebapp();
+  const router = useRouter();
   const queryClient = useQueryClient();
 
   const methods = useForm<FormValues>({
@@ -46,6 +49,10 @@ const LockForm: FC<Props> = ({ lpToken }) => {
 
   const handleSuccess = () => {
     queryClient.invalidateQueries("userInfo");
+  };
+
+  const handleSuccessClose = () => {
+    router.push("/phase-1");
   };
 
   const state = useLock({
@@ -75,7 +82,7 @@ const LockForm: FC<Props> = ({ lpToken }) => {
       <FormSuccess
         contentComponent={<FormSummary label1="You've locked" token1={token} />}
         details={[{ label: "Duration", value: `${duration} weeks` }]}
-        onCloseClick={state.reset}
+        onCloseClick={handleSuccessClose}
       />
     );
   }

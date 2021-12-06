@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { TxStep } from "@arthuryeti/terra";
+import { useRouter } from "next/router";
 
 import { useUnlock } from "modules/lockdrop";
 
@@ -26,6 +27,7 @@ type Props = {
 
 const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
   const [showConfirm, setShowConfirm] = useState(false);
+  const router = useRouter();
 
   const methods = useForm<FormValues>({
     defaultValues: {
@@ -45,6 +47,10 @@ const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
     state.submit();
   };
 
+  const handleSuccessClose = () => {
+    router.push("/phase-1");
+  };
+
   useEffect(() => {
     if (state.txStep == TxStep.Broadcasting) {
       setShowConfirm(false);
@@ -61,7 +67,7 @@ const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
         contentComponent={
           <FormSummary label1="You've unlocked" token1={token} />
         }
-        onCloseClick={state.reset}
+        onCloseClick={handleSuccessClose}
       />
     );
   }
