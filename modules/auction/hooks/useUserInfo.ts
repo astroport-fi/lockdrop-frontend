@@ -22,7 +22,7 @@ export const useUserInfo = () => {
   const address = useAddress();
   const { auction } = useContracts();
 
-  const { data, isLoading } = useQuery(["userInfoAuction", address], () => {
+  const { data, isLoading } = useQuery(["userInfo", "auction", address], () => {
     return client.wasm.contractQuery<Response>(auction, {
       user_info: {
         address,

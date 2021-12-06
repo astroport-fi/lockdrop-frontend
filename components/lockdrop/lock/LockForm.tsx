@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
+import { useQueryClient } from "react-query";
 import { TxStep } from "@arthuryeti/terra";
 
 import { useLock } from "modules/lockdrop";
@@ -26,6 +27,7 @@ type Props = {
 
 const LockForm: FC<Props> = ({ lpToken }) => {
   const [showConfirm, setShowConfirm] = useState(false);
+  const queryClient = useQueryClient();
 
   const methods = useForm<FormValues>({
     defaultValues: {
@@ -42,10 +44,15 @@ const LockForm: FC<Props> = ({ lpToken }) => {
   const token = watch("token");
   const duration = watch("duration");
 
+  const handleSuccess = () => {
+    queryClient.invalidateQueries("userInfo");
+  };
+
   const state = useLock({
     asset: token.asset,
     amount: token.amount,
     duration,
+    onSuccess: handleSuccess,
   });
 
   const submit = async () => {

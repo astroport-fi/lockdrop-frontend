@@ -57,7 +57,7 @@ const AstroAirdrop = () => {
                   onChange={handleChange}
                 />
               </InputGroup>
-              <Link href={`/airdrop/${address}`} passHref>
+              <Link href={`/airdrop/${value}`} passHref>
                 <Button
                   variant="primary"
                   width="192px"

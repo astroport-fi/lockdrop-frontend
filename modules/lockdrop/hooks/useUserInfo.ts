@@ -32,13 +32,16 @@ export const useUserInfo = () => {
   const address = useAddress();
   const { lockdrop } = useContracts();
 
-  const { data, isLoading } = useQuery(["userInfo", address], () => {
-    return client.wasm.contractQuery<Response>(lockdrop, {
-      user_info: {
-        address,
-      },
-    });
-  });
+  const { data, isLoading } = useQuery(
+    ["userInfo", "lockdrop", address],
+    () => {
+      return client.wasm.contractQuery<Response>(lockdrop, {
+        user_info: {
+          address,
+        },
+      });
+    }
+  );
 
   if (isLoading || data == null) {
     return null;

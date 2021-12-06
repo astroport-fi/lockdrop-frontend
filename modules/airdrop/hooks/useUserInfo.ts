@@ -14,7 +14,7 @@ export const useUserInfo = () => {
   const address = useAddress();
   const { airdrop } = useContracts();
 
-  const { data, isLoading } = useQuery(["userInfoAirdrop", address], () => {
+  const { data, isLoading } = useQuery(["userInfo", "airdrop", address], () => {
     return client.wasm.contractQuery<Response>(airdrop, {
       user_info: {
         address,

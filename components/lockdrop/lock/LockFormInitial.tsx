@@ -60,7 +60,14 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           name="token"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => <AmountInput {...field} isLpToken isSingle />}
+          render={({ field }) => (
+            <AmountInput
+              {...field}
+              balanceLabel="Available to Migrate"
+              isLpToken
+              isSingle
+            />
+          )}
         />
 
         <Box mt="8">

@@ -18,8 +18,6 @@ type Params = {
   uusdAmount: string | null;
   astroAirdropAmount: string | null;
   astroLockdropAmount: string | null;
-  merkleProof?: string[] | null;
-  rootIndex?: string | null;
   onSuccess?: (txHash: string) => void;
   onError?: (txHash?: string) => void;
 };
@@ -28,8 +26,6 @@ export const useProvide = ({
   uusdAmount,
   astroAirdropAmount,
   astroLockdropAmount,
-  merkleProof,
-  rootIndex,
   onSuccess,
   onError,
 }: Params): ProvideState => {

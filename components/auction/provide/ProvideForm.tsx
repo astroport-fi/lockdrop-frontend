@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState, useCallback } from "react";
 import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
+import { useQueryClient } from "react-query";
 import { TxStep } from "@arthuryeti/terra";
 
 import { toAmount } from "libs/parse";
@@ -9,7 +10,7 @@ import { useProvide } from "modules/auction";
 import useDebounceValue from "hooks/useDebounceValue";
 
 import ProvideFormInitial from "components/auction/provide/ProvideFormInitial";
-import FormConfirm from "components/common/FormConfirm";
+import ProvideFormDisclaimer from "components/auction/provide/ProvideFormDisclaimer";
 import FormLoading from "components/common/FormLoading";
 import FormSuccess from "components/common/FormSuccess";
 import FormSummary from "components/common/FormSummary";
@@ -33,6 +34,7 @@ type FormValues = {
 const ProvideForm: FC = () => {
   const { astroToken } = useContracts();
   const [showConfirm, setShowConfirm] = useState(false);
+  const queryClient = useQueryClient();
   const methods = useForm<FormValues>({
     defaultValues: {
       astroLockdrop: {
@@ -64,10 +66,15 @@ const ProvideForm: FC = () => {
   );
   const debouncedUusdAmount = useDebounceValue(uusd.amount, 200);
 
+  const handleSuccess = () => {
+    queryClient.invalidateQueries("userInfo");
+  };
+
   const state = useProvide({
     astroLockdropAmount: toAmount(debouncedAstroLockdropAmount),
     astroAirdropAmount: toAmount(debouncedAstroAirdropAmount),
     uusdAmount: toAmount(debouncedUusdAmount),
+    onSuccess: handleSuccess,
   });
 
   const submit = async () => {
@@ -126,19 +133,7 @@ const ProvideForm: FC = () => {
         )}
 
         {showConfirm && (
-          <FormConfirm
-            fee={state.fee}
-            actionLabel="Confirm Provide"
-            contentComponent={
-              <FormSummary
-                label1="You are providing"
-                label2="and"
-                token1={astroLockdrop}
-                token2={uusd}
-              />
-            }
-            onCloseClick={() => setShowConfirm(false)}
-          />
+          <ProvideFormDisclaimer onCloseClick={() => setShowConfirm(false)} />
         )}
       </chakra.form>
     </FormProvider>

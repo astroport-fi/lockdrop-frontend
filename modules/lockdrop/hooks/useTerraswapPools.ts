@@ -1,9 +1,10 @@
 import { gql } from "graphql-request";
+import { useAddress } from "@arthuryeti/terra";
+import { sortBy } from "lodash";
 
 import { useContracts } from "modules/common";
 import { useHive } from "hooks/useHive";
 import { ONE_TOKEN } from "constants/constants";
-import { useAddress } from "@arthuryeti/terra";
 
 type Response = {
   terraswap_pool: string;
@@ -73,7 +74,7 @@ export const useTerraswapPools = () => {
     return [];
   }
 
-  return terraswapLps.map((key) => {
+  const items = terraswapLps.map((key) => {
     const { incentives_share, terraswap_amount_in_lockups, terraswap_pool } =
       result[key].contractQuery;
     const { balance } = result[`balance${key}`].contractQuery;
@@ -89,6 +90,8 @@ export const useTerraswapPools = () => {
       astroAllocated,
     };
   });
+
+  return sortBy(items, "myLiquidity").reverse();
 };
 
 export default useTerraswapPools;
