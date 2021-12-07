@@ -52,7 +52,7 @@ const LockForm: FC<Props> = ({ lpToken }) => {
   };
 
   const handleSuccessClose = () => {
-    router.push("/phase-1");
+    router.push("/active-phase");
   };
 
   const state = useLock({

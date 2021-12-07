@@ -3,7 +3,11 @@ import { Text, Flex, Box, ListItem, UnorderedList } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { num } from "@arthuryeti/terra";
 
-import { useLockedLpAmount, UnlockState } from "modules/lockdrop";
+import {
+  useLockedLpAmount,
+  UnlockState,
+  useLockdropLogic,
+} from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
 
 import Card from "components/Card";
@@ -19,6 +23,7 @@ type Params = {
 
 const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
   const { control, watch, setValue } = useFormContext();
+  const logic = useLockdropLogic();
 
   const lpToken = watch("lpToken");
   const stakedAmount = useLockedLpAmount(lpToken.asset);
@@ -82,7 +87,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
           <FormSlider
             value={+lpToken.amount}
             max={+max}
-            ratio={1}
+            ratio={logic.ratio}
             onChange={handleChange}
           />
         </Box>

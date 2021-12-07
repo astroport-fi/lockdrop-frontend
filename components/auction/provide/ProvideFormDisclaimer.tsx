@@ -96,7 +96,7 @@ const ProvideFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
             type="submit"
             isDisabled={!allChecked}
           >
-            Provide LP Token
+            Provide ASTRO-UST Liquidity
           </Button>
         </Flex>
       </Card>

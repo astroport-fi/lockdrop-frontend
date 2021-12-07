@@ -12,6 +12,7 @@ type Props = {
   lpToken: string;
   duration: number;
   onConfirmClick: () => void;
+  isDisabled?: boolean;
 };
 
 const LockFormFooter: FC<Props> = ({
@@ -20,6 +21,7 @@ const LockFormFooter: FC<Props> = ({
   duration,
   lpToken,
   onConfirmClick,
+  isDisabled = false,
 }) => {
   const estimatedAstroRewards = useEstimatedAstroRewards({
     lpToken,
@@ -57,7 +59,7 @@ const LockFormFooter: FC<Props> = ({
   const confirmButton: ConfirmButton = {
     title: "Lock LP Token",
     isLoading: data.txStep == TxStep.Estimating,
-    isDisabled: data.txStep != TxStep.Ready,
+    isDisabled: data.txStep != TxStep.Ready || isDisabled,
     type: "submit",
     onClick: onConfirmClick,
   };

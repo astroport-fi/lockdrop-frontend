@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
-import { PairResponse } from "modules/common";
-
 import LockForm from "components/lockdrop/lock/LockForm";
 
 type Props = {
@@ -11,7 +9,7 @@ type Props = {
 
 const Lock: FC<Props> = ({ lpToken }) => {
   return (
-    <Box m="0 auto" pt="12">
+    <Box m="0 auto" py="12">
       <Flex gridGap="8">
         <Box w="container.sm">
           <LockForm lpToken={lpToken} />

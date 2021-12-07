@@ -3,6 +3,7 @@ import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useQueryClient } from "react-query";
 import { TxStep } from "@arthuryeti/terra";
+import { useRouter } from "next/router";
 
 import { toAmount } from "libs/parse";
 import { useContracts } from "modules/common";
@@ -33,6 +34,7 @@ type FormValues = {
 
 const ProvideForm: FC = () => {
   const { astroToken } = useContracts();
+  const router = useRouter();
   const [showConfirm, setShowConfirm] = useState(false);
   const queryClient = useQueryClient();
   const methods = useForm<FormValues>({
@@ -70,6 +72,10 @@ const ProvideForm: FC = () => {
     queryClient.invalidateQueries("userInfo");
   };
 
+  const handleSuccessClose = () => {
+    router.push("/active-phase");
+  };
+
   const state = useProvide({
     astroLockdropAmount: toAmount(debouncedAstroLockdropAmount),
     astroAirdropAmount: toAmount(debouncedAstroAirdropAmount),
@@ -87,11 +93,6 @@ const ProvideForm: FC = () => {
     }
   }, [state.txStep]);
 
-  const resetForm = useCallback(() => {
-    methods.reset();
-    state.reset();
-  }, [state, methods]);
-
   if (state.txStep == TxStep.Broadcasting || state.txStep == TxStep.Posting) {
     return <FormLoading txHash={state.txHash} />;
   }
@@ -107,7 +108,7 @@ const ProvideForm: FC = () => {
             token2={uusd}
           />
         }
-        onCloseClick={resetForm}
+        onCloseClick={handleSuccessClose}
       />
     );
   }

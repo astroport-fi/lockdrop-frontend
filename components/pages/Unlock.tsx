@@ -10,7 +10,7 @@ type Props = {
 
 const Unlock: FC<Props> = ({ lpToken, duration }) => {
   return (
-    <Box m="0 auto" pt="12">
+    <Box m="0 auto" py="12">
       <Flex gridGap="8">
         <Box w="container.sm">
           <UnlockForm lpToken={lpToken} duration={duration} />

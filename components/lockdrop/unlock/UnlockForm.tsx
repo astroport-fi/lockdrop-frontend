@@ -48,7 +48,7 @@ const UnlockForm: FC<Props> = ({ lpToken, duration }) => {
   };
 
   const handleSuccessClose = () => {
-    router.push("/phase-1");
+    router.push("/active-phase");
   };
 
   useEffect(() => {

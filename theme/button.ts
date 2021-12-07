@@ -18,6 +18,11 @@ const button = {
         bg: "white",
         borderColor: "white",
         color: "brand.purple",
+        _disabled: {
+          bg: "brand.purple",
+          borderColor: "brand.purple",
+          color: "white",
+        },
       },
       _focus: {
         boxShadow: "none",

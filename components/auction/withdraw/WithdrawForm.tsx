@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { TxStep } from "@arthuryeti/terra";
+import { useRouter } from "next/router";
 
 import useDebounceValue from "hooks/useDebounceValue";
 import { toAmount } from "libs/parse";
@@ -23,6 +24,7 @@ type FormValues = {
 
 const WithdrawForm: FC = () => {
   const [showConfirm, setShowConfirm] = useState(false);
+  const router = useRouter();
   const methods = useForm<FormValues>({
     defaultValues: {
       token: {
@@ -40,7 +42,11 @@ const WithdrawForm: FC = () => {
     amount: toAmount(debouncedAmount),
   });
 
-  const { fee, txStep, submit, reset } = state;
+  const { fee, txStep, submit } = state;
+
+  const handleSuccessClose = () => {
+    router.push("/active-phase");
+  };
 
   useEffect(() => {
     if (txStep == TxStep.Broadcasting) {
@@ -61,7 +67,7 @@ const WithdrawForm: FC = () => {
             token1={{ asset: "uusd", amount: debouncedAmount }}
           />
         }
-        onCloseClick={reset}
+        onCloseClick={handleSuccessClose}
       />
     );
   }
@@ -96,7 +102,7 @@ const WithdrawForm: FC = () => {
                 token1={{ asset: "uusd", amount: debouncedAmount }}
               />
             }
-            onCloseClick={reset}
+            onCloseClick={() => setShowConfirm(false)}
           />
         )}
       </chakra.form>

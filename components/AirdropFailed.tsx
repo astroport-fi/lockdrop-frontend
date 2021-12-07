@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, Flex, HStack, Text, IconButton } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text, IconButton, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import Card from "components/Card";
@@ -12,7 +12,7 @@ type Props = {
 
 const MotionBox = motion(Box);
 
-const AirdropSuccess: FC<Props> = ({ onCloseClick }) => {
+const AirdropFailed: FC<Props> = ({ onCloseClick }) => {
   return (
     <MotionBox
       initial={{ opacity: 0, scale: 0.8 }}
@@ -40,11 +40,18 @@ const AirdropSuccess: FC<Props> = ({ onCloseClick }) => {
         </Flex>
 
         <Text variant="light">
-          Learn more about eligibility for the ASTRO airdrop [in this article]
+          Learn more about eligibility for the ASTRO airdrop{" "}
+          <Link
+            href="https://docs.astroport.fi/astroport/workstation/lockdrop/phase-0"
+            isExternal
+            color="brand.purple"
+          >
+            <a>in this article</a>
+          </Link>
         </Text>
       </Card>
     </MotionBox>
   );
 };
 
-export default AirdropSuccess;
+export default AirdropFailed;

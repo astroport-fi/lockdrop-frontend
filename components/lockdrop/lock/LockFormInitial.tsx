@@ -3,7 +3,6 @@ import {
   Text,
   Box,
   Flex,
-  Button,
   Slider,
   SliderTrack,
   SliderFilledTrack,
@@ -12,7 +11,7 @@ import {
 import { useFormContext, Controller } from "react-hook-form";
 import { num, useBalance } from "@arthuryeti/terra";
 
-import { LockState } from "modules/lockdrop";
+import { LockState, useLockdropLogic } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
 
 import Card from "components/Card";
@@ -28,6 +27,9 @@ type Params = {
 
 const LockFormInitial = ({ state, onClick }: Params) => {
   const { control, watch, setValue } = useFormContext();
+  const logic = useLockdropLogic();
+
+  console.log(logic);
 
   const token = watch("token");
   const duration = watch("duration");
@@ -125,6 +127,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           </Slider>
         </Box>
       </Card>
+
       {state.error && (
         <Card mt="3">
           <Text variant="light">{state.error}</Text>
@@ -137,6 +140,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
         duration={duration}
         data={state}
         onConfirmClick={onClick}
+        isDisabled={!logic.canDeposit}
       />
     </>
   );
