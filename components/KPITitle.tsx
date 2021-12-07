@@ -9,8 +9,8 @@ type Props = {
 
 const Phase1Lockdrop: FC<Props> = ({ label, value, asset }) => {
   return (
-    <Box fontWeight="500">
-      <Text fontSize="20px" whiteSpace="nowrap">
+    <Box>
+      <Text fontSize="20px" whiteSpace="nowrap" fontWeight="500">
         {value} {asset}
       </Text>
       <Text fontSize="12px" opacity="0.4">
