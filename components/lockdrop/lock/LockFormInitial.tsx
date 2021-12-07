@@ -19,6 +19,7 @@ import AmountInput from "components/AmountInput";
 import LockFormFooter from "components/lockdrop/lock/LockFormFooter";
 import DateInput from "components/DateInput";
 import LockActions from "components/lockdrop/lock/LockActions";
+import { useAirdrop } from "modules/airdrop";
 
 type Params = {
   state: LockState;
@@ -28,8 +29,6 @@ type Params = {
 const LockFormInitial = ({ state, onClick }: Params) => {
   const { control, watch, setValue } = useFormContext();
   const logic = useLockdropLogic();
-
-  console.log(logic);
 
   const token = watch("token");
   const duration = watch("duration");

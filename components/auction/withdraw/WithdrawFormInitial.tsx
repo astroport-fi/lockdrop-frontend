@@ -23,7 +23,9 @@ type Props = {
 const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
   const { control, setValue } = useFormContext();
   const userInfo = useUserInfo();
-  const balance = num(userInfo?.ust_delegated).div(ONE_TOKEN).toFixed(2);
+
+  const balance = userInfo?.ust_delegated ?? "0";
+  const max = num(balance).div(ONE_TOKEN).toFixed(2);
 
   const handleChange = (value: number) => {
     setValue("token", {
@@ -76,7 +78,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
         <Box mt="8">
           <FormSlider
             value={+token.amount}
-            max={+balance}
+            max={+max}
             ratio={1}
             onChange={handleChange}
           />
