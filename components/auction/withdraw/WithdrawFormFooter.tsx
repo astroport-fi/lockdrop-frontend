@@ -25,7 +25,7 @@ const WithdrawFormFooter: FC<Props> = ({ data, amount, onConfirmClick }) => {
     },
     {
       title: "My new UST in the pool",
-      value: fromTerraAmount(newUst, "0,0.00"),
+      value: newUst,
     },
   ];
 
