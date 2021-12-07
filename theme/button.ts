@@ -31,6 +31,7 @@ const button = {
     secondary: {
       outline: "none",
       fontSize: "sm",
+      borderColor: "rgba(255, 255, 255, 0.3)",
       bg: "rgba(255, 255, 255, 0.2)",
       color: "white",
       px: "6",
