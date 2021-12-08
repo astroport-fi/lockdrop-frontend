@@ -17,9 +17,26 @@ type Props = {
 };
 
 const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
-  const { control } = useFormContext();
+  const { control, watch } = useFormContext();
   const userInfo = useUserInfo();
   const airdropBalance = useAirdropBalance();
+  const uusd = watch("uusd");
+  const astroLockdrop = watch("astroLockdrop");
+  const astroAirdrop = watch("astroAirdrop");
+
+  const totalAstro = useMemo(() => {
+    let lockBalance = 0;
+    let airdropBalance = 0;
+
+    if (num(astroLockdrop.amount).gt(0)) {
+      lockBalance = num(astroLockdrop.amount).toNumber();
+    }
+    if (num(astroAirdrop.amount).gt(0)) {
+      airdropBalance = num(astroAirdrop.amount).toNumber();
+    }
+
+    return lockBalance + airdropBalance;
+  }, [astroAirdrop, astroLockdrop]);
 
   const lockdropBalance = useMemo(() => {
     if (userInfo == null) {
@@ -108,7 +125,12 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
         </Card>
       )}
 
-      <ProvideFormFooter data={state} onConfirmClick={onClick} />
+      <ProvideFormFooter
+        data={state}
+        astroAmount={totalAstro}
+        ustAmount={uusd.amount}
+        onConfirmClick={onClick}
+      />
     </>
   );
 };

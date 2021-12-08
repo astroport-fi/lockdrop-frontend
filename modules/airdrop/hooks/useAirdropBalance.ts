@@ -1,9 +1,11 @@
 import { useMemo } from "react";
-import { num } from "@arthuryeti/terra";
+import { num, useAddress } from "@arthuryeti/terra";
 
-import { useUserInfo } from "modules/airdrop";
+import { useAirdrop, useUserInfo } from "modules/airdrop";
 
 export const useAirdropBalance = () => {
+  const address = useAddress();
+  const airdrop = useAirdrop(address);
   const userInfo = useUserInfo();
 
   return useMemo(() => {
@@ -11,10 +13,14 @@ export const useAirdropBalance = () => {
       return null;
     }
 
+    if (num(userInfo.airdrop_amount).eq(0)) {
+      return airdrop.amount;
+    }
+
     return num(userInfo.airdrop_amount)
       .minus(userInfo.delegated_amount)
       .toString();
-  }, [userInfo]);
+  }, [userInfo, airdrop]);
 };
 
 export default useAirdropBalance;

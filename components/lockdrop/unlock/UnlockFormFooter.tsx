@@ -5,6 +5,7 @@ import { ONE_TOKEN } from "constants/constants";
 import { useEstimatedAstroRewards, usePool } from "modules/lockdrop";
 
 import CommonFooter, { ConfirmButton } from "components/CommonFooter";
+import numeral from "numeral";
 
 type Props = {
   data: any;
@@ -35,13 +36,15 @@ const UnlockFormFooter: FC<Props> = ({
 
     const incentive = num(pool.incentives_share).div(ONE_TOKEN);
 
-    return num(estimatedAstroRewards).div(incentive).toFixed(2);
+    return num(estimatedAstroRewards).div(incentive).times(100).toFixed(2);
   }, [pool, estimatedAstroRewards]);
+
+  const rewards = numeral(estimatedAstroRewards).format("0,0.00");
 
   const cells = [
     {
       title: "My new est. ASTRO rewards",
-      value: `${fromTerraAmount(estimatedAstroRewards)} ASTRO`,
+      value: `${rewards} ASTRO`,
     },
     {
       title: "My current share of this pool’s ASTRO rewards",
