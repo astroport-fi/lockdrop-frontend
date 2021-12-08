@@ -6,6 +6,7 @@ type Props = {
   asset: string;
   initial?: string;
   label?: string;
+  hideLabel?: boolean;
   onChange: (value: string) => void;
 };
 
@@ -13,6 +14,7 @@ const BalanceLP: FC<Props> = ({
   asset,
   label = "In Wallet",
   initial,
+  hideLabel = false,
   onChange,
 }) => {
   const balance = useBalance(asset);

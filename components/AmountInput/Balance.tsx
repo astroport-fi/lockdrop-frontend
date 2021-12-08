@@ -9,6 +9,7 @@ type Props = {
   asset: string;
   label?: string;
   initial?: string;
+  hideLabel?: boolean;
   onChange: (value: string) => void;
 };
 
@@ -16,6 +17,7 @@ const Balance: FC<Props> = ({
   asset,
   initial,
   label = "In Wallet",
+  hideLabel = false,
   onChange,
 }) => {
   const { getSymbol } = useTokenInfo();
@@ -26,9 +28,11 @@ const Balance: FC<Props> = ({
     <Flex align="center" justify="space-between" mt="1">
       <Box>
         <HStack spacing="4">
-          <Text fontSize="sm" fontWeight="500" color="white.400">
-            {label}:
-          </Text>{" "}
+          {!hideLabel && (
+            <Text fontSize="sm" fontWeight="500" color="white.400">
+              {label}:
+            </Text>
+          )}{" "}
           <Text fontSize="sm" color="white" ml="2">
             {formatAsset(initial ?? balance, getSymbol(asset))}
           </Text>

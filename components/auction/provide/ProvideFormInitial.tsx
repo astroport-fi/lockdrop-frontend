@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from "react";
-import { Box, Text, Link } from "@chakra-ui/react";
+import { Box, Text, Link, HStack } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
-import { num } from "@arthuryeti/terra";
+import { num, fromTerraAmount } from "@arthuryeti/terra";
 
 import { ProvideState } from "modules/auction";
 import { useAirdropBalance } from "modules/airdrop";
@@ -9,6 +9,7 @@ import { useUserInfo } from "modules/lockdrop";
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
+import Single from "components/AmountInput/Single";
 import ProvideFormFooter from "components/auction/provide/ProvideFormFooter";
 
 type Props = {
@@ -48,6 +49,8 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
       .toString();
   }, [userInfo]);
 
+  const totalBalance = num(lockdropBalance).plus(airdropBalance).toString();
+
   return (
     <>
       <Box px="6" mb="4">
@@ -72,42 +75,57 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
       </Card>
 
       <Card>
-        <Text variant="light" mb="2">
-          ASTRO from Lockdrop
-        </Text>
-        <Controller
-          name="astroLockdrop"
-          control={control}
-          rules={{ required: true }}
-          render={({ field }) => (
-            <AmountInput
-              {...field}
-              balance={lockdropBalance}
-              balanceLabel="In Lockdrop"
-              isSingle
-            />
-          )}
-        />
-      </Card>
+        <HStack spacing="6">
+          <Box flex="1">
+            <Single asset={astroLockdrop.asset} />
+          </Box>
+          <Box flex="1" textAlign="right">
+            <Text fontSize="xl">{fromTerraAmount(totalBalance, "0,0.00")}</Text>
+            <Text variant="light" fontSize="xs">
+              Available ASTRO Balance
+            </Text>
+          </Box>
+        </HStack>
 
-      <Card mt="2">
-        <Text variant="light" mb="2">
-          ASTRO from Airdrop
-        </Text>
-
-        <Controller
-          name="astroAirdrop"
-          control={control}
-          rules={{ required: true }}
-          render={({ field }) => (
-            <AmountInput
-              {...field}
-              balance={airdropBalance}
-              balanceLabel="In Airdrop"
-              isSingle
+        <HStack spacing="6" mt="12">
+          <Box flex="1">
+            <Text mb="2">ASTRO from Phase 1</Text>
+            <Controller
+              name="astroLockdrop"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <AmountInput
+                  {...field}
+                  hideLabel
+                  hideBalanceLabel
+                  balance={lockdropBalance}
+                  balanceLabel="In Lockdrop"
+                  isSingle
+                />
+              )}
             />
-          )}
-        />
+          </Box>
+          <Box flex="1">
+            <Text mb="2">ASTRO from Airdrop</Text>
+
+            <Controller
+              name="astroAirdrop"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <AmountInput
+                  {...field}
+                  balance={airdropBalance}
+                  hideBalanceLabel
+                  hideLabel
+                  balanceLabel="In Airdrop"
+                  isSingle
+                />
+              )}
+            />
+          </Box>
+        </HStack>
       </Card>
 
       <Card mt="2">

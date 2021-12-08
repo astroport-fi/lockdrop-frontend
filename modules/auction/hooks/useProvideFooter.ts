@@ -31,7 +31,7 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
       .toNumber();
 
     return {
-      shareOfPool: (shareOfPoolUst + shareOfPoolAstro) * 100,
+      shareOfPool: ((shareOfPoolUst + shareOfPoolAstro) / 2) * 100,
     };
   }, [astroAmount, ustAmount, state]);
 };
