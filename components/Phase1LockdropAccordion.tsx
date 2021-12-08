@@ -133,7 +133,6 @@ const Phase1LockdropAccordion = () => {
                     fontFamily="WhyteInktrap"
                     fontSize="lg"
                     mt="8"
-                    mb="2"
                   >
                     Timeline Phase 1
                   </Heading>
@@ -141,6 +140,7 @@ const Phase1LockdropAccordion = () => {
                     direction={["column", null, "row"]}
                     align="flex-end"
                     flexWrap="wrap"
+                    mt={[null, null, "-10"]}
                   >
                     <Box
                       width={["100%", null, "60%"]}
@@ -250,14 +250,14 @@ const Phase1LockdropAccordion = () => {
                             the longer it’s locked for, the more ASTRO you will
                             receive. Upon conclusion of Phase 1, Phase 2 will
                             begin with the ASTRO-UST liquidity bootstrapping
-                            pool opening for deposits.{" "}
-                            <Link
+                            pool opening for deposits.
+                            {/* <Link
                               color="#85F7F0"
                               fontWeight="bold"
                               href="/phase-2"
                             >
                               Learn more about Phase 2
-                            </Link>
+                            </Link> */}
                           </Text>
                         </Box>
                         {/* <Box>
