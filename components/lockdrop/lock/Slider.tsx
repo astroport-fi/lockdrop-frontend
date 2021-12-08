@@ -102,21 +102,14 @@ const LockFormInitial = ({ state, onClick }: Params) => {
               The longer you lock, the more ASTRO rewards you will receive.
             </Text>
           </Box>
-          <Box position="relative">
-            <Text position="absolute" top="3" right="4">
-              weeks
-            </Text>
-            <Controller
-              name="duration"
-              control={control}
-              rules={{
-                required: true,
-              }}
-              render={({ field }) => (
-                <DateInput max={52} inputPaddingRight="4.5rem" {...field} />
-              )}
-            />
-          </Box>
+          <Controller
+            name="duration"
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field }) => <DateInput max={52} {...field} />}
+          />
         </Flex>
         <Box mt="8">
           <Slider

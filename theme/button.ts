@@ -103,7 +103,22 @@ const button = {
         color: "white",
       },
     },
-
+    sliderPercent: {
+      border: "0",
+      color: "white",
+      opacity: "0.4",
+      display: "flex",
+      flexDirection: "column",
+      justify: "center",
+      p: "0",
+      minW: "0",
+      _hover: {
+        opacity: "0.6",
+      },
+      _focus: {
+        boxShadow: "none",
+      },
+    },
     icon: {
       bg: "transparent",
       outline: "none",
