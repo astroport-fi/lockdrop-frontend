@@ -19,7 +19,6 @@ import AmountInput from "components/AmountInput";
 import LockFormFooter from "components/lockdrop/lock/LockFormFooter";
 import DateInput from "components/DateInput";
 import LockActions from "components/lockdrop/lock/LockActions";
-import { useAirdrop } from "modules/airdrop";
 
 type Params = {
   state: LockState;
@@ -28,10 +27,10 @@ type Params = {
 
 const LockFormInitial = ({ state, onClick }: Params) => {
   const { control, watch, setValue } = useFormContext();
-  const logic = useLockdropLogic();
 
   const token = watch("token");
   const duration = watch("duration");
+  const logic = useLockdropLogic({ lpToken: token.asset, duration });
   const balance = useBalance(token.asset);
   const max = num(balance).div(ONE_TOKEN).toNumber();
 

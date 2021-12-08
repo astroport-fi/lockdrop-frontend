@@ -2,33 +2,23 @@ import { useMemo } from "react";
 import dayjs from "dayjs";
 import { num } from "@arthuryeti/terra";
 
-import { useLockedLpAmount, useConfig, useUserInfo } from "modules/lockdrop";
+import { useConfig, useUserInfo } from "modules/auction";
 import { ONE_TOKEN } from "constants/constants";
 
-type Opts = {
-  lpToken: string;
-  duration: number;
-};
-
-export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
+export const useAuctionLogic = () => {
   const currentTimestamp = dayjs().unix();
   const config = useConfig();
   const userInfo = useUserInfo();
-  const stakedAmount = useLockedLpAmount(lpToken);
+  const balance = userInfo?.ust_delegated ?? "0";
 
   return useMemo(() => {
     let canDeposit = true;
     let canWithdraw = true;
-    let max = num(stakedAmount).div(ONE_TOKEN).toNumber();
+    let max = num(balance).div(ONE_TOKEN).toNumber();
 
     if (config == null || userInfo == null) {
       return { canDeposit: false, canWithdraw: false, max };
     }
-
-    const lockupInfo = userInfo.lockup_infos.find(
-      (info) =>
-        info.terraswap_lp_token === lpToken && info.duration === duration
-    );
 
     const phaseOpenUntil =
       config.init_timestamp + config.deposit_window + config.withdrawal_window;
@@ -60,7 +50,7 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
       currentTimestamp < phaseOpenUntil
     ) {
       max =
-        num(lockupInfo.lp_units_locked).div(ONE_TOKEN).div(2).toNumber() *
+        num(balance).div(ONE_TOKEN).div(2).toNumber() *
         ((currentTimestamp - withdraw50PercentUntil) /
           (phaseOpenUntil - withdraw50PercentUntil));
     }
@@ -70,7 +60,7 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
       canWithdraw,
       max,
     };
-  }, [config, userInfo, currentTimestamp, stakedAmount, duration, lpToken]);
+  }, [config, userInfo, currentTimestamp, balance]);
 };
 
-export default useLockdropLogic;
+export default useAuctionLogic;

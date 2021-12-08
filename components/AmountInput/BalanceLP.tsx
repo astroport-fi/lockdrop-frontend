@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, Text, Flex, chakra } from "@chakra-ui/react";
+import { Box, Text, Flex, chakra, HStack } from "@chakra-ui/react";
 import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
 type Props = {
@@ -21,14 +21,14 @@ const BalanceLP: FC<Props> = ({
   return (
     <Flex align="center" justify="space-between" mt="1">
       <Box>
-        <Text>
-          <Text as="span" fontSize="sm" fontWeight="500" color="white.400">
+        <HStack spacing="4">
+          <Text fontSize="sm" fontWeight="500" color="white.400" maxW="24">
             {label}:
           </Text>{" "}
-          <Text as="span" fontSize="sm" color="white" ml="2">
+          <Text fontSize="sm" color="white" ml="2">
             {fromTerraAmount(initial ?? balance, "0,0.00")}
           </Text>
-        </Text>
+        </HStack>
       </Box>
       <Box>
         <chakra.button

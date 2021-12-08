@@ -4,7 +4,7 @@ import { useFormContext, Controller } from "react-hook-form";
 import { num } from "@arthuryeti/terra";
 
 import { ONE_TOKEN } from "constants/constants";
-import { WithdrawState, useUserInfo } from "modules/auction";
+import { WithdrawState, useUserInfo, useAuctionLogic } from "modules/auction";
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
@@ -25,7 +25,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
   const userInfo = useUserInfo();
 
   const balance = userInfo?.ust_delegated ?? "0";
-  const max = num(balance).div(ONE_TOKEN).toFixed(2);
+  const { max } = useAuctionLogic();
 
   const handleChange = (value: number) => {
     setValue("token", {
@@ -78,8 +78,8 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
         <Box mt="8">
           <FormSlider
             value={+token.amount}
-            max={+max}
-            ratio={1}
+            max={max}
+            maxAllowed={num(balance).div(ONE_TOKEN).toNumber()}
             onChange={handleChange}
           />
         </Box>

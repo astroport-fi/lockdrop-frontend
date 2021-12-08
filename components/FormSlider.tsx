@@ -12,11 +12,13 @@ import {
 type Props = {
   value: number;
   max: number;
-  ratio?: number;
+  maxAllowed?: number;
   onChange: (value: number) => void;
 };
 
-const FormSlider: FC<Props> = ({ value, max, ratio = 0.8, onChange }) => {
+const FormSlider: FC<Props> = ({ value, max, maxAllowed, onChange }) => {
+  const ratio = maxAllowed / max;
+
   const renderMaxUnlockableLiquidity = () => {
     if (ratio < 1) {
       return (
@@ -63,7 +65,7 @@ const FormSlider: FC<Props> = ({ value, max, ratio = 0.8, onChange }) => {
             defaultValue={0}
             value={value}
             focusThumbOnChange={false}
-            max={max * ratio}
+            max={max}
             onChange={onChange}
           >
             <SliderTrack>

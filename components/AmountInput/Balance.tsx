@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { Box, Text, Flex, chakra } from "@chakra-ui/react";
+import { Box, Text, Flex, chakra, HStack } from "@chakra-ui/react";
 import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
 import { useTokenInfo } from "modules/common";
-import { lookup, formatAsset } from "libs/parse";
+import { formatAsset } from "libs/parse";
 
 type Props = {
   asset: string;
@@ -25,14 +25,14 @@ const Balance: FC<Props> = ({
   return (
     <Flex align="center" justify="space-between" mt="1">
       <Box>
-        <Text>
-          <Text as="span" fontSize="sm" fontWeight="500" color="white.400">
+        <HStack spacing="4">
+          <Text fontSize="sm" fontWeight="500" color="white.400">
             {label}:
           </Text>{" "}
-          <Text as="span" fontSize="sm" color="white" ml="2">
+          <Text fontSize="sm" color="white" ml="2">
             {formatAsset(initial ?? balance, getSymbol(asset))}
           </Text>
-        </Text>
+        </HStack>
       </Box>
       <Box>
         <chakra.button

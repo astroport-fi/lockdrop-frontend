@@ -8,12 +8,12 @@ import {
   UnlockState,
   useLockdropLogic,
 } from "modules/lockdrop";
-import { ONE_TOKEN } from "constants/constants";
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
 import FormSlider from "components/FormSlider";
 import UnlockFormFooter from "components/lockdrop/unlock/UnlockFormFooter";
+import { ONE_TOKEN } from "constants/constants";
 
 type Params = {
   state: UnlockState;
@@ -23,19 +23,18 @@ type Params = {
 
 const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
   const { control, watch, setValue } = useFormContext();
-  const logic = useLockdropLogic();
 
   const lpToken = watch("lpToken");
   const stakedAmount = useLockedLpAmount(lpToken.asset);
-  const max = num(stakedAmount).div(ONE_TOKEN).toNumber();
+  const { max } = useLockdropLogic({ lpToken: lpToken.asset, duration });
 
   const amount = useMemo(() => {
     if (num(lpToken.amount).eq(0) || lpToken.amount == "") {
-      return null;
+      return num(stakedAmount).div(ONE_TOKEN).toString();
     }
 
     return num(max).minus(lpToken.amount).toString();
-  }, [max, lpToken.amount]);
+  }, [max, lpToken.amount, stakedAmount]);
 
   const handleChange = (value: number) => {
     setValue("lpToken", {
@@ -79,15 +78,21 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
-            <AmountInput balance={stakedAmount} {...field} isLpToken isSingle />
+            <AmountInput
+              balance={stakedAmount}
+              balanceLabel="Withdrawable LP Tokens"
+              {...field}
+              isLpToken
+              isSingle
+            />
           )}
         />
 
         <Box mt="8">
           <FormSlider
             value={+lpToken.amount}
-            max={+max}
-            ratio={logic.ratio}
+            max={num(stakedAmount).div(ONE_TOKEN).toNumber()}
+            maxAllowed={max}
             onChange={handleChange}
           />
         </Box>

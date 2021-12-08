@@ -11,16 +11,16 @@ type Response = {
   claimable_generator_astro_debt: string;
   claimable_generator_proxy_debt: string;
   lockup_infos: {
+    astro_rewards?: string;
     terraswap_lp_token: string;
     lp_units_locked: string;
     withdrawal_flag: boolean;
-    astro_rewards?: string;
-    duration: string;
+    duration: number;
     generator_astro_debt: string;
     claimable_generator_astro_debt: string;
     generator_proxy_debt: string;
     claimable_generator_proxy_debt: string;
-    unlock_timestamp: string;
+    unlock_timestamp: number;
     astroport_lp_units?: string;
     astroport_lp_token?: string;
     astroport_lp_transferred?: string;

@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { num } from "@arthuryeti/terra";
 
 import { useConfig, useLockState, usePool } from "modules/lockdrop";
+import { ONE_TOKEN } from "constants/constants";
 
 type Options = {
   duration: number;

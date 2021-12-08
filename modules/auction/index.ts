@@ -6,3 +6,4 @@ export * from "./createProvideMsgs";
 export * from "./createWithdrawMsgs";
 export * from "./hooks/useProvide";
 export * from "./hooks/useWithdraw";
+export * from "./hooks/useAuctionLogic";
