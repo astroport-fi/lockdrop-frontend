@@ -11,7 +11,7 @@ import {
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
-import FormSlider from "components/FormSlider";
+import AstroSlider from "components/AstroSlider";
 import UnlockFormFooter from "components/lockdrop/unlock/UnlockFormFooter";
 import { ONE_TOKEN } from "constants/constants";
 
@@ -89,11 +89,12 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
         />
 
         <Box mt="8">
-          <FormSlider
+          <AstroSlider
             value={+lpToken.amount}
             max={num(stakedAmount).div(ONE_TOKEN).toNumber()}
             maxAllowed={max}
             onChange={handleChange}
+            onClick={() => handleChange(0)}
           />
         </Box>
       </Card>
