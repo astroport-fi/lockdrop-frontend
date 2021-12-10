@@ -10,7 +10,7 @@ type Props = {
 };
 
 const MyActionsTd: FC<Props> = ({ name, duration }) => {
-  const logic = useLockdropLogic({ lpToken: name, duration: 2 });
+  const logic = useLockdropLogic({ lpToken: name, duration });
 
   if (!logic.canWithdraw) {
     return (
@@ -20,7 +20,7 @@ const MyActionsTd: FC<Props> = ({ name, duration }) => {
           variant="secondary"
           size="sm"
           isFullWidth
-          isDisabled={!logic.canDeposit}
+          isDisabled={!logic.canWithdraw}
         >
           Unlock LP Tokens
         </Button>

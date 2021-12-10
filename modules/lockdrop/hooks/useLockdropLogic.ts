@@ -45,6 +45,17 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
 
     if (depositAllowedUntil < currentTimestamp) {
       canDeposit = false;
+
+      if (lockupInfo?.withdrawal_flag) {
+        canWithdraw = false;
+      }
+    }
+
+    if (
+      depositAllowedUntil < currentTimestamp &&
+      currentTimestamp < withdraw50PercentUntil
+    ) {
+      max = max / 2;
     }
 
     if (
