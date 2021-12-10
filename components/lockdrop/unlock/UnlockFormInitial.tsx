@@ -33,8 +33,8 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
       return num(stakedAmount).div(ONE_TOKEN).toString();
     }
 
-    return num(max).minus(lpToken.amount).toString();
-  }, [max, lpToken.amount, stakedAmount]);
+    return num(stakedAmount).div(ONE_TOKEN).minus(lpToken.amount).toString();
+  }, [lpToken.amount, stakedAmount]);
 
   const handleChange = (value: number) => {
     setValue("lpToken", {
