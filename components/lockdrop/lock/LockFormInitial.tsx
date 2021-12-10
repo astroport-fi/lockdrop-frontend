@@ -46,6 +46,10 @@ const LockFormInitial = ({ state, onClick }: Params) => {
     setValue("duration", value);
   };
 
+  const handleDurationClick = (value: 5) => {
+    setValue("duration", value);
+  };
+
   const labels = ["2 weeks", "", "", "", "52 weeks"];
 
   return (
@@ -62,6 +66,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
         </Text>
       </Card>
       <Card>
+        caca
         <Controller
           name="token"
           control={control}
@@ -149,7 +154,11 @@ const LockFormInitial = ({ state, onClick }: Params) => {
                   [labels.length - 1]: "end",
                 }[index] || "center";
               return (
-                <Button key={label} variant="sliderPercent">
+                <Button
+                  key={label}
+                  variant="sliderPercent"
+                  onClick={handleDurationClick}
+                >
                   <VStack spacing={2} align={alignment}>
                     <Box
                       w="6px"
