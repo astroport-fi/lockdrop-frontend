@@ -39,6 +39,10 @@ const button = {
         bg: "white",
         borderColor: "white",
         color: "brand.dark",
+        _disabled: {
+          bg: "rgba(255, 255, 255, 0.2)",
+          color: "white",
+        },
       },
       _active: {
         bg: "white",

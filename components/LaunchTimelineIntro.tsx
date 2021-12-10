@@ -13,23 +13,22 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 
+import { useAstroApp } from "modules/common";
+
 import DateNumber from "components/DateNumber";
 import CardHeader from "components/CardHeader";
 import Card from "components/Card";
 
-type Props = {
-  phase?: number;
-};
-
 const LaunchTimelineIntro = () => {
-  const todayDate = dayjs().format("D");
-  const endDate = dayjs("2021-11-21:00:00.000Z");
-  const endFormattedDate = endDate.format("DD/MM/YY");
-  const startPhase1Date = endDate.subtract(14, "days").format("DD/MM/YY");
-  const startPhase2Date = endDate.subtract(7, "days").format("DD/MM/YY");
+  const { phase1StartDate, phase2StartDate } = useAstroApp();
+  const endDate = phase1StartDate?.add(14, "day");
+  const startPhase1Date = phase1StartDate?.format("DD/MM/YY");
+  const startPhase2Date = phase2StartDate?.format("DD/MM/YY");
+  const formattedEndDate = endDate?.format("DD/MM/YY");
 
   function checkToday(index) {
-    return endDate.subtract(index, "days").format("D") === todayDate;
+    const today = dayjs();
+    return endDate?.subtract(index, "days").isSame(today, "day");
   }
 
   function printDate(phaseNumber, start, end) {
@@ -57,6 +56,7 @@ const LaunchTimelineIntro = () => {
 
   const phase1 = printDate(1, 14, 7);
   const phase2 = printDate(2, 7, 0);
+
   return (
     <Box>
       <CardHeader label="Launch Timeline" />
@@ -207,7 +207,7 @@ const LaunchTimelineIntro = () => {
                     color="#6C758F"
                     mb={["0", null, null, "6"]}
                   >
-                    {endFormattedDate}
+                    {formattedEndDate}
                   </Text>
                 </Box>
               </Box>

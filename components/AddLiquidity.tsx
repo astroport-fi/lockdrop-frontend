@@ -12,7 +12,12 @@ import {
 import Link from "next/link";
 import { fromTerraAmount } from "@arthuryeti/terra";
 
-import { useUserInfo, useAuctionState, useAstroPrice } from "modules/auction";
+import {
+  useUserInfo,
+  useAuctionState,
+  useAstroPrice,
+  useAuctionLogic,
+} from "modules/auction";
 
 import KPITitle from "components/KPITitle";
 import CardHeader from "components/CardHeader";
@@ -23,6 +28,63 @@ const AddLiquidity = () => {
   const userInfo = useUserInfo();
   const auctionState = useAuctionState();
   const price = useAstroPrice();
+  const logic = useAuctionLogic();
+
+  const renderProvideButton = () => {
+    if (!logic.canDeposit) {
+      return (
+        <Button
+          as="a"
+          variant="primary"
+          width="208px"
+          isDisabled={!logic.canDeposit}
+        >
+          Provide Liquidity
+        </Button>
+      );
+    }
+
+    return (
+      <Link href="/provide" passHref>
+        <Button
+          as="a"
+          variant="primary"
+          width="208px"
+          isDisabled={!logic.canDeposit}
+        >
+          Provide Liquidity
+        </Button>
+      </Link>
+    );
+  };
+
+  const renderWithdrawButton = () => {
+    if (!logic.canWithdraw) {
+      return (
+        <Button
+          as="a"
+          variant="secondary"
+          width="208px"
+          isDisabled={!logic.canWithdraw}
+        >
+          Withdraw UST
+        </Button>
+      );
+    }
+
+    return (
+      <Link href="/withdraw" passHref>
+        <Button
+          as="a"
+          variant="secondary"
+          width="208px"
+          isDisabled={!logic.canWithdraw}
+        >
+          Withdraw UST
+        </Button>
+      </Link>
+    );
+  };
 
   return (
     <Box>
@@ -165,16 +227,8 @@ const AddLiquidity = () => {
                 direction={["column", null, "row"]}
                 spacing={["4", null, "7"]}
               >
-                <Link href="/provide" passHref>
-                  <Button as="a" variant="primary" width="208px">
-                    Provide Liquidity
-                  </Button>
-                </Link>
-                <Link href="/withdraw" passHref>
-                  <Button as="a" variant="secondary" width="208px">
-                    Withdraw UST
-                  </Button>
-                </Link>
+                {renderProvideButton()}
+                {renderWithdrawButton()}
               </Stack>
             </VStack>
             <Box

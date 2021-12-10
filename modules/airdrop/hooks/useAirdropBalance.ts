@@ -13,6 +13,10 @@ export const useAirdropBalance = () => {
       return null;
     }
 
+    if (airdrop == null) {
+      return "0";
+    }
+
     if (num(userInfo.airdrop_amount).eq(0)) {
       return airdrop.amount;
     }

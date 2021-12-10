@@ -1,4 +1,4 @@
-import { num, toBase64 } from "@arthuryeti/terra";
+import { num } from "@arthuryeti/terra";
 import { Coin, MsgExecuteContract } from "@terra-money/terra.js";
 
 type CreateProvideMsgsOptions = {

@@ -63,14 +63,7 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
           Provide liquidity to the ASTRO - UST bootstrapping pool. Make sure to
           read the phase 2 explainer to fully understand the potential risks and
           benefits. To supply a single asset, leave the second asset&apos;s
-          field blank or type &apos;0&apos;.{" "}
-          <Link
-            href="https://astroport.medium.com/hello-astro-announcing-the-astroport-governance-token-drops-a07a1bf3ed94"
-            target="_blank"
-            color="#51947B"
-          >
-            learn more
-          </Link>
+          field blank or type &apos;0&apos;.
         </Text>
       </Card>
 
