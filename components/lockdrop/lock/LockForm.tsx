@@ -103,7 +103,6 @@ const LockForm: FC<Props> = ({ lpToken }) => {
         {!showConfirm && (
           <LockFormInitial state={state} onClick={() => setShowConfirm(true)} />
         )}
-
         {showConfirm && (
           <LockFormDisclaimer onCloseClick={() => setShowConfirm(false)} />
         )}

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import React, { FC } from "react";
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, HStack, Text, Link } from "@chakra-ui/react";
 import { useTable, useSortBy } from "react-table";
 
 import Table from "components/Table";
@@ -54,7 +54,15 @@ const PoolTable: FC<Props> = ({ columns, data }) => {
       ) : (
         <Tr>
           <Text fontSize="sm">
-            Migrate Terraswap LP Tokens to get ASTRO rewards. Learn More
+            Migrate Terraswap LP Tokens to get ASTRO rewards.{" "}
+            <Link
+              href="https://astroport.medium.com/countdown-initiated-announcing-astroports-astrodrop-and-launch-date-229d3d8b61cb"
+              color="brand.purple"
+              ml="1"
+              isExternal
+            >
+              Learn More
+            </Link>
           </Text>
         </Tr>
       )}

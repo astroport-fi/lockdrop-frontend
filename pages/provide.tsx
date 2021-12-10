@@ -12,7 +12,7 @@ const ProvidePage: NextPage = () => {
       <Head>
         <title>Astroport</title>
       </Head>
-      <Flex>
+      <Flex mb="12">
         <Provide />
       </Flex>
     </>
