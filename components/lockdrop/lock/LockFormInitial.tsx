@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Text,
-  Box,
-  Flex,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-  Button,
-  VStack,
-} from "@chakra-ui/react";
+import { Text, Box, Flex, Button, VStack } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { num, useBalance } from "@arthuryeti/terra";
 
@@ -17,12 +7,11 @@ import { LockState, useLockdropLogic } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
 
 import Card from "components/Card";
+import Slider from "components/Slider";
 import AmountInput from "components/AmountInput";
 import LockFormFooter from "components/lockdrop/lock/LockFormFooter";
 import DateInput from "components/DateInput";
 import LockActions from "components/lockdrop/lock/LockActions";
-
-import SliderHandleIcon from "components/icons/SliderHandleIcon";
 
 type Params = {
   state: LockState;
@@ -45,8 +34,6 @@ const LockFormInitial = ({ state, onClick }: Params) => {
   const handleDurationChange = (value: number) => {
     setValue("duration", value);
   };
-
-  const labels = ["2 weeks", "", "", "", "52 weeks"];
 
   return (
     <>
@@ -76,7 +63,16 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           )}
         />
         <Box mt="8">
-          <Slider
+          {/* <Slider
+            min={0}
+            defaultValue={0}
+            value={+token.amount}
+            max={max}
+            focusThumbOnChange={false}
+            step={0.01}
+            onChange={handleChange}
+          /> */}
+          {/* <Slider
             variant="brand"
             size="lg"
             min={0}
@@ -91,7 +87,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
               <SliderFilledTrack />
             </SliderTrack>
             <SliderThumb />
-          </Slider>
+          </Slider> */}
         </Box>
       </Card>
       <Card mt="2">
@@ -120,58 +116,15 @@ const LockFormInitial = ({ state, onClick }: Params) => {
         </Flex>
         <Box mt="8">
           <Slider
-            variant="brand"
-            size="lg"
             min={2}
-            value={duration}
+            minLabel="2 weeks"
             max={52}
-            focusThumbOnChange={false}
             step={1}
+            maxLabel="52 weeks"
+            value={duration}
             onChange={handleDurationChange}
-          >
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb w="6" h="6">
-              <SliderHandleIcon
-                color="#000D37"
-                w="6px"
-                h="12px"
-                opacity="0.3"
-              />
-            </SliderThumb>
-          </Slider>
-          <Flex justify="space-between" mt="2">
-            {labels.map((label, index) => {
-              const alignment =
-                {
-                  0: "start",
-                  [labels.length - 1]: "end",
-                }[index] || "center";
-
-              const target = index * 0.25 * 52;
-              return (
-                <Button
-                  key={label}
-                  variant="sliderPercent"
-                  onClick={() => handleDurationChange(target)}
-                >
-                  <VStack spacing={2} align={alignment}>
-                    <Box
-                      w="6px"
-                      h="6px"
-                      bg="white"
-                      borderRadius="100%"
-                      opacity="0.4"
-                    />
-                    <Text textStyle="small" color="white">
-                      {label}
-                    </Text>
-                  </VStack>
-                </Button>
-              );
-            })}
-          </Flex>
+            onClick={handleDurationChange}
+          />
         </Box>
       </Card>
 
