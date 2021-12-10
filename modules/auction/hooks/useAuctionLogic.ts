@@ -33,6 +33,10 @@ export const useAuctionLogic = () => {
       canWithdraw = true;
     }
 
+    if (num(balance).div(ONE_TOKEN).eq(0)) {
+      canWithdraw = false;
+    }
+
     if (depositAllowedUntil < currentTimestamp) {
       canDeposit = false;
     }
