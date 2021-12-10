@@ -17,8 +17,8 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
   const stakedAmount = useLockedLpAmount(lpToken);
 
   return useMemo(() => {
-    let canDeposit = true;
-    let canWithdraw = true;
+    let canDeposit = false;
+    let canWithdraw = false;
     let max = num(stakedAmount).div(ONE_TOKEN).toNumber();
 
     if (config == null || userInfo == null) {
@@ -37,6 +37,11 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
       config.init_timestamp +
       config.deposit_window +
       config.withdrawal_window / 2;
+
+    if (config.init_timestamp < currentTimestamp) {
+      canDeposit = true;
+      canWithdraw = true;
+    }
 
     if (depositAllowedUntil < currentTimestamp) {
       canDeposit = false;

@@ -121,7 +121,7 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
                   {startPhase1Date}
                 </Text>
                 <Text fontSize="20px">Phase 1</Text>
-                <Text fontSize="14px">Lockdrop</Text>
+                <Text fontSize="14px">The Lockdrop</Text>
               </Box>
             </Box>
           </Box>
@@ -167,8 +167,9 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
                 </Text>
                 <Text fontSize="20px">Phase 2</Text>
                 <Text fontSize="14px">
-                  Reserve Airdrop + add liquidity to the ASTRO - UST bootstrap
-                  pool
+                  The ASTRO-UST Bootstrapping Pool
+                  {/* Reserve Airdrop + add liquidity to the ASTRO - UST bootstrap
+                  pool */}
                 </Text>
               </Box>
             </Box>
@@ -197,9 +198,10 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
                 >
                   {formattedEndDate}
                 </Text>
-                <Text fontSize="20px">Astroport Launch</Text>
+                <Text fontSize="20px">Phase 3</Text>
                 <Text fontSize="14px">
-                  Claim your airdrops and add liquidty to pools.
+                  Astroport launch!
+                  {/* Claim your airdrops and add liquidty to pools. */}
                 </Text>
               </Box>
             </Box>

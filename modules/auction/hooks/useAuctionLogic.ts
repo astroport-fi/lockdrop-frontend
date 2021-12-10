@@ -12,8 +12,8 @@ export const useAuctionLogic = () => {
   const balance = userInfo?.ust_delegated ?? "0";
 
   return useMemo(() => {
-    let canDeposit = true;
-    let canWithdraw = true;
+    let canDeposit = false;
+    let canWithdraw = false;
     let max = num(balance).div(ONE_TOKEN).toNumber();
 
     if (config == null || userInfo == null) {
@@ -27,6 +27,11 @@ export const useAuctionLogic = () => {
       config.init_timestamp +
       config.deposit_window +
       config.withdrawal_window / 2;
+
+    if (config.init_timestamp < currentTimestamp) {
+      canDeposit = true;
+      canWithdraw = true;
+    }
 
     if (depositAllowedUntil < currentTimestamp) {
       canDeposit = false;
@@ -54,6 +59,12 @@ export const useAuctionLogic = () => {
         ((currentTimestamp - withdraw50PercentUntil) /
           (phaseOpenUntil - withdraw50PercentUntil));
     }
+
+    console.log({
+      canDeposit,
+      canWithdraw,
+      max,
+    });
 
     return {
       canDeposit,
