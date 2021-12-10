@@ -78,8 +78,8 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
         <Box mt="8">
           <FormSlider
             value={+token.amount}
-            max={max}
-            maxAllowed={num(balance).div(ONE_TOKEN).toNumber()}
+            max={num(balance).div(ONE_TOKEN).toNumber()}
+            maxAllowed={max}
             onChange={handleChange}
           />
         </Box>

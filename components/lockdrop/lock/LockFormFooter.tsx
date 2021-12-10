@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from "react";
-import { fromTerraAmount, num, TxStep } from "@arthuryeti/terra";
+import { num, TxStep } from "@arthuryeti/terra";
+import numeral from "numeral";
 
 import { ONE_TOKEN } from "constants/constants";
 import { useEstimatedAstroRewards, usePool } from "modules/lockdrop";
@@ -29,11 +30,6 @@ const LockFormFooter: FC<Props> = ({
     duration,
   });
   const pool = usePool(lpToken);
-  // const estimatedAstroRewards = useEstimatedAstroRewards({
-  //   lpToken,
-  //   amount,
-  //   duration,
-  // });
 
   const shareOfPool = useMemo(() => {
     if (pool == null || estimatedAstroRewards == null) {
@@ -42,13 +38,15 @@ const LockFormFooter: FC<Props> = ({
 
     const incentive = num(pool.incentives_share).div(ONE_TOKEN);
 
-    return num(estimatedAstroRewards).div(incentive).toFixed(2);
+    return num(estimatedAstroRewards).div(incentive).times(100).toFixed(2);
   }, [pool, estimatedAstroRewards]);
+
+  const rewards = numeral(estimatedAstroRewards).format("0,0.00");
 
   const cells = [
     {
       title: "Est. ASTRO Rewards",
-      value: `${fromTerraAmount(estimatedAstroRewards)} ASTRO`,
+      value: `${rewards} ASTRO`,
     },
     {
       title: "My current share of this pool’s ASTRO rewards",

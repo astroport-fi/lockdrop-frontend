@@ -65,7 +65,7 @@ const FormSlider: FC<Props> = ({ value, max, maxAllowed, onChange }) => {
             defaultValue={0}
             value={value}
             focusThumbOnChange={false}
-            max={max}
+            max={maxAllowed}
             onChange={onChange}
           >
             <SliderTrack>
