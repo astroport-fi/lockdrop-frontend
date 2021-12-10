@@ -71,7 +71,7 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
         .toNumber();
       max =
         units *
-        ((currentTimestamp - withdraw50PercentUntil) /
+        ((phaseOpenUntil - currentTimestamp) /
           (phaseOpenUntil - withdraw50PercentUntil));
     }
 
