@@ -6,8 +6,6 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Flex,
-  Button,
-  VStack,
   Text,
   SliderProps,
 } from "@chakra-ui/react";
@@ -44,7 +42,7 @@ const AstroSlider: FC<Props> = ({
       const ratio = maxAllowed / max;
 
       return (
-        <Box w={(1 - ratio) * 100 + "%"}>
+        <Box w={(1 - ratio) * 100 + "%"} pb="1">
           <Text color="red.500" mb="2" whiteSpace="nowrap" fontSize="12px">
             Max unlockable liquidity
           </Text>
@@ -121,15 +119,14 @@ const AstroSlider: FC<Props> = ({
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
-            <SliderThumb />
-            {/* <SliderThumb w="6" h="6">
+            <SliderThumb w="6" h="6">
               <SliderHandleIcon
                 color="#000D37"
                 w="6px"
                 h="12px"
                 opacity="0.3"
               />
-            </SliderThumb> */}
+            </SliderThumb>
           </Slider>
         </Box>
         {renderMaxUnlockableLiquidity()}
