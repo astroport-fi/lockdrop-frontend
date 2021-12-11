@@ -7,6 +7,7 @@ import {
   IconButton,
   Button,
   Checkbox,
+  Link,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
@@ -46,7 +47,9 @@ const LockFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
 
         <Text variant="light" fontSize="xs" mt="6" lineHeight="1.2">
           Please check the boxes below to confirm your agreement to the
-          [Lockdrop Disclaimers] (the “Lockdrop Disclaimers”).
+          <Link color="#75B5FF" href="#" isExternal>
+            Lockdrop Disclaimers
+          </Link>
         </Text>
 
         <VStack mt="8" pl="4" spacing="6">
