@@ -42,16 +42,16 @@ export const useCountdown: (options: CountdownOptions) => number = ({
 export const useFormattedCountdown = (
   options: CountdownOptions
 ): {
-  d: number;
-  h: number;
-  m: number;
+  d: string;
+  h: string;
+  m: string;
 } => {
   const countdown = useCountdown(options);
 
   const calcDelta = (ms: number) => ({
-    d: Math.floor(ms / (1000 * 60 * 60 * 24)),
-    h: Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-    m: Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)),
+    d: (Math.floor(ms / (1000 * 60 * 60 * 24)) < 10) ? "0" + Math.floor(ms / (1000 * 60 * 60 * 24)).toString() : Math.floor(ms / (1000 * 60 * 60 * 24)).toString(),
+    h: (Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) < 10) ? "0" + Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() : Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString(),
+    m: (Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)) < 10) ? "0" + Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)).toString() : Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)).toString(),
   });
 
   return calcDelta(countdown);
