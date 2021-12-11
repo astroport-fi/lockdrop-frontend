@@ -49,9 +49,9 @@ export const useFormattedCountdown = (
   const countdown = useCountdown(options);
 
   const calcDelta = (ms: number) => ({
-    d: (Math.floor(ms / (1000 * 60 * 60 * 24)) < 10) ? "0" + Math.floor(ms / (1000 * 60 * 60 * 24)).toString() : Math.floor(ms / (1000 * 60 * 60 * 24)).toString(),
-    h: (Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) < 10) ? "0" + Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() : Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString(),
-    m: (Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)) < 10) ? "0" + Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)).toString() : Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)).toString(),
+    d: Math.floor(ms / (1000 * 60 * 60 * 24)).toString().padStart(2, '0'),
+    h: Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0'),
+    m: Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0'),
   });
 
   return calcDelta(countdown);
