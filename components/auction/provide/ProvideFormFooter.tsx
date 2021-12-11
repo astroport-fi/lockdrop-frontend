@@ -31,10 +31,10 @@ const ProvideFormFooter: FC<Props> = ({
     //   title: "Est. ASTRO Rewards",
     //   value: "20,000",
     // },
-    // {
-    //   title: "Lock ends",
-    //   value: "17/11/21",
-    // },
+    {
+      title: "Lock ends",
+      value: items.lockEnds,
+    },
   ];
 
   const confirmButton: ConfirmButton = {

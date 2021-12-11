@@ -1,23 +1,22 @@
 import { useMemo } from "react";
-import { num, useAddress, useTerraWebapp } from "@arthuryeti/terra";
+import { num } from "@arthuryeti/terra";
 
-import { useAuctionState } from "modules/auction";
-import { useContracts } from "modules/common";
+import { useAuctionState, useConfig } from "modules/auction";
 import { ONE_TOKEN } from "constants/constants";
+import dayjs from "dayjs";
 
 export const useProvideFooter = ({ ustAmount, astroAmount }) => {
   const state = useAuctionState();
+  const config = useConfig();
 
-  return useMemo(() => {
-    let shareOfPool = 0;
+  const shareOfPool = useMemo(() => {
+    let value = 0;
     if (
       state == null ||
       num(state.total_ust_delegated).eq(0) ||
       num(state.total_astro_delegated).eq(0)
     ) {
-      return {
-        shareOfPool,
-      };
+      return value;
     }
 
     const totalUstDelegated = num(state.total_ust_delegated)
@@ -31,16 +30,33 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
       .div(totalAstroDelegated)
       .toNumber();
 
-    shareOfPool = ((shareOfPoolUst + shareOfPoolAstro) / 2) * 100;
+    value = ((shareOfPoolUst + shareOfPoolAstro) / 2) * 100;
 
-    if (shareOfPool > 100) {
-      shareOfPool = 100;
+    if (value > 100) {
+      value = 100;
     }
 
-    return {
-      shareOfPool: shareOfPool.toFixed(2),
-    };
+    return value.toFixed(2);
   }, [astroAmount, ustAmount, state]);
+
+  const lockEnds = useMemo(() => {
+    if (config == null) {
+      return null;
+    }
+
+    const timestamp =
+      config.init_timestamp +
+      config.deposit_window +
+      config.withdrawal_window +
+      config.lp_tokens_vesting_duration;
+
+    return dayjs.unix(timestamp).format("DD/MM/YY");
+  }, [config]);
+
+  return {
+    shareOfPool,
+    lockEnds,
+  };
 };
 
 export default useProvideFooter;

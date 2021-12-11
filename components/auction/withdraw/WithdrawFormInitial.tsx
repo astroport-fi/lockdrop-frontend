@@ -24,8 +24,9 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
   const { control, setValue } = useFormContext();
   const userInfo = useUserInfo();
 
-  const balance = userInfo?.ust_delegated ?? "0";
   const { max } = useAuctionLogic();
+
+  const balance = num(max).times(ONE_TOKEN).toString();
 
   const handleChange = (value: number) => {
     setValue("token", {
@@ -55,7 +56,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
             <ListItem>
               On day 7, the final day, the max withdrawable amount decreases
               linearly, starting at 50% and decreasing to 0% at the end of the
-              lockdrop.
+              phase.
             </ListItem>
             <ListItem>
               Be aware: only 1 withdrawal can be made during the last 2 days
@@ -71,7 +72,13 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
-            <AmountInput {...field} balance={balance} isSingle />
+            <AmountInput
+              {...field}
+              balanceLabel="Provided"
+              limit={max}
+              balance={balance}
+              isSingle
+            />
           )}
         />
 
@@ -79,7 +86,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
           <AstroSlider
             value={+token.amount}
             min={0}
-            max={num(balance).div(ONE_TOKEN).toNumber()}
+            max={num(userInfo?.ust_delegated).div(ONE_TOKEN).toNumber()}
             maxAllowed={max}
             onChange={handleChange}
             hideButtons

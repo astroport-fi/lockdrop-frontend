@@ -59,7 +59,8 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
         <Text fontSize="xs" color="white.500">
           <UnorderedList fontWeight="500">
             <ListItem>
-              Deposits and withdraws are possible during the first 5 days.
+              Depositing and withdrawing is allowed for the first 5 days of
+              Phase 1.
             </ListItem>
             <ListItem>Deposits close at the end of Day 5.</ListItem>
             <ListItem>
@@ -68,7 +69,11 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
             <ListItem>
               On Day 7, the final day, the max withdrawable amount decreases
               linearly, starting at 50% and decreasing to 0% at the end of the
-              lockdrop.
+              phase.
+            </ListItem>
+            <ListItem>
+              Be aware: only 1 withdrawal can be made during the last 2 days
+              after deposits are disabled
             </ListItem>
           </UnorderedList>
         </Text>
@@ -81,9 +86,10 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
           rules={{ required: true }}
           render={({ field }) => (
             <AmountInput
+              {...field}
               balance={balance}
               balanceLabel="Withdrawable LP Tokens"
-              {...field}
+              limit={max}
               isLpToken
               isSingle
             />

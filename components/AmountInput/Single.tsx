@@ -23,18 +23,18 @@ const Single: FC<Props> = ({ asset }) => {
       borderWidth="1px"
       borderColor="white.200"
       textAlign="left"
-      px="4"
-      h="16"
+      px="2"
+      h="14"
       lineHeight="1.2"
       isFullWidth
     >
       <Flex align="center">
         <Box>
-          <Image src={icon} width="2.5rem" height="2.5rem" alt="Logo" />
+          <Image src={icon} width="2rem" height="2rem" alt="Logo" />
         </Box>
 
         <Box ml="3" fontWeight="500" flex="1">
-          <Text fontSize="2xl" color="white">
+          <Text fontSize="xl" color="white">
             {getSymbol(asset)}
           </Text>
         </Box>

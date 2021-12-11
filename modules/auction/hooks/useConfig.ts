@@ -14,7 +14,7 @@ type Response = {
   };
   generator_contract: string;
   astro_incentive_amount: string;
-  lp_tokens_vesting_duration: string;
+  lp_tokens_vesting_duration: number;
   lockdrop_incentives: number;
   init_timestamp: number;
   deposit_window: number;
@@ -34,6 +34,8 @@ export const useConfig = () => {
   if (isLoading || data == null) {
     return null;
   }
+
+  console.log(data);
 
   return data;
 };
