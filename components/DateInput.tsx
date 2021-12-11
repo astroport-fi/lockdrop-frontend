@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, Text, Input } from "@chakra-ui/react";
+import { Box, Text, NumberInput, NumberInputField } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
 type Props = {
@@ -23,7 +23,7 @@ const DateInput: FC<Props> = ({
 
   return (
     <Box position="relative" height="16">
-      <Input
+      <NumberInput
         variant="brand"
         size="lg"
         placeholder="0"
@@ -31,8 +31,9 @@ const DateInput: FC<Props> = ({
         max={max}
         onChange={onChange}
         onBlur={onBlur}
-        pr={inputPaddingRight}
-      />
+      >
+        <NumberInputField placeholder="0.00" pr={inputPaddingRight} />
+      </NumberInput>
       <Box position="absolute" bottom="2" right="4">
         <Text fontSize="xs" color="white.400">
           {date}

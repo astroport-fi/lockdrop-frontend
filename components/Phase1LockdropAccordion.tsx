@@ -380,7 +380,7 @@ const Phase1LockdropAccordion = () => {
                             to 0% at the end of the lockdrop.
                           </ListItem>
                           <ListItem>
-                            Be aware: Only 1 withdrawal can be made during the
+                            Be aware: only 1 withdrawal can be made during the
                             last 2 days.
                           </ListItem>
                         </UnorderedList>

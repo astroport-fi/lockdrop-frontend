@@ -468,7 +468,7 @@ const Phase2Bootstrap = () => {
                                 decreasing to 0% at the end of Phase 2.
                               </ListItem>
                               <ListItem>
-                                Be aware: Only 1 withdrawal can be made during
+                                Be aware: only 1 withdrawal can be made during
                                 the last 2 days after deposits are disabled.
                               </ListItem>
                             </UnorderedList>

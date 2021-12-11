@@ -58,7 +58,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
               lockdrop.
             </ListItem>
             <ListItem>
-              Be aware: Only 1 withdrawal can be made during the last 2 days
+              Be aware: only 1 withdrawal can be made during the last 2 days
               after deposits are disabled
             </ListItem>
           </UnorderedList>

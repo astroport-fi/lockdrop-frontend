@@ -49,6 +49,7 @@ const LockForm: FC<Props> = ({ lpToken }) => {
 
   const handleSuccess = () => {
     queryClient.invalidateQueries("userInfo");
+    queryClient.invalidateQueries("terraswap-pools");
   };
 
   const handleSuccessClose = () => {

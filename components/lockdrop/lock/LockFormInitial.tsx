@@ -59,6 +59,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
               balanceLabel="Available to Migrate"
               isLpToken
               isSingle
+              limit={max}
               isDisabled={!logic.canDeposit}
             />
           )}

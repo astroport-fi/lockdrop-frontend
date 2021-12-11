@@ -18,6 +18,7 @@ const Input: FC<Props> = ({ onChange, onBlur, value, limit, isDisabled }) => {
       <NumberInput
         variant="brand"
         size="lg"
+        precision={6}
         value={value.amount}
         max={limit}
         onChange={onChange}
