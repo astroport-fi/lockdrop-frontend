@@ -39,6 +39,10 @@ export const useAuctionLogic = () => {
 
     if (depositAllowedUntil < currentTimestamp) {
       canDeposit = false;
+
+      if (userInfo?.ust_withdrawn) {
+        canWithdraw = false;
+      }
     }
 
     if (
@@ -60,15 +64,9 @@ export const useAuctionLogic = () => {
     ) {
       max =
         num(balance).div(ONE_TOKEN).div(2).toNumber() *
-        ((currentTimestamp - withdraw50PercentUntil) /
+        ((phaseOpenUntil - currentTimestamp) /
           (phaseOpenUntil - withdraw50PercentUntil));
     }
-
-    console.log({
-      canDeposit,
-      canWithdraw,
-      max,
-    });
 
     return {
       canDeposit,

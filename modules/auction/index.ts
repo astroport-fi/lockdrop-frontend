@@ -8,3 +8,4 @@ export * from "./hooks/useProvide";
 export * from "./hooks/useWithdraw";
 export * from "./hooks/useAuctionLogic";
 export * from "./hooks/useProvideFooter";
+export * from "./hooks/useAstroBalance";

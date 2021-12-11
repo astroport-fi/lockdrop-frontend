@@ -16,10 +16,10 @@ import {
   AccordionItem,
   AccordionPanel,
 } from "@chakra-ui/react";
-import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
+import { fromTerraAmount } from "@arthuryeti/terra";
 
-import { useAstroApp, useContracts } from "modules/common";
-import { useUserInfo, useConfig } from "modules/auction";
+import { useAstroApp } from "modules/common";
+import { useUserInfo, useConfig, useAstroBalance } from "modules/auction";
 import { useUserInfo as useAirdropUserInfo } from "modules/airdrop";
 
 import KPITitle from "components/KPITitle";
@@ -31,12 +31,11 @@ import Timer from "components/Timer";
 import PlusIcon from "components/icons/PlusIcon";
 
 const Phase2Bootstrap = () => {
-  const { astroToken } = useContracts();
   const { phase2StartDate, phase2EndDate } = useAstroApp();
   const config = useConfig();
   const userInfo = useUserInfo();
   const airdropUserInfo = useAirdropUserInfo();
-  const astroBalance = useBalance(astroToken);
+  const astroBalance = useAstroBalance();
 
   return (
     <Box>

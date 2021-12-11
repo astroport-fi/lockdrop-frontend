@@ -27,9 +27,9 @@ const defaultContracts: { [key: string]: any } = {
   testnet: {
     astroToken: "terra15w2kydwcf822yw0a5g2eag2zr2fe6hrzhs637k",
     generator: "terra1xsxsys9rew3ypmqaazvuxf9dm0f70qh920aq43",
-    lockdrop: "terra1flp6xz5n47yel65uxtt6gt2nn8hyera35dvea0",
-    airdrop: "terra1p5sch7k03x86su4r8jaatp5zyawnyxxn54ypns",
-    auction: "terra1zygfzzktmf96exlk4chxx0uv7txdn0e89506t0",
+    lockdrop: "terra1q7x7wsdx2dql4r4s6p6n26rna8zurk7n7vkee9",
+    airdrop: "terra14n9jh65lx60qj9n25ut69tlpqkfxnythtedtee",
+    auction: "terra1x2s9wwk287qvck99qeyecapw05uyxd5ehev2zz",
     terraswapLps: [
       "terra12xqxr9j9hawuch7vv6y0gz8l0wetjtvu7xqvh9",
       "terra1ynr4h9qzsn8ju4rrat6zaek6j6hkywduz44jha",

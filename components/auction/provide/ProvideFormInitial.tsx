@@ -39,6 +39,16 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
     return lockBalance + airdropBalance;
   }, [astroAirdrop, astroLockdrop]);
 
+  const totalust = useMemo(() => {
+    let balance = 0;
+
+    if (num(uusd.amount).gt(0)) {
+      balance = num(uusd.amount).toNumber();
+    }
+
+    return balance;
+  }, [uusd]);
+
   const lockdropBalance = useMemo(() => {
     if (userInfo == null) {
       return null;
@@ -139,7 +149,7 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
       <ProvideFormFooter
         data={state}
         astroAmount={totalAstro}
-        ustAmount={uusd.amount}
+        ustAmount={totalust}
         onConfirmClick={onClick}
       />
     </>

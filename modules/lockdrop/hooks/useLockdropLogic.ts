@@ -58,13 +58,6 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
       max = max / 2;
     }
 
-    if (
-      depositAllowedUntil < currentTimestamp &&
-      currentTimestamp < withdraw50PercentUntil
-    ) {
-      max = max / 2;
-    }
-
     if (phaseOpenUntil < currentTimestamp) {
       canDeposit = false;
       canWithdraw = false;

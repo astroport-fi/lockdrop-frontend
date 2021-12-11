@@ -9,13 +9,14 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
   const state = useAuctionState();
 
   return useMemo(() => {
+    let shareOfPool = 0;
     if (
       state == null ||
       num(state.total_ust_delegated).eq(0) ||
       num(state.total_astro_delegated).eq(0)
     ) {
       return {
-        shareOfPool: 0,
+        shareOfPool,
       };
     }
 
@@ -30,8 +31,14 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
       .div(totalAstroDelegated)
       .toNumber();
 
+    shareOfPool = ((shareOfPoolUst + shareOfPoolAstro) / 2) * 100;
+
+    if (shareOfPool > 100) {
+      shareOfPool = 100;
+    }
+
     return {
-      shareOfPool: ((shareOfPoolUst + shareOfPoolAstro) / 2) * 100,
+      shareOfPool: shareOfPool.toFixed(2),
     };
   }, [astroAmount, ustAmount, state]);
 };

@@ -102,10 +102,10 @@ const ProvideForm: FC = () => {
       <FormSuccess
         contentComponent={
           <FormSummary
-            label1="You are providing"
+            label1="You've provided"
             label2="and"
-            token1={astroLockdrop}
-            token2={uusd}
+            token1={uusd}
+            token2={astroLockdrop}
           />
         }
         onCloseClick={handleSuccessClose}
