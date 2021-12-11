@@ -54,10 +54,16 @@ export const useEstimatedAstroRewards = ({
       num(pool.weighted_amount).plus(amountWeight)
     );
 
-    return num(first)
+    let result = num(first)
       .times(second)
       .times(config.lockdrop_incentives)
       .toString();
+
+    if (num(pool.terraswap_amount_in_lockups).eq(0)) {
+      result = num(result).div(ONE_TOKEN).toString();
+    }
+
+    return result;
   }, [amountWeight, pool, config, lockState]);
 };
 
