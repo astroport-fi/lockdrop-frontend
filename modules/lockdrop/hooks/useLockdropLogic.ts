@@ -73,6 +73,7 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
         .div(ONE_TOKEN)
         .div(2)
         .toNumber();
+
       max =
         units *
         ((phaseOpenUntil - currentTimestamp) /

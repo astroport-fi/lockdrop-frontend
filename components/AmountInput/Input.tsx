@@ -9,9 +9,10 @@ type Props = {
     asset: string;
   };
   limit?: number;
+  isDisabled?: boolean;
 };
 
-const Input: FC<Props> = ({ onChange, onBlur, value, limit }) => {
+const Input: FC<Props> = ({ onChange, onBlur, value, limit, isDisabled }) => {
   return (
     <Box>
       <NumberInput
@@ -21,6 +22,7 @@ const Input: FC<Props> = ({ onChange, onBlur, value, limit }) => {
         max={limit}
         onChange={onChange}
         onBlur={onBlur}
+        isDisabled={isDisabled}
       >
         <NumberInputField placeholder="0.00" />
       </NumberInput>

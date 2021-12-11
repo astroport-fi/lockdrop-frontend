@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, Text, Flex, chakra, HStack } from "@chakra-ui/react";
+import { Box, Text, Flex, Button, HStack } from "@chakra-ui/react";
 import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
 import { useTokenInfo } from "modules/common";
@@ -10,6 +10,7 @@ type Props = {
   label?: string;
   initial?: string;
   hideLabel?: boolean;
+  isDisabled?: boolean;
   onChange: (value: string) => void;
 };
 
@@ -18,6 +19,7 @@ const Balance: FC<Props> = ({
   initial,
   label = "In Wallet",
   hideLabel = false,
+  isDisabled = false,
   onChange,
 }) => {
   const { getSymbol } = useTokenInfo();
@@ -39,21 +41,14 @@ const Balance: FC<Props> = ({
         </HStack>
       </Box>
       <Box>
-        <chakra.button
+        <Button
+          variant="mini"
           type="button"
-          outline="none"
-          color="white.600"
-          fontSize="xs"
-          textTransform="uppercase"
-          bg="white.100"
-          fontWeight="bold"
-          px="3"
-          borderRadius="md"
-          letterSpacing="widest"
           onClick={() => onChange(amount)}
+          isDisabled={isDisabled}
         >
           Max
-        </chakra.button>
+        </Button>
       </Box>
     </Flex>
   );

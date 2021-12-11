@@ -56,14 +56,15 @@ const button = {
     },
     mini: {
       outline: "none",
-      borderRadius: "lg",
+      borderRadius: "md",
       color: "white.600",
       bg: "white.100",
-      px: "4",
-      minWidth: "32",
+      px: "3",
+      h: "auto",
+      py: "1",
       fontSize: "xs",
-      height: "7",
-      letterSpacing: "0.15rem",
+      border: "none",
+      letterSpacing: "widest",
       textTransform: "uppercase",
       fontWeight: "bold",
       _hover: {
@@ -103,7 +104,20 @@ const button = {
         color: "white",
       },
     },
-
+    sliderPercent: {
+      border: "0",
+      alignItems: "flex-start",
+      color: "white",
+      opacity: "0.4",
+      p: "0",
+      minW: "0",
+      _hover: {
+        opacity: "0.6",
+      },
+      _focus: {
+        boxShadow: "none",
+      },
+    },
     icon: {
       bg: "transparent",
       outline: "none",

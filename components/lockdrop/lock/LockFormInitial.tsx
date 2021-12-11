@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Text,
-  Box,
-  Flex,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-} from "@chakra-ui/react";
+import { Text, Box, Flex } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { num, useBalance } from "@arthuryeti/terra";
 
@@ -15,6 +7,7 @@ import { LockState, useLockdropLogic } from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
 
 import Card from "components/Card";
+import AstroSlider from "components/AstroSlider";
 import AmountInput from "components/AmountInput";
 import LockFormFooter from "components/lockdrop/lock/LockFormFooter";
 import DateInput from "components/DateInput";
@@ -66,14 +59,12 @@ const LockFormInitial = ({ state, onClick }: Params) => {
               balanceLabel="Available to Migrate"
               isLpToken
               isSingle
+              isDisabled={!logic.canDeposit}
             />
           )}
         />
-
         <Box mt="8">
-          <Slider
-            variant="brand"
-            size="lg"
+          <AstroSlider
             min={0}
             defaultValue={0}
             value={+token.amount}
@@ -81,12 +72,8 @@ const LockFormInitial = ({ state, onClick }: Params) => {
             focusThumbOnChange={false}
             step={0.01}
             onChange={handleChange}
-          >
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+            isDisabled={!logic.canDeposit}
+          />
         </Box>
       </Card>
       <Card mt="2">
@@ -114,21 +101,16 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           </Box>
         </Flex>
         <Box mt="8">
-          <Slider
-            variant="brand"
-            size="lg"
+          <AstroSlider
             min={2}
-            value={duration}
+            minLabel="2 weeks"
             max={52}
-            focusThumbOnChange={false}
             step={1}
+            maxLabel="52 weeks"
+            value={duration}
             onChange={handleDurationChange}
-          >
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+            isDisabled={!logic.canDeposit}
+          />
         </Box>
       </Card>
 

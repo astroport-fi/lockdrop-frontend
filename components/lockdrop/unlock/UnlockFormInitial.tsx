@@ -11,7 +11,7 @@ import {
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
-import FormSlider from "components/FormSlider";
+import AstroSlider from "components/AstroSlider";
 import UnlockFormFooter from "components/lockdrop/unlock/UnlockFormFooter";
 import { ONE_TOKEN } from "constants/constants";
 
@@ -35,6 +35,8 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
 
     return num(stakedAmount).div(ONE_TOKEN).minus(lpToken.amount).toString();
   }, [lpToken.amount, stakedAmount]);
+
+  const balance = num(max).times(ONE_TOKEN).toString();
 
   const handleChange = (value: number) => {
     setValue("lpToken", {
@@ -79,7 +81,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
           rules={{ required: true }}
           render={({ field }) => (
             <AmountInput
-              balance={stakedAmount}
+              balance={balance}
               balanceLabel="Withdrawable LP Tokens"
               {...field}
               isLpToken
@@ -89,11 +91,13 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
         />
 
         <Box mt="8">
-          <FormSlider
+          <AstroSlider
             value={+lpToken.amount}
+            min={0}
             max={num(stakedAmount).div(ONE_TOKEN).toNumber()}
             maxAllowed={max}
             onChange={handleChange}
+            hideButtons
           />
         </Box>
       </Card>

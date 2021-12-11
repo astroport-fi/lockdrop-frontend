@@ -11,7 +11,7 @@ const FormFee = ({ fee }: Props) => {
   const feeString = useFeeToString(fee);
 
   if (!feeString) {
-    return null;
+    return <Text mt="2">&nbsp;</Text>;
   }
 
   return (

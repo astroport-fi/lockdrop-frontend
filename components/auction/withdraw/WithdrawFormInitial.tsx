@@ -9,7 +9,7 @@ import { WithdrawState, useUserInfo, useAuctionLogic } from "modules/auction";
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
 import WithdrawFormFooter from "components/auction/withdraw/WithdrawFormFooter";
-import FormSlider from "components/FormSlider";
+import AstroSlider from "components/AstroSlider";
 
 type Props = {
   token: {
@@ -76,11 +76,13 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
         />
 
         <Box mt="8">
-          <FormSlider
+          <AstroSlider
             value={+token.amount}
+            min={0}
             max={num(balance).div(ONE_TOKEN).toNumber()}
             maxAllowed={max}
             onChange={handleChange}
+            hideButtons
           />
         </Box>
       </Card>
