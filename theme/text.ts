@@ -14,8 +14,8 @@ const styles = {
       fontWeight: "500",
     },
     light: {
-      color: "white.500",
-      fontSize: "sm",
+      color: "white.400",
+      fontSize: "xs",
       fontWeight: "500",
     },
     cardHeader: {

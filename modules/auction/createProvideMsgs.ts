@@ -7,6 +7,7 @@ type CreateProvideMsgsOptions = {
   airdropClaimAmount: string;
   merkleProof?: string[];
   rootIndex?: number;
+  hasClaimed?: boolean;
   uusdAmount: string;
   auctionContract: string;
   lockdropContract: string;
@@ -25,6 +26,7 @@ export const createProvideMsgs = (
     astroAirdropAmount,
     airdropClaimAmount,
     astroLockdropAmount,
+    hasClaimed,
     uusdAmount,
     merkleProof,
     rootIndex,
@@ -78,7 +80,9 @@ export const createProvideMsgs = (
       executeClaimAirdropMsg
     );
 
-    msgs.push(claimAirdropMsg);
+    if (!hasClaimed) {
+      msgs.push(claimAirdropMsg);
+    }
 
     const executeDelegateAirdropMsg = {
       delegate_astro_to_bootstrap_auction: {

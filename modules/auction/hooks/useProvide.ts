@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import { useAddress, useTransaction, TxStep } from "@arthuryeti/terra";
+import { useAddress, useTransaction, TxStep, num } from "@arthuryeti/terra";
 
 import { createProvideMsgs } from "modules/auction";
 import { useContracts } from "modules/common";
-import { useAirdrop } from "modules/airdrop";
+import { useAirdrop, useUserInfo } from "modules/airdrop";
 
 export type ProvideState = {
   error: any;
@@ -32,6 +32,7 @@ export const useProvide = ({
   const { auction, lockdrop, airdrop } = useContracts();
   const address = useAddress();
   const airdropData = useAirdrop(address);
+  const userInfo = useUserInfo();
 
   const msgs = useMemo(() => {
     return createProvideMsgs(
@@ -42,6 +43,7 @@ export const useProvide = ({
         uusdAmount,
         astroAirdropAmount,
         astroLockdropAmount,
+        hasClaimed: num(userInfo?.airdrop_amount).gt(0),
         airdropClaimAmount: airdropData?.amount,
         merkleProof: airdropData?.merkle_proof,
         rootIndex: airdropData?.index,
@@ -49,6 +51,7 @@ export const useProvide = ({
       address
     );
   }, [
+    userInfo,
     address,
     auction,
     airdrop,
