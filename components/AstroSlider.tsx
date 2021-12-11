@@ -12,38 +12,35 @@ import {
   SliderProps,
 } from "@chakra-ui/react";
 
+import AstroSliderButton from "components/AstroSliderButton";
 import SliderHandleIcon from "components/icons/SliderHandleIcon";
 
 type Props = {
-  showGrad?: boolean;
-  min?: number;
-  max?: number;
-  value?: number;
+  min: number;
+  max: number;
+  value: number;
+  onChange: (value: number) => void;
+  maxAllowed?: number;
   minLabel?: string;
   maxLabel?: string;
-  maxAllowed?: number;
-  onChange?: (value: number) => void;
-  onClick?: (value: number) => void;
+  hideButtons?: boolean;
 } & SliderProps;
 
 const AstroSlider: FC<Props> = ({
-  showGrad = true,
-  min = 0,
-  max = 0,
-  minLabel = "",
-  maxLabel = "",
+  hideButtons = false,
+  min,
+  max,
+  minLabel,
+  maxLabel,
   value,
   maxAllowed,
   onChange,
-  onClick,
   ...props
 }) => {
-  const ratio = maxAllowed / max;
-  const displayGrad = showGrad ? "block" : "none";
-  const labels = [minLabel, "", "", "", maxLabel];
-
   const renderMaxUnlockableLiquidity = () => {
-    if (ratio < 1) {
+    if (maxAllowed != null) {
+      const ratio = maxAllowed / max;
+
       return (
         <Box w={(1 - ratio) * 100 + "%"}>
           <Text color="red.500" mb="2" whiteSpace="nowrap" fontSize="12px">
@@ -59,7 +56,7 @@ const AstroSlider: FC<Props> = ({
               zIndex={1}
               opacity="0.4"
               borderRadius="lg"
-            ></Box>
+            />
             <Box
               bg="red.500"
               w="4px"
@@ -77,6 +74,32 @@ const AstroSlider: FC<Props> = ({
     }
   };
 
+  const renderButtons = () => {
+    if (hideButtons) {
+      return null;
+    }
+
+    const hasLabels = minLabel != null || maxLabel != null;
+    const h = hasLabels ? "8" : "3";
+
+    return (
+      <Box width="100%" position="relative" mt="2" h={h}>
+        {[0, 1, 2, 3, 4].map((value) => {
+          return (
+            <AstroSliderButton
+              key={value}
+              value={value}
+              label={value == 0 ? minLabel : value == 4 ? maxLabel : null}
+              min={min}
+              max={max}
+              onClick={onChange}
+            />
+          );
+        })}
+      </Box>
+    );
+  };
+
   return (
     <Box>
       <Flex align="flex-end">
@@ -85,7 +108,7 @@ const AstroSlider: FC<Props> = ({
             variant="brand"
             size="lg"
             min={min}
-            max={max}
+            max={maxAllowed}
             value={value}
             focusThumbOnChange={false}
             onChange={onChange}
@@ -94,80 +117,20 @@ const AstroSlider: FC<Props> = ({
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
-            <SliderThumb w="6" h="6">
+            <SliderThumb />
+            {/* <SliderThumb w="6" h="6">
               <SliderHandleIcon
                 color="#000D37"
                 w="6px"
                 h="12px"
                 opacity="0.3"
               />
-            </SliderThumb>
+            </SliderThumb> */}
           </Slider>
-          <Flex
-            justify="space-between"
-            position="relative"
-            h="10"
-            display={displayGrad}
-          >
-            {labels.map((label, index) => {
-              const ratio = 1 / (labels.length - 1);
-              const ratioFixed = parseFloat(ratio.toFixed(2));
-
-              const alignment =
-                {
-                  0: "start",
-                  [labels.length - 1]: "end",
-                }[index] || "center";
-
-              const target = Math.round(
-                index * (1 / (labels.length - 1)) * max
-              );
-
-              const translate =
-                {
-                  0: "translateX(0)",
-                  [labels.length - 1]: "translateX(-100%)",
-                }[index] || "translateX(-50%)";
-
-              const position =
-                {
-                  0: "0",
-                  [labels.length - 1]: "100%",
-                }[index] ||
-                "calc(" +
-                  Math.round(
-                    ((max * index * ratioFixed - min) * 100) / (max - min)
-                  ) +
-                  "%)";
-
-              return (
-                <Button
-                  key={label}
-                  variant="sliderPercent"
-                  onClick={() => onClick(target)}
-                  position="absolute"
-                  left={position}
-                  transform={translate}
-                >
-                  <VStack spacing={2} align={alignment}>
-                    <Box
-                      w="6px"
-                      h="6px"
-                      bg="white"
-                      borderRadius="100%"
-                      opacity="0.4"
-                    />
-                    <Text textStyle="small" color="white">
-                      {label}
-                    </Text>
-                  </VStack>
-                </Button>
-              );
-            })}
-          </Flex>
         </Box>
         {renderMaxUnlockableLiquidity()}
       </Flex>
+      {renderButtons()}
     </Box>
   );
 };

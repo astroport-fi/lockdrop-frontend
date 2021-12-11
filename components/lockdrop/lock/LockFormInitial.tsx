@@ -71,7 +71,6 @@ const LockFormInitial = ({ state, onClick }: Params) => {
             focusThumbOnChange={false}
             step={0.01}
             onChange={handleChange}
-            onClick={() => handleChange(0)}
           />
         </Box>
       </Card>
@@ -108,7 +107,6 @@ const LockFormInitial = ({ state, onClick }: Params) => {
             maxLabel="52 weeks"
             value={duration}
             onChange={handleDurationChange}
-            onClick={() => handleDurationChange(0)}
           />
         </Box>
       </Card>

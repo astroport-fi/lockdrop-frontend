@@ -91,10 +91,12 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
         <Box mt="8">
           <AstroSlider
             value={+lpToken.amount}
+            min={0}
             max={num(stakedAmount).div(ONE_TOKEN).toNumber()}
             maxAllowed={max}
             onChange={handleChange}
             onClick={() => handleChange(0)}
+            hideButtons
           />
         </Box>
       </Card>

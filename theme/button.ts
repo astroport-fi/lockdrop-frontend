@@ -105,11 +105,9 @@ const button = {
     },
     sliderPercent: {
       border: "0",
+      alignItems: "flex-start",
       color: "white",
       opacity: "0.4",
-      display: "flex",
-      flexDirection: "column",
-      justify: "center",
       p: "0",
       minW: "0",
       _hover: {
