@@ -36,6 +36,8 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
     return num(stakedAmount).div(ONE_TOKEN).minus(lpToken.amount).toString();
   }, [lpToken.amount, stakedAmount]);
 
+  const balance = num(max).times(ONE_TOKEN).toString();
+
   const handleChange = (value: number) => {
     setValue("lpToken", {
       ...lpToken,
@@ -79,7 +81,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
           rules={{ required: true }}
           render={({ field }) => (
             <AmountInput
-              balance={stakedAmount}
+              balance={balance}
               balanceLabel="Withdrawable LP Tokens"
               {...field}
               isLpToken
@@ -95,7 +97,6 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
             max={num(stakedAmount).div(ONE_TOKEN).toNumber()}
             maxAllowed={max}
             onChange={handleChange}
-            onClick={() => handleChange(0)}
             hideButtons
           />
         </Box>

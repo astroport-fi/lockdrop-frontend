@@ -24,6 +24,7 @@ type Props = {
   minLabel?: string;
   maxLabel?: string;
   hideButtons?: boolean;
+  isDisabled?: boolean;
 } & SliderProps;
 
 const AstroSlider: FC<Props> = ({
@@ -35,6 +36,7 @@ const AstroSlider: FC<Props> = ({
   value,
   maxAllowed,
   onChange,
+  isDisabled = false,
   ...props
 }) => {
   const renderMaxUnlockableLiquidity = () => {
@@ -93,6 +95,7 @@ const AstroSlider: FC<Props> = ({
               min={min}
               max={max}
               onClick={onChange}
+              isDisabled={isDisabled}
             />
           );
         })}
@@ -112,6 +115,7 @@ const AstroSlider: FC<Props> = ({
             value={value}
             focusThumbOnChange={false}
             onChange={onChange}
+            isDisabled={isDisabled}
             {...props}
           >
             <SliderTrack>

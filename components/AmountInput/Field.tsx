@@ -21,6 +21,7 @@ type Props = {
   onChange: any;
   hideLabel?: boolean;
   hideBalanceLabel?: boolean;
+  isDisabled?: boolean;
   value: {
     amount: string;
     asset: string;
@@ -41,6 +42,7 @@ const Field: FC<Props> = forwardRef(
       balanceLabel,
       hideLabel = false,
       hideBalanceLabel = false,
+      isDisabled = false,
       tokens,
     },
     ref
@@ -73,6 +75,7 @@ const Field: FC<Props> = forwardRef(
             initial={balance}
             label={balanceLabel}
             hideLabel={hideBalanceLabel}
+            isDisabled={isDisabled}
             onChange={(v: string) => onChange({ ...value, amount: v })}
           />
         );
@@ -84,6 +87,7 @@ const Field: FC<Props> = forwardRef(
           initial={balance}
           label={balanceLabel}
           hideLabel={hideBalanceLabel}
+          isDisabled={isDisabled}
           onChange={(v: string) => onChange({ ...value, amount: v })}
         />
       );
@@ -111,6 +115,7 @@ const Field: FC<Props> = forwardRef(
               limit={limit}
               onChange={(amount: string) => onChange({ ...value, amount })}
               onBlur={onBlur}
+              isDisabled={isDisabled}
             />
             {renderBalance()}
           </Box>

@@ -2,14 +2,22 @@ import React, { FC } from "react";
 import { Box, Button, VStack, Text } from "@chakra-ui/react";
 
 type Props = {
-  label?: string;
   value: number;
   min: number;
   max: number;
   onClick: (value: number) => void;
+  label?: string;
+  isDisabled?: boolean;
 };
 
-const AstroSliderButton: FC<Props> = ({ label, value, min, max, onClick }) => {
+const AstroSliderButton: FC<Props> = ({
+  value,
+  min,
+  max,
+  onClick,
+  label,
+  isDisabled,
+}) => {
   const ratio = 1 / 4;
   const ratioFixed = parseFloat(ratio.toFixed(2));
 
@@ -48,6 +56,7 @@ const AstroSliderButton: FC<Props> = ({ label, value, min, max, onClick }) => {
       right={right}
       transform={transform}
       onClick={handleClick}
+      isDisabled={isDisabled}
     >
       <VStack spacing={2} align={aligment}>
         <Box w="6px" h="6px" bg="white" borderRadius="100%" opacity="0.4" />

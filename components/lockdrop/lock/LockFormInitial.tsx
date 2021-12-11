@@ -59,6 +59,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
               balanceLabel="Available to Migrate"
               isLpToken
               isSingle
+              isDisabled={!logic.canDeposit}
             />
           )}
         />
@@ -71,6 +72,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
             focusThumbOnChange={false}
             step={0.01}
             onChange={handleChange}
+            isDisabled={!logic.canDeposit}
           />
         </Box>
       </Card>
@@ -107,6 +109,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
             maxLabel="52 weeks"
             value={duration}
             onChange={handleDurationChange}
+            isDisabled={!logic.canDeposit}
           />
         </Box>
       </Card>
