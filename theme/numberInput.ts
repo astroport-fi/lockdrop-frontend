@@ -11,7 +11,7 @@ const styles = {
       field: {
         borderRadius: "xl",
         fontSize: "xl",
-        height: "14",
+        height: "16",
       },
     },
   },
@@ -27,6 +27,7 @@ const styles = {
           color: "white",
           textAlign: "right",
           p: "4",
+          pt: "0",
           _hover: {
             borderColor: "brand.purple",
           },
