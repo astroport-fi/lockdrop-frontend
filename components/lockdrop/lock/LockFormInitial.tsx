@@ -32,7 +32,8 @@ const LockFormInitial = ({ state, onClick }: Params) => {
   };
 
   const handleDurationChange = (value: number) => {
-    setValue("duration", value);
+    console.log(value);
+    setValue("duration", +value);
   };
 
   return (
@@ -86,7 +87,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
             </Text>
           </Box>
           <Box position="relative">
-            <Text position="absolute" top="3" right="4">
+            <Text position="absolute" top="13px" right="4">
               weeks
             </Text>
             <Controller

@@ -26,13 +26,13 @@ const DateInput: FC<Props> = ({
       <NumberInput
         variant="brand"
         size="lg"
-        placeholder="0"
+        precision={0}
         value={value}
         max={max}
-        onChange={onChange}
+        onChange={(_, valueNumber) => onChange(valueNumber)}
         onBlur={onBlur}
       >
-        <NumberInputField placeholder="0.00" pr={inputPaddingRight} />
+        <NumberInputField placeholder="0" pr={inputPaddingRight} />
       </NumberInput>
       <Box position="absolute" bottom="2" right="4">
         <Text fontSize="xs" color="white.400">
