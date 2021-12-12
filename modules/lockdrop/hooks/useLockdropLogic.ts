@@ -14,7 +14,7 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
   const currentTimestamp = dayjs().unix();
   const config = useConfig();
   const userInfo = useUserInfo();
-  const stakedAmount = useLockedLpAmount(lpToken);
+  const stakedAmount = useLockedLpAmount(lpToken, duration);
 
   return useMemo(() => {
     let canDeposit = false;

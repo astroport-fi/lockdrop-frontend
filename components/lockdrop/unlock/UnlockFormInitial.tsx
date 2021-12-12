@@ -25,7 +25,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
   const { control, watch, setValue } = useFormContext();
 
   const lpToken = watch("lpToken");
-  const stakedAmount = useLockedLpAmount(lpToken.asset);
+  const stakedAmount = useLockedLpAmount(lpToken.asset, duration);
   const { max } = useLockdropLogic({ lpToken: lpToken.asset, duration });
 
   const amount = useMemo(() => {

@@ -9,6 +9,7 @@ export * from "./hooks/useLockdropLogic";
 export * from "./hooks/useTerraswapPools";
 export * from "./hooks/useTotalLiquidityAdded";
 export * from "./hooks/useEstimatedAstroRewards";
+export * from "./hooks/useEstimatedAstroRewardsUnlock";
 export * from "./hooks/useMyLiquidityAdded";
 export * from "./hooks/useLockedLpAmount";
 

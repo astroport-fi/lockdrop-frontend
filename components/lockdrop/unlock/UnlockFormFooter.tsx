@@ -2,7 +2,7 @@ import React, { FC, useMemo } from "react";
 import { fromTerraAmount, num, TxStep } from "@arthuryeti/terra";
 
 import { ONE_TOKEN } from "constants/constants";
-import { useEstimatedAstroRewards, usePool } from "modules/lockdrop";
+import { useEstimatedAstroRewardsUnlock, usePool } from "modules/lockdrop";
 
 import CommonFooter, { ConfirmButton } from "components/CommonFooter";
 import numeral from "numeral";
@@ -22,7 +22,7 @@ const UnlockFormFooter: FC<Props> = ({
   lpToken,
   onConfirmClick,
 }) => {
-  const estimatedAstroRewards = useEstimatedAstroRewards({
+  const estimatedAstroRewards = useEstimatedAstroRewardsUnlock({
     lpToken,
     amount,
     duration,

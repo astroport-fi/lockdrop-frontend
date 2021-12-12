@@ -2,7 +2,10 @@ import { useMemo } from "react";
 
 import { useUserInfo } from "modules/lockdrop";
 
-export const useLockedLpAmount = (lpTokenContract: string): string => {
+export const useLockedLpAmount = (
+  lpTokenContract: string,
+  duration: number
+): string => {
   const userInfo = useUserInfo();
 
   return useMemo(() => {
@@ -11,7 +14,10 @@ export const useLockedLpAmount = (lpTokenContract: string): string => {
     }
 
     const info = userInfo.lockup_infos.find((info) => {
-      return info.terraswap_lp_token === lpTokenContract;
+      return (
+        info.terraswap_lp_token === lpTokenContract &&
+        info.duration === duration
+      );
     });
 
     if (info == null) {
