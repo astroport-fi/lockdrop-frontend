@@ -59,8 +59,10 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
               phase.
             </ListItem>
             <ListItem>
-              Be aware: only 1 withdrawal can be made during the last 2 days
-              after deposits are disabled
+              <strong>
+                Be aware: only 1 withdrawal can be made during the last 2 days
+                after deposits are disabled
+              </strong>
             </ListItem>
           </UnorderedList>
         </Text>
