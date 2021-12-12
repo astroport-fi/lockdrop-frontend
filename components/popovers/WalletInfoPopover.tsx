@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import copy from "copy-to-clipboard";
 import {
   Box,
@@ -37,6 +37,7 @@ const WalletInfoPopover: FC = () => {
   const balance = useBalance("uusd");
   const terraAddress = useAddress();
   const finder = useFinder();
+  const router = useRouter();
 
   const copyAddress = () => {
     copy(terraAddress);
@@ -50,9 +51,12 @@ const WalletInfoPopover: FC = () => {
   };
 
   const handleDisconnect = () => {
-    const { pathname } = Router;
-    if (pathname.includes("/lock") || pathname.includes("/unlock")) {
-      Router.push("/active-phase");
+    const pathname = router.pathname;
+    if (
+      router.pathname.includes("/lock") ||
+      router.pathname.includes("/unlock")
+    ) {
+      router.push("/active-phase");
     }
     disconnect();
   };
@@ -161,7 +165,7 @@ const WalletInfoPopover: FC = () => {
           type="button"
           variant="primary"
           isFullWidth
-          onClick={() => handleDisconnect()}
+          onClick={handleDisconnect}
         >
           Disconnect
         </Button>
