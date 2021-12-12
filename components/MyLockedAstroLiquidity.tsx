@@ -11,6 +11,7 @@ import PoolNameTd from "components/auction/table/PoolNameTd";
 import PoolTotalTd from "components/auction/table/PoolTotalTd";
 import LockEndTd from "components/auction/table/LockEndTd";
 import NumberTd from "components/auction/table/NumberTd";
+import NumberWithUstTd from "components/auction/table/NumberWithUstTd";
 import MyActionsTd from "components/auction/table/MyActionsTd";
 
 const MyLockedAstroLiquidity = () => {
@@ -23,14 +24,24 @@ const MyLockedAstroLiquidity = () => {
         accessor: "name",
       },
       {
-        Header: "My Locked Liquidity",
-        Cell: ({ row }: any) => <NumberTd value={row.original.myLiquidity} />,
-        accessor: "myLiquidity",
+        Header: "Total Locked Liquidity",
+        Cell: ({ row }: any) => (
+          <NumberWithUstTd
+            value={row.original.totalLiquidity}
+            valueInUst={row.original.totalLiquidityInUst}
+          />
+        ),
+        accessor: "totalLockedAstroportLiquidity",
       },
       {
-        Header: "Total Locked Liquidity",
-        Cell: ({ row }: any) => <PoolTotalTd value={row.original.name} />,
-        accessor: "totalLockedAstroportLiquidity",
+        Header: "My Locked Liquidity",
+        Cell: ({ row }: any) => (
+          <NumberWithUstTd
+            value={row.original.myLiquidity}
+            valueInUst={row.original.myLiquidityInUst}
+          />
+        ),
+        accessor: "myLiquidity",
       },
       {
         Header: "My Lock Ends",

@@ -24,7 +24,7 @@ const Single: FC<Props> = ({ asset }) => {
       borderColor="white.200"
       textAlign="left"
       px="2"
-      h="14"
+      h="16"
       lineHeight="1.2"
       isFullWidth
     >
@@ -34,7 +34,7 @@ const Single: FC<Props> = ({ asset }) => {
         </Box>
 
         <Box ml="3" fontWeight="500" flex="1">
-          <Text fontSize="xl" color="white">
+          <Text fontSize="2xl" color="white">
             {getSymbol(asset)}
           </Text>
         </Box>

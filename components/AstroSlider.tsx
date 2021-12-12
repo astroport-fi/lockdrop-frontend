@@ -22,6 +22,7 @@ type Props = {
   minLabel?: string;
   maxLabel?: string;
   hideButtons?: boolean;
+  hasMaxSystem?: boolean;
   isDisabled?: boolean;
 } & SliderProps;
 
@@ -34,11 +35,12 @@ const AstroSlider: FC<Props> = ({
   value,
   maxAllowed,
   onChange,
+  hasMaxSystem = false,
   isDisabled = false,
   ...props
 }) => {
   const renderMaxUnlockableLiquidity = () => {
-    if (max != maxAllowed) {
+    if (max != maxAllowed && hasMaxSystem) {
       const ratio = maxAllowed / max;
 
       return (

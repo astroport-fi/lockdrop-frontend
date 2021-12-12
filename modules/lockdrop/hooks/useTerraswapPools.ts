@@ -7,20 +7,6 @@ import { useHive } from "hooks/useHive";
 import { getAssetAmountsInPool } from "libs/terra";
 import { ONE_TOKEN } from "constants/constants";
 
-type Response = {
-  terraswap_pool: string;
-  terraswap_amount_in_lockups: string;
-  incentives_share: string;
-  weighted_amount: string;
-  generator_astro_per_share: string;
-  generator_proxy_per_share: string;
-  is_staked: boolean;
-  migration_info: {
-    terraswap_migrated_amount: string;
-    astroport_lp_token: string;
-  };
-};
-
 const createQuery = (lockdropContract, pairs, address) => {
   if (pairs.length === 0) {
     return;
@@ -99,7 +85,7 @@ export const useTerraswapPools = () => {
     }
 
     // TODO: change to use parse terra amount
-    const astroAllocated = incentives_share / ONE_TOKEN;
+    const astroAllocated = num(incentives_share).div(ONE_TOKEN).toNumber();
     const totalLiquidity = num(total_share).div(ONE_TOKEN).toNumber();
     const totalLiquidityInUst = amountOfUst.times(2).div(ONE_TOKEN).toNumber();
     const myLiquidity = num(balance).div(ONE_TOKEN).toNumber();

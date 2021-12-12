@@ -104,6 +104,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
             maxAllowed={max}
             onChange={handleChange}
             hideButtons
+            hasMaxSystem
           />
         </Box>
       </Card>

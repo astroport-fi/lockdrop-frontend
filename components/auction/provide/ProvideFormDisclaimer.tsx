@@ -46,7 +46,7 @@ const ProvideFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
         </Flex>
 
         <Text variant="light" fontSize="xs" mt="6" lineHeight="1.2">
-          Please check the boxes below to confirm your agreement to the
+          Please check the boxes below to confirm your agreement to the{" "}
           <Link color="#75B5FF" href="/disclaimer" isExternal>
             Lockdrop Disclaimers
           </Link>
