@@ -97,21 +97,22 @@ const Navbar: FC = () => {
               <TerraWallet />
               <HStack spacing="12" align="flex-start" display="none">
                 <Link
-                  href="/"
+                  href="https://astroport.fi/terms-and-conditions"
                   textTransform="uppercase"
                   color="white"
                   opacity="0.7"
+                  isExternal
                 >
                   Terms of use
                 </Link>
-                <Link
+                {/* <Link
                   href="/"
                   textTransform="uppercase"
                   color="white"
                   opacity="0.7"
                 >
                   Privacy Policy
-                </Link>
+                </Link> */}
               </HStack>
             </VStack>
           </Flex>
