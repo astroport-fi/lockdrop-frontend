@@ -34,7 +34,7 @@ export const useEstimatedAstroRewards = ({
       return null;
     }
 
-    return num(amount).times(lockupWeight);
+    return num(amount).times(lockupWeight).times(ONE_TOKEN);
   }, [amount, lockupWeight]);
 
   return useMemo(() => {
@@ -59,11 +59,7 @@ export const useEstimatedAstroRewards = ({
       .times(config.lockdrop_incentives)
       .toString();
 
-    if (num(pool.terraswap_amount_in_lockups).eq(0)) {
-      result = num(result).div(ONE_TOKEN).toString();
-    }
-
-    return result;
+    return num(result).div(ONE_TOKEN).toString();
   }, [amountWeight, pool, config, lockState]);
 };
 
