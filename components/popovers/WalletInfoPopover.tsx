@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Router from "next/router";
 import copy from "copy-to-clipboard";
 import {
   Box,
@@ -46,6 +47,14 @@ const WalletInfoPopover: FC = () => {
       duration: 2000,
       isClosable: false,
     });
+  };
+
+  const handleDisconnect = () => {
+    const { pathname } = Router;
+    if (pathname.includes("/lock") || pathname.includes("/unlock")) {
+      Router.push("/active-phase");
+    }
+    disconnect();
   };
 
   return (
@@ -152,7 +161,7 @@ const WalletInfoPopover: FC = () => {
           type="button"
           variant="primary"
           isFullWidth
-          onClick={() => disconnect()}
+          onClick={() => handleDisconnect()}
         >
           Disconnect
         </Button>
