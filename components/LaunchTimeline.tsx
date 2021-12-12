@@ -27,7 +27,7 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
   const formattedEndDate = endDate?.format("DD/MM/YY");
 
   function checkToday(index) {
-    const today = dayjs();
+    const today = dayjs.utc();
     return endDate?.subtract(index, "days").isSame(today, "day");
   }
 

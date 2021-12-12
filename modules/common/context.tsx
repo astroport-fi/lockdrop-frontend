@@ -64,7 +64,7 @@ export const AstroAppProvider: FC<Props> = ({ children, data }) => {
 
     const timestamp = lockdropConfig.init_timestamp * 1000;
 
-    return dayjs.utc(timestamp);
+    return dayjs(timestamp);
   }, [lockdropConfig]);
 
   const phase1EndDate = useMemo(() => {
@@ -84,7 +84,7 @@ export const AstroAppProvider: FC<Props> = ({ children, data }) => {
 
     const timestamp = auctionConfig.init_timestamp * 1000;
 
-    return dayjs.utc(timestamp);
+    return dayjs(timestamp);
   }, [auctionConfig]);
 
   const phase2EndDate = useMemo(() => {

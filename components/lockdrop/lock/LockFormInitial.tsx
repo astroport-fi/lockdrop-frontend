@@ -32,8 +32,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
   };
 
   const handleDurationChange = (value: number) => {
-    console.log(value);
-    setValue("duration", +value);
+    setValue("duration", value);
   };
 
   return (
