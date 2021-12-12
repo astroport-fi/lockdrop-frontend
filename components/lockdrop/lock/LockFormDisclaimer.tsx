@@ -92,6 +92,9 @@ const LockFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
         </VStack>
 
         <Flex flexDir="column" align="center" mt="8" mb="4">
+          <Text variant="light" fontSize="xs" mb="4" lineHeight="1.2">
+            * Lockup begins at 7:00 AM UTC on December 19, 2021
+          </Text>
           <Button
             variant="primary"
             minW="64"
