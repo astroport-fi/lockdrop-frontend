@@ -9,7 +9,7 @@ type Props = {
 const NumberTd: FC<Props> = ({ value }) => {
   const formatted = numeral(value).format("0,0.00");
 
-  return <Text fontSize="sm">{formatted}</Text>;
+  return <Text fontSize="sm">{formatted} ASTRO</Text>;
 };
 
 export default NumberTd;

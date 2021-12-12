@@ -38,7 +38,7 @@ const AstroSlider: FC<Props> = ({
   ...props
 }) => {
   const renderMaxUnlockableLiquidity = () => {
-    if (maxAllowed != null) {
+    if (max != maxAllowed) {
       const ratio = maxAllowed / max;
 
       return (
@@ -111,6 +111,7 @@ const AstroSlider: FC<Props> = ({
             min={min}
             max={maxAllowed ?? max}
             value={value}
+            step={0.01}
             focusThumbOnChange={false}
             onChange={onChange}
             isDisabled={isDisabled}

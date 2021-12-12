@@ -2,8 +2,9 @@ import { gql } from "graphql-request";
 import { num, useAddress } from "@arthuryeti/terra";
 import { sortBy } from "lodash";
 
-import { useContracts } from "modules/common";
+import { useContracts, useLunaPrice } from "modules/common";
 import { useHive } from "hooks/useHive";
+import { getAssetAmountsInPool } from "libs/terra";
 import { ONE_TOKEN } from "constants/constants";
 
 type Response = {
@@ -68,6 +69,7 @@ const createQuery = (lockdropContract, pairs, address) => {
 export const useTerraswapPools = () => {
   const { lockdrop, pairs } = useContracts();
   const address = useAddress();
+  const lunaPrice = useLunaPrice();
 
   const query = createQuery(lockdrop, pairs, address);
 
@@ -86,14 +88,32 @@ export const useTerraswapPools = () => {
   const items = pairs.map(({ lp, contract }) => {
     const { incentives_share, terraswap_pool } = result[lp].contractQuery;
     const { balance } = result[`balance${lp}`].contractQuery;
-    const { total_share } = result[contract].contractQuery;
+    const { total_share, assets } = result[contract].contractQuery;
+    const { token1 } = getAssetAmountsInPool(assets, "uusd");
+
+    let amountOfUst = num(token1);
+
+    if (token1 == null) {
+      const { token1: uluna } = getAssetAmountsInPool(assets, "uluna");
+      amountOfUst = num(uluna).times(lunaPrice).div(ONE_TOKEN);
+    }
 
     // TODO: change to use parse terra amount
     const astroAllocated = incentives_share / ONE_TOKEN;
+    const totalLiquidity = num(total_share).div(ONE_TOKEN).toNumber();
+    const totalLiquidityInUst = amountOfUst.times(2).div(ONE_TOKEN).toNumber();
+    const myLiquidity = num(balance).div(ONE_TOKEN).toNumber();
+    const myLiquidityInUst = num(balance)
+      .times(totalLiquidityInUst)
+      .div(total_share)
+      .toNumber();
+
     return {
       name: lp,
-      totalLiquidity: num(total_share).div(ONE_TOKEN).toNumber(),
-      myLiquidity: num(balance).div(ONE_TOKEN).toNumber(),
+      totalLiquidity,
+      totalLiquidityInUst,
+      myLiquidity,
+      myLiquidityInUst,
       dualRewards: true,
       terraswapPool: terraswap_pool,
       astroAllocated,

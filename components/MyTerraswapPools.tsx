@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 import { useTerraswapPools } from "modules/lockdrop";
 
@@ -9,6 +9,7 @@ import Card from "components/Card";
 import PoolTable from "components/auction/table/PoolTable";
 import PoolNameTd from "components/auction/table/PoolNameTd";
 import NumberTd from "components/auction/table/NumberTd";
+import NumberWithUstTd from "components/auction/table/NumberWithUstTd";
 import ActionsTd from "components/auction/table/ActionsTd";
 
 const MyTerraswapPools = () => {
@@ -24,13 +25,21 @@ const MyTerraswapPools = () => {
       {
         Header: "Total Terraswap Liquidity",
         Cell: ({ row }: any) => (
-          <NumberTd value={row.original.totalLiquidity} />
+          <NumberWithUstTd
+            value={row.original.totalLiquidity}
+            valueInUst={row.original.totalLiquidityInUst}
+          />
         ),
         accessor: "totalLiquidity",
       },
       {
         Header: "My Terraswap Liquidity",
-        Cell: ({ row }: any) => <NumberTd value={row.original.myLiquidity} />,
+        Cell: ({ row }: any) => (
+          <NumberWithUstTd
+            value={row.original.myLiquidity}
+            valueInUst={row.original.myLiquidityInUst}
+          />
+        ),
         accessor: "myLiquidity",
       },
       {

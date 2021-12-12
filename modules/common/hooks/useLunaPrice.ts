@@ -2,6 +2,8 @@ import { useTerraWebapp } from "@arthuryeti/terra";
 import { useQuery } from "react-query";
 
 import { useContracts } from "modules/common";
+import { Coin } from "@terra-money/terra.js";
+import { ONE_TOKEN } from "constants/constants";
 
 type Response = {
   astro_token: string;
@@ -18,21 +20,18 @@ type Response = {
   withdrawal_window: number;
 };
 
-export const useConfig = () => {
+export const useLunaPrice = () => {
   const { client } = useTerraWebapp();
-  const { lockdrop } = useContracts();
 
-  const { data, isLoading } = useQuery("config", () => {
-    return client.wasm.contractQuery<Response>(lockdrop, {
-      config: {},
-    });
+  const { data, isLoading } = useQuery("luna", () => {
+    return client.market.swapRate(new Coin("uluna", ONE_TOKEN), "uusd");
   });
 
   if (isLoading || data == null) {
     return null;
   }
 
-  return data;
+  return data.amount?.toString();
 };
 
-export default useConfig;
+export default useLunaPrice;
