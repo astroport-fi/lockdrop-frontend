@@ -10,6 +10,7 @@ type Props = {
   label?: string;
   initial?: string;
   hideLabel?: boolean;
+  hideButton?: boolean;
   isDisabled?: boolean;
   onChange: (value: string) => void;
 };
@@ -19,12 +20,28 @@ const Balance: FC<Props> = ({
   initial,
   label = "In Wallet",
   hideLabel = false,
+  hideButton = false,
   isDisabled = false,
   onChange,
 }) => {
   const { getSymbol } = useTokenInfo();
   const balance = useBalance(asset);
   const amount = fromTerraAmount(initial ?? balance, "0.00[0000]");
+
+  const renderButton = () => {
+    if (!hideButton) {
+      return (
+        <Button
+          variant="mini"
+          type="button"
+          onClick={() => onChange(amount)}
+          isDisabled={isDisabled}
+        >
+          Max
+        </Button>
+      );
+    }
+  };
 
   return (
     <Flex align="center" justify="space-between" mt="1">
@@ -40,16 +57,7 @@ const Balance: FC<Props> = ({
           </Text>
         </HStack>
       </Box>
-      <Box>
-        <Button
-          variant="mini"
-          type="button"
-          onClick={() => onChange(amount)}
-          isDisabled={isDisabled}
-        >
-          Max
-        </Button>
-      </Box>
+      <Box>{renderButton()}</Box>
     </Flex>
   );
 };

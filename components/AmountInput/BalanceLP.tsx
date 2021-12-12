@@ -7,6 +7,7 @@ type Props = {
   initial?: string;
   label?: string;
   hideLabel?: boolean;
+  hideButton?: boolean;
   isDisabled?: boolean;
   onChange: (value: string) => void;
 };
@@ -16,11 +17,27 @@ const BalanceLP: FC<Props> = ({
   label = "In Wallet",
   initial,
   hideLabel = false,
+  hideButton = false,
   isDisabled = false,
   onChange,
 }) => {
   const balance = useBalance(asset);
   const amount = fromTerraAmount(initial ?? balance, "0.0[00000]");
+
+  const renderButton = () => {
+    if (!hideButton) {
+      return (
+        <Button
+          variant="mini"
+          type="button"
+          onClick={() => onChange(amount)}
+          isDisabled={isDisabled}
+        >
+          Max
+        </Button>
+      );
+    }
+  };
 
   return (
     <Flex align="center" justify="space-between" mt="1">
@@ -34,16 +51,7 @@ const BalanceLP: FC<Props> = ({
           </Text>
         </HStack>
       </Box>
-      <Box>
-        <Button
-          variant="mini"
-          type="button"
-          onClick={() => onChange(amount)}
-          isDisabled={isDisabled}
-        >
-          Max
-        </Button>
-      </Box>
+      <Box>{renderButton()}</Box>
     </Flex>
   );
 };

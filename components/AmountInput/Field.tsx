@@ -22,6 +22,7 @@ type Props = {
   hideLabel?: boolean;
   hideBalanceLabel?: boolean;
   isDisabled?: boolean;
+  hideMaxButton?: boolean;
   value: {
     amount: string;
     asset: string;
@@ -42,6 +43,7 @@ const Field: FC<Props> = forwardRef(
       balanceLabel,
       hideLabel = false,
       hideBalanceLabel = false,
+      hideMaxButton = false,
       isDisabled = false,
       tokens,
     },
@@ -75,6 +77,7 @@ const Field: FC<Props> = forwardRef(
             initial={balance}
             label={balanceLabel}
             hideLabel={hideBalanceLabel}
+            hideButton={hideMaxButton}
             isDisabled={isDisabled}
             onChange={(v: string) => onChange({ ...value, amount: v })}
           />
@@ -87,6 +90,7 @@ const Field: FC<Props> = forwardRef(
           initial={balance}
           label={balanceLabel}
           hideLabel={hideBalanceLabel}
+          hideButton={hideMaxButton}
           isDisabled={isDisabled}
           onChange={(v: string) => onChange({ ...value, amount: v })}
         />
