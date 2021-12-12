@@ -24,7 +24,7 @@ import WalletPopover from "components/WalletPopover";
 import TerraIcon from "components/icons/TerraIcon";
 import CopyIcon from "components/icons/CopyIcon";
 import ViewIcon from "components/icons/ViewIcon";
-import CloseIcon from "components/icons/CloseIcon";
+// import CloseIcon from "components/icons/CloseIcon";
 
 const WalletInfoPopover: FC = () => {
   const { getIcon, getSymbol } = useTokenInfo();
