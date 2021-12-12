@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useRouter } from "next/router";
 import copy from "copy-to-clipboard";
 import {
   Box,
@@ -24,7 +25,7 @@ import WalletPopover from "components/WalletPopover";
 import TerraIcon from "components/icons/TerraIcon";
 import CopyIcon from "components/icons/CopyIcon";
 import ViewIcon from "components/icons/ViewIcon";
-import CloseIcon from "components/icons/CloseIcon";
+// import CloseIcon from "components/icons/CloseIcon";
 
 const WalletInfoPopover: FC = () => {
   const { getIcon, getSymbol } = useTokenInfo();
@@ -36,6 +37,7 @@ const WalletInfoPopover: FC = () => {
   const balance = useBalance("uusd");
   const terraAddress = useAddress();
   const finder = useFinder();
+  const router = useRouter();
 
   const copyAddress = () => {
     copy(terraAddress);
@@ -46,6 +48,17 @@ const WalletInfoPopover: FC = () => {
       duration: 2000,
       isClosable: false,
     });
+  };
+
+  const handleDisconnect = () => {
+    const pathname = router.pathname;
+    if (
+      router.pathname.includes("/lock") ||
+      router.pathname.includes("/unlock")
+    ) {
+      router.push("/active-phase");
+    }
+    disconnect();
   };
 
   return (
@@ -95,7 +108,7 @@ const WalletInfoPopover: FC = () => {
       <Flex direction="column" justify="center">
         <Flex flex={1} justify="space-between" align="center" py="2">
           <HStack flex={1}>
-            <Image boxSize="8" src={icon} />
+            <Image boxSize="8" src={icon} alt="" />
             <Box>
               <Text textStyle="h3" lineHeight="1">
                 {symbol}
@@ -152,7 +165,7 @@ const WalletInfoPopover: FC = () => {
           type="button"
           variant="primary"
           isFullWidth
-          onClick={() => disconnect()}
+          onClick={handleDisconnect}
         >
           Disconnect
         </Button>
