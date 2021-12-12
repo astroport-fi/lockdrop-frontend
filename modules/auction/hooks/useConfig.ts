@@ -25,7 +25,7 @@ export const useConfig = () => {
   const { client } = useTerraWebapp();
   const { auction } = useContracts();
 
-  const { data, isLoading } = useQuery("configAuction", () => {
+  const { data, isLoading } = useQuery(["auction", "config"], () => {
     return client.wasm.contractQuery<Response>(auction, {
       config: {},
     });
@@ -34,8 +34,6 @@ export const useConfig = () => {
   if (isLoading || data == null) {
     return null;
   }
-
-  console.log(data);
 
   return data;
 };

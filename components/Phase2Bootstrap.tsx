@@ -20,7 +20,10 @@ import { fromTerraAmount } from "@arthuryeti/terra";
 
 import { useAstroApp } from "modules/common";
 import { useUserInfo, useConfig, useAstroBalance } from "modules/auction";
-import { useUserInfo as useAirdropUserInfo } from "modules/airdrop";
+import {
+  useUserInfo as useAirdropUserInfo,
+  useAirdopState,
+} from "modules/airdrop";
 
 import KPITitle from "components/KPITitle";
 import CardHeader from "components/CardHeader";
@@ -36,6 +39,7 @@ const Phase2Bootstrap = () => {
   const userInfo = useUserInfo();
   const airdropUserInfo = useAirdropUserInfo();
   const astroBalance = useAstroBalance();
+  const state = useAirdopState();
 
   return (
     <Box>
@@ -114,7 +118,7 @@ const Phase2Bootstrap = () => {
                 label="Total ASTRO rewards allocated
                 to airdrop"
                 value={`${fromTerraAmount(
-                  airdropUserInfo?.airdrop_amount,
+                  state?.total_airdrop_size,
                   "0,0.00"
                 )} ASTRO`}
               />
