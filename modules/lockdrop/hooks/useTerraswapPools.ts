@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { useAddress } from "@arthuryeti/terra";
+import { num, useAddress } from "@arthuryeti/terra";
 import { sortBy } from "lodash";
 
 import { useContracts } from "modules/common";
@@ -20,22 +20,31 @@ type Response = {
   };
 };
 
-const createQuery = (contract, lpTokens, address) => {
-  if (lpTokens.length === 0) {
+const createQuery = (lockdropContract, pairs, address) => {
+  if (pairs.length === 0) {
     return;
   }
 
   return gql`
     {
-      ${lpTokens.map((lp) => {
+      ${pairs.map(({ lp, contract }) => {
         return `
           ${lp}: wasm {
             contractQuery(
-              contractAddress: "${contract}"
+              contractAddress: "${lockdropContract}"
               query: {
                 pool: {
                   terraswap_lp_token: "${lp}"
                 }
+              }
+            )
+          }
+
+          ${contract}: wasm {
+            contractQuery(
+              contractAddress: "${contract}"
+              query: {
+                pool: { }
               }
             )
           }
@@ -57,10 +66,10 @@ const createQuery = (contract, lpTokens, address) => {
 };
 
 export const useTerraswapPools = () => {
-  const { lockdrop, terraswapLps } = useContracts();
+  const { lockdrop, pairs } = useContracts();
   const address = useAddress();
 
-  const query = createQuery(lockdrop, terraswapLps, address);
+  const query = createQuery(lockdrop, pairs, address);
 
   const result = useHive({
     name: "terraswap-pools",
@@ -74,17 +83,17 @@ export const useTerraswapPools = () => {
     return [];
   }
 
-  const items = terraswapLps.map((key) => {
-    const { incentives_share, terraswap_amount_in_lockups, terraswap_pool } =
-      result[key].contractQuery;
-    const { balance } = result[`balance${key}`].contractQuery;
+  const items = pairs.map(({ lp, contract }) => {
+    const { incentives_share, terraswap_pool } = result[lp].contractQuery;
+    const { balance } = result[`balance${lp}`].contractQuery;
+    const { total_share } = result[contract].contractQuery;
 
     // TODO: change to use parse terra amount
     const astroAllocated = incentives_share / ONE_TOKEN;
     return {
-      name: key,
-      totalLiquidity: +terraswap_amount_in_lockups / ONE_TOKEN,
-      myLiquidity: +balance / ONE_TOKEN,
+      name: lp,
+      totalLiquidity: num(total_share).div(ONE_TOKEN).toNumber(),
+      myLiquidity: num(balance).div(ONE_TOKEN).toNumber(),
       dualRewards: true,
       terraswapPool: terraswap_pool,
       astroAllocated,
