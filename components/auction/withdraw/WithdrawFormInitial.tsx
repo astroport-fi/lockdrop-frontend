@@ -78,6 +78,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
               limit={max}
               balance={balance}
               isSingle
+              isDisabled={true}
             />
           )}
         />
