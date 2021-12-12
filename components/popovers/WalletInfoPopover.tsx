@@ -95,7 +95,7 @@ const WalletInfoPopover: FC = () => {
       <Flex direction="column" justify="center">
         <Flex flex={1} justify="space-between" align="center" py="2">
           <HStack flex={1}>
-            <Image boxSize="8" src={icon} />
+            <Image boxSize="8" src={icon} alt="" />
             <Box>
               <Text textStyle="h3" lineHeight="1">
                 {symbol}
