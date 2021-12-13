@@ -1,8 +1,8 @@
-import React, { FC, useEffect, useState, useCallback } from "react";
+import React, { FC, useEffect, useState, useMemo } from "react";
 import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useQueryClient } from "react-query";
-import { TxStep } from "@arthuryeti/terra";
+import { TxStep, num } from "@arthuryeti/terra";
 import { useRouter } from "next/router";
 
 import { toAmount } from "libs/parse";
@@ -93,6 +93,20 @@ const ProvideForm: FC = () => {
     }
   }, [state.txStep]);
 
+  const totalAstro = useMemo(() => {
+    let lockBalance = 0;
+    let airdropBalance = 0;
+
+    if (num(astroLockdrop.amount).gt(0)) {
+      lockBalance = num(astroLockdrop.amount).toNumber();
+    }
+    if (num(astroAirdrop.amount).gt(0)) {
+      airdropBalance = num(astroAirdrop.amount).toNumber();
+    }
+
+    return lockBalance + airdropBalance;
+  }, [astroAirdrop, astroLockdrop]);
+
   if (state.txStep == TxStep.Broadcasting || state.txStep == TxStep.Posting) {
     return <FormLoading txHash={state.txHash} />;
   }
@@ -105,7 +119,7 @@ const ProvideForm: FC = () => {
             label1="You've provided"
             label2="and"
             token1={uusd}
-            token2={astroLockdrop}
+            token2={totalAstro}
           />
         }
         onCloseClick={handleSuccessClose}
