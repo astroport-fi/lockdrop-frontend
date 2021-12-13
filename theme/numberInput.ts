@@ -30,6 +30,9 @@ const styles = {
           pt: "0",
           _hover: {
             borderColor: "brand.purple",
+            _disabled: {
+              borderColor: "white.200",
+            },
           },
           // _invalid: {
           //   borderColor: "red.500",

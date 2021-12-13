@@ -14,6 +14,7 @@ const DateInput: FC<Props> = ({
   onChange,
   onBlur,
   value,
+  isDisabled,
   max,
   inputPaddingRight = 0,
 }) => {
@@ -30,6 +31,7 @@ const DateInput: FC<Props> = ({
         value={value}
         max={max}
         onChange={(_, valueNumber) => onChange(valueNumber)}
+        isDisabled
         onBlur={onBlur}
       >
         <NumberInputField placeholder="0" pr={inputPaddingRight} />
