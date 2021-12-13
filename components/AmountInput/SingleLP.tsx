@@ -30,7 +30,7 @@ const SingleLP: FC<Props> = ({ asset }) => {
     >
       <Flex align="center">
         <Box>
-          <Image src={icon} width="1.5rem" height="1.5rem" alt="Logo" />
+          <Image src={icon} alt="Logo" />
         </Box>
 
         <Box ml="3" fontWeight="500" flex="1">

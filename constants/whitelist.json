@@ -119,61 +119,61 @@
         "protocol": "Terraswap",
         "symbol": "LUNA-UST LP",
         "token": "terra12xqxr9j9hawuch7vv6y0gz8l0wetjtvu7xqvh9",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/luna-ust-lp.png"
       },
       "terra1ynr4h9qzsn8ju4rrat6zaek6j6hkywduz44jha": {
         "protocol": "Terraswap",
         "symbol": "bLUNA-LUNA LP",
         "token": "terra1ynr4h9qzsn8ju4rrat6zaek6j6hkywduz44jha",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/bluna-luna-lp.png"
       },
       "terra1tkznhysk37rw64nc8p6xkt5tfp2058905avweg": {
         "protocol": "Terraswap",
         "symbol": "ANC-UST LP",
         "token": "terra1tkznhysk37rw64nc8p6xkt5tfp2058905avweg",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/anc-ust-lp.png"
       },
       "terra18c9c020k09udyepwp9k6mlaha82nwnz8gfnpzd": {
         "protocol": "Terraswap",
         "symbol": "MIR-UST LP",
         "token": "terra18c9c020k09udyepwp9k6mlaha82nwnz8gfnpzd",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/mir-ust-lp.png"
       },
       "terra1gn7jxqutclyld8q343jaq5rwcy0m3t9jl2xhgd": {
         "protocol": "Terraswap",
         "symbol": "ORION-UST LP",
         "token": "terra1gn7jxqutclyld8q343jaq5rwcy0m3t9jl2xhgd",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/orion-ust-lp.png"
       },
       "terra1qlkq2a6dhe8t00xcmsa6mc6nmhxe9z7y6hx9t6": {
         "protocol": "Terraswap",
         "symbol": "STT-UST LP",
         "token": "terra1qlkq2a6dhe8t00xcmsa6mc6nmhxe9z7y6hx9t6",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/stt-ust-lp.png"
       },
       "terra16muqeueyvyh4g30gpc0yenmykas7wahk0jfkpv": {
         "protocol": "Terraswap",
         "symbol": "VKR-UST LP",
         "token": "terra16muqeueyvyh4g30gpc0yenmykas7wahk0jfkpv",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/vkr-ust-lp.png"
       },
       "terra1k3pcz9pf7utppte4m7t8th2juqxmm9spa9wg9w": {
         "protocol": "Terraswap",
         "symbol": "MINE-UST LP",
         "token": "terra1k3pcz9pf7utppte4m7t8th2juqxmm9spa9wg9w",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/mine-ust-lp.png"
       },
       "terra1tjesn440ggyapecjn8x52g0g3dxz4hguqldlc0": {
         "protocol": "Terraswap",
         "symbol": "Psi-UST LP",
         "token": "terra1tjesn440ggyapecjn8x52g0g3dxz4hguqldlc0",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/psi-ust-lp.png"
       },
       "terra1s8rcl6mtacj3t68x024298y6mdqkes3e96vlne": {
         "protocol": "Terraswap",
         "symbol": "APOLLO-UST LP",
         "token": "terra1s8rcl6mtacj3t68x024298y6mdqkes3e96vlne",
-        "icon": "https://assets.terra.money/icon/60/UST.png"
+        "icon": "/tokens/apollo-ust-lp.png"
       }
     },
     "pairs": [

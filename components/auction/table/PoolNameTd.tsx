@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Text } from "@chakra-ui/react";
+import { HStack, Image, Text } from "@chakra-ui/react";
 
 import { useTokenInfo } from "modules/common";
 
@@ -9,9 +9,14 @@ type Props = {
 
 const PoolNameTd: FC<Props> = ({ row }) => {
   const { name } = row.original;
-  const { getSymbol } = useTokenInfo();
+  const { getSymbol, getIcon } = useTokenInfo();
 
-  return <Text fontSize="sm">{getSymbol(name)}</Text>;
+  return (
+    <HStack>
+      <Image src={getIcon(name)} alt="Icon" />
+      <Text fontSize="sm">{getSymbol(name)}</Text>
+    </HStack>
+  );
 };
 
 export default PoolNameTd;
