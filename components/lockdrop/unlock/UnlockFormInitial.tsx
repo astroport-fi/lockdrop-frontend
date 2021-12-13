@@ -94,6 +94,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
               limit={max}
               isLpToken
               isSingle
+              hideMaxButton
             />
           )}
         />

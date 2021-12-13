@@ -107,7 +107,7 @@ export const useTerraswapPools = () => {
     };
   });
 
-  return sortBy(items, "myLiquidity").reverse();
+  return sortBy(items, "astroAllocated").reverse();
 };
 
 export default useTerraswapPools;

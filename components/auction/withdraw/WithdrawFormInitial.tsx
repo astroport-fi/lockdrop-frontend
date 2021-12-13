@@ -80,7 +80,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
               limit={max}
               balance={balance}
               isSingle
-              hideMaxButton={true}
+              hideMaxButton
             />
           )}
         />

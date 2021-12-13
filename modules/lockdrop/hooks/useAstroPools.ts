@@ -1,5 +1,6 @@
-import { num, useAddress } from "@arthuryeti/terra";
+import { num } from "@arthuryeti/terra";
 import { gql } from "graphql-request";
+import { sortBy } from "lodash";
 
 import { ONE_TOKEN } from "constants/constants";
 import { useContracts, useLunaPrice } from "modules/common";
@@ -60,7 +61,7 @@ export const useAstroPools = () => {
     return [];
   }
 
-  return userInfo.lockup_infos.map((info) => {
+  const items = userInfo.lockup_infos.map((info) => {
     const { assets, total_share } =
       result[`pool${info.terraswap_lp_token}`].contractQuery;
     const { balance } =
@@ -100,6 +101,8 @@ export const useAstroPools = () => {
       astroRewards: +info.astro_rewards / ONE_TOKEN,
     };
   });
+
+  return sortBy(items, "myLiquidityInUst").reverse();
 };
 
 export default useAstroPools;
