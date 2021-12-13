@@ -62,7 +62,8 @@ export const useAstroPools = () => {
   }
 
   return userInfo.lockup_infos.map((info) => {
-    const { assets } = result[`pool${info.terraswap_lp_token}`].contractQuery;
+    const { assets, total_share } =
+      result[`pool${info.terraswap_lp_token}`].contractQuery;
     const { balance } =
       result[`balance${info.terraswap_lp_token}`].contractQuery;
 
@@ -75,18 +76,23 @@ export const useAstroPools = () => {
       amountOfUst = num(uluna).times(lunaPrice).div(ONE_TOKEN);
     }
 
-    const totalLiquidity = num(balance).div(ONE_TOKEN).toNumber();
     const totalLiquidityInUst = amountOfUst.times(2).div(ONE_TOKEN).toNumber();
+
+    const totalLiquidity = num(balance).div(ONE_TOKEN).toNumber();
+    const totalLiquidityLockedInUst = num(balance)
+      .times(totalLiquidityInUst)
+      .div(total_share)
+      .toNumber();
     const myLiquidity = num(info.lp_units_locked).div(ONE_TOKEN).toNumber();
     const myLiquidityInUst = num(info.lp_units_locked)
       .times(totalLiquidityInUst)
-      .div(balance)
+      .div(total_share)
       .toNumber();
 
     return {
       name: info.terraswap_lp_token,
       totalLiquidity,
-      totalLiquidityInUst,
+      totalLiquidityInUst: totalLiquidityLockedInUst,
       myLiquidity,
       myLiquidityInUst,
       lockEnd: info.unlock_timestamp,
