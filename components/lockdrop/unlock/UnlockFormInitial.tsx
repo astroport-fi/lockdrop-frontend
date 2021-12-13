@@ -119,7 +119,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
       )}
 
       <UnlockFormFooter
-        amount={amount}
+        amount={lpToken.amount}
         lpToken={lpToken.asset}
         duration={duration}
         data={state}

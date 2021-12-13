@@ -24,7 +24,11 @@ const PoolTable: FC<Props> = ({ columns, data }) => {
       {headerGroups.map((headerGroup) => (
         <Tr isHead {...headerGroup.getHeaderGroupProps()}>
           {headerGroup.headers.map((column: any) => (
-            <Td color="white.700" {...column.getHeaderProps()}>
+            <Td
+              color="white.700"
+              {...column.getHeaderProps()}
+              flexBasis={`${column.width}px`}
+            >
               <HStack>
                 <Text fontSize="xs" variant="light">
                   {column.render("Header")}

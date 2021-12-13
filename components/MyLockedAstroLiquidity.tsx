@@ -22,6 +22,7 @@ const MyLockedAstroLiquidity = () => {
         Header: "Pool Name",
         Cell: ({ row }: any) => <PoolNameTd row={row} />,
         accessor: "name",
+        width: 120,
       },
       {
         Header: "Total Locked Liquidity",
@@ -47,6 +48,7 @@ const MyLockedAstroLiquidity = () => {
         Header: "My Lock Ends",
         Cell: ({ row }: any) => <LockEndTd row={row} />,
         accessor: "lockEnd",
+        width: 75,
       },
       {
         Header: "Est. ASTRO Rewards",
@@ -61,7 +63,7 @@ const MyLockedAstroLiquidity = () => {
           </Box>
         ),
         accessor: "dualRewards",
-        disableSortBy: true,
+        width: 50,
       },
       {
         Header: () => <Box width="167px" />,
@@ -72,6 +74,7 @@ const MyLockedAstroLiquidity = () => {
           />
         ),
         accessor: "actions",
+        width: 100,
       },
     ],
     []

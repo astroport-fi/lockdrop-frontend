@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 
 import { useTerraswapPools } from "modules/lockdrop";
 
@@ -21,6 +21,7 @@ const MyTerraswapPools = () => {
         Header: "Pool Name",
         Cell: ({ row }: any) => <PoolNameTd row={row} />,
         accessor: "name",
+        width: 100,
       },
       {
         Header: "Total Terraswap Liquidity",
@@ -52,17 +53,18 @@ const MyTerraswapPools = () => {
       {
         Header: "Dual Rewards",
         Cell: () => (
-          <Box>
+          <Flex>
             <CheckIcon />
-          </Box>
+          </Flex>
         ),
         accessor: "dualRewards",
-        disableSortBy: true,
+        width: 25,
       },
       {
         Header: "",
         Cell: ({ row }: any) => <ActionsTd row={row} />,
         accessor: "actions",
+        width: 100,
       },
     ],
     []

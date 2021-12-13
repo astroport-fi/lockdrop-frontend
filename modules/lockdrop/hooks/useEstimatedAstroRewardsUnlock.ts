@@ -1,7 +1,12 @@
 import { useMemo } from "react";
 import { num } from "@arthuryeti/terra";
 
-import { useConfig, useLockState, usePool } from "modules/lockdrop";
+import {
+  useConfig,
+  useLockState,
+  usePool,
+  useLockedLpAmount,
+} from "modules/lockdrop";
 import { ONE_TOKEN } from "constants/constants";
 
 type Options = {
@@ -18,6 +23,7 @@ export const useEstimatedAstroRewardsUnlock = ({
   const config = useConfig();
   const pool = usePool(lpToken);
   const lockState = useLockState();
+  const stakedAmount = useLockedLpAmount(lpToken, duration);
 
   const lockupWeight = useMemo(() => {
     if (config == null || duration == 0) {
@@ -34,15 +40,24 @@ export const useEstimatedAstroRewardsUnlock = ({
       return null;
     }
 
-    return num(amount).times(lockupWeight).times(ONE_TOKEN);
+    return num(amount).times(ONE_TOKEN).times(lockupWeight);
   }, [amount, lockupWeight]);
+
+  const stakedAmountWeight = useMemo(() => {
+    if (lockupWeight == null || num(stakedAmount).eq(0) || stakedAmount == "") {
+      return null;
+    }
+
+    return num(stakedAmount).times(ONE_TOKEN).times(lockupWeight);
+  }, [lockupWeight, stakedAmount]);
 
   return useMemo(() => {
     if (
       config == null ||
       pool == null ||
       lockState == null ||
-      amountWeight == null
+      amountWeight == null ||
+      stakedAmountWeight == null
     ) {
       return null;
     }
@@ -50,9 +65,9 @@ export const useEstimatedAstroRewardsUnlock = ({
     const first = num(pool.incentives_share).div(
       lockState.total_incentives_share
     );
-    const second = num(amountWeight).div(
-      num(pool.weighted_amount).plus(amountWeight)
-    );
+    const second = num(
+      num(stakedAmountWeight).minus(num(amountWeight).times(ONE_TOKEN))
+    ).div(num(pool.weighted_amount).minus(amountWeight).times(ONE_TOKEN));
 
     let result = num(first)
       .times(second)
@@ -60,7 +75,7 @@ export const useEstimatedAstroRewardsUnlock = ({
       .toString();
 
     return num(result).div(ONE_TOKEN).toString();
-  }, [amountWeight, pool, config, lockState]);
+  }, [amountWeight, pool, config, lockState, stakedAmountWeight]);
 };
 
 export default useEstimatedAstroRewardsUnlock;
