@@ -93,6 +93,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
             maxAllowed={max}
             onChange={handleChange}
             hideButtons
+            hasMaxSystem
           />
         </Box>
       </Card>

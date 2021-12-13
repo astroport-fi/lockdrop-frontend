@@ -19,11 +19,13 @@ import {
 import { fromTerraAmount } from "@arthuryeti/terra";
 
 import { useAstroApp } from "modules/common";
-import { useUserInfo, useConfig, useAstroBalance } from "modules/auction";
 import {
-  useUserInfo as useAirdropUserInfo,
-  useAirdopState,
-} from "modules/airdrop";
+  useUserInfo,
+  useConfig,
+  useAstroBalance,
+  useTotalAstroRewards,
+} from "modules/auction";
+import { useAirdopState } from "modules/airdrop";
 
 import KPITitle from "components/KPITitle";
 import CardHeader from "components/CardHeader";
@@ -37,9 +39,9 @@ const Phase2Bootstrap = () => {
   const { phase2StartDate, phase2EndDate } = useAstroApp();
   const config = useConfig();
   const userInfo = useUserInfo();
-  const airdropUserInfo = useAirdropUserInfo();
   const astroBalance = useAstroBalance();
   const state = useAirdopState();
+  const totalAstroRewards = useTotalAstroRewards();
 
   return (
     <Box>
@@ -73,10 +75,7 @@ const Phase2Bootstrap = () => {
             <Box pr={[null, null, null, null, "24"]}>
               <KPITitle
                 label="My total estimated ASTRO upon launch"
-                value={`${fromTerraAmount(
-                  userInfo?.auction_incentive_amount,
-                  "0,0.00"
-                )} ASTRO`}
+                value={`${fromTerraAmount(totalAstroRewards, "0,0.00")} ASTRO`}
               />
             </Box>
           </VStack>
@@ -125,7 +124,7 @@ const Phase2Bootstrap = () => {
             </Box>
           </VStack>
         </Stack>
-        <Accordion allowToggle>
+        <Accordion allowToggle variant="primary">
           <AccordionItem border="0">
             {({ isExpanded }) => (
               <>
@@ -192,7 +191,7 @@ const Phase2Bootstrap = () => {
                               <Flex h="100px" align="center" justify="center">
                                 <Image
                                   src="/move-liquidity-1.png"
-                                  srcset="/move-liquidity-1@2x.png 2x"
+                                  srcSet="/move-liquidity-1@2x.png 2x"
                                   alt=""
                                 />
                               </Flex>
@@ -209,7 +208,7 @@ const Phase2Bootstrap = () => {
                               <Flex h="100px" align="center" justify="center">
                                 <Image
                                   src="/move-liquidity-2.png"
-                                  srcset="/move-liquidity-2@2x.png 2x"
+                                  srcSet="/move-liquidity-2@2x.png 2x"
                                   alt=""
                                 />
                               </Flex>
@@ -226,7 +225,7 @@ const Phase2Bootstrap = () => {
                               <Flex h="100px" align="center" justify="center">
                                 <Image
                                   src="/move-liquidity-3.png"
-                                  srcset="/move-liquidity-3@2x.png 2x"
+                                  srcSet="/move-liquidity-3@2x.png 2x"
                                   alt=""
                                 />
                               </Flex>
@@ -416,7 +415,7 @@ const Phase2Bootstrap = () => {
                           <Flex direction="column" align="center" pb="2px">
                             <Image
                               src="/astrolaunch.png"
-                              srcset="/astrolaunch@2x.png 2x"
+                              srcSet="/astrolaunch@2x.png 2x"
                               alt=""
                               mb="2"
                               position="relative"
@@ -516,7 +515,7 @@ const Phase2Bootstrap = () => {
                             <Box flex="1" px="5">
                               <Image
                                 src="/withdrawable-amount.png"
-                                srcset="/withdrawable-amount@2x.png 2x"
+                                srcSet="/withdrawable-amount@2x.png 2x"
                                 alt=""
                                 width="100%"
                               />

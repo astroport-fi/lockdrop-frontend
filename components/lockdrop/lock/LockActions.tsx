@@ -14,7 +14,7 @@ const LockActions: FC = () => {
         </Text>
       </Box>
       <NextLink href="/active-phase" passHref>
-        <Button variant="icon">
+        <Button as="a" variant="icon">
           <CloseIcon w="6" h="6" color="white" />
         </Button>
       </NextLink>

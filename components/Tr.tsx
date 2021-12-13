@@ -28,7 +28,6 @@ const Tr: FC<Props> = ({ children, isHead = false, ...rest }) => {
       fontWeight="500"
       borderBottomWidth="1px"
       borderBottomColor="white.200"
-      borderCollapse="collapse"
       py="3"
       px="8"
       _last={{

@@ -136,7 +136,7 @@ const AddLiquidity = () => {
                 >
                   <Image
                     src="/coin-left.png"
-                    srcset="/coin-left@2x.png 2x"
+                    srcSet="/coin-left@2x.png 2x"
                     alt=""
                   />
                 </Box>
@@ -149,7 +149,7 @@ const AddLiquidity = () => {
                 >
                   <Image
                     src="/coin-right.png"
-                    srcset="/coin-right@2x.png 2x"
+                    srcSet="/coin-right@2x.png 2x"
                     alt=""
                   />
                 </Box>

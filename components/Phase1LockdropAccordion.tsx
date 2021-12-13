@@ -66,7 +66,7 @@ const Phase1LockdropAccordion = () => {
                           <Flex h="100px" align="center" justify="center">
                             <Image
                               src="/move-liquidity-1.png"
-                              srcset="/move-liquidity-1@2x.png 2x"
+                              srcSet="/move-liquidity-1@2x.png 2x"
                               alt=""
                             />
                           </Flex>
@@ -84,7 +84,7 @@ const Phase1LockdropAccordion = () => {
                           <Flex h="100px" align="center" justify="center">
                             <Image
                               src="/move-liquidity-2.png"
-                              srcset="/move-liquidity-2@2x.png 2x"
+                              srcSet="/move-liquidity-2@2x.png 2x"
                               alt=""
                             />
                           </Flex>
@@ -100,7 +100,7 @@ const Phase1LockdropAccordion = () => {
                           <Flex h="100px" align="center" justify="center">
                             <Image
                               src="/move-liquidity-3.png"
-                              srcset="/move-liquidity-3@2x.png 2x"
+                              srcSet="/move-liquidity-3@2x.png 2x"
                               alt=""
                             />
                           </Flex>
@@ -322,7 +322,7 @@ const Phase1LockdropAccordion = () => {
                       <Flex direction="column" align="center" pb="2px">
                         <Image
                           src="/astrolaunch-2.png"
-                          srcset="/astrolaunch-2@2x.png 2x"
+                          srcSet="/astrolaunch-2@2x.png 2x"
                           alt=""
                           mb="-10"
                           position="relative"

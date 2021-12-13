@@ -14,6 +14,8 @@ import {
   Link,
 } from "@chakra-ui/react";
 
+import NextLink from "next/link";
+
 import TerraWallet from "components/TerraWallet";
 import NavbarLink from "components/NavbarLink";
 import BurgerIcon from "components/icons/BurgerIcon";
@@ -33,9 +35,11 @@ const Navbar: FC = () => {
     >
       <Flex w="100%" justify="space-between" align="center">
         <Box flexShrink={0}>
-          <Link href="/" passHref>
-            <Image src="/logo-astroport.svg" alt="WhiteWhale Logo" />
-          </Link>
+          <NextLink href="/" passHref>
+            <a>
+              <Image src="/logo-astroport.svg" alt="Astroport Logo" />
+            </a>
+          </NextLink>
         </Box>
         <Box display={["none", null, null, "block"]} flex="1">
           <HStack flex="1" px="16" spacing="12">

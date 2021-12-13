@@ -44,7 +44,7 @@ const LockdropIntroduction = () => {
             to learn more about Astroport.
           </Text>
           <NextLink href="/active-phase" passHref>
-            <Button variant="primary" width="256px">
+            <Button as="a" variant="primary" width="256px">
               Go to active phase
             </Button>
           </NextLink>
@@ -65,7 +65,7 @@ const LockdropIntroduction = () => {
             >
               <Image
                 src="/astro-intro-coins.png"
-                srcset="astro-intro-coins@2x.png 2x"
+                srcSet="astro-intro-coins@2x.png 2x"
                 alt=""
                 className="intro-1"
                 width="100%"
@@ -83,7 +83,7 @@ const LockdropIntroduction = () => {
             >
               <Image
                 src="/astro-intro-vortex.png"
-                srcset="astro-intro-vortex@2x.png 2x"
+                srcSet="astro-intro-vortex@2x.png 2x"
                 alt=""
                 className="intro-2"
                 width="100%"
@@ -101,7 +101,7 @@ const LockdropIntroduction = () => {
             >
               <Image
                 src="/astro-intro-face.png"
-                srcset="astro-intro-face@2x.png 2x"
+                srcSet="astro-intro-face@2x.png 2x"
                 alt=""
                 className="intro-3"
                 width="100%"

@@ -39,6 +39,7 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
       if (phaseNumber == 1 && index < 10) {
         phase.push(
           <DateNumber
+            key={index}
             day={index}
             bg="brand.purple"
             color="white"
@@ -46,9 +47,11 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
           />
         );
       } else if (phaseNumber == 2 && index < 3) {
-        phase.push(<DateNumber day={index} bg="#83FFCB" isToday={isToday} />);
+        phase.push(
+          <DateNumber key={index} day={index} bg="#83FFCB" isToday={isToday} />
+        );
       } else {
-        phase.push(<DateNumber day={index} isToday={isToday} />);
+        phase.push(<DateNumber key={index} day={index} isToday={isToday} />);
       }
     }
     return phase;

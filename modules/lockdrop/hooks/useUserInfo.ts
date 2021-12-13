@@ -1,4 +1,4 @@
-import { useAddress, useTerraWebapp } from "@arthuryeti/terra";
+import { num, useAddress, useTerraWebapp } from "@arthuryeti/terra";
 import { useQuery } from "react-query";
 
 import { useContracts } from "modules/common";
@@ -48,7 +48,9 @@ export const useUserInfo = () => {
   }
 
   return {
-    estimatedAstroReward: +data.total_astro_rewards / ONE_TOKEN,
+    estimatedAstroReward: num(data.total_astro_rewards)
+      .div(ONE_TOKEN)
+      .toNumber(),
     ...data,
   };
 };

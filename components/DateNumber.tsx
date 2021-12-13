@@ -36,22 +36,22 @@ const DateNumber: FC<Props> = ({ day, isToday = false, ...props }) => {
         </Flex>
       </Flex>
     );
-  } else {
-    return (
-      <Flex
-        align="center"
-        justify="center"
-        flex="1"
-        color="#999"
-        bg="white"
-        {...props}
-      >
-        <Text fontSize="11px" lineHeight="1" whiteSpace="nowrap">
-          {day}
-        </Text>
-      </Flex>
-    );
   }
+
+  return (
+    <Flex
+      align="center"
+      justify="center"
+      flex="1"
+      color="#999"
+      bg="white"
+      {...props}
+    >
+      <Text fontSize="11px" lineHeight="1" whiteSpace="nowrap">
+        {day}
+      </Text>
+    </Flex>
+  );
 };
 
 export default DateNumber;

@@ -9,7 +9,6 @@ import {
   InputLeftElement,
   Input,
 } from "@chakra-ui/react";
-import { useAddress } from "@arthuryeti/terra";
 import Link from "next/link";
 
 import CardHeader from "components/CardHeader";
@@ -17,7 +16,6 @@ import Card from "components/Card";
 import SearchIcon from "components/icons/SearchIcon";
 
 const AstroAirdrop = () => {
-  const address = useAddress();
   const [value, setValue] = useState("");
 
   const handleChange = (evt) => {
@@ -59,6 +57,7 @@ const AstroAirdrop = () => {
               </InputGroup>
               <Link href={`/airdrop/${value}`} passHref>
                 <Button
+                  as="a"
                   variant="primary"
                   width="192px"
                   mt="6"
@@ -76,7 +75,7 @@ const AstroAirdrop = () => {
           >
             <Image
               src="/astro-airdrop.png"
-              srcset="/astro-airdrop@2x.png 2x"
+              srcSet="/astro-airdrop@2x.png 2x"
               alt=""
             />
           </Box>
