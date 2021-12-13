@@ -16,6 +16,7 @@ import Slider from "./slider";
 import Input from "./input";
 import Popover from "./popover";
 import Checkbox from "./checkbox";
+import Accordion from "./accordion";
 
 export default extendTheme({
   fonts: {
@@ -26,6 +27,7 @@ export default extendTheme({
   },
   components: {
     Alert,
+    Accordion,
     Modal,
     Tooltip,
     Text,

@@ -1,4 +1,4 @@
-import { useTerraWebapp } from "@arthuryeti/terra";
+import { num, useTerraWebapp } from "@arthuryeti/terra";
 import { useQuery } from "react-query";
 
 import { useContracts } from "modules/common";
@@ -31,7 +31,7 @@ export const useLunaPrice = () => {
     return null;
   }
 
-  return data.amount?.toString();
+  return num(data.amount.toString()).div(ONE_TOKEN).toNumber();
 };
 
 export default useLunaPrice;

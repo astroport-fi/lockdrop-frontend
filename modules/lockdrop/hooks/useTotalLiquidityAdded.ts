@@ -1,21 +1,24 @@
 import { gql } from "graphql-request";
 import { forEach } from "lodash";
+import { num } from "@arthuryeti/terra";
 
 import { useTerraswapPools } from "modules/lockdrop";
+import { useContracts } from "modules/common";
 import { useHive } from "hooks/useHive";
-import { getUusdAmount } from "libs/helpers";
 import { ONE_TOKEN } from "constants/constants";
 
-const createQuery = (pools) => {
+const createQuery = (lps, contract) => {
   return gql`
     {
-      ${pools.map((pool) => {
+      ${lps.map((lp) => {
         return `
-          ${pool}: wasm {
+          ${lp}: wasm {
             contractQuery(
-              contractAddress: "${pool}"
+              contractAddress: "${contract}"
               query: {
-                pool: {}
+                pool: {
+                  terraswap_lp_token: "${lp}"
+                }
               }
             )
           }
@@ -27,12 +30,13 @@ const createQuery = (pools) => {
 
 export const useTotalLiquidityAdded = () => {
   const items = useTerraswapPools();
+  const { lockdrop } = useContracts();
 
   const variables = items.map((item) => {
-    return item.terraswapPool;
+    return item.name;
   });
 
-  const query = createQuery(variables);
+  const query = createQuery(variables, lockdrop);
 
   const result = useHive({
     name: "total-liquidity-added",
@@ -49,16 +53,13 @@ export const useTotalLiquidityAdded = () => {
   let total = 0;
 
   forEach(items, (item) => {
-    const balance = item.totalLiquidity;
-    const pool = result[item.terraswapPool].contractQuery;
-    const totalShare = +pool.total_share / ONE_TOKEN;
-    const uusdAmount = getUusdAmount(pool);
+    const pool = result[item.name].contractQuery;
 
-    const uusdAmountOfLp = (balance * uusdAmount) / totalShare;
-
-    if (uusdAmountOfLp > 0) {
-      total += uusdAmountOfLp * 2;
-    }
+    total += num(pool.terraswap_amount_in_lockups)
+      .div(ONE_TOKEN)
+      .times(item.totalLiquidityInUst)
+      .div(item.totalLiquidity)
+      .toNumber();
   });
 
   return total;

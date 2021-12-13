@@ -1,14 +1,12 @@
 import { gql } from "graphql-request";
 import { forEach } from "lodash";
+import { num } from "@arthuryeti/terra";
 
-import {
-  useAstroPools,
-  useTerraswapPools,
-  useUserInfo,
-} from "modules/lockdrop";
+import { useAstroPools, useTerraswapPools } from "modules/lockdrop";
+import { useLunaPrice } from "modules/common";
 import { useHive } from "hooks/useHive";
-import { getUusdAmount } from "libs/helpers";
 import { ONE_TOKEN } from "constants/constants";
+import { getAssetAmountsInPool } from "libs/terra";
 
 const createQuery = (items) => {
   return gql`
@@ -32,7 +30,7 @@ const createQuery = (items) => {
 export const useMyLiquidityAdded = () => {
   const items = useTerraswapPools();
   const astroItems = useAstroPools();
-  const userInfo = useUserInfo();
+  const lunaPrice = useLunaPrice();
 
   const variables = items.map((item) => {
     return {
@@ -59,15 +57,23 @@ export const useMyLiquidityAdded = () => {
 
   forEach(astroItems, (item) => {
     const balance = item.myLiquidity;
-    const pool = result[item.name].contractQuery;
-    const totalShare = +pool.total_share / ONE_TOKEN;
-    const uusdAmount = getUusdAmount(pool);
+    const { assets, total_share } = result[item.name].contractQuery;
 
-    const uusdAmountOfLp = (balance * uusdAmount) / totalShare;
+    const { token1 } = getAssetAmountsInPool(assets, "uusd");
 
-    if (uusdAmountOfLp > 0) {
-      total += uusdAmountOfLp * 2;
+    let amountOfUst = num(token1).div(ONE_TOKEN);
+
+    if (token1 == null) {
+      const { token1: uluna } = getAssetAmountsInPool(assets, "uluna");
+      amountOfUst = num(uluna).div(ONE_TOKEN).times(lunaPrice);
     }
+
+    const totalLiquidityInUst = amountOfUst.times(2).toNumber();
+
+    total += num(balance)
+      .times(totalLiquidityInUst)
+      .div(num(total_share).div(ONE_TOKEN))
+      .toNumber();
   });
 
   return total;

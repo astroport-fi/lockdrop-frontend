@@ -2,7 +2,6 @@ import React from "react";
 import {
   Box,
   Flex,
-  Button,
   Text,
   Stack,
   VStack,
@@ -10,14 +9,11 @@ import {
   Divider,
   Heading,
   Image,
-  Link,
   UnorderedList,
   ListItem,
   Accordion,
   AccordionItem,
-  AccordionButton,
   AccordionPanel,
-  AccordionIcon,
 } from "@chakra-ui/react";
 
 import AccordionExpand from "components/AccordionExpand";
@@ -26,7 +22,7 @@ import PlusIcon from "components/icons/PlusIcon";
 
 const Phase1LockdropAccordion = () => {
   return (
-    <Accordion allowToggle>
+    <Accordion allowToggle variant="primary">
       <AccordionItem border="0">
         {({ isExpanded }) => (
           <>
@@ -343,7 +339,7 @@ const Phase1LockdropAccordion = () => {
                             align="center"
                             bg="linear-gradient(90deg, #83FFCB 5.9%, #0D1941 90.97%);"
                             flex="1"
-                          ></Flex>
+                          />
                         </HStack>
                       </Flex>
                     </Box>
@@ -358,7 +354,7 @@ const Phase1LockdropAccordion = () => {
                         borderRight={[null, null, "1px"]}
                         mt={[null, null, "6"]}
                         mb="-2"
-                      ></Box>
+                      />
                       <Image
                         src="/graph.png"
                         alt=""

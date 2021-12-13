@@ -1,11 +1,7 @@
 import React, { FC } from "react";
-import {
-  Flex,
-  Button,
-  VStack,
-  AccordionButton,
-  AccordionIcon,
-} from "@chakra-ui/react";
+import { Text, VStack, AccordionButton, AccordionIcon } from "@chakra-ui/react";
+
+import ArrowDownIcon from "components/icons/ArrowDownIcon";
 
 type Props = {
   isExpanded?: boolean;
@@ -13,28 +9,12 @@ type Props = {
 
 const AccordionExpand: FC<Props> = ({ isExpanded = false }) => {
   return (
-    <AccordionButton
-      display="block"
-      _hover={{
-        background: "transparent",
-      }}
-      _focus={{
-        boxShadow: "none",
-      }}
-      mt="4"
-      p="0"
-    >
-      <Flex mx="-5" justify="center" flexWrap="wrap" align="center">
-        <VStack spacing="10" px="5" justify="flex-start" align="stretch">
-          <VStack>
-            <Button variant="primary" minWidth="211px" mb="4">
-              {isExpanded ? "Minimize" : "Learn more"}
-            </Button>
-          </VStack>
-        </VStack>
-      </Flex>
-      <AccordionIcon />
-    </AccordionButton>
+    <VStack spacing="4">
+      <AccordionButton>
+        <Text>{isExpanded ? "Minimize" : "Learn more"}</Text>
+      </AccordionButton>
+      <ArrowDownIcon style={{ transform: isExpanded && "rotate(180deg)" }} />
+    </VStack>
   );
 };
 

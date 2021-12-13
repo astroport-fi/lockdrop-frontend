@@ -45,7 +45,6 @@ export const useAstroPools = () => {
   const { pairs, lockdrop } = useContracts();
   const lunaPrice = useLunaPrice();
   const userInfo = useUserInfo();
-  const address = useAddress();
 
   const query = createQuery(pairs, lockdrop);
 
@@ -69,24 +68,25 @@ export const useAstroPools = () => {
 
     const { token1 } = getAssetAmountsInPool(assets, "uusd");
 
-    let amountOfUst = num(token1);
+    let amountOfUst = num(token1).div(ONE_TOKEN);
 
     if (token1 == null) {
       const { token1: uluna } = getAssetAmountsInPool(assets, "uluna");
-      amountOfUst = num(uluna).times(lunaPrice).div(ONE_TOKEN);
+      amountOfUst = num(uluna).div(ONE_TOKEN).times(lunaPrice);
     }
 
-    const totalLiquidityInUst = amountOfUst.times(2).div(ONE_TOKEN).toNumber();
+    const totalLiquidityInUst = amountOfUst.times(2).toNumber();
 
     const totalLiquidity = num(balance).div(ONE_TOKEN).toNumber();
     const totalLiquidityLockedInUst = num(balance)
+      .div(ONE_TOKEN)
       .times(totalLiquidityInUst)
-      .div(total_share)
+      .div(num(total_share).div(ONE_TOKEN))
       .toNumber();
     const myLiquidity = num(info.lp_units_locked).div(ONE_TOKEN).toNumber();
-    const myLiquidityInUst = num(info.lp_units_locked)
+    const myLiquidityInUst = num(myLiquidity)
       .times(totalLiquidityInUst)
-      .div(total_share)
+      .div(num(total_share).div(ONE_TOKEN))
       .toNumber();
 
     return {

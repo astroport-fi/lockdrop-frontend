@@ -77,21 +77,22 @@ export const useTerraswapPools = () => {
     const { total_share, assets } = result[contract].contractQuery;
     const { token1 } = getAssetAmountsInPool(assets, "uusd");
 
-    let amountOfUst = num(token1);
+    let amountOfUst = num(token1).div(ONE_TOKEN);
 
     if (token1 == null) {
       const { token1: uluna } = getAssetAmountsInPool(assets, "uluna");
-      amountOfUst = num(uluna).times(lunaPrice).div(ONE_TOKEN);
+      amountOfUst = num(uluna).div(ONE_TOKEN).times(lunaPrice);
     }
 
     // TODO: change to use parse terra amount
     const astroAllocated = num(incentives_share).div(ONE_TOKEN).toNumber();
     const totalLiquidity = num(total_share).div(ONE_TOKEN).toNumber();
-    const totalLiquidityInUst = amountOfUst.times(2).div(ONE_TOKEN).toNumber();
+    const totalLiquidityInUst = amountOfUst.times(2).toNumber();
     const myLiquidity = num(balance).div(ONE_TOKEN).toNumber();
     const myLiquidityInUst = num(balance)
+      .div(ONE_TOKEN)
       .times(totalLiquidityInUst)
-      .div(total_share)
+      .div(num(total_share).div(ONE_TOKEN))
       .toNumber();
 
     return {
