@@ -3,6 +3,7 @@ import { Box, Flex, Text, HStack, Image } from "@chakra-ui/react";
 import { fromTerraAmount } from "@arthuryeti/terra";
 
 import { useTokenInfo } from "modules/common";
+import numeral from "numeral";
 
 type Props = {
   token: {
@@ -14,6 +15,7 @@ type Props = {
 
 const TokenCard: FC<Props> = ({ token, description }) => {
   const { getIcon, getSymbol } = useTokenInfo();
+  const amount = numeral(token.amount).format("0,0.00[0000]");
 
   return (
     <Box
@@ -46,7 +48,7 @@ const TokenCard: FC<Props> = ({ token, description }) => {
         </Box>
         <Box fontWeight="500" textAlign="right">
           <Text fontSize="2xl" color="white">
-            {token.amount}
+            {amount}
           </Text>
         </Box>
       </Flex>

@@ -16,13 +16,6 @@ export const createLockMsgs = (
 
   const terraAmount = toTerraAmount(amount);
 
-  const allowanceMsg = new MsgExecuteContract(sender, asset, {
-    increase_allowance: {
-      amount: terraAmount,
-      spender: contract,
-    },
-  });
-
   const lockMsg = new MsgExecuteContract(sender, asset, {
     send: {
       contract,
@@ -35,7 +28,7 @@ export const createLockMsgs = (
     },
   });
 
-  return [allowanceMsg, lockMsg];
+  return [lockMsg];
 };
 
 export default createLockMsgs;

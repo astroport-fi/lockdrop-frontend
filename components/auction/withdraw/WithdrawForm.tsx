@@ -63,8 +63,8 @@ const WithdrawForm: FC = () => {
       <FormSuccess
         contentComponent={
           <FormSummary
-            label1="You are receving"
-            token1={{ asset: "uusd", amount: debouncedAmount }}
+            label="You've withdrew"
+            tokens={[{ asset: "uusd", amount: debouncedAmount }]}
           />
         }
         onCloseClick={handleSuccessClose}
@@ -98,8 +98,8 @@ const WithdrawForm: FC = () => {
             actionLabel="Confirm Withdraw"
             contentComponent={
               <FormSummary
-                label1="You are receving"
-                token1={{ asset: "uusd", amount: debouncedAmount }}
+                label="You'll withdrew"
+                tokens={[{ asset: "uusd", amount: debouncedAmount }]}
               />
             }
             onCloseClick={() => setShowConfirm(false)}

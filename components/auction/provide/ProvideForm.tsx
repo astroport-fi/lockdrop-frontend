@@ -116,10 +116,8 @@ const ProvideForm: FC = () => {
       <FormSuccess
         contentComponent={
           <FormSummary
-            label1="You've provided"
-            label2="and"
-            token1={uusd}
-            token2={{ asset: astroLockdrop.asset, amount: totalAstro }}
+            label="You've provided"
+            tokens={[uusd, { asset: astroLockdrop.asset, amount: totalAstro }]}
           />
         }
         onCloseClick={handleSuccessClose}

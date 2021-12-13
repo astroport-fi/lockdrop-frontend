@@ -2,35 +2,25 @@ import React, { FC } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
 import TokenCard from "components/common/TokenCard";
+import { num } from "@arthuryeti/terra";
 
 type Props = {
-  token1: {
+  label: string;
+  tokens: {
     asset: string;
     amount: string | number;
-  };
-  token2?: {
-    asset: string;
-    amount: string | number;
-  };
-  label1: string;
-  label2?: string;
+  }[];
 };
 
-const FormSummary: FC<Props> = ({ label1, label2, token1, token2 }) => {
+const FormSummary: FC<Props> = ({ label, tokens }) => {
   return (
     <Box>
       <Text mb="1" px="2" variant="light">
-        {label1}
+        {label}
       </Text>
-      <TokenCard token={token1} />
-      {token2 && label2 && (
-        <>
-          <Text mt="6" mb="1" px="2" variant="light">
-            {label2}
-          </Text>
-          <TokenCard token={token2} />
-        </>
-      )}
+      {tokens.map((token) => {
+        return <TokenCard key={token.asset} token={token} />;
+      })}
     </Box>
   );
 };
