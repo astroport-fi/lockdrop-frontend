@@ -5,6 +5,7 @@ import {
   useWallet,
   WalletStatus,
   useInstallChromeExtension,
+  useConnectedWallet,
 } from "@terra-money/wallet-provider";
 
 import WalletDisclaimerPopover from "components/popovers/WalletDisclaimerPopover";
@@ -20,9 +21,8 @@ const TerraWallet: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { status } = useWallet();
   const browser = detect();
-  const terraStation = new Extension();
-
-  const installExtension = useInstallChromeExtension();
+  // const terraStation = new Extension();
+  // const installExtension = useInstallChromeExtension();
 
   if (browser?.name !== "chrome") {
     return (
@@ -49,30 +49,30 @@ const TerraWallet: FC = () => {
     );
   }
 
-  if (!terraStation.isAvailable) {
-    return (
-      <chakra.button
-        onClick={installExtension}
-        _hover={{
-          textDecoration: "none",
-        }}
-        _focus={{
-          outline: "none",
-          boxShadow: "none",
-        }}
-        bg="#14398E"
-        color="white"
-        py="2"
-        px="4"
-        borderRadius="full"
-      >
-        <HStack spacing="3">
-          <TerraIcon width="1.25rem" height="1.25rem" />
-          <Text>Install Terra Station</Text>
-        </HStack>
-      </chakra.button>
-    );
-  }
+  // if (!terraStation.isAvailable) {
+  //   return (
+  //     <chakra.button
+  //       onClick={installExtension}
+  //       _hover={{
+  //         textDecoration: "none",
+  //       }}
+  //       _focus={{
+  //         outline: "none",
+  //         boxShadow: "none",
+  //       }}
+  //       bg="#14398E"
+  //       color="white"
+  //       py="2"
+  //       px="4"
+  //       borderRadius="full"
+  //     >
+  //       <HStack spacing="3">
+  //         <TerraIcon width="1.25rem" height="1.25rem" />
+  //         <Text>Install Terra Station</Text>
+  //       </HStack>
+  //     </chakra.button>
+  //   );
+  // }
 
   if (status === WalletStatus.WALLET_CONNECTED) {
     return <WalletInfoPopover />;
