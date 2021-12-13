@@ -19,7 +19,11 @@ const FormSummary: FC<Props> = ({ label, tokens }) => {
         {label}
       </Text>
       {tokens.map((token) => {
-        return <TokenCard key={token.asset} token={token} />;
+        return (
+          <Box key={token.asset} mb="3" _last={{ mb: "0" }}>
+            <TokenCard token={token} />
+          </Box>
+        );
       })}
     </Box>
   );
