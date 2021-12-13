@@ -95,14 +95,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
               rules={{
                 required: true,
               }}
-              render={({ field }) => (
-                <DateInput
-                  max={52}
-                  inputPaddingRight="4.5rem"
-                  isDisabled
-                  {...field}
-                />
-              )}
+              render={({ field }) => <DateInput max={52} {...field} />}
             />
           </Box>
         </Flex>

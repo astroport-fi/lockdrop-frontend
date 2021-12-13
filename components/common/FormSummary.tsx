@@ -6,11 +6,11 @@ import TokenCard from "components/common/TokenCard";
 type Props = {
   token1: {
     asset: string;
-    amount: string;
+    amount: string | number;
   };
   token2?: {
     asset: string;
-    amount: string;
+    amount: string | number;
   };
   label1: string;
   label2?: string;

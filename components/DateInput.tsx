@@ -6,18 +6,10 @@ type Props = {
   onChange: any;
   onBlur: any;
   value: string;
-  inputPaddingRight?: string;
   max?: number;
 };
 
-const DateInput: FC<Props> = ({
-  onChange,
-  onBlur,
-  value,
-  isDisabled,
-  max,
-  inputPaddingRight = 0,
-}) => {
+const DateInput: FC<Props> = ({ onChange, onBlur, value, max }) => {
   const date = dayjs()
     .add(+value, "w")
     .format("LL");
@@ -34,7 +26,7 @@ const DateInput: FC<Props> = ({
         isDisabled
         onBlur={onBlur}
       >
-        <NumberInputField placeholder="0" pr={inputPaddingRight} />
+        <NumberInputField placeholder="0" pr="4.5rem" />
       </NumberInput>
       <Box position="absolute" bottom="2" right="4">
         <Text fontSize="xs" color="white.400">

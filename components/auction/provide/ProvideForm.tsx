@@ -119,7 +119,7 @@ const ProvideForm: FC = () => {
             label1="You've provided"
             label2="and"
             token1={uusd}
-            token2={totalAstro}
+            token2={{ asset: astroLockdrop.asset, amount: totalAstro }}
           />
         }
         onCloseClick={handleSuccessClose}
