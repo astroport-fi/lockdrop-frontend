@@ -52,15 +52,53 @@ const createQuery = (lockdropContract, pairs, address) => {
 `;
 };
 
+const createQueryNotConnected = (lockdropContract, pairs) => {
+  if (pairs.length === 0) {
+    return;
+  }
+
+  return gql`
+    {
+      ${pairs.map(({ lp, contract }) => {
+        return `
+          ${lp}: wasm {
+            contractQuery(
+              contractAddress: "${lockdropContract}"
+              query: {
+                pool: {
+                  terraswap_lp_token: "${lp}"
+                }
+              }
+            )
+          }
+
+          ${contract}: wasm {
+            contractQuery(
+              contractAddress: "${contract}"
+              query: {
+                pool: { }
+              }
+            )
+          }
+        `;
+      })}
+    }
+`;
+};
+
 export const useTerraswapPools = () => {
   const { lockdrop, pairs } = useContracts();
   const address = useAddress();
   const lunaPrice = useLunaPrice();
 
-  const query = createQuery(lockdrop, pairs, address);
+  let query = createQueryNotConnected(lockdrop, pairs);
+
+  if (address) {
+    query = createQuery(lockdrop, pairs, address);
+  }
 
   const result = useHive({
-    name: "terraswap-pools",
+    name: ["terraswap-pools", address],
     query,
     options: {
       enabled: !!query,
@@ -73,7 +111,7 @@ export const useTerraswapPools = () => {
 
   const items = pairs.map(({ lp, contract }) => {
     const { incentives_share, terraswap_pool } = result[lp].contractQuery;
-    const { balance } = result[`balance${lp}`].contractQuery;
+    const balanceData = result[`balance${lp}`]?.contractQuery;
     const { total_share, assets } = result[contract].contractQuery;
     const { token1 } = getAssetAmountsInPool(assets, "uusd");
 
@@ -88,8 +126,8 @@ export const useTerraswapPools = () => {
     const astroAllocated = num(incentives_share).div(ONE_TOKEN).toNumber();
     const totalLiquidity = num(total_share).div(ONE_TOKEN).toNumber();
     const totalLiquidityInUst = amountOfUst.times(2).toNumber();
-    const myLiquidity = num(balance).div(ONE_TOKEN).toNumber();
-    const myLiquidityInUst = num(balance)
+    const myLiquidity = num(balanceData?.balance).div(ONE_TOKEN).toNumber();
+    const myLiquidityInUst = num(balanceData?.balance)
       .div(ONE_TOKEN)
       .times(totalLiquidityInUst)
       .div(num(total_share).div(ONE_TOKEN))
