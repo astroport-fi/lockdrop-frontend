@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import { Box, Text, NumberInput, NumberInputField } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
+import { useAstroApp } from "modules/common";
+
 type Props = {
   onChange: any;
   onBlur: any;
@@ -10,9 +12,8 @@ type Props = {
 };
 
 const DateInput: FC<Props> = ({ onChange, onBlur, value, max }) => {
-  const date = dayjs()
-    .add(+value, "w")
-    .format("LL");
+  const { phase1EndDate } = useAstroApp();
+  const date = phase1EndDate.add(+value, "w").format("LL");
 
   return (
     <Box position="relative" height="16">
