@@ -42,6 +42,7 @@ const MyTerraswapPools = () => {
           />
         ),
         accessor: "myLiquidity",
+        width: 80,
       },
       {
         Header: "Astro Allocated to Pool",
@@ -49,6 +50,7 @@ const MyTerraswapPools = () => {
           <NumberTd value={row.original.astroAllocated} />
         ),
         accessor: "astroAllocated",
+        width: 80,
       },
       {
         Header: "Dual Rewards",
@@ -64,7 +66,7 @@ const MyTerraswapPools = () => {
         Header: "",
         Cell: ({ row }: any) => <ActionsTd row={row} />,
         accessor: "actions",
-        width: 100,
+        width: 70,
       },
     ],
     []

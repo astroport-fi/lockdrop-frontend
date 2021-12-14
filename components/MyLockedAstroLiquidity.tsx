@@ -43,6 +43,7 @@ const MyLockedAstroLiquidity = () => {
           />
         ),
         accessor: "myLiquidity",
+        width: 80,
       },
       {
         Header: "My Lock Ends",
@@ -54,6 +55,7 @@ const MyLockedAstroLiquidity = () => {
         Header: "Est. ASTRO Rewards",
         Cell: ({ row }: any) => <NumberTd value={row.original.astroRewards} />,
         accessor: "astroRewards",
+        width: 80,
       },
       {
         Header: "Dual Rewards",
@@ -74,7 +76,7 @@ const MyLockedAstroLiquidity = () => {
           />
         ),
         accessor: "actions",
-        width: 100,
+        width: 80,
       },
     ],
     []

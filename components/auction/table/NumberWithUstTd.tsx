@@ -9,7 +9,7 @@ type Props = {
 
 const NumberWithUstTd: FC<Props> = ({ value, valueInUst }) => {
   const formatted = numeral(value).format("0,0.00");
-  const formattedInUst = numeral(valueInUst).format("0,0.00");
+  const formattedInUst = numeral(valueInUst).format("0,0");
 
   return (
     <HStack>

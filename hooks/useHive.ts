@@ -1,6 +1,8 @@
 import { request } from "graphql-request";
 import { useQuery } from "react-query";
 
+import { useTerraWebapp } from "@arthuryeti/terra";
+
 type Params = {
   name: string | string[];
   query: any;
@@ -11,7 +13,12 @@ type Params = {
 };
 
 export const useHive = ({ name, query, variables, options }: Params) => {
-  const GRAPHQL = "https://testnet-hive.terra.dev/graphql";
+  const { network } = useTerraWebapp();
+  let GRAPHQL = "https://hive.terra.dev/graphql";
+
+  if (network.name == "testnet") {
+    GRAPHQL = "https://testnet-hive.terra.dev/graphql";
+  }
 
   const { data, isLoading } = useQuery(
     name,
