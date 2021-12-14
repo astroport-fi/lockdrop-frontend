@@ -2,13 +2,13 @@ import React, { FC } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
 import TokenCard from "components/common/TokenCard";
-import { num } from "@arthuryeti/terra";
 
 type Props = {
   label: string;
   tokens: {
     asset: string;
     amount: string | number;
+    isLp?: boolean;
   }[];
 };
 

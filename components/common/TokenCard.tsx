@@ -9,6 +9,7 @@ type Props = {
   token: {
     asset: string;
     amount: string | number;
+    isLp?: boolean;
   };
   description?: string;
 };
@@ -33,8 +34,7 @@ const TokenCard: FC<Props> = ({ token, description }) => {
             <Box>
               <Image
                 src={getIcon(token.asset)}
-                width="2.5rem"
-                height="2.5rem"
+                h={!token.isLp && "10"}
                 alt="Logo"
               />
             </Box>

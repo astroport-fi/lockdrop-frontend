@@ -80,7 +80,10 @@ const LockForm: FC<Props> = ({ lpToken }) => {
     return (
       <FormSuccess
         contentComponent={
-          <FormSummary label="You've locked" tokens={[token]} />
+          <FormSummary
+            label="You've locked"
+            tokens={[{ ...token, isLp: true }]}
+          />
         }
         details={[{ label: "Duration", value: `${duration} weeks` }]}
         onCloseClick={handleSuccessClose}

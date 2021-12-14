@@ -22,6 +22,24 @@ const AstroAirdrop = () => {
     setValue(evt.target.value);
   };
 
+  const renderButton = () => {
+    if (value.length == 0) {
+      return (
+        <Button as="a" variant="primary" width="192px" mt="6" isDisabled>
+          Check
+        </Button>
+      );
+    }
+
+    return (
+      <Link href={`/airdrop/${value}`} passHref>
+        <Button as="a" variant="primary" width="192px" mt="6">
+          Check
+        </Button>
+      </Link>
+    );
+  };
+
   return (
     <Box>
       <CardHeader label="ASTRO Airdrop" />
@@ -55,17 +73,7 @@ const AstroAirdrop = () => {
                   onChange={handleChange}
                 />
               </InputGroup>
-              <Link href={`/airdrop/${value}`} passHref>
-                <Button
-                  as="a"
-                  variant="primary"
-                  width="192px"
-                  mt="6"
-                  isDisabled={value.length === 0}
-                >
-                  Check
-                </Button>
-              </Link>
+              {renderButton()}
             </Box>
           </Box>
           <Box

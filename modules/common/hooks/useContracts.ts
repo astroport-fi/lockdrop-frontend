@@ -41,7 +41,7 @@ const defaultContracts: { [key: string]: any } = {
         contract: "terra1gm5p3ner9x9xpwugn9sp6gvhd0lwrtkyrecdn3",
       },
       {
-        lp: "terra1gecs98vcuktyfkrve9czrpgtg0m3aq586x6gzm",
+        lp: "terra17gjf2zehfvnyjtdgua9p9ygquk6gukxe7ucgwh",
         contract: "terra1amv303y8kzxuegvurh0gug2xe9wkgj65enq2ux",
       },
       {
