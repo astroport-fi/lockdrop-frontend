@@ -24,7 +24,7 @@ const TerraWallet: FC = () => {
   // const terraStation = new Extension();
   // const installExtension = useInstallChromeExtension();
 
-  if (!["chrome", "opera", "edge"].includes(browser?.name)) {
+  if (!["chrome", "opera", "edge", "edge-chromium"].includes(browser?.name)) {
     return (
       <Link
         href="https://www.google.com/chrome/"
