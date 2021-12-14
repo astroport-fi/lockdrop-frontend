@@ -43,11 +43,11 @@ const LockdropIntroduction = () => {
             </Link>{" "}
             to learn more about Astroport.
           </Text>
-          {/* <NextLink href="/active-phase" passHref>
+          <NextLink href="/active-phase" passHref>
             <Button as="a" variant="primary" width="256px">
               Go to active phase
             </Button>
-          </NextLink> */}
+          </NextLink>
         </VStack>
         <AspectRatio
           position="relative"

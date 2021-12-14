@@ -31,7 +31,7 @@ export const useProvide = ({
 }: Params): ProvideState => {
   const { auction, lockdrop, airdrop } = useContracts();
   const address = useAddress();
-  const airdropData = useAirdrop(address);
+  const { data } = useAirdrop(address);
   const userInfo = useUserInfo();
 
   const msgs = useMemo(() => {
@@ -44,9 +44,9 @@ export const useProvide = ({
         astroAirdropAmount,
         astroLockdropAmount,
         hasClaimed: num(userInfo?.airdrop_amount).gt(0),
-        airdropClaimAmount: airdropData?.amount,
-        merkleProof: airdropData?.merkle_proof,
-        rootIndex: airdropData?.index,
+        airdropClaimAmount: data?.amount,
+        merkleProof: data?.merkle_proof,
+        rootIndex: data?.index,
       },
       address
     );
@@ -56,7 +56,7 @@ export const useProvide = ({
     auction,
     airdrop,
     lockdrop,
-    airdropData,
+    data,
     uusdAmount,
     astroAirdropAmount,
     astroLockdropAmount,

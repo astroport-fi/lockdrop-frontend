@@ -10,29 +10,35 @@ const Airdrop: FC = () => {
   const router = useRouter();
   const address = router.query.address as string;
   // const { data, isLoading } = useAirdrop(address);
-  const airdrop = useAirdrop(address);
+  const { isLoading, data } = useAirdrop(address);
 
   const handleClose = () => {
     router.push("/active-phase");
   };
 
   const renderAirdrop = () => {
-    if (airdrop == null) {
+    if (!isLoading && data == null) {
       return <AirdropFailed onCloseClick={handleClose} />;
     }
 
     return (
       <AirdropSuccess
-        amount={airdrop?.amount}
+        amount={data?.amount}
         address={address}
         onCloseClick={handleClose}
       />
     );
   };
 
-  // if (isLoading) {
-  //   return null;
-  // }
+  if (isLoading) {
+    return (
+      <Box m="0 auto" pt="12">
+        <Flex gridGap="8">
+          <Box w="container.sm">Loading...</Box>
+        </Flex>
+      </Box>
+    );
+  }
 
   return (
     <Box m="0 auto" pt="12">
