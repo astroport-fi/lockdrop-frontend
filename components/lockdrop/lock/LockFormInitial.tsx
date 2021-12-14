@@ -44,8 +44,12 @@ const LockFormInitial = ({ state, onClick }: Params) => {
           Astroport and how long you would like to lock it in Astroport.
           <br />
           <br />
-          Tip: You can lock different amounts for different periods even within
-          the same pool.
+          {/* Tip: You can lock different amounts for different periods even within
+          the same pool. */}
+          <strong>
+            You can have a maximum of 10 total positions open at any given time
+            during phase 1.
+          </strong>
         </Text>
       </Card>
       <Card>

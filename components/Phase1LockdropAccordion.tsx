@@ -116,14 +116,24 @@ const Phase1LockdropAccordion = () => {
                       </Stack>
                     </FrameBorder>
                   </Box>
-                  <Box w={["100%", null, null, "70%", "50%"]}>
+                  <VStack
+                    align="flex-start"
+                    spacing="4"
+                    w={["100%", null, null, "70%", "60%"]}
+                  >
                     <Text variant="content">
                       The more liquidity you lock and the longer you lock it,
                       the more ASTRO you will receive. Be aware that certain
                       pools receive a higher amount of ASTRO than others as
                       shown in the table at the bottom of the page.
                     </Text>
-                  </Box>
+                    <Text variant="content">
+                      <strong>
+                        You can have a maximum of 10 total positions open at any
+                        given time during phase 1.
+                      </strong>
+                    </Text>
+                  </VStack>
                   <Heading
                     as="h2"
                     fontFamily="WhyteInktrap"
