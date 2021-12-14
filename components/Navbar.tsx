@@ -89,12 +89,12 @@ const Navbar: FC = () => {
                 <Link href="/" color="white">
                   Launch Plan
                 </Link>
-                <Link href="/phase-1" color="white">
-                  Phase 1
+                <Link href="/active-phase" color="white">
+                  Active phase
                 </Link>
-                <Link href="/phase-2" color="white">
+                {/* <Link href="/phase-2" color="white">
                   Phase 2
-                </Link>
+                </Link> */}
               </VStack>
             </Box>
             <VStack spacing="10" align="flex-start" mt="auto">
