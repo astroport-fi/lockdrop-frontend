@@ -28,6 +28,14 @@ const Balance: FC<Props> = ({
   const balance = useBalance(asset);
   const amount = fromTerraAmount(initial ?? balance, "0.00[0000]");
 
+  const renderAssetValue = () => {
+    if (getSymbol(asset) == "Astro") {
+      return fromTerraAmount(initial ?? balance, "0.00[0000]");
+    } else {
+      fromTerraAmount(initial ?? balance, "0,0.00");
+    }
+  };
+
   const renderButton = () => {
     if (!hideButton) {
       return (
@@ -53,8 +61,7 @@ const Balance: FC<Props> = ({
             </Text>
           )}{" "}
           <Text fontSize="sm" color="white" ml="2">
-            {fromTerraAmount(initial ?? balance, "0.00[0000]")}{" "}
-            {getSymbol(asset)}
+            {renderAssetValue} {getSymbol(asset)}
           </Text>
         </HStack>
       </Box>
