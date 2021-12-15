@@ -70,6 +70,18 @@ const Phase2Bootstrap = () => {
               <KPITitle
                 label="My available ASTRO balance"
                 value={`${fromTerraAmount(astroBalance, "0,0.00")} ASTRO`}
+                tooltip={
+                  <VStack align="stretch">
+                    <HStack justify="space-between">
+                      <Text>ASTRO from Airdrop</Text>
+                      <Text opacity={0.6}>0.00</Text>
+                    </HStack>
+                    <HStack justify="space-between">
+                      <Text>ASTRO from Phase 1</Text>
+                      <Text opacity={0.6}>0.00</Text>
+                    </HStack>
+                  </VStack>
+                }
               />
             </Box>
             <Box pr={[null, null, null, null, "24"]}>
