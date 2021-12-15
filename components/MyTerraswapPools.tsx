@@ -24,7 +24,7 @@ const MyTerraswapPools = () => {
         width: 100,
       },
       {
-        Header: "Total Terraswap Liquidity",
+        Header: "Total Locked Liquidity",
         Cell: ({ row }: any) => (
           <NumberWithUstTd
             value={row.original.totalLiquidity}

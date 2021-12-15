@@ -36,6 +36,17 @@ const createQuery = (lockdropContract, pairs, address) => {
             )
           }
 
+          lock${lp}: wasm {
+            contractQuery(
+              contractAddress: "${lp}"
+              query: {
+                balance: {
+                  address: "${lockdropContract}"
+                }
+              }
+            )
+          }
+
           balance${lp}: wasm {
             contractQuery(
               contractAddress: "${lp}"
@@ -67,6 +78,17 @@ const createQueryNotConnected = (lockdropContract, pairs) => {
               query: {
                 pool: {
                   terraswap_lp_token: "${lp}"
+                }
+              }
+            )
+          }
+
+          lock${lp}: wasm {
+            contractQuery(
+              contractAddress: "${lp}"
+              query: {
+                balance: {
+                  address: "${lockdropContract}"
                 }
               }
             )
@@ -112,6 +134,7 @@ export const useTerraswapPools = () => {
   const items = pairs.map(({ lp, contract }) => {
     const { incentives_share, terraswap_pool } = result[lp].contractQuery;
     const balanceData = result[`balance${lp}`]?.contractQuery;
+    const lockBalance = result[`lock${lp}`]?.contractQuery.balance;
     const { total_share, assets } = result[contract].contractQuery;
     const { token1 } = getAssetAmountsInPool(assets, "uusd");
 
@@ -123,9 +146,17 @@ export const useTerraswapPools = () => {
     }
 
     // TODO: change to use parse terra amount
-    const astroAllocated = num(incentives_share).div(ONE_TOKEN).toNumber();
-    const totalLiquidity = num(total_share).div(ONE_TOKEN).toNumber();
     const totalLiquidityInUst = amountOfUst.times(2).toNumber();
+    // const totalLiquidity = num(total_share).div(ONE_TOKEN).toNumber();
+
+    const totalLiquidity = num(lockBalance).div(ONE_TOKEN).toNumber();
+    const totalLiquidityLockedInUst = num(lockBalance)
+      .div(ONE_TOKEN)
+      .times(totalLiquidityInUst)
+      .div(num(total_share).div(ONE_TOKEN))
+      .toNumber();
+
+    const astroAllocated = num(incentives_share).div(ONE_TOKEN).toNumber();
     const myLiquidity = num(balanceData?.balance).div(ONE_TOKEN).toNumber();
     const myLiquidityInUst = num(balanceData?.balance)
       .div(ONE_TOKEN)
@@ -136,7 +167,7 @@ export const useTerraswapPools = () => {
     return {
       name: lp,
       totalLiquidity,
-      totalLiquidityInUst,
+      totalLiquidityInUst: totalLiquidityLockedInUst,
       myLiquidity,
       myLiquidityInUst,
       dualRewards: true,
