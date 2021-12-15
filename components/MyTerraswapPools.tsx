@@ -11,6 +11,7 @@ import PoolNameTd from "components/auction/table/PoolNameTd";
 import NumberTd from "components/auction/table/NumberTd";
 import NumberWithUstTd from "components/auction/table/NumberWithUstTd";
 import ActionsTd from "components/auction/table/ActionsTd";
+import { useRowSelect } from "react-table";
 
 const MyTerraswapPools = () => {
   const pools = useTerraswapPools();
@@ -54,10 +55,10 @@ const MyTerraswapPools = () => {
       },
       {
         Header: "Dual Rewards",
-        Cell: () => (
-          <Flex>
-            <CheckIcon />
-          </Flex>
+        Cell: ({ row }: any) => (
+          <Box>
+            <CheckIcon d={row.original.dualRewards} />
+          </Box>
         ),
         accessor: "dualRewards",
         width: 25,

@@ -90,12 +90,22 @@ export const useAstroPools = () => {
       .div(num(total_share).div(ONE_TOKEN))
       .toNumber();
 
+      const isDualRewards = () => {
+        if(info.terraswap_lp_token == "terra17dkr9rnmtmu7x4azrpupukvur2crnptyfvsrvr" || info.terraswap_lp_token == "terra1nuy34nwnsh53ygpc4xprlj263cztw7vc99leh2") {
+          return "none";
+        } else {
+          return "block";
+        }
+      }
+  
+
     return {
       name: info.terraswap_lp_token,
       totalLiquidity,
       totalLiquidityInUst: totalLiquidityLockedInUst,
       myLiquidity,
       myLiquidityInUst,
+      dualRewards: isDualRewards(),
       lockEnd: info.unlock_timestamp,
       duration: info.duration,
       astroRewards: +info.astro_rewards / ONE_TOKEN,

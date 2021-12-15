@@ -59,9 +59,9 @@ const MyLockedAstroLiquidity = () => {
       },
       {
         Header: "Dual Rewards",
-        Cell: () => (
+        Cell: ({ row }: any) => (
           <Box>
-            <CheckIcon />
+            <CheckIcon d={row.original.dualRewards} />
           </Box>
         ),
         accessor: "dualRewards",

@@ -164,13 +164,21 @@ export const useTerraswapPools = () => {
       .div(num(total_share).div(ONE_TOKEN))
       .toNumber();
 
+    const isDualRewards = () => {
+      if(lp == "terra17dkr9rnmtmu7x4azrpupukvur2crnptyfvsrvr" || lp == "terra1nuy34nwnsh53ygpc4xprlj263cztw7vc99leh2") {
+        return "none";
+      } else {
+        return "block";
+      }
+    }
+
     return {
       name: lp,
       totalLiquidity,
       totalLiquidityInUst: totalLiquidityLockedInUst,
       myLiquidity,
       myLiquidityInUst,
-      dualRewards: true,
+      dualRewards: isDualRewards(),
       terraswapPool: terraswap_pool,
       astroAllocated,
     };
