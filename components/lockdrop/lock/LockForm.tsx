@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { chakra } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useQueryClient } from "react-query";
@@ -14,6 +14,8 @@ import FormSummary from "components/common/FormSummary";
 import LockFormInitial from "components/lockdrop/lock/LockFormInitial";
 import LockFormDisclaimer from "components/lockdrop/lock/LockFormDisclaimer";
 
+import useLocalStorage from "hooks/useLocalStorage";
+
 type FormValues = {
   token: {
     amount: string;
@@ -27,7 +29,17 @@ type Props = {
 };
 
 const LockForm: FC<Props> = ({ lpToken }) => {
-  const [showConfirm, setShowConfirm] = useState(false);
+  // const [showConfirm, setShowConfirm] = useState(false);
+
+  const [showConfirm, setShowConfirm] = useLocalStorage(
+    "astroport:setShowConfirm",
+    false
+  );
+
+  const handleClick = () => {
+    setShowConfirm(true);
+  };
+
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -68,9 +80,9 @@ const LockForm: FC<Props> = ({ lpToken }) => {
 
   useEffect(() => {
     if (state.txStep == TxStep.Broadcasting) {
-      setShowConfirm(false);
+      handleClick;
     }
-  }, [state.txStep]);
+  });
 
   if (state.txStep == TxStep.Broadcasting || state.txStep == TxStep.Posting) {
     return <FormLoading txHash={state.txHash} />;
@@ -105,11 +117,9 @@ const LockForm: FC<Props> = ({ lpToken }) => {
     <FormProvider {...methods}>
       <chakra.form onSubmit={handleSubmit(submit)} width="full">
         {!showConfirm && (
-          <LockFormInitial state={state} onClick={() => setShowConfirm(true)} />
+          <LockFormInitial state={state} onClick={() => handleClick} />
         )}
-        {showConfirm && (
-          <LockFormDisclaimer onCloseClick={() => setShowConfirm(false)} />
-        )}
+        {showConfirm && <LockFormDisclaimer onCloseClick={() => handleClick} />}
       </chakra.form>
     </FormProvider>
   );
