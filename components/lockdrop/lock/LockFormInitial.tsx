@@ -35,6 +35,14 @@ const LockFormInitial = ({ state, onClick }: Params) => {
     setValue("duration", value);
   };
 
+  const renderError = () => {
+    if (state.error == "Something went wrong") {
+      return "Insufficient LUNA/UST to complete transaction";
+    } else {
+      return state.error;
+    }
+  };
+
   return (
     <>
       <LockActions />
@@ -119,7 +127,7 @@ const LockFormInitial = ({ state, onClick }: Params) => {
 
       {state.error && (
         <Card mt="3">
-          <Text variant="light">{state.error}</Text>
+          <Text variant="light">{renderError()}</Text>
         </Card>
       )}
 
