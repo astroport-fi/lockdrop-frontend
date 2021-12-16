@@ -16,7 +16,15 @@ type Props = {
 
 const TokenCard: FC<Props> = ({ token, description }) => {
   const { getIcon, getSymbol } = useTokenInfo();
-  const amount = numeral(token.amount).format("0,0.00[0000]");
+  const amount = token.amount;
+
+  const renderFormattedAmount = () => {
+    if (amount > 1000000) {
+      return numeral(amount).divide(1000000).format("0,0.00") + "M";
+    } else {
+      return numeral(amount).format("0,0.00[0000]");
+    }
+  };
 
   return (
     <Box
@@ -48,7 +56,7 @@ const TokenCard: FC<Props> = ({ token, description }) => {
         </Box>
         <Box fontWeight="500" textAlign="right">
           <Text fontSize="2xl" color="white">
-            {amount}
+            {renderFormattedAmount()}
           </Text>
         </Box>
       </Flex>
