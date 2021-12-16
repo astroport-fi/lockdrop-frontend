@@ -92,8 +92,12 @@ const LockFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
         </VStack>
 
         <Flex flexDir="column" align="center" mt="8" mb="4">
+          <Text variant="light" fontSize="xs" mb="2" lineHeight="1.2">
+            50% of deposit locks on 7.00 AM UTC on December 19, 2021; remainder
+            locks up to 7.00 AM UTC December 21, 2021.
+          </Text>
           <Text variant="light" fontSize="xs" mb="4" lineHeight="1.2">
-            * Lockup begins at 7:00 AM UTC on December 21, 2021
+            Only one withdrawal allowed after 7.00AM UTC December 19, 2021
           </Text>
           <Button
             variant="primary"
