@@ -12,11 +12,7 @@ export const useAstroPrice = () => {
     return "0";
   }
 
-  if(parseFloat(finalPrice) < 0.01) {
-    return "0.01";
-  }
-
-  return finalPrice;
+  return num(totalUusd).div(totalAstro).toFixed(2);
 };
 
 export default useAstroPrice;

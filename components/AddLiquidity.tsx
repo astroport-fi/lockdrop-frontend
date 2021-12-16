@@ -10,7 +10,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { fromTerraAmount } from "@arthuryeti/terra";
+import { fromTerraAmount, num } from "@arthuryeti/terra";
 
 import {
   useUserInfo,
@@ -29,6 +29,14 @@ const AddLiquidity = () => {
   const auctionState = useAuctionState();
   const price = useAstroPrice();
   const logic = useAuctionLogic();
+
+  const renderPrice = () => {
+    if (num(price).lt("0.01")) {
+      return "< 0.01";
+    } else {
+      return price;
+    }
+  };
 
   const renderProvideButton = () => {
     if (!logic.canDeposit) {
@@ -163,7 +171,7 @@ const AddLiquidity = () => {
                       fontSize={["16px", null, "32px"]}
                       textAlign="center"
                     >
-                      1 ASTRO = {price} UST
+                      1 ASTRO = {renderPrice()} UST
                     </Text>
                     <Text variant="spaced" color="white" opacity="0.4">
                       If all remains equal
