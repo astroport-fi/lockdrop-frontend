@@ -53,8 +53,7 @@ const Balance: FC<Props> = ({
             </Text>
           )}{" "}
           <Text fontSize="sm" color="white" ml="2">
-            {fromTerraAmount(initial ?? balance, "0.00[0000]")}{" "}
-            {getSymbol(asset)}
+            {fromTerraAmount(initial ?? balance, "0.00")} {getSymbol(asset)}
           </Text>
         </HStack>
       </Box>
