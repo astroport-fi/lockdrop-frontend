@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Box, Flex, Text, HStack, Image } from "@chakra-ui/react";
 import { fromTerraAmount } from "@arthuryeti/terra";
+import { ONE_TOKEN } from "constants/constants";
 
 import { useTokenInfo } from "modules/common";
 import numeral from "numeral";
@@ -19,10 +20,12 @@ const TokenCard: FC<Props> = ({ token, description }) => {
   const amount = token.amount;
 
   const renderFormattedAmount = () => {
-    if (amount > 1000000) {
-      return numeral(amount).divide(1000000).format("0,0.00") + "M";
+    if (amount > ONE_TOKEN) {
+      return fromTerraAmount(
+        numeral(amount).divide(ONE_TOKEN).format("0,0.00") + "M"
+      );
     } else {
-      return numeral(amount).format("0,0.00[0000]");
+      return fromTerraAmount(numeral(amount).format("0,0.00[0000]"));
     }
   };
 
