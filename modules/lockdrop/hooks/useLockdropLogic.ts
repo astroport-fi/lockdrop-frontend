@@ -12,7 +12,7 @@ type Opts = {
 
 export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
   const currentTimestamp = dayjs().unix();
-  const currentTimestampWithBuffer = dayjs().subtract(10, "m").unix();
+  const currentTimestampWithBuffer = dayjs().add(10, "m").unix();
   const config = useConfig();
   const userInfo = useUserInfo();
   const stakedAmount = useLockedLpAmount(lpToken, duration);

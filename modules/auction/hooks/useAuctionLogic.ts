@@ -7,7 +7,7 @@ import { ONE_TOKEN } from "constants/constants";
 
 export const useAuctionLogic = () => {
   const currentTimestamp = dayjs().unix();
-  const currentTimestampWithBuffer = dayjs().subtract(10, "m").unix();
+  const currentTimestampWithBuffer = dayjs().add(10, "m").unix();
   const config = useConfig();
   const userInfo = useUserInfo();
   const balance = userInfo?.ust_delegated ?? "0";
