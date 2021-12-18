@@ -7,6 +7,7 @@ import { ONE_TOKEN } from "constants/constants";
 
 export const useAuctionLogic = () => {
   const currentTimestamp = dayjs().unix();
+  const currentTimestampWithBuffer = dayjs().subtract(10, "m").unix();
   const config = useConfig();
   const userInfo = useUserInfo();
   const balance = userInfo?.ust_delegated ?? "0";
@@ -64,7 +65,7 @@ export const useAuctionLogic = () => {
     ) {
       max =
         num(balance).div(ONE_TOKEN).div(2).toNumber() *
-        ((phaseOpenUntil - currentTimestamp) /
+        ((phaseOpenUntil - currentTimestampWithBuffer) /
           (phaseOpenUntil - withdraw50PercentUntil));
     }
 
@@ -73,7 +74,7 @@ export const useAuctionLogic = () => {
       canWithdraw,
       max,
     };
-  }, [config, userInfo, currentTimestamp, balance]);
+  }, [config, userInfo, currentTimestamp, currentTimestampWithBuffer, balance]);
 };
 
 export default useAuctionLogic;

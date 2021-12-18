@@ -12,6 +12,7 @@ type Opts = {
 
 export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
   const currentTimestamp = dayjs().unix();
+  const currentTimestampWithBuffer = dayjs().subtract(10, "m").unix();
   const config = useConfig();
   const userInfo = useUserInfo();
   const stakedAmount = useLockedLpAmount(lpToken, duration);
@@ -76,7 +77,7 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
 
       max =
         units *
-        ((phaseOpenUntil - currentTimestamp) /
+        ((phaseOpenUntil - currentTimestampWithBuffer) /
           (phaseOpenUntil - withdraw50PercentUntil));
     }
 
@@ -85,7 +86,15 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
       canWithdraw,
       max,
     };
-  }, [config, userInfo, currentTimestamp, stakedAmount, duration, lpToken]);
+  }, [
+    config,
+    userInfo,
+    currentTimestamp,
+    currentTimestampWithBuffer,
+    stakedAmount,
+    duration,
+    lpToken,
+  ]);
 };
 
 export default useLockdropLogic;
