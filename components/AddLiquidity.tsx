@@ -29,14 +29,7 @@ const AddLiquidity = () => {
   const auctionState = useAuctionState();
   const price = useAstroPrice();
   const logic = useAuctionLogic();
-
-  const renderPrice = () => {
-    if (num(price).lt("0.01")) {
-      return "< 0.01";
-    } else {
-      return price;
-    }
-  };
+  const isLow = num(price).lt("0.01");
 
   const renderProvideButton = () => {
     if (!logic.canDeposit) {
@@ -171,7 +164,7 @@ const AddLiquidity = () => {
                       fontSize={["16px", null, "32px"]}
                       textAlign="center"
                     >
-                      1 ASTRO = {renderPrice()} UST
+                      1 ASTRO {isLow ? "< 0.01" : "=" + price} UST
                     </Text>
                     <Text variant="spaced" color="white" opacity="0.4">
                       If all remains equal

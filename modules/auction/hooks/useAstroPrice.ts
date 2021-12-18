@@ -12,7 +12,7 @@ export const useAstroPrice = () => {
     return "0";
   }
 
-  return num(totalUusd).div(totalAstro).toFixed(2);
+  return finalPrice;
 };
 
 export default useAstroPrice;
