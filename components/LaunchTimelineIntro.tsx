@@ -22,9 +22,9 @@ import Card from "components/Card";
 const LaunchTimelineIntro = () => {
   const { phase1StartDate, phase2StartDate } = useAstroApp();
   const endDate = phase1StartDate?.add(14, "day");
-  const startPhase1Date = phase1StartDate?.format("DD/MM/YY");
-  const startPhase2Date = phase2StartDate?.format("DD/MM/YY");
-  const formattedEndDate = endDate?.format("DD/MM/YY");
+  const startPhase1Date = phase1StartDate?.format("MMM/DD/YY");
+  const startPhase2Date = phase2StartDate?.format("MMM/DD/YY");
+  const formattedEndDate = endDate?.format("MMM/DD/YY");
 
   function checkToday(index) {
     const today = dayjs.utc();
