@@ -18,7 +18,11 @@ export const useAstroBalance = () => {
       .toString();
   }, [lockUserInfo]);
 
-  return num(lockdropBalance).plus(airdropBalance).toString();
+  return {
+    lockdropBalance : lockdropBalance,
+    airdropBalance : airdropBalance,
+    astroBalance : num(lockdropBalance).plus(airdropBalance).toString(), 
+  };
 };
 
 export default useAstroBalance;

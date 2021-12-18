@@ -39,7 +39,9 @@ const Phase2Bootstrap = () => {
   const { phase2StartDate, phase2EndDate } = useAstroApp();
   const config = useConfig();
   const userInfo = useUserInfo();
-  const astroBalance = useAstroBalance();
+  const astroBalance = useAstroBalance().astroBalance;
+  const lockdropBalance = useAstroBalance().lockdropBalance;
+  const airdropBalance = useAstroBalance().airdropBalance;
   const state = useAirdopState();
   const totalAstroRewards = useTotalAstroRewards();
 
@@ -70,6 +72,22 @@ const Phase2Bootstrap = () => {
               <KPITitle
                 label="My available ASTRO balance"
                 value={`${fromTerraAmount(astroBalance, "0,0.00")} ASTRO`}
+                tooltip={
+                  <VStack align="stretch">
+                    <HStack justify="space-between">
+                      <Text>ASTRO from Airdrop</Text>
+                      <Text opacity={0.6}>
+                        {fromTerraAmount(airdropBalance, "0,0.00")}
+                      </Text>
+                    </HStack>
+                    <HStack justify="space-between">
+                      <Text>ASTRO from Phase 1</Text>
+                      <Text opacity={0.6}>
+                        {fromTerraAmount(lockdropBalance, "0,0.00")}
+                      </Text>
+                    </HStack>
+                  </VStack>
+                }
               />
             </Box>
             <Box pr={[null, null, null, null, "24"]}>
