@@ -3,7 +3,7 @@ import { Box, Text, Flex, Button, HStack } from "@chakra-ui/react";
 import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
 import { useTokenInfo } from "modules/common";
-import { formatAsset } from "libs/parse";
+// import { formatAsset } from "libs/parse";
 
 type Props = {
   asset: string;
@@ -53,7 +53,7 @@ const Balance: FC<Props> = ({
             </Text>
           )}{" "}
           <Text fontSize="sm" color="white" ml="2">
-            {formatAsset(initial ?? balance, getSymbol(asset))}
+            {fromTerraAmount(initial ?? balance, "0.00")} {getSymbol(asset)}
           </Text>
         </HStack>
       </Box>
