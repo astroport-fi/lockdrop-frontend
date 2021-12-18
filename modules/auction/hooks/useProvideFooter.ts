@@ -50,7 +50,7 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
       config.withdrawal_window +
       config.lp_tokens_vesting_duration;
 
-    return dayjs.unix(timestamp).format("DD/MM/YY");
+    return dayjs.unix(timestamp).format("MMM/DD/YY");
   }, [config]);
 
   return {
