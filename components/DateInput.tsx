@@ -13,7 +13,7 @@ type Props = {
 
 const DateInput: FC<Props> = ({ onChange, onBlur, value, max }) => {
   const { phase1EndDate } = useAstroApp();
-  const date = phase1EndDate.add(+value, "w").format("LL");
+  const date = phase1EndDate?.add(+value, "w").format("LL");
 
   return (
     <Box position="relative" height="16">
