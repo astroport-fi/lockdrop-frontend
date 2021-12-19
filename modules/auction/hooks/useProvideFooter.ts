@@ -21,15 +21,15 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
 
     const totalUstDelegated = num(state.total_ust_delegated)
       .div(ONE_TOKEN)
-      .toNumber();
+      .toNumber() + ustAmount;
     const totalAstroDelegated = num(state.total_astro_delegated)
       .div(ONE_TOKEN)
-      .toNumber();
-    const shareOfPoolUst = num(ustAmount).div(totalUstDelegated).toNumber();
-    const shareOfPoolAstro = num(astroAmount)
-      .div(totalAstroDelegated)
-      .toNumber();
+      .toNumber() + astroAmount;
 
+
+    const shareOfPoolUst = ustAmount / totalUstDelegated;
+    const shareOfPoolAstro = astroAmount / totalAstroDelegated;
+  
     value = ((shareOfPoolUst + shareOfPoolAstro) / 2) * 100;
 
     if (value > 100) {
