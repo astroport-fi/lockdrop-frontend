@@ -26,7 +26,7 @@ const Balance: FC<Props> = ({
 }) => {
   const { getSymbol } = useTokenInfo();
   const balance = useBalance(asset);
-  const amount = fromTerraAmount(initial ?? balance, "0.00[0000]");
+  const amount = fromTerraAmount(initial ?? balance, "0.00");
 
   const renderButton = () => {
     if (!hideButton) {

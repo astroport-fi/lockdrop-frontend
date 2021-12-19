@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { Box, NumberInput, NumberInputField } from "@chakra-ui/react";
 
+import { fromTerraAmount } from "@arthuryeti/terra";
+
 type Props = {
   onChange: any;
   onBlur: any;
@@ -18,7 +20,7 @@ const Input: FC<Props> = ({ onChange, onBlur, value, limit, isDisabled }) => {
       <NumberInput
         variant="brand"
         size="lg"
-        precision={6}
+        precision={2}
         value={value.amount}
         max={limit}
         onChange={onChange}
