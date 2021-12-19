@@ -3,9 +3,11 @@ import { num } from "@arthuryeti/terra";
 
 import { useUserInfo } from "modules/lockdrop";
 import { useUserInfo as useAuctionUserInfo } from "modules/auction";
+import { useAirdropBalance } from "modules/airdrop";
 
 export const useTotalAstroRewards = () => {
   const lockUserInfo = useUserInfo();
+  const airdropBalance = useAirdropBalance();
   const auctionUserInfo = useAuctionUserInfo();
 
   return useMemo(() => {
@@ -19,8 +21,8 @@ export const useTotalAstroRewards = () => {
       phase2Amount = auctionUserInfo.auction_incentive_amount;
     }
 
-    return num(lockUserInfo.total_astro_rewards).plus(phase2Amount).toString();
-  }, [lockUserInfo, auctionUserInfo]);
+    return num(lockUserInfo.total_astro_rewards).plus(airdropBalance).plus(phase2Amount).toString();
+  }, [lockUserInfo, airdropBalance, auctionUserInfo]);
 };
 
 export default useTotalAstroRewards;
