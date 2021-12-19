@@ -490,8 +490,8 @@ const Phase2Bootstrap = () => {
                               </ListItem>
                               <ListItem>
                                 <strong>
-                                  Be aware: Only 1 withdrawal per postion can be
-                                  made during the last 2 days, after deposits
+                                  Be aware: Only 1 withdrawal per position can
+                                  be made during the last 2 days, after deposits
                                   are disabled.
                                 </strong>
                               </ListItem>

@@ -73,7 +73,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
             </ListItem>
             <ListItem>
               <strong>
-                Be aware: Only 1 withdrawal per postion can be made during the
+                Be aware: Only 1 withdrawal per position can be made during the
                 last 2 days, after deposits are disabled.
               </strong>
             </ListItem>

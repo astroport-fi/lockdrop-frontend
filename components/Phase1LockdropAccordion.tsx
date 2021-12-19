@@ -387,7 +387,7 @@ const Phase1LockdropAccordion = () => {
                           </ListItem>
                           <ListItem>
                             <strong>
-                              Be aware: Only 1 withdrawal per postion can be
+                              Be aware: Only 1 withdrawal per position can be
                               made during the last 2 days, after deposits are
                               disabled.
                             </strong>
