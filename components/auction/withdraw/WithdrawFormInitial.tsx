@@ -27,7 +27,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
 
   const { max } = useAuctionLogic();
 
-  const providedBalance = num(balance).times(ONE_TOKEN).toString();
+  const providedBalance = num(balance).times(2).times(ONE_TOKEN).toString();
 
   const handleChange = (value: number) => {
     setValue("token", {
