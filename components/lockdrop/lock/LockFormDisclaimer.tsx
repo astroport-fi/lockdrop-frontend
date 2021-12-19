@@ -15,12 +15,12 @@ import Card from "components/Card";
 import CloseModalIcon from "components/icons/CloseModalIcon";
 
 type Props = {
-  onCloseClick: () => void;
+  onClick: () => void;
 };
 
 const MotionBox = motion(Box);
 
-const LockFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
+const LockFormDisclaimer: FC<Props> = ({ onClick }) => {
   const [checkedItems, setCheckedItems] = useState([false, false]);
   const allChecked = checkedItems.every(Boolean);
 
@@ -41,7 +41,6 @@ const LockFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
             aria-label="Close"
             icon={<CloseModalIcon w="1.5rem" h="1.5rem" />}
             variant="icon"
-            onClick={onCloseClick}
           />
         </Flex>
 
@@ -101,6 +100,7 @@ const LockFormDisclaimer: FC<Props> = ({ onCloseClick }) => {
             size="sm"
             type="submit"
             isDisabled={!allChecked}
+            onClick={onClick}
           >
             Lock LP Token
           </Button>

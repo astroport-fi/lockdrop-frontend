@@ -7,14 +7,14 @@ import { useRouter } from "next/router";
 
 import { useLock } from "modules/lockdrop";
 
+import useLocalStorage from "hooks/useLocalStorage";
+
 import FormLoading from "components/common/FormLoading";
 import FormError from "components/common/FormError";
 import FormSuccess from "components/common/FormSuccess";
 import FormSummary from "components/common/FormSummary";
 import LockFormInitial from "components/lockdrop/lock/LockFormInitial";
 import LockFormDisclaimer from "components/lockdrop/lock/LockFormDisclaimer";
-
-import useLocalStorage from "hooks/useLocalStorage";
 
 type FormValues = {
   token: {
@@ -119,7 +119,7 @@ const LockForm: FC<Props> = ({ lpToken }) => {
         {!showConfirm && (
           <LockFormInitial state={state} onClick={() => handleClick} />
         )}
-        {showConfirm && <LockFormDisclaimer onCloseClick={() => handleClick} />}
+        {showConfirm && <LockFormDisclaimer onClick={() => handleClick} />}
       </chakra.form>
     </FormProvider>
   );
