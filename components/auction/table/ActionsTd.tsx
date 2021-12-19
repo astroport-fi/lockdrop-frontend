@@ -53,6 +53,7 @@ const ActionsTd: FC<Props> = ({ row }) => {
         variant="secondary"
         size="sm"
         isFullWidth
+        disabled={true}
       >
         Provide Liquidity
       </Button>
