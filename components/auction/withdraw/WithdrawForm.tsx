@@ -63,7 +63,7 @@ const WithdrawForm: FC = () => {
       <FormSuccess
         contentComponent={
           <FormSummary
-            label="You've withdrew"
+            label="You've withdrawn"
             tokens={[{ asset: "uusd", amount: debouncedAmount }]}
           />
         }
@@ -95,10 +95,10 @@ const WithdrawForm: FC = () => {
         {showConfirm && (
           <FormConfirm
             fee={fee}
-            actionLabel="Confirm Withdraw"
+            actionLabel="Confirm Withdrawal"
             contentComponent={
               <FormSummary
-                label="You'll withdrew"
+                label="You'll withdraw"
                 tokens={[{ asset: "uusd", amount: debouncedAmount }]}
               />
             }

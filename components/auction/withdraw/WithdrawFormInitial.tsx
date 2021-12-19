@@ -23,10 +23,11 @@ type Props = {
 const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
   const { control, setValue } = useFormContext();
   const userInfo = useUserInfo();
+  const balance = userInfo?.ust_delegated ?? "0";
 
   const { max } = useAuctionLogic();
 
-  const balance = num(max).times(ONE_TOKEN).toString();
+  const providedBalance = num(balance).times(ONE_TOKEN).toString();
 
   const handleChange = (value: number) => {
     setValue("token", {
@@ -78,7 +79,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
               {...field}
               balanceLabel="Provided"
               limit={max}
-              balance={balance}
+              balance={providedBalance}
               isSingle
               hideMaxButton
             />
