@@ -15,7 +15,7 @@ import LockActions from "components/lockdrop/lock/LockActions";
 
 type Params = {
   state: LockState;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const LockFormInitial = ({ state, onClick }: Params) => {

@@ -6,6 +6,7 @@ import { TxStep, useTerraWebapp } from "@arthuryeti/terra";
 import { useRouter } from "next/router";
 
 import { useLock } from "modules/lockdrop";
+import useLocalStorage from "hooks/useLocalStorage";
 
 import FormLoading from "components/common/FormLoading";
 import FormError from "components/common/FormError";
@@ -28,6 +29,12 @@ type Props = {
 
 const LockForm: FC<Props> = ({ lpToken }) => {
   const [showConfirm, setShowConfirm] = useState(false);
+
+  const [acceptedDisclaimer, setAcceptedDisclaimer] = useLocalStorage(
+    "astroport:setAcceptedDisclaimer",
+    false
+  );
+
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -64,13 +71,24 @@ const LockForm: FC<Props> = ({ lpToken }) => {
 
   const submit = async () => {
     state.submit();
+    if (!acceptedDisclaimer) {
+      setAcceptedDisclaimer(true);
+    }
+  };
+
+  const handleDisclaimer = () => {
+    if (!acceptedDisclaimer) {
+      setShowConfirm(true);
+    } else {
+      return acceptedDisclaimer;
+    }
   };
 
   useEffect(() => {
-    if (state.txStep == TxStep.Broadcasting) {
+    if (state.txStep == TxStep.Broadcasting && !acceptedDisclaimer) {
       setShowConfirm(false);
     }
-  }, [state.txStep]);
+  }, [state.txStep, acceptedDisclaimer]);
 
   if (state.txStep == TxStep.Broadcasting || state.txStep == TxStep.Posting) {
     return <FormLoading txHash={state.txHash} />;
@@ -105,7 +123,7 @@ const LockForm: FC<Props> = ({ lpToken }) => {
     <FormProvider {...methods}>
       <chakra.form onSubmit={handleSubmit(submit)} width="full">
         {!showConfirm && (
-          <LockFormInitial state={state} onClick={() => setShowConfirm(true)} />
+          <LockFormInitial state={state} onClick={handleDisclaimer} />
         )}
         {showConfirm && (
           <LockFormDisclaimer onCloseClick={() => setShowConfirm(false)} />
