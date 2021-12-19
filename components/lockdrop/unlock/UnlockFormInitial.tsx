@@ -28,15 +28,15 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
   const stakedAmount = useLockedLpAmount(lpToken.asset, duration);
   const { max } = useLockdropLogic({ lpToken: lpToken.asset, duration });
 
-  const amount = useMemo(() => {
-    if (num(lpToken.amount).eq(0) || lpToken.amount == "") {
-      return num(stakedAmount).div(ONE_TOKEN).toString();
-    }
+  // const amount = useMemo(() => {
+  //   if (num(lpToken.amount).eq(0) || lpToken.amount == "") {
+  //     return num(stakedAmount).div(ONE_TOKEN).toString();
+  //   }
 
-    return num(stakedAmount).div(ONE_TOKEN).minus(lpToken.amount).toString();
-  }, [lpToken.amount, stakedAmount]);
+  //   return num(stakedAmount).div(ONE_TOKEN).minus(lpToken.amount).toString();
+  // }, [lpToken.amount, stakedAmount]);
 
-  const balance = num(max).times(ONE_TOKEN).toString();
+  const balance = num(stakedAmount).times(ONE_TOKEN).toString();
 
   const handleChange = (value: number) => {
     setValue("lpToken", {
