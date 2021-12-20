@@ -65,6 +65,8 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
       max = 0;
     }
 
+    let realMax = max;
+
     if (
       withdraw50PercentUntil < currentTimestamp &&
       currentTimestamp < phaseOpenUntil &&
@@ -75,11 +77,17 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
         .div(2)
         .toNumber();
 
+      realMax =
+        units *
+        ((phaseOpenUntil - currentTimestamp) /
+          (phaseOpenUntil - withdraw50PercentUntil));
+
       max =
         units *
         ((phaseOpenUntil - currentTimestampWithBuffer) /
           (phaseOpenUntil - withdraw50PercentUntil));
 
+      realMax = num(realMax).dp(3).toNumber();
       max = num(max).dp(3).toNumber();
     }
 
@@ -87,6 +95,7 @@ export const useLockdropLogic = ({ lpToken, duration }: Opts) => {
       canDeposit,
       canWithdraw,
       max,
+      realMax,
     };
   }, [
     config,

@@ -26,7 +26,10 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
 
   const lpToken = watch("lpToken");
   const stakedAmount = useLockedLpAmount(lpToken.asset, duration);
-  const { max } = useLockdropLogic({ lpToken: lpToken.asset, duration });
+  const { max, realMax } = useLockdropLogic({
+    lpToken: lpToken.asset,
+    duration,
+  });
 
   // const amount = useMemo(() => {
   //   if (num(lpToken.amount).eq(0) || lpToken.amount == "") {
@@ -36,7 +39,13 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
   //   return num(stakedAmount).div(ONE_TOKEN).minus(lpToken.amount).toString();
   // }, [lpToken.amount, stakedAmount]);
 
-  const balance = num(stakedAmount).times(ONE_TOKEN).toString();
+  const balance = useMemo(() => {
+    if (realMax == null) {
+      return "0";
+    }
+
+    return num(realMax).times(ONE_TOKEN).toString();
+  }, [realMax]);
 
   const handleChange = (value: number) => {
     setValue("lpToken", {
@@ -91,7 +100,7 @@ const UnlockFormInitial = ({ state, duration, onClick }: Params) => {
               {...field}
               balance={balance}
               balanceLabel="Withdrawable LP Tokens"
-              limit={max}
+              limit={+realMax}
               isLpToken
               isSingle
               hideMaxButton
