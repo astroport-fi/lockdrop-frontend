@@ -1,6 +1,6 @@
-# Astroport
+# Astroport Lockdrop UI
 
-Astroport a web frontend for interacting with Astroport Smart Contracts. It is intended to be used with the [Terra Station Extension](https://terra.money/extension) plugin for Chromium browsers.
+The Astroport Lockdrop UI is a web frontend used to interact with the Astroport lockdrop contracts. It is intended to be used with the [Terra Station Extension](https://terra.money/extension) plugin for Chromium browsers.
 
 ## Development
 
