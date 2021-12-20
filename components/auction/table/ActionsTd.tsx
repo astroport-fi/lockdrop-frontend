@@ -48,7 +48,6 @@ const ActionsTd: FC<Props> = ({ row }) => {
     return (
       <Button
         as="a"
-        href="https://app.terraswap.io/#Provide"
         target="_blank"
         variant="secondary"
         size="sm"
