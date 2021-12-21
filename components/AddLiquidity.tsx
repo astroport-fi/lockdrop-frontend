@@ -17,6 +17,7 @@ import {
   useAuctionState,
   useAstroPrice,
   useAuctionLogic,
+  useAuctionMetrics,
 } from "modules/auction";
 
 import KPITitle from "components/KPITitle";
@@ -29,6 +30,7 @@ const AddLiquidity = () => {
   const auctionState = useAuctionState();
   const price = useAstroPrice();
   const logic = useAuctionLogic();
+  const metrics = useAuctionMetrics();
   const isLow = num(price).lt("0.01");
 
   const renderProvideButton = () => {
@@ -122,12 +124,12 @@ const AddLiquidity = () => {
                 label="Total ASTRO in bootstrapping pool"
               />
               <KPITitle
-                value="+81.57%"
+                value={`+${metrics?.bonusMultiplier.toFixed(2)}%`}
                 titleColor="brand.turquoise"
                 label="Current upfront ASTRO reward for depositing ASTRO"
               />
               <KPITitle
-                value="815.56"
+                value={`${metrics?.bonusPerAstro.toFixed(2)}`}
                 titleColor="brand.turquoise"
                 label="Current ASTRO reward per 1,000 ASTRO deposited"
               />
@@ -205,12 +207,12 @@ const AddLiquidity = () => {
                 label="Total UST in bootstrapping pool"
               />
               <KPITitle
-                value="+99.55%"
+                value={`+${metrics?.bonusMultiplier.toFixed(2)}%`}
                 titleColor="brand.turquoise"
                 label="Current upfront ASTRO reward for depositing UST"
               />
               <KPITitle
-                value="995.52"
+                value={`${metrics?.bonusPerUst.toFixed(2)}`}
                 titleColor="brand.turquoise"
                 label="Current ASTRO reward per 1,000 UST deposited"
               />
