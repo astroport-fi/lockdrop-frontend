@@ -16,7 +16,7 @@ type Props = {
 
 const TokenCard: FC<Props> = ({ token, description }) => {
   const { getIcon, getSymbol } = useTokenInfo();
-  const amount = numeral(token.amount).format("0,0.00[0000]");
+  const amount = numeral(token.amount).format("0,0.00a");
 
   return (
     <Box
