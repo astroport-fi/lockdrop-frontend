@@ -4,6 +4,7 @@ import { fromTerraAmount, num, useBalance } from "@arthuryeti/terra";
 
 import { useTokenInfo } from "modules/common";
 import { ONE_TOKEN } from "constants/constants";
+import AmountMaxButton from "components/AmountMaxButton";
 // import { formatAsset } from "libs/parse";
 
 type Props = {
@@ -27,22 +28,18 @@ const Balance: FC<Props> = ({
 }) => {
   const { getSymbol } = useTokenInfo();
   const balance = useBalance(asset);
-  const amount = num(initial ?? balance)
-    .div(ONE_TOKEN)
-    .dp(3)
-    .toNumber();
+  const amount = num(initial).div(ONE_TOKEN).dp(3).toNumber();
+  const max = num(initial).gt("0") ? amount : null;
 
   const renderButton = () => {
     if (!hideButton) {
       return (
-        <Button
-          variant="mini"
-          type="button"
-          onClick={() => onChange(amount)}
+        <AmountMaxButton
+          asset={asset}
+          max={max}
+          onChange={onChange}
           isDisabled={isDisabled}
-        >
-          Max
-        </Button>
+        />
       );
     }
   };
