@@ -363,6 +363,11 @@ const Phase2Bootstrap = () => {
                                 can provide ASTRO and/or UST to the pool for the
                                 first 5 days. Be aware that you can not withdraw
                                 your ASTRO tokens once they’ve been deposited.
+                                <br />
+                                <br />
+                                The height of your ASTRO rewards is based on the
+                                final amounts in the ASTRO-UST bootstrapping
+                                pool when phase 2 ends.
                               </Text>
                             </Box>
                             {/* <Box>
