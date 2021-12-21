@@ -1,5 +1,12 @@
 import React, { FC, useMemo } from "react";
-import { Box, Text, Center, HStack } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Center,
+  HStack,
+  UnorderedList,
+  ListItem,
+} from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { num, fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
@@ -73,17 +80,23 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
         </Text>
       </Box>
       <Card mb="2">
-        <Text variant="light">
-          Once phase 2 ends and the ASTRO-UST pool goes live, you’ll receive
-          ASTRO-UST LP tokens (which have 50% exposure to UST and 50% exposure
-          to ASTRO) in return for your ASTRO and/or UST deposit. These LP tokens
-          unlock linearly over 90 days, starting when the ASTRO-UST liquidity
-          pool goes live on Astroport.
-          <br />
-          <br />
-          Be aware that you can not withdraw your ASTRO tokens once they’ve been
-          deposited.
+        <Text variant="light" mb="2">
+          Be aware:
         </Text>
+        <UnorderedList variant="content" opacity={0.5} pl="0">
+          <ListItem variant="light" fontSize="xs" mb="1">
+            You cannot withdraw ASTRO tokens deposited in the bootstrap pool
+            until after the full Astroport app is live and your tokens have
+            unlocked.
+          </ListItem>
+          <ListItem variant="light" fontSize="xs">
+            Once phase 2 ends and the ASTRO-UST pool goes live, you’ll receive
+            ASTRO-UST LP tokens (which have 50% exposure to UST and 50% exposure
+            to ASTRO) in return for your ASTRO and/or UST deposit. These LP
+            tokens unlock linearly over 90 days, starting when the ASTRO-UST
+            liquidity pool goes live on Astroport.{" "}
+          </ListItem>
+        </UnorderedList>
       </Card>
 
       <Card py="10">
