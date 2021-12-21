@@ -99,8 +99,6 @@ export const createProvideMsgs = (
     msgs.push(delegateAirdropMsg);
   }
 
-  console.log(msgs);
-
   if (msgs.length == 0) {
     return null;
   }

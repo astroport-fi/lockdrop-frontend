@@ -164,7 +164,7 @@ const AddLiquidity = () => {
                       fontSize={["16px", null, "32px"]}
                       textAlign="center"
                     >
-                      1 ASTRO {isLow ? "< 0.01" : "=" + price} UST
+                      1 ASTRO {isLow ? "< 0.01" : "= " + price} UST
                     </Text>
                     <Text variant="spaced" color="white" opacity="0.4">
                       If all remains equal

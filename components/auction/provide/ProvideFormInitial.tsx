@@ -13,6 +13,7 @@ import AmountInput from "components/AmountInput";
 import Single from "components/AmountInput/Single";
 import ProvideFormFooter from "components/auction/provide/ProvideFormFooter";
 import PlusCircleIcon from "components/icons/PlusCircleIcon";
+import numeral from "numeral";
 
 type Props = {
   state: ProvideState;
@@ -149,7 +150,9 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
           <Text fontSize="sm" color="white.600">
             ASTRO to provide to bootstrap pool
           </Text>
-          <Text color="brand.lightPurple">{totalAstro} ASTRO</Text>
+          <Text color="brand.lightPurple">
+            {numeral(totalAstro).format("0,0.00")} ASTRO
+          </Text>
         </HStack>
       </Card>
 
@@ -185,7 +188,9 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
           <Text fontSize="sm" color="white.600">
             UST to provide to bootstrap pool
           </Text>
-          <Text color="brand.lightPurple">{uusd.amount || 0} UST</Text>
+          <Text color="brand.lightPurple">
+            {numeral(uusd.amount).format("0,0.00")} UST
+          </Text>
         </HStack>
       </Card>
 
