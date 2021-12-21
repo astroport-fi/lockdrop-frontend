@@ -25,7 +25,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
   const userInfo = useUserInfo();
   const balance = userInfo?.ust_delegated ?? "0";
 
-  const { max } = useAuctionLogic();
+  const { max, realMax } = useAuctionLogic();
 
   const providedBalance = num(balance).times(ONE_TOKEN).toString();
 
@@ -78,7 +78,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
             <AmountInput
               {...field}
               balanceLabel="Provided"
-              limit={max}
+              limit={+realMax}
               balance={providedBalance}
               isSingle
               hideMaxButton

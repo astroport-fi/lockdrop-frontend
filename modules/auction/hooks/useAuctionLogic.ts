@@ -59,20 +59,33 @@ export const useAuctionLogic = () => {
       max = 0;
     }
 
+    let realMax = max;
+
     if (
       withdraw50PercentUntil < currentTimestamp &&
       currentTimestamp < phaseOpenUntil
     ) {
+      const units = num(balance).div(ONE_TOKEN).div(2).toNumber();
+
+      realMax =
+        units *
+        ((phaseOpenUntil - currentTimestamp) /
+          (phaseOpenUntil - withdraw50PercentUntil));
+
       max =
-        num(balance).div(ONE_TOKEN).div(2).toNumber() *
+        units *
         ((phaseOpenUntil - currentTimestampWithBuffer) /
           (phaseOpenUntil - withdraw50PercentUntil));
+
+      realMax = num(realMax).dp(3).toNumber();
+      max = num(max).dp(3).toNumber();
     }
 
     return {
       canDeposit,
       canWithdraw,
       max,
+      realMax,
     };
   }, [config, userInfo, currentTimestamp, currentTimestampWithBuffer, balance]);
 };
