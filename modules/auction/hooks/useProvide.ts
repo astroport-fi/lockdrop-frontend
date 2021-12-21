@@ -64,7 +64,7 @@ export const useProvide = ({
 
   return useTransaction({
     msgs,
-    gasAdjustment: 1.3,
+    gasAdjustment: 1.4,
     onSuccess,
     onError,
   });
