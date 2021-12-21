@@ -78,6 +78,10 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
           read the phase 2 explainer to fully understand the potential risks and
           benefits. To supply a single asset, leave the second asset&apos;s
           field blank or type &apos;0&apos;.
+          <br />
+          <br />
+          Be aware that you can not withdraw your ASTRO tokens once they’ve been
+          deposited.
         </Text>
       </Card>
 
