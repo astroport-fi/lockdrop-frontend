@@ -90,6 +90,9 @@ const Navbar: FC = () => {
                 <Link href="/" color="white">
                   Launch Plan
                 </Link>
+                <Link href="/phase-1" color="white">
+                  Phase 1
+                </Link>
                 <Link href="/active-phase" color="white">
                   Active phase
                 </Link>
