@@ -39,9 +39,7 @@ const Phase2Bootstrap = () => {
   const { phase2StartDate, phase2EndDate } = useAstroApp();
   const config = useConfig();
   const userInfo = useUserInfo();
-  const astroBalance = useAstroBalance().astroBalance;
-  const lockdropBalance = useAstroBalance().lockdropBalance;
-  const airdropBalance = useAstroBalance().airdropBalance;
+  const { astroBalance, lockdropBalance, airdropBalance } = useAstroBalance();
   const state = useAirdopState();
   const totalAstroRewards = useTotalAstroRewards();
 

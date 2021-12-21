@@ -2,14 +2,18 @@ import { useMemo } from "react";
 import { num } from "@arthuryeti/terra";
 
 import { useUserInfo } from "modules/lockdrop";
-import { useUserInfo as useAuctionUserInfo } from "modules/auction";
+import {
+  useUserInfo as useAuctionUserInfo,
+  useAstroBalance,
+} from "modules/auction";
 
 export const useTotalAstroRewards = () => {
   const lockUserInfo = useUserInfo();
+  const balance = useAstroBalance();
   const auctionUserInfo = useAuctionUserInfo();
 
   return useMemo(() => {
-    if (lockUserInfo == null || auctionUserInfo == null) {
+    if (lockUserInfo == null || auctionUserInfo == null || balance == null) {
       return null;
     }
 
@@ -19,8 +23,8 @@ export const useTotalAstroRewards = () => {
       phase2Amount = auctionUserInfo.auction_incentive_amount;
     }
 
-    return num(lockUserInfo.total_astro_rewards).plus(phase2Amount).toString();
-  }, [lockUserInfo, auctionUserInfo]);
+    return num(balance.astroBalance).plus(phase2Amount).toString();
+  }, [lockUserInfo, auctionUserInfo, balance]);
 };
 
 export default useTotalAstroRewards;
