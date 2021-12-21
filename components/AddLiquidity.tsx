@@ -127,11 +127,13 @@ const AddLiquidity = () => {
                 value={`+${metrics?.bonusMultiplier.toFixed(2)}%`}
                 titleColor="brand.turquoise"
                 label="Current upfront ASTRO reward for depositing ASTRO"
+                maxWidth="190px"
               />
               <KPITitle
                 value={`${metrics?.bonusPerAstro.toFixed(2)}`}
                 titleColor="brand.turquoise"
                 label="Current ASTRO reward per 1,000 ASTRO deposited"
+                maxWidth="190px"
               />
             </VStack>
             <Flex
@@ -210,11 +212,13 @@ const AddLiquidity = () => {
                 value={`+${metrics?.bonusMultiplier.toFixed(2)}%`}
                 titleColor="brand.turquoise"
                 label="Current upfront ASTRO reward for depositing UST"
+                maxWidth="190px"
               />
               <KPITitle
                 value={`${metrics?.bonusPerUst.toFixed(2)}`}
                 titleColor="brand.turquoise"
                 label="Current ASTRO reward per 1,000 UST deposited"
+                maxWidth="190px"
               />
             </VStack>
           </Stack>

@@ -4,6 +4,7 @@ import { Box, Text, Tooltip } from "@chakra-ui/react";
 type Props = {
   label: string;
   value: string;
+  maxWidth?: string;
   titleColor?: string;
   asset?: string;
   tooltip?: ReactNode;
@@ -14,6 +15,7 @@ const Phase1Lockdrop: FC<Props> = ({
   value,
   asset,
   tooltip,
+  maxWidth = "240px",
   titleColor = "inherit",
 }) => {
   const KPITitle = () => {
@@ -47,7 +49,7 @@ const Phase1Lockdrop: FC<Props> = ({
   return (
     <Box>
       {KPITitle()}
-      <Text fontSize="12px" opacity="0.4" maxW="190px">
+      <Text fontSize="12px" opacity="0.4" maxW={maxWidth}>
         {label}
       </Text>
     </Box>
