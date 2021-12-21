@@ -13,15 +13,20 @@ export const useAirdrop = (address: string | undefined) => {
     return res.json();
   });
 
+  const query3 = useQuery(["airdrop", 3], async () => {
+    const res = await fetch("/airdrop/airdrop3.json");
+    return res.json();
+  });
+
   // TODO: change to api call
-  if (query.isLoading || query2.isLoading) {
+  if (query.isLoading || query2.isLoading || query3.isLoading) {
     return {
       isLoading: true,
       data: null,
     };
   }
 
-  const data = [...query.data, ...query2.data].find((item) => {
+  const data = [...query.data, ...query2.data, ...query3.data].find((item) => {
     return item.address === address;
   });
 

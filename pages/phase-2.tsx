@@ -12,9 +12,9 @@ const Phase2Page: NextPage = () => {
       <Head>
         <title>Astroport</title>
       </Head>
-      {/* <Container px={["6", null, "12"]} maxWidth="container.xl">
+      <Container px={["6", null, "12"]} maxWidth="container.xl">
         <Phase2 />
-      </Container> */}
+      </Container>
     </>
   );
 };

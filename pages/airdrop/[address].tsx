@@ -11,9 +11,9 @@ const AirdropPage: NextPage = () => {
       <Head>
         <title>Astroport</title>
       </Head>
-      {/* <Flex>
+      <Flex>
         <Airdrop />
-      </Flex> */}
+      </Flex>
     </>
   );
 };
