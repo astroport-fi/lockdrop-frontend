@@ -1,13 +1,38 @@
 import { useMemo } from "react";
-import { num } from "@arthuryeti/terra";
+import { num, toTerraAmount } from "@arthuryeti/terra";
+import dayjs from "dayjs";
 
 import { useAuctionState, useConfig } from "modules/auction";
 import { ONE_TOKEN } from "constants/constants";
-import dayjs from "dayjs";
 
 export const useProvideFooter = ({ ustAmount, astroAmount }) => {
   const state = useAuctionState();
   const config = useConfig();
+
+  const estAstroRewards = useMemo(() => {
+    if (
+      config == null ||
+      state == null ||
+      num(state.total_ust_delegated).eq(0) ||
+      num(state.total_astro_delegated).eq(0)
+    ) {
+      return null;
+    }
+
+    const astroIncentivesFromAstroDelgation = num(config.astro_incentive_amount)
+      .times(0.5)
+      .times(toTerraAmount(astroAmount))
+      .div(num(state.total_astro_delegated).plus(toTerraAmount(astroAmount)));
+
+    const astroIncentivesFromUstDelgation = num(config.astro_incentive_amount)
+      .times(0.5)
+      .times(toTerraAmount(ustAmount))
+      .div(num(state.total_astro_delegated).plus(toTerraAmount(ustAmount)));
+
+    return astroIncentivesFromAstroDelgation
+      .plus(astroIncentivesFromUstDelgation)
+      .toNumber();
+  }, [config, state, astroAmount, ustAmount]);
 
   const shareOfPool = useMemo(() => {
     let value = 0;
@@ -54,6 +79,7 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
   }, [config]);
 
   return {
+    estAstroRewards,
     shareOfPool,
     lockEnds,
   };

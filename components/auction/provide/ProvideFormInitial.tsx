@@ -1,16 +1,18 @@
 import React, { FC, useMemo } from "react";
-import { Box, Text, Link, HStack } from "@chakra-ui/react";
+import { Box, Text, Center, HStack } from "@chakra-ui/react";
 import { useFormContext, Controller } from "react-hook-form";
-import { num, fromTerraAmount } from "@arthuryeti/terra";
+import { num, fromTerraAmount, useBalance } from "@arthuryeti/terra";
 
 import { ProvideState } from "modules/auction";
 import { useAirdropBalance } from "modules/airdrop";
+import { ONE_TOKEN } from "constants/constants";
 import { useUserInfo } from "modules/lockdrop";
 
 import Card from "components/Card";
 import AmountInput from "components/AmountInput";
 import Single from "components/AmountInput/Single";
 import ProvideFormFooter from "components/auction/provide/ProvideFormFooter";
+import PlusCircleIcon from "components/icons/PlusCircleIcon";
 
 type Props = {
   state: ProvideState;
@@ -21,6 +23,7 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
   const { control, watch } = useFormContext();
   const userInfo = useUserInfo();
   const airdropBalance = useAirdropBalance();
+  const uusdBalance = useBalance("uusd");
   const uusd = watch("uusd");
   const astroLockdrop = watch("astroLockdrop");
   const astroAirdrop = watch("astroAirdrop");
@@ -77,7 +80,7 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
         </Text>
       </Card>
 
-      <Card>
+      <Card py="10">
         <HStack spacing="6">
           <Box flex="1">
             <Single asset={astroLockdrop.asset} />
@@ -103,6 +106,7 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
                   hideLabel
                   hideBalanceLabel
                   balance={lockdropBalance}
+                  limit={num(lockdropBalance).div(ONE_TOKEN).toNumber()}
                   balanceLabel="In Lockdrop"
                   isSingle
                 />
@@ -120,6 +124,7 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
                 <AmountInput
                   {...field}
                   balance={airdropBalance}
+                  limit={num(airdropBalance).div(ONE_TOKEN).toNumber()}
                   hideBalanceLabel
                   hideLabel
                   balanceLabel="In Airdrop"
@@ -129,15 +134,59 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
             />
           </Box>
         </HStack>
+
+        <HStack
+          mt="8"
+          color="white"
+          borderWidth="1px"
+          borderRadius="xl"
+          borderColor="white.200"
+          bg="white.100"
+          px="4"
+          py="4"
+          justify="space-between"
+        >
+          <Text fontSize="sm" color="white.600">
+            ASTRO to provide to bootstrap pool
+          </Text>
+          <Text color="brand.lightPurple">{totalAstro} ASTRO</Text>
+        </HStack>
       </Card>
 
-      <Card mt="2">
+      <Center my="-2">
+        <PlusCircleIcon />
+      </Center>
+
+      <Card py="10">
         <Controller
           name="uusd"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => <AmountInput {...field} isSingle />}
+          render={({ field }) => (
+            <AmountInput
+              limit={num(uusdBalance).div(ONE_TOKEN).toNumber()}
+              isSingle
+              {...field}
+            />
+          )}
         />
+
+        <HStack
+          mt="8"
+          color="white"
+          borderWidth="1px"
+          borderRadius="xl"
+          borderColor="white.200"
+          bg="white.100"
+          px="4"
+          py="4"
+          justify="space-between"
+        >
+          <Text fontSize="sm" color="white.600">
+            UST to provide to bootstrap pool
+          </Text>
+          <Text color="brand.lightPurple">{uusd.amount || 0} UST</Text>
+        </HStack>
       </Card>
 
       {state.error && (

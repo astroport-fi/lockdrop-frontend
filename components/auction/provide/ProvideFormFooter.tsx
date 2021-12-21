@@ -27,10 +27,10 @@ const ProvideFormFooter: FC<Props> = ({
       title: "Share of Pool",
       value: `${items.shareOfPool || "0"}%`,
     },
-    // {
-    //   title: "Est. ASTRO Rewards",
-    //   value: "20,000",
-    // },
+    {
+      title: "Est. ASTRO Rewards",
+      value: `${items.estAstroRewards || "0"} ASTRO`,
+    },
     {
       title: "Lock ends",
       value: items.lockEnds,
