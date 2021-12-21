@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import { Box, Text, Flex, Button, HStack } from "@chakra-ui/react";
-import { fromTerraAmount, useBalance } from "@arthuryeti/terra";
+import { fromTerraAmount, num, useBalance } from "@arthuryeti/terra";
 
 import { useTokenInfo } from "modules/common";
+import { ONE_TOKEN } from "constants/constants";
 // import { formatAsset } from "libs/parse";
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
   hideLabel?: boolean;
   hideButton?: boolean;
   isDisabled?: boolean;
-  onChange: (value: string) => void;
+  onChange: (value: string | number) => void;
 };
 
 const Balance: FC<Props> = ({
@@ -26,7 +27,10 @@ const Balance: FC<Props> = ({
 }) => {
   const { getSymbol } = useTokenInfo();
   const balance = useBalance(asset);
-  const amount = fromTerraAmount(initial ?? balance, "0.00");
+  const amount = num(initial ?? balance)
+    .div(ONE_TOKEN)
+    .dp(3)
+    .toNumber();
 
   const renderButton = () => {
     if (!hideButton) {
