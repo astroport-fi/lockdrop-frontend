@@ -79,7 +79,7 @@ const WithdrawFormInitial: FC<Props> = ({ token, state, onClick }) => {
               {...field}
               balanceLabel="Provided"
               limit={+realMax}
-              balance={providedBalance}
+              balance={balance}
               isSingle
               hideMaxButton
             />

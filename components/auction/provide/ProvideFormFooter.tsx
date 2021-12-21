@@ -4,6 +4,7 @@ import { TxStep } from "@arthuryeti/terra";
 import { useProvideFooter } from "modules/auction";
 
 import CommonFooter, { ConfirmButton } from "components/CommonFooter";
+import numeral from "numeral";
 
 type Props = {
   data: any;
@@ -22,6 +23,9 @@ const ProvideFormFooter: FC<Props> = ({
     ustAmount,
     astroAmount,
   });
+
+  const rewards = numeral(items.estAstroRewards).format("0,0.00");
+
   const cells = [
     {
       title: "Share of Pool",
@@ -29,7 +33,7 @@ const ProvideFormFooter: FC<Props> = ({
     },
     {
       title: "Est. ASTRO Rewards",
-      value: `${items.estAstroRewards || "0"} ASTRO`,
+      value: `${rewards || "0"} ASTRO`,
     },
     {
       title: "Lock ends",

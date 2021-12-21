@@ -10,13 +10,16 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
   const config = useConfig();
 
   const estAstroRewards = useMemo(() => {
+    if (config == null || state == null) {
+      return null;
+    }
+
     if (
-      config == null ||
-      state == null ||
-      num(state.total_ust_delegated).eq(0) ||
+      state != null &&
+      num(state.total_ust_delegated).eq(0) &&
       num(state.total_astro_delegated).eq(0)
     ) {
-      return null;
+      return num(config.astro_incentive_amount).div(ONE_TOKEN).toNumber();
     }
 
     const astroIncentivesFromAstroDelgation = num(config.astro_incentive_amount)
@@ -31,6 +34,7 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
 
     return astroIncentivesFromAstroDelgation
       .plus(astroIncentivesFromUstDelgation)
+      .div(ONE_TOKEN)
       .toNumber();
   }, [config, state, astroAmount, ustAmount]);
 
