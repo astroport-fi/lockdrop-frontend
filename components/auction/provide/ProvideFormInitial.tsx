@@ -74,10 +74,11 @@ const ProvideFormInitial: FC<Props> = ({ state, onClick }) => {
       </Box>
       <Card mb="2">
         <Text variant="light">
-          Provide liquidity to the ASTRO - UST bootstrapping pool. Make sure to
-          read the phase 2 explainer to fully understand the potential risks and
-          benefits. To supply a single asset, leave the second asset&apos;s
-          field blank or type &apos;0&apos;.
+          Once phase 2 ends and the ASTRO-UST pool goes live, you’ll receive
+          ASTRO-UST LP tokens (which have 50% exposure to UST and 50% exposure
+          to ASTRO) in return for your ASTRO and/or UST deposit. These LP tokens
+          unlock linearly over 90 days, starting when the ASTRO-UST liquidity
+          pool goes live on Astroport.
           <br />
           <br />
           Be aware that you can not withdraw your ASTRO tokens once they’ve been
