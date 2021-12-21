@@ -4,24 +4,41 @@ import { Box, Text, Tooltip } from "@chakra-ui/react";
 type Props = {
   label: string;
   value: string;
+  titleColor?: string;
   asset?: string;
   tooltip?: ReactNode;
 };
 
-const Phase1Lockdrop: FC<Props> = ({ label, value, asset, tooltip }) => {
+const Phase1Lockdrop: FC<Props> = ({
+  label,
+  value,
+  asset,
+  tooltip,
+  titleColor = "inherit",
+}) => {
   const KPITitle = () => {
     if (tooltip != null) {
       return (
         <Tooltip offset={[10, 0]} label={tooltip} aria-label="A tooltip">
-          <Text fontSize="20px" whiteSpace="nowrap" fontWeight="500">
+          <Text
+            fontSize="20px"
+            whiteSpace="nowrap"
+            fontWeight="500"
+            color={titleColor}
+          >
             {value} {asset}
           </Text>
         </Tooltip>
       );
     } else {
       return (
-        <Text fontSize="20px" whiteSpace="nowrap" fontWeight="500">
-          {value} {asset}
+        <Text
+          fontSize="20px"
+          whiteSpace="nowrap"
+          fontWeight="500"
+          color={titleColor}
+        >
+          {value}
         </Text>
       );
     }
@@ -30,7 +47,7 @@ const Phase1Lockdrop: FC<Props> = ({ label, value, asset, tooltip }) => {
   return (
     <Box>
       {KPITitle()}
-      <Text fontSize="12px" opacity="0.4">
+      <Text fontSize="12px" opacity="0.4" maxW="190px">
         {label}
       </Text>
     </Box>

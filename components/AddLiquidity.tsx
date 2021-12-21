@@ -107,7 +107,13 @@ const AddLiquidity = () => {
             flexWrap="wrap"
             spacing={["10", null, "0"]}
           >
-            <Box px="5" order={1} w={["100%", "50%", "auto"]}>
+            <VStack
+              spacing={10}
+              align="flex-start"
+              px="5"
+              order={1}
+              w={["100%", "50%", "auto"]}
+            >
               <KPITitle
                 value={`${fromTerraAmount(
                   auctionState?.total_astro_delegated,
@@ -115,7 +121,17 @@ const AddLiquidity = () => {
                 )} ASTRO`}
                 label="Total ASTRO in bootstrapping pool"
               />
-            </Box>
+              <KPITitle
+                value="+81.57%"
+                titleColor="brand.turquoise"
+                label="Current upfront ASTRO reward for depositing ASTRO"
+              />
+              <KPITitle
+                value="815.56"
+                titleColor="brand.turquoise"
+                label="Current ASTRO reward per 1,000 ASTRO deposited"
+              />
+            </VStack>
             <Flex
               justify="center"
               px="5"
@@ -173,7 +189,9 @@ const AddLiquidity = () => {
                 </FrameBorder>
               </Box>
             </Flex>
-            <Box
+            <VStack
+              spacing={10}
+              align="flex-end"
               textAlign={["center", null, "right"]}
               px="5"
               order={[3, null, 2, null, 3]}
@@ -186,7 +204,17 @@ const AddLiquidity = () => {
                 )} UST`}
                 label="Total UST in bootstrapping pool"
               />
-            </Box>
+              <KPITitle
+                value="+99.55%"
+                titleColor="brand.turquoise"
+                label="Current upfront ASTRO reward for depositing UST"
+              />
+              <KPITitle
+                value="995.52"
+                titleColor="brand.turquoise"
+                label="Current ASTRO reward per 1,000 UST deposited"
+              />
+            </VStack>
           </Stack>
           <Stack
             direction={["column", null, "row"]}
