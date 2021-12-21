@@ -27,7 +27,7 @@ export const useProvideFooter = ({ ustAmount, astroAmount }) => {
     const astroIncentivesFromUstDelgation = num(config.astro_incentive_amount)
       .times(0.5)
       .times(toTerraAmount(ustAmount))
-      .div(num(state.total_astro_delegated).plus(toTerraAmount(ustAmount)));
+      .div(num(state.total_ust_delegated).plus(toTerraAmount(ustAmount)));
 
     return astroIncentivesFromAstroDelgation
       .plus(astroIncentivesFromUstDelgation)
