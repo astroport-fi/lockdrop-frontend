@@ -132,7 +132,7 @@ const AddLiquidity = () => {
               <KPITitle
                 value={`${metrics?.bonusPerAstro.toFixed(2)}`}
                 titleColor="brand.turquoise"
-                label="Current ASTRO reward per 1,000 ASTRO deposited"
+                label="Current ASTRO reward per 1,000 ASTRO tokens deposited"
                 maxWidth={[null, null, null, "190px"]}
               />
             </VStack>
