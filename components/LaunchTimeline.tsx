@@ -27,7 +27,13 @@ const LaunchTimeline: FC<Props> = ({ phase }) => {
   const formattedEndDate = endDate?.format("MMM/DD/YY");
 
   function checkToday(index) {
-    const today = dayjs.utc();
+    const utc = require("dayjs/plugin/utc");
+    const timezone = require("dayjs/plugin/timezone"); // dependent on utc plugin
+    dayjs.extend(utc);
+    dayjs.extend(timezone);
+
+    const today = dayjs.utc().tz("Europe/London");
+
     return endDate?.subtract(index, "days").isSame(today, "day");
   }
 
