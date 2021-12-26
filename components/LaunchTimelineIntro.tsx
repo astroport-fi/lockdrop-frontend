@@ -27,7 +27,7 @@ const LaunchTimelineIntro = () => {
   const formattedEndDate = endDate?.format("MMM/DD/YY");
 
   function checkToday(index) {
-    const today = dayjs.utc();
+    const today = dayjs.utc().tz("Europe/London");
     return endDate?.subtract(index, "days").isSame(today, "day");
   }
 
