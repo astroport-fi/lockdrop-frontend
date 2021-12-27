@@ -44,7 +44,7 @@ const Navbar: FC = () => {
         <Box display={["none", null, null, "block"]} flex="1">
           <HStack flex="1" px="16" spacing="12">
             <NavbarLink text="Launch Plan" href="/" />
-            <NavbarLink text="Phase 1" href="/phase-1" />
+            {/* <NavbarLink text="Phase 1" href="/phase-1" /> */}
             <NavbarLink text="Active Phase" href="/active-phase" />
           </HStack>
         </Box>
@@ -90,9 +90,9 @@ const Navbar: FC = () => {
                 <Link href="/" color="white">
                   Launch Plan
                 </Link>
-                <Link href="/phase-1" color="white">
+                {/* <Link href="/phase-1" color="white">
                   Phase 1
-                </Link>
+                </Link> */}
                 <Link href="/active-phase" color="white">
                   Active phase
                 </Link>
