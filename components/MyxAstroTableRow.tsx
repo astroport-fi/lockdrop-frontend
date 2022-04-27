@@ -12,6 +12,8 @@ import {
 import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
+import Grid from '@mui/material/Grid';
+import { almostWhite } from '../theme/mui-theme';
 
 type Props = {
   name: any;
@@ -20,6 +22,24 @@ type Props = {
 };
 
 const MyxAstroTableRow: FC<Props> = ({ name, amount, inWallet }: Props) => {
+  return (
+    <Grid
+      container
+      justifyContent="space-between"
+      alignItems="center"
+      direction="row"
+      sx={{
+        p: '4px 8px',
+        color: almostWhite
+      }}>
+      <Grid item>{name}</Grid>
+      <Grid item>{amount}</Grid>
+      <Grid item>{inWallet}</Grid>
+      <Grid item>
+        <Button>Lock xASTRO</Button>
+      </Grid>
+    </Grid>
+  );
   return (
     <Stack
       my="0"

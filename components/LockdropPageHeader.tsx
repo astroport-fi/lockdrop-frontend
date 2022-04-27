@@ -22,6 +22,10 @@ import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Timer from './Timer';
+import dayjs from 'dayjs';
+import Countdown from 'react-countdown';
+import ApolloCountdown from './ApolloCountdown';
 
 type Props = {};
 
@@ -38,10 +42,11 @@ const LockdropPageHeader: FC<Props> = ({}) => {
           able to withdraw xASTRO.
         </Typography>
       </Grid>
-      <Grid item lg={4} md={4} xs={4}>
-        <Typography variant="h6" color="textPrimary">
+      <Grid item lg={4} md={4} xs={4} textAlign="center">
+        <Typography variant="h6" color="textPrimary" sx={{ mb: 1 }}>
           TIME LEFT IN THIS STAGE
         </Typography>
+        <ApolloCountdown />
       </Grid>
       <Grid item lg={4} md={4} xs={4}>
         <Typography variant="h6" color="textPrimary">
