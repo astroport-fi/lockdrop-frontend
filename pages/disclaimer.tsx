@@ -9,7 +9,7 @@ const Phase1Page: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Astroport</title>
+        <title>Apollo xAstro Lockdrop</title>
       </Head>
       <Container px={["6", null, "12"]} maxWidth="container.xl">
         <Disclaimer />

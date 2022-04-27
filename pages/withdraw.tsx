@@ -9,7 +9,7 @@ const WithdrawPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Astroport</title>
+        <title>Apollo xAstro Lockdrop</title>
       </Head>
       <Flex>
         <Withdraw />

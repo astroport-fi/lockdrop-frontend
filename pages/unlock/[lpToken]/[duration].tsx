@@ -18,7 +18,7 @@ const UnlockPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Astroport</title>
+        <title>Apollo xAstro Lockdrop</title>
       </Head>
       <Flex>
         <Unlock lpToken={lpToken} duration={parseFloat(duration)} />
