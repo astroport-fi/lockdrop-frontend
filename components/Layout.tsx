@@ -23,7 +23,7 @@ const Layout: FC = ({ children }) => {
             position: "relative",
           },
           body: {
-            backgroundColor: "#000D37",
+            backgroundColor: "#05080D",
           },
           "*::-webkit-scrollbar": {
             width: "6px",
@@ -35,10 +35,6 @@ const Layout: FC = ({ children }) => {
           "#chakra-toast-manager-bottom-right": {
             right: "32px!important",
             bottom: "32px!important",
-          },
-          "@font-face": {
-            fontFamily: "WhyteInktrap",
-            src: "url('/WhyteInktrap-Regular.woff') format('woff')",
           },
         }}
       />
