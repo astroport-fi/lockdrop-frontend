@@ -12,8 +12,7 @@ import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import Grid from '@mui/material/Grid';
-import { almostWhite } from 'theme/mui-theme';
-import { borderGrey } from 'theme/mui-theme';
+import { almostWhite, borderGrey } from '../theme/mui-theme';
 
 type Props = {};
 
