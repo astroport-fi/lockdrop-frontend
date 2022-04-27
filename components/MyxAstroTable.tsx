@@ -24,7 +24,7 @@ const assets = [
 const MyxAstroTable: FC<Props> = ({}) => {
   return (
     <WidgetContainer
-      title="My Lockdrop Deposits"
+      title="My xASTRO"
       titleFontVariant="body2"
       padding={0}
       linkText="Learn more"

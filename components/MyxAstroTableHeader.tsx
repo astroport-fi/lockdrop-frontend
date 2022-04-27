@@ -3,7 +3,7 @@ import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import Grid from '@mui/material/Grid';
-import { almostWhite } from '../theme/mui-theme';
+import { almostWhite, borderGrey } from '../theme/mui-theme';
 
 type Props = {};
 
@@ -15,8 +15,12 @@ const MyxAstroTableHeader: FC<Props> = () => {
       justifyContent="space-between"
       alignItems="center"
       sx={{
-        p: '4px 8px',
-        color: almostWhite
+        p: '12px 24px',
+        color: almostWhite,
+        fontSize: '12px',
+        lineHeight: '16px',
+        borderBottom: '2px solid',
+        borderColor: borderGrey
       }}>
       <Grid item>Asset</Grid>
       <Grid item>In Lockdrop</Grid>
