@@ -4,6 +4,9 @@ import { Global } from "@emotion/react";
 import { TerraWebappProvider } from "@arthuryeti/terra";
 import { useWallet, WalletStatus } from "@terra-money/wallet-provider";
 
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "../theme/mui-theme";
+
 import Navbar from "components/Navbar";
 import whitelist from "constants/whitelist.json";
 import { AstroAppProvider } from "modules/common";
@@ -41,10 +44,12 @@ const Layout: FC = ({ children }) => {
       {!isInitializing && (
         <TerraWebappProvider>
           <AstroAppProvider data={whitelist}>
-            <Box>
-              <Navbar />
-            </Box>
-            <Box flex="1">{children}</Box>
+            <ThemeProvider theme={theme}>
+              <Box>
+                <Navbar />
+              </Box>
+              <Box flex="1">{children}</Box>
+            </ThemeProvider>
           </AstroAppProvider>
         </TerraWebappProvider>
       )}
