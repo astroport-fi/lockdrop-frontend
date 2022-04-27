@@ -5,7 +5,12 @@ import Divider from '@mui/material/Divider';
 import { Theme } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
-import { almostWhite, borderWhite } from '../theme/mui-theme';
+import {
+  almostAlmostWhite,
+  almostWhite,
+  borderWhite,
+  darkGrey
+} from '../theme/mui-theme';
 import { styled } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
@@ -52,8 +57,8 @@ const WidgetContainer = ({
   children,
   width = 100,
   height = 'auto',
-  padding = 2,
-  borderRadius = 5,
+  padding = 3,
+  borderRadius = 4,
   title,
   linkUrl,
   linkText,
@@ -70,8 +75,7 @@ const WidgetContainer = ({
       sx={{
         width: width,
         height: height,
-        backgroundColor: almostWhite,
-        border: `1px solid ${borderWhite}`,
+        backgroundColor: darkGrey,
         borderRadius: borderRadius,
         p: padding,
         mb: mb,
@@ -80,12 +84,15 @@ const WidgetContainer = ({
       {(title || titleRenderer) && (
         <Stack>
           <Stack
-            padding={2}
+            padding={3}
             direction="row"
             alignItems="center"
             justifyContent="space-between">
             {title && (
-              <Typography variant={titleFontVariant} component="div">
+              <Typography
+                variant={titleFontVariant}
+                color={almostAlmostWhite}
+                component="div">
                 <strong>{title}</strong>
               </Typography>
             )}
@@ -101,11 +108,12 @@ const WidgetContainer = ({
             )}
             {linkUrl && (
               <div>
-                <Link>{linkText}</Link>
+                <Link color={almostWhite}>{linkText}</Link>
                 <IconButton
                   className={classes.customHoverFocus}
                   onClick={onClose}>
                   <ExternalLinkIcon
+                    color={almostWhite}
                     sx={{ fontSize: 13, color: almostWhite, cursor: 'pointer' }}
                   />
                 </IconButton>

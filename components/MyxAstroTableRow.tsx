@@ -13,7 +13,7 @@ import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import Grid from '@mui/material/Grid';
-import { almostWhite } from '../theme/mui-theme';
+import { almostAlmostWhite, almostWhite, borderGrey } from '../theme/mui-theme';
 
 type Props = {
   name: any;
@@ -29,8 +29,15 @@ const MyxAstroTableRow: FC<Props> = ({ name, amount, inWallet }: Props) => {
       alignItems="center"
       direction="row"
       sx={{
-        p: '4px 8px',
-        color: almostWhite
+        p: '12px 24px',
+        color: almostAlmostWhite,
+        fontSize: '15px',
+        lineHeight: '20px',
+        borderBottom: '1px solid',
+        borderColor: borderGrey,
+        '&:last-of-type': {
+          borderBottom: 'none'
+        }
       }}>
       <Grid item>{name}</Grid>
       <Grid item>{amount}</Grid>

@@ -12,6 +12,8 @@ import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import Grid from '@mui/material/Grid';
+import { almostWhite } from 'theme/mui-theme';
+import { borderGrey } from 'theme/mui-theme';
 
 type Props = {};
 
@@ -34,9 +36,17 @@ const MyLockdropDepositsHeader: FC<Props> = () => {
   return (
     <Grid
       container
+      direction="row"
       justifyContent="space-between"
       alignItems="center"
-      direction="row">
+      sx={{
+        p: '12px 24px',
+        color: almostWhite,
+        fontSize: '12px',
+        lineHeight: '16px',
+        borderBottom: '2px solid',
+        borderColor: borderGrey
+      }}>
       <Grid item>Amount Locked</Grid>
       <Grid item>Fully Unlocks On</Grid>
       <Grid item>Est. Lockdrop Rewards</Grid>
