@@ -1,29 +1,34 @@
-import React from "react"
-import { VStack } from "@chakra-ui/react"
-import dayjs from "dayjs"
+import React from 'react';
+import { VStack } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 
-import { useAstroApp } from "modules/common"
+import { useAstroApp } from 'modules/common';
 
-import LaunchTimeline from "components/LaunchTimeline"
-import Phase2Bootstrap from "components/Phase2Bootstrap"
-import AddLiquidity from "components/AddLiquidity"
-import AstroAirdrop from "components/AstroAirdrop"
-import Table from "components/Table"
-import Card from "components/Card"
-import LockdropPageHeader from "components/LockdropPageHeader"
-import LockdropOverview from "components/LockdropOverview"
-import MyxAstroTable from "components/MyxAstroTable"
-import MyLockdropDeposits from "components/MyLockdropDeposits"
+import LaunchTimeline from 'components/LaunchTimeline';
+import Phase2Bootstrap from 'components/Phase2Bootstrap';
+import AddLiquidity from 'components/AddLiquidity';
+import AstroAirdrop from 'components/AstroAirdrop';
+import Table from 'components/Table';
+import Card from 'components/Card';
+import LockdropPageHeader from 'components/LockdropPageHeader';
+import LockdropOverview from 'components/LockdropOverview';
+import MyxAstroTable from 'components/MyxAstroTable';
+import MyLockdropDeposits from 'components/MyLockdropDeposits';
+import Stack from '@mui/material/Stack';
+import { almostWhite } from '../../theme/mui-theme';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 
 const Phase2 = () => {
-  const { phase2EndDate } = useAstroApp()
-  const phase2EndTimestamp = phase2EndDate?.unix()
-  const timestamp = dayjs().unix()
-  const currentPhase = phase2EndTimestamp < timestamp ? 3 : 2
+  const { phase2EndDate } = useAstroApp();
+  const phase2EndTimestamp = phase2EndDate?.unix();
+  const timestamp = dayjs().unix();
+  const currentPhase = phase2EndTimestamp < timestamp ? 3 : 2;
 
   return (
-    <VStack my='12' spacing='16' align='stretch'>
-      {/* <Notification variant="info">
+    <Container>
+      <Stack direction="column" spacing={8} mt={8}>
+        {/* <Notification variant="info">
         Thank you for participating in phase 1, 3,000 ASTRO were added to your
         ASTRO Balance. <Link>Learn More</Link>
       </Notification>
@@ -35,17 +40,17 @@ const Phase2 = () => {
         Thank you for participating in phase 1, 3,000 ASTRO were added to your
         ASTRO Balance. <Link>Learn More</Link>
       </Notification> */}
-      {/* <LaunchTimeline phase={currentPhase} />
+        {/* <LaunchTimeline phase={currentPhase} />
       <Phase2Bootstrap />
       <AddLiquidity />
       <AstroAirdrop /> */}
+        <LockdropPageHeader />
+        <LockdropOverview />
+        <MyxAstroTable />
+        <MyLockdropDeposits />
+      </Stack>
+    </Container>
+  );
+};
 
-      <LockdropPageHeader />
-      <LockdropOverview />
-      <MyxAstroTable />
-      <MyLockdropDeposits />
-    </VStack>
-  )
-}
-
-export default Phase2
+export default Phase2;
