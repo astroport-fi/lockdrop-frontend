@@ -20,6 +20,7 @@ export const darkGrey = '#181b1f';
 
 export const darkBlue = 'rgba(28,41,62,1.0)';
 export const white = 'rgba(255,255,255,1.0)';
+export const white5 = 'rgba(255,255,255,0.05)';
 export const white60 = 'rgba(255,255,255,0.6)';
 export const white95 = 'rgba(255,255,255,0.85)';
 export const popOverBlue = 'rgba(7,10,15,1.0)';

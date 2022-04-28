@@ -22,10 +22,18 @@ const MyxAstroTableHeader: FC<Props> = () => {
         borderBottom: '2px solid',
         borderColor: borderGrey
       }}>
-      <Grid item>Asset</Grid>
-      <Grid item>In Lockdrop</Grid>
-      <Grid item>In Wallet</Grid>
-      <Grid item>Actions</Grid>
+      <Grid item md={2}>
+        Asset
+      </Grid>
+      <Grid item md={2}>
+        In Lockdrop
+      </Grid>
+      <Grid item md={2}>
+        In Wallet
+      </Grid>
+      <Grid item md={4} textAlign="right">
+        Actions
+      </Grid>
     </Grid>
   );
 };

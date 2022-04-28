@@ -16,3 +16,4 @@ export function getUusdAmount(pool: PoolResponse) {
 
   return +pool.assets[index].amount / ONE_TOKEN;
 }
+

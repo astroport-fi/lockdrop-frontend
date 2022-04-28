@@ -12,7 +12,7 @@ import {
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
-import apolloIcon from '../public/apollo.png';
+import apolloIcon from '../public/apollo.svg';
 import Image from 'next/image';
 
 type Props = {

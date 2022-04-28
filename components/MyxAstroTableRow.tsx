@@ -3,10 +3,18 @@ import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import Grid from '@mui/material/Grid';
-import { white95, white60, borderGrey } from '../theme/mui-theme';
+import {
+  white95,
+  almostBlack,
+  gold,
+  buttonGrey,
+  borderGrey,
+  white5
+} from '../theme/mui-theme';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import Button from './Button';
+import xAstroIcon from './icons/xAstroIcon';
 
 type Props = {
   icon: any;
@@ -27,6 +35,7 @@ const MyxAstroTableRow: FC<Props> = ({
       justifyContent="space-between"
       alignItems="center"
       direction="row"
+      columns={10}
       sx={{
         p: 3,
         color: white95,
@@ -34,33 +43,43 @@ const MyxAstroTableRow: FC<Props> = ({
         lineHeight: '20px',
         borderBottom: '1px solid',
         borderColor: borderGrey,
+        '&:hover': {
+          backgroundColor: white5
+        },
         '&:last-of-type': {
           borderBottom: 'none'
+        },
+        '&:hover&:last-of-type': {
+          borderBottomLeftRadius: '16px',
+          borderBottomRightRadius: '16px'
         }
       }}>
-      <Grid item>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          spacing={2}
-          alignItems="flexEnd">
-          <Grid item>
-            <Image src={icon} width={20} height={20} alt="Apollo Icon" />
-          </Grid>
-          <Grid item>
-            <Typography
-              sx={{ fontSize: '15px', fontWeight: 500 }}
-              color={white95}>
-              {name}
-            </Typography>
-          </Grid>
+      <Grid item md={2} container direction="row" justifyContent="flex-start">
+        <Grid item sx={{ marginRight: '8px' }}>
+          <Image src={icon} width={20} height={20} alt="xAstro Icon" />
+        </Grid>
+        <Grid item>
+          <Typography
+            sx={{ fontSize: '15px', fontWeight: 500 }}
+            color={white95}>
+            {name}
+          </Typography>
         </Grid>
       </Grid>
-      <Grid item>{amount}</Grid>
-      <Grid item>{inWallet}</Grid>
-      <Grid item>
-        <Button label="Lock xASTRO" />
+      <Grid item md={2}>
+        {amount}
+      </Grid>
+      <Grid item md={2}>
+        {inWallet}
+      </Grid>
+      <Grid item md={4} textAlign="right">
+        <Button
+          backgroundColor={gold}
+          color={almostBlack}
+          backgroundHoverColor={buttonGrey}
+          hoverColor={white95}
+          label="Lock xASTRO"
+        />
       </Grid>
     </Grid>
   );

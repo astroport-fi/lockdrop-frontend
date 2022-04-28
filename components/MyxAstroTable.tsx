@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack';
 import { white60 } from '../theme/mui-theme';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+// todo - replace with svg
 import xastroIcon from '../public/xastro.png';
 
 type Props = {};
@@ -28,7 +29,8 @@ const MyxAstroTable: FC<Props> = ({}) => {
       title="My xASTRO"
       titleFontVariant="body2"
       padding={0}
-      linkText="Get xAstro"
+      linkText="Get xASTRO"
+      // todo - get real link
       linkUrl="#"
       style={{ width: '100%' }}>
       <Stack>
