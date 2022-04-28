@@ -15,7 +15,7 @@ import LockdropOverview from 'components/LockdropOverview';
 import MyxAstroTable from 'components/MyxAstroTable';
 import MyLockdropDeposits from 'components/MyLockdropDeposits';
 import Stack from '@mui/material/Stack';
-import { almostWhite } from '../../theme/mui-theme';
+import { white60 } from '../../theme/mui-theme';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 

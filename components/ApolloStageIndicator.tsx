@@ -6,12 +6,12 @@ import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
 import {
   almostBlack,
-  almostWhite,
+  white60,
   gold50,
   orangeGoldGradientHorz,
   peach,
   peach50,
-  yellow
+  gold
 } from '../theme/mui-theme';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
@@ -54,7 +54,7 @@ const ApolloStageIndicator: FC<Props> = ({}) => {
           md={5}
           sx={{
             borderBottom: '3px solid',
-            borderBottomColor: yellow,
+            borderBottomColor: gold,
             padding: '4px 0'
           }}>
           <Typography variant="subtitle1" color="textPrimary">
@@ -162,7 +162,7 @@ const ApolloStageIndicator: FC<Props> = ({}) => {
         <Grid item md={5} xs={5} textAlign="left" sx={{ whiteSpace: 'nowrap' }}>
           <Typography
             variant="body2"
-            color={almostWhite}
+            color={white60}
             sx={{ fontSize: '12px', lineHeight: '16px' }}>
             {new Date(COUNTDOWN_DATE).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -180,7 +180,7 @@ const ApolloStageIndicator: FC<Props> = ({}) => {
           sx={{ whiteSpace: 'nowrap' }}>
           <Typography
             variant="body2"
-            color={almostWhite}
+            color={white60}
             sx={{ fontSize: '12px', lineHeight: '16px' }}>
             {new Date(END_DATE).toLocaleDateString('en-US', {
               year: 'numeric',

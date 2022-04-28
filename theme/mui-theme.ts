@@ -14,20 +14,23 @@ export const orangeGoldGradientVert = 'linear-gradient(#fed200 0%, #fd806d 100%)
 export const orangeGoldGradientHorz = 'linear-gradient(90deg, #fd806d 0%, #fed200 100%)';
 export const transparentGreen = 'rgba(74,218,74,0.90)';
 export const almostBlack = 'rgba(5,8,13,1.0)'; // body bg
+
+export const buttonGrey = '#292B30';
 export const darkGrey = '#181b1f';
+
 export const darkBlue = 'rgba(28,41,62,1.0)';
 export const white = 'rgba(255,255,255,1.0)';
-export const almostWhite = 'rgba(255,255,255,0.6)';
-export const almostAlmostWhite = 'rgba(255,255,255,0.85)';
-export const white20 = 'rgba(255,255,255,.2)';
+export const white5 = 'rgba(255,255,255,0.05)';
+export const white60 = 'rgba(255,255,255,0.6)';
+export const white95 = 'rgba(255,255,255,0.85)';
 export const popOverBlue = 'rgba(7,10,15,1.0)';
 export const borderWhite = 'rgba(255,255,255,0.20)';
 export const red = '#d32f2f';
 export const borderGrey = '#30363e';
-export const yellow = '#FED200';
+export const gold = '#FED200';
+export const gold50 = 'rgba(254,210,0,0.5)';
 export const peach = '#FD806D';
 export const peach50 = 'rgba(253,128,109,0.5)';
-export const gold50 = 'rgba(254,210,0,0.5)';
 
 // breakpoints
 const xl = 1920;
@@ -118,7 +121,7 @@ export const theme = responsiveFontSizes(
         fontFamily: '\'Obviously\',sans-serif',
         fontSize: 14,
         fontWeight: 500,
-        color: almostAlmostWhite,
+        color: white95,
         lineHeight: '22px',
         '@media (max-width:720px)': {
           fontSize: 12,

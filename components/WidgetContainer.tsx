@@ -5,13 +5,7 @@ import Divider from '@mui/material/Divider';
 import { Theme } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
-import {
-  almostAlmostWhite,
-  almostWhite,
-  borderWhite,
-  darkGrey
-} from '../theme/mui-theme';
-import { styled } from '@mui/material/styles';
+import { white95, white60, darkGrey, gold } from '../theme/mui-theme';
 import { makeStyles } from '@mui/styles';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import Link from '@mui/material/Link';
@@ -91,7 +85,7 @@ const WidgetContainer = ({
             {title && (
               <Typography
                 variant={titleFontVariant}
-                color={almostAlmostWhite}
+                color={white95}
                 component="div">
                 <strong>{title}</strong>
               </Typography>
@@ -102,22 +96,25 @@ const WidgetContainer = ({
                 className={classes.customHoverFocus}
                 onClick={onClose}>
                 <CloseIcon
-                  sx={{ fontSize: 13, color: almostWhite, cursor: 'pointer' }}
+                  sx={{ fontSize: 13, color: white60, cursor: 'pointer' }}
                 />
               </IconButton>
             )}
             {linkUrl && (
-              <div>
-                <Link color={almostWhite}>{linkText}</Link>
-                <IconButton
-                  className={classes.customHoverFocus}
-                  onClick={onClose}>
-                  <ExternalLinkIcon
-                    color={almostWhite}
-                    sx={{ fontSize: 13, color: almostWhite, cursor: 'pointer' }}
-                  />
-                </IconButton>
-              </div>
+              <Link
+                color={gold}
+                sx={{
+                  textDecoration: 'none',
+                  fontSize: '15px',
+                  lineHeight: '20px',
+                  '&:hover': {
+                    color: white95,
+                    cursor: 'pointer'
+                  }
+                }}>
+                <span style={{ marginRight: '6px' }}>{linkText}</span>
+                <ExternalLinkIcon />
+              </Link>
             )}
           </Stack>
           <Divider />

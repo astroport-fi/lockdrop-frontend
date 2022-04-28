@@ -1,27 +1,40 @@
 import React, { FC, ReactNode } from 'react';
-import {
-  Box,
-  Button,
-  Flex,
-  HStack,
-  Link,
-  Spacer,
-  Stack,
-  VStack
-} from '@chakra-ui/react';
 import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import Grid from '@mui/material/Grid';
-import { almostAlmostWhite, almostWhite, borderGrey } from '../theme/mui-theme';
+import {
+  white95,
+  almostBlack,
+  gold,
+  buttonGrey,
+  borderGrey,
+  white5
+} from '../theme/mui-theme';
+import Typography from '@mui/material/Typography';
+import Image from 'next/image';
+import Button from './Button';
+import xAstroIcon from './icons/xAstroIcon';
+import ApolloFormattedStatistic from './ApolloFormattedStatistic';
 
 type Props = {
+  icon: any;
   name: any;
-  amount: string;
+  amount: number;
   inWallet: number;
 };
 
-const MyxAstroTableRow: FC<Props> = ({ name, amount, inWallet }: Props) => {
+const MyxAstroTableRow: FC<Props> = ({
+  icon,
+  name,
+  amount,
+  inWallet
+}: Props) => {
+  // todo
+  const handleLockxAstro = () => {
+    throw new Error('not implemented');
+  };
+
   return (
     <Grid
       container
@@ -29,50 +42,60 @@ const MyxAstroTableRow: FC<Props> = ({ name, amount, inWallet }: Props) => {
       alignItems="center"
       direction="row"
       sx={{
-        p: '12px 24px',
-        color: almostAlmostWhite,
+        p: 3,
+        color: white95,
         fontSize: '15px',
         lineHeight: '20px',
         borderBottom: '1px solid',
         borderColor: borderGrey,
+        '&:hover': {
+          backgroundColor: white5
+        },
         '&:last-of-type': {
           borderBottom: 'none'
+        },
+        '&:hover&:last-of-type': {
+          borderBottomLeftRadius: '16px',
+          borderBottomRightRadius: '16px'
         }
       }}>
-      <Grid item>{name}</Grid>
-      <Grid item>{amount}</Grid>
-      <Grid item>{inWallet}</Grid>
-      <Grid item>
-        <Button>Lock xASTRO</Button>
+      <Grid item md container direction="row" justifyContent="flex-start">
+        <Grid item sx={{ marginRight: '8px' }}>
+          <Image src={icon} width={20} height={20} alt="xAstro Icon" />
+        </Grid>
+        <Grid item>
+          <Typography
+            sx={{ fontSize: '15px', fontWeight: 500 }}
+            color={white95}>
+            {name}
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid item md>
+        <ApolloFormattedStatistic
+          value={amount}
+          decimals={2}
+          decimalsInGrey={true}
+        />
+      </Grid>
+      <Grid item md>
+        <ApolloFormattedStatistic
+          value={inWallet}
+          decimals={2}
+          decimalsInGrey={true}
+        />
+      </Grid>
+      <Grid item md={4} textAlign="right">
+        <Button
+          backgroundColor={gold}
+          color={almostBlack}
+          backgroundHoverColor={buttonGrey}
+          hoverColor={white95}
+          label="Lock xASTRO"
+          onClick={handleLockxAstro}
+        />
       </Grid>
     </Grid>
-  );
-  return (
-    <Stack
-      my="0"
-      spacing="0"
-      align="stretch"
-      px="8"
-      py="4"
-      background={'whiteAlpha.50'}
-      borderBottomWidth="2px"
-      borderColor="white.100"
-      position="relative"
-      color="whiteAlpha.500"
-      _last={{
-        borderBottomWidth: '0',
-        borderBottomRadius: 10
-      }}>
-      <Box>{name}</Box>
-      <Spacer />
-      <Box>{amount}</Box>
-      <Spacer />
-      <Box>{inWallet}</Box>
-      <Spacer />
-      <Box>
-        <Button>Lock xASTRO</Button>
-      </Box>
-    </Stack>
   );
 };
 

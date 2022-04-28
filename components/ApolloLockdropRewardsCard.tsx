@@ -3,17 +3,18 @@ import { Avatar, Flex, Spinner } from '@chakra-ui/react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import {
-  almostAlmostWhite,
+  white95,
   almostBlack,
-  almostWhite,
+  white60,
   borderGrey,
   orangeGoldGradientHorz
 } from '../theme/mui-theme';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
-import apolloIcon from '../public/apollo.png';
+import apolloIcon from '../public/apollo.svg';
 import Image from 'next/image';
+import ApolloFormattedStatistic from './ApolloFormattedStatistic';
 
 type Props = {
   amount: number;
@@ -64,7 +65,7 @@ const ApolloLockdropRewardsCard = ({ amount = 100000 }) => {
           <Typography
             variant="body2"
             sx={{ fontSize: '12px', lineHeight: '16px' }}
-            color={almostAlmostWhite}>
+            color={white95}>
             MY EST. APOLLO REWARDS
           </Typography>
         </Box>
@@ -94,8 +95,12 @@ const ApolloLockdropRewardsCard = ({ amount = 100000 }) => {
               <Typography
                 variant="h6"
                 sx={{ fontSize: '30px', fontWeight: 500 }}
-                color={almostAlmostWhite}>
-                {amount.toLocaleString()}
+                color={white95}>
+                <ApolloFormattedStatistic
+                  value={100000}
+                  decimals={2}
+                  fontSize="26px"
+                />
               </Typography>
             </Grid>
           </Grid>

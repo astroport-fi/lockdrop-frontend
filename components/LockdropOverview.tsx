@@ -8,17 +8,18 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import WidgetContainer from './WidgetContainer';
 import Stack from '@mui/material/Stack';
-import { almostWhite } from '../theme/mui-theme';
+import { white60 } from '../theme/mui-theme';
 import ApolloLockdropStat from './ApolloLockdropStat';
 import ApolloLockdropRewardsCard from './ApolloLockdropRewardsCard';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
+import ApolloFormattedStatistic from './ApolloFormattedStatistic';
 
 type Props = {};
 
 const useStyles: any = makeStyles((theme: Theme) => ({
   lighter: {
-    color: almostWhite
+    color: white60
   },
   smaller: {
     fontSize: '1.0rem',
@@ -33,6 +34,8 @@ const LockdropOverview: FC<Props> = ({}) => {
       title="xASTRO Lockdrop"
       titleFontVariant="body2"
       padding={0}
+      linkText="Learn More"
+      linkUrl="#" // todo: link to lockdrop page
       style={{ width: '100%' }}>
       <Grid container p={5} justifyContent="center" alignItems="center">
         <Grid item md={4} xs={12} textAlign="center" justifyContent="center">
@@ -40,12 +43,11 @@ const LockdropOverview: FC<Props> = ({}) => {
             <Grid item>
               <ApolloLockdropStat
                 titleContent={
-                  <div>
-                    5,000,000{' '}
-                    <span className={`${classes.lighter} ${classes.smaller}`}>
-                      APOLLO
-                    </span>
-                  </div>
+                  <ApolloFormattedStatistic
+                    value={5000000}
+                    fontSize="26px"
+                    postFix={'APOLLO'}
+                  />
                 }
                 subtitle={'Total Lockdrop Rewards'}
                 textAlign="left"
@@ -53,7 +55,14 @@ const LockdropOverview: FC<Props> = ({}) => {
             </Grid>
             <Grid item>
               <ApolloLockdropStat
-                titleContent={<div>1.00%</div>}
+                titleContent={
+                  <ApolloFormattedStatistic
+                    value={1}
+                    decimals={2}
+                    percentage={true}
+                    fontSize="26px"
+                  />
+                }
                 subtitle={'My Est. % of Lockdrop Rewards'}
                 textAlign="left"
               />
@@ -68,13 +77,13 @@ const LockdropOverview: FC<Props> = ({}) => {
             <Grid item>
               <ApolloLockdropStat
                 titleContent={
-                  <div>
-                    2,000,000
-                    <span className={`${classes.lighter}`}>.00</span>
-                    <span className={`${classes.lighter} ${classes.smaller}`}>
-                      &nbsp;xASTRO
-                    </span>
-                  </div>
+                  <ApolloFormattedStatistic
+                    value={2000000}
+                    decimals={2}
+                    decimalsInGrey={true}
+                    postFix={'xASTRO'}
+                    fontSize="26px"
+                  />
                 }
                 subtitle={'Total Deposits in Lockdrop'}
                 textAlign="right"
@@ -83,12 +92,13 @@ const LockdropOverview: FC<Props> = ({}) => {
             <Grid item>
               <ApolloLockdropStat
                 titleContent={
-                  <div>
-                    20,000
-                    <span className={`${classes.lighter} ${classes.smaller}`}>
-                      &nbsp;xASTRO
-                    </span>
-                  </div>
+                  <ApolloFormattedStatistic
+                    value={20000}
+                    decimals={2}
+                    decimalsInGrey={true}
+                    postFix={'xASTRO'}
+                    fontSize="26px"
+                  />
                 }
                 subtitle={'My Total Deposits in Lockdrop'}
                 textAlign="right"
