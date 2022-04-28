@@ -35,7 +35,7 @@ const ActivePhasePage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Astroport</title>
+        <title>Apollo xAstro Lockdrop</title>
       </Head>
       <Container px={["6", null, "12"]} maxWidth="container.xl">
         {showPhase1 && <Phase1 />}

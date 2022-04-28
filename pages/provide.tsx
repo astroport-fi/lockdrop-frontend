@@ -10,7 +10,7 @@ const ProvidePage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Astroport</title>
+        <title>Apollo xAstro Lockdrop</title>
       </Head>
       <Flex mb="12">
         <Provide />
