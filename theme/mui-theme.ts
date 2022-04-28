@@ -1,12 +1,12 @@
-import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
-const primaryMain = "#0052cc";
-const bgDefault = "#05080D";
-const bgPaper = "rgba(255, 255, 255, 0.07)";
-const secondaryMain = "#edf2ff";
-const textPrimary = "rgba(255, 255, 255, 0.85)";
-const textSecondary = "rgba(255, 255, 255, 0.5)";
-const divider = "rgba(255, 255, 255, 0.2)";
+const primaryMain = '#0052cc';
+const bgDefault = '#05080D';
+const bgPaper = 'rgba(255, 255, 255, 0.07)';
+const secondaryMain = '#edf2ff';
+const textPrimary = 'rgba(255, 255, 255, 0.85)';
+const textSecondary = 'rgba(255, 255, 255, 0.5)';
+const divider = 'rgba(255, 255, 255, 0.2)';
 
 // colors from safe app
 export const transparentGold = 'rgba(254,210,0,0.90)';
@@ -61,20 +61,20 @@ export const theme = responsiveFontSizes(
       },
     },
     typography: {
-      fontFamily: "degular, sans-serif",
+      fontFamily: 'Inter, sans-serif',
       h1: {
         fontSize: 64,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         lineHeight: 1,
-        "@media (max-width:720px)": {
+        '@media (max-width:720px)': {
           fontSize: 30,
         },
       },
       h2: {
         fontSize: 50,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         lineHeight: 1.32,
-        "@media (max-width:720px)": {
+        '@media (max-width:720px)': {
           fontSize: 24,
         },
       },
@@ -82,62 +82,65 @@ export const theme = responsiveFontSizes(
         fontSize: 45,
         fontWeight: 600,
         lineHeight: 1.6,
-        "@media (max-width:720px)": {
+        '@media (max-width:720px)': {
           fontSize: 24,
         },
       },
       h4: {
         fontSize: 42,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         lineHeight: 1.33,
-        "@media (max-width:720px)": {
+        '@media (max-width:720px)': {
           fontSize: 24,
         },
       },
       h5: {
         fontSize: 26,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         lineHeight: 1.2,
-        "@media (max-width:720px)": {
+        '@media (max-width:720px)': {
           fontSize: 18,
         },
       },
       h6: {
         fontSize: 20,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         lineHeight: 1.3,
-        "@media (max-width:720px)": {
+        '@media (max-width:720px)': {
           fontSize: 16,
         },
       },
       subtitle1: {
-        fontSize: 20,
-        lineHeight: 1.25,
-        "@media (max-width:720px)": {
-          fontSize: 15,
+        fontFamily: '\'Obviously\',sans-serif',
+        fontSize: 14,
+        fontWeight: 500,
+        color: almostAlmostWhite,
+        lineHeight: '22px',
+        '@media (max-width:720px)': {
+          fontSize: 12,
         },
       },
       subtitle2: {
-        fontFamily: "'Inter',sans-serif",
+        fontFamily: '\'Inter\',sans-serif',
         fontSize: 20,
         lineHeight: 1.25,
-        "@media (max-width:720px)": {
+        '@media (max-width:720px)': {
           fontSize: 15,
         },
       },
       body1: {
-        fontFamily: "'Inter',sans-serif",
-        fontSize: 18,
-        lineHeight: 1.33,
-        "@media (max-width:720px)": {
-          fontSize: 15,
+        fontFamily: '\'Inter\',sans-serif',
+        fontSize: 14,
+        lineHeight: '20px',
+        '@media (max-width:720px)': {
+          fontSize: 12,
         },
       },
       body2: {
-        fontFamily: "'Inter',sans-serif",
+        fontFamily: '\'Inter\',sans-serif',
         fontSize: 16,
         lineHeight: 1.25,
-        "@media (max-width:720px)": {
+        '@media (max-width:720px)': {
           fontSize: 13,
         },
       },
@@ -154,22 +157,22 @@ export const theme = responsiveFontSizes(
             borderRadius: 15,
             height: 40,
             fontSize: 16,
-            fontFamily: "'Inter',sans-serif",
-            textTransform: "unset",
-            padding: "0 12px",
+            fontFamily: '\'Inter\',sans-serif',
+            textTransform: 'unset',
+            padding: '0 12px',
             fontWeight: 600,
           },
           outlined: {
             border: `1px solid ${textPrimary}`,
             color: textPrimary,
-            "&:hover": {
+            '&:hover': {
               border: `1px solid ${textPrimary}`,
             },
           },
           contained: {
             background: textPrimary,
             color: bgDefault,
-            "&:hover": {
+            '&:hover': {
               background: textPrimary,
             },
           },
