@@ -48,10 +48,10 @@ const Layout: FC = ({ children }) => {
       {!isInitializing && (
         <TerraWebappProvider>
           <AstroAppProvider data={whitelist}>
+            <Box>
+              <Navbar />
+            </Box>
             <ThemeProvider theme={theme}>
-              <Box>
-                <Navbar />
-              </Box>
               <Box flex="1">{children}</Box>
             </ThemeProvider>
           </AstroAppProvider>
