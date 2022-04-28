@@ -13,12 +13,10 @@ const Card: FC<Props> = ({ children, noPadding = false, ...props }) => {
 
   return (
     <Box
-      bg="white.50"
+      bg="white.80"
       py={py}
       px={px}
-      borderWidth="2px"
-      borderColor="white.100"
-      borderRadius="2xl"
+      borderRadius="15"
       position="relative"
       color="white"
       {...props}

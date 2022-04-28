@@ -20,10 +20,9 @@ import Accordion from "./accordion";
 
 export default extendTheme({
   fonts: {
-    heading:
-      "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-    body: "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-    mono: "Menlo, monospace",
+    heading: "'Inter', sans-serif",
+    body: "'Inter', sans-serif",
+    mono: "'Inter', sans-serif",
   },
   components: {
     Alert,
@@ -49,6 +48,7 @@ export default extendTheme({
     red: { 500: "#EF5177" },
     white: {
       50: "rgba(255,255,255,0.05)",
+      80: "rgba(255,255,255,0.08)",
       100: "rgba(255,255,255,0.1)",
       200: "rgba(255,255,255,0.2)",
       300: "rgba(255,255,255,0.3)",

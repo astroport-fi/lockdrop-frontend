@@ -118,7 +118,7 @@ export const theme = responsiveFontSizes(
         },
       },
       subtitle2: {
-        fontFamily: "omnes-pro,sans-serif",
+        fontFamily: "'Inter',sans-serif",
         fontSize: 20,
         lineHeight: 1.25,
         "@media (max-width:720px)": {
@@ -126,7 +126,7 @@ export const theme = responsiveFontSizes(
         },
       },
       body1: {
-        fontFamily: "omnes-pro,sans-serif",
+        fontFamily: "'Inter',sans-serif",
         fontSize: 18,
         lineHeight: 1.33,
         "@media (max-width:720px)": {
@@ -134,7 +134,7 @@ export const theme = responsiveFontSizes(
         },
       },
       body2: {
-        fontFamily: "omnes-pro,sans-serif",
+        fontFamily: "'Inter',sans-serif",
         fontSize: 16,
         lineHeight: 1.25,
         "@media (max-width:720px)": {
@@ -154,7 +154,7 @@ export const theme = responsiveFontSizes(
             borderRadius: 15,
             height: 40,
             fontSize: 16,
-            fontFamily: "omnes-pro,sans-serif",
+            fontFamily: "'Inter',sans-serif",
             textTransform: "unset",
             padding: "0 12px",
             fontWeight: 600,
