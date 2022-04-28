@@ -27,10 +27,7 @@ const ApolloLockdropStat = ({ titleContent, subtitle, textAlign }) => {
         </Typography>
       </Grid>
       <Grid item textAlign={textAlign}>
-        <Typography
-          variant="h6"
-          sx={{ fontWeight: 'normal' }}
-          color={white95}>
+        <Typography variant="h6" sx={{ fontWeight: 'normal' }} color={white95}>
           {titleContent}
         </Typography>
       </Grid>

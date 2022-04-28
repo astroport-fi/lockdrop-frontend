@@ -8,6 +8,7 @@ import apolloIcon from '../public/apollo.svg';
 import Button from './Button';
 import Image from 'next/image';
 import Typography from '@mui/material/Typography';
+import ApolloFormattedStatistic from './ApolloFormattedStatistic';
 
 type Props = {
   icon: any;
@@ -28,6 +29,10 @@ const MyLockdropDepositsRow: FC<Props> = ({
   const handleWithdraw = () => {
     throw new Error('not implemented');
   };
+
+  const daysUntilUnlock = Math.round(
+    (new Date(unlocksOn).getTime() - new Date().getTime()) / (1000 * 3600 * 24)
+  );
 
   return (
     <Grid
@@ -61,17 +66,26 @@ const MyLockdropDepositsRow: FC<Props> = ({
           <Typography
             sx={{ fontSize: '15px', fontWeight: 500 }}
             color={white95}>
-            {amount}
+            <ApolloFormattedStatistic
+              value={amount}
+              decimals={2}
+              decimalsInGrey={true}
+            />
           </Typography>
         </Grid>
       </Grid>
       <Grid item md>
-        {new Date(unlocksOn).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-          timeZone: 'UTC'
-        })}
+        <div style={{ marginBottom: '4px' }}>
+          {new Date(unlocksOn).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            timeZone: 'UTC'
+          })}
+        </div>
+        <Typography sx={{ fontSize: '14px', fontWeight: 400 }} color={white60}>
+          {daysUntilUnlock} days
+        </Typography>
       </Grid>
       <Grid item md container>
         <Grid item sx={{ marginRight: '8px' }}>
@@ -81,7 +95,11 @@ const MyLockdropDepositsRow: FC<Props> = ({
           <Typography
             sx={{ fontSize: '15px', fontWeight: 500 }}
             color={white95}>
-            {rewards}
+            <ApolloFormattedStatistic
+              value={rewards}
+              decimals={2}
+              decimalsInGrey={true}
+            />
           </Typography>
         </Grid>
       </Grid>

@@ -15,11 +15,12 @@ import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import Button from './Button';
 import xAstroIcon from './icons/xAstroIcon';
+import ApolloFormattedStatistic from './ApolloFormattedStatistic';
 
 type Props = {
   icon: any;
   name: any;
-  amount: string;
+  amount: number;
   inWallet: number;
 };
 
@@ -29,13 +30,17 @@ const MyxAstroTableRow: FC<Props> = ({
   amount,
   inWallet
 }: Props) => {
+  // todo
+  const handleLockxAstro = () => {
+    throw new Error('not implemented');
+  };
+
   return (
     <Grid
       container
       justifyContent="space-between"
       alignItems="center"
       direction="row"
-      columns={10}
       sx={{
         p: 3,
         color: white95,
@@ -54,7 +59,7 @@ const MyxAstroTableRow: FC<Props> = ({
           borderBottomRightRadius: '16px'
         }
       }}>
-      <Grid item md={2} container direction="row" justifyContent="flex-start">
+      <Grid item md container direction="row" justifyContent="flex-start">
         <Grid item sx={{ marginRight: '8px' }}>
           <Image src={icon} width={20} height={20} alt="xAstro Icon" />
         </Grid>
@@ -66,11 +71,19 @@ const MyxAstroTableRow: FC<Props> = ({
           </Typography>
         </Grid>
       </Grid>
-      <Grid item md={2}>
-        {amount}
+      <Grid item md>
+        <ApolloFormattedStatistic
+          value={amount}
+          decimals={2}
+          decimalsInGrey={true}
+        />
       </Grid>
-      <Grid item md={2}>
-        {inWallet}
+      <Grid item md>
+        <ApolloFormattedStatistic
+          value={inWallet}
+          decimals={2}
+          decimalsInGrey={true}
+        />
       </Grid>
       <Grid item md={4} textAlign="right">
         <Button
@@ -79,6 +92,7 @@ const MyxAstroTableRow: FC<Props> = ({
           backgroundHoverColor={buttonGrey}
           hoverColor={white95}
           label="Lock xASTRO"
+          onClick={handleLockxAstro}
         />
       </Grid>
     </Grid>

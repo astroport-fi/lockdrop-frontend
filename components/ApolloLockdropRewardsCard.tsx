@@ -14,6 +14,7 @@ import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
 import apolloIcon from '../public/apollo.svg';
 import Image from 'next/image';
+import ApolloFormattedStatistic from './ApolloFormattedStatistic';
 
 type Props = {
   amount: number;
@@ -95,7 +96,11 @@ const ApolloLockdropRewardsCard = ({ amount = 100000 }) => {
                 variant="h6"
                 sx={{ fontSize: '30px', fontWeight: 500 }}
                 color={white95}>
-                {amount.toLocaleString()}
+                <ApolloFormattedStatistic
+                  value={100000}
+                  decimals={2}
+                  fontSize="26px"
+                />
               </Typography>
             </Grid>
           </Grid>
