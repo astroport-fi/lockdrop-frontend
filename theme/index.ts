@@ -20,9 +20,9 @@ import Accordion from "./accordion";
 
 export default extendTheme({
   fonts: {
-    heading: "omnes-pro, sans-serif",
-    body: "omnes-pro, sans-serif",
-    mono: "omnes-pro, sans-serif",
+    heading: "'Inter', sans-serif",
+    body: "'Inter', sans-serif",
+    mono: "'Inter', sans-serif",
   },
   components: {
     Alert,
