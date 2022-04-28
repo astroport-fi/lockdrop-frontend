@@ -1,10 +1,10 @@
-import React, { useMemo } from "react";
-import { Box, Text, VStack, HStack, AspectRatio } from "@chakra-ui/react";
-import dayjs from "dayjs";
+import React, { useMemo } from 'react';
+import { Box, Text, VStack, HStack, AspectRatio } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 
-import { useFormattedCountdown } from "hooks/useCountdown";
+import { useFormattedCountdown } from 'hooks/useCountdown';
 
-import TimerCircle from "components/TimerCircle";
+import TimerCircle from 'components/TimerCircle';
 
 type Props = {
   phase: string;
@@ -25,7 +25,7 @@ const Timer = ({ phase, phaseStartDate, phaseEndDate }: Props) => {
   }, [startTime, endTime, currentTime]);
 
   const countdown = useFormattedCountdown({
-    targetTime: endTime,
+    targetTime: endTime
   });
 
   if (phaseEndDate == null) {
@@ -41,8 +41,7 @@ const Timer = ({ phase, phaseStartDate, phaseEndDate }: Props) => {
             width="100%"
             height="100%"
             inset="0"
-            pointerEvents="none"
-          >
+            pointerEvents="none">
             <TimerCircle percent={percent} />
           </Box>
           <VStack spacing="0">
@@ -51,16 +50,14 @@ const Timer = ({ phase, phaseStartDate, phaseEndDate }: Props) => {
               fontWeight="700"
               fontSize="10px"
               letterSpacing="2px"
-              lineHeight="1.2"
-            >
+              lineHeight="1.2">
               Phase {phase} ends in
             </Text>
             <Text
               color="brand.turquoise"
               fontSize="46px"
               fontWeight="400"
-              lineHeight="1.2"
-            >
+              lineHeight="1.2">
               {countdown.d}:{countdown.h}:{countdown.m}
             </Text>
             <HStack
@@ -70,8 +67,7 @@ const Timer = ({ phase, phaseStartDate, phaseEndDate }: Props) => {
               fontSize="10px"
               letterSpacing="2px"
               opacity="0.4"
-              lineHeight="1.2"
-            >
+              lineHeight="1.2">
               <Text>Days</Text>
               <Text>Hours</Text>
               <Text>Minutes</Text>

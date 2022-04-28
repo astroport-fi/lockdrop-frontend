@@ -1,25 +1,35 @@
-import React, { FC, ReactNode } from "react"
-import { Box, Flex, Link, Spacer, VStack } from "@chakra-ui/react"
-import ApolloCardHeader from "./ApolloCardHeader"
-import ApolloCardBody from "./ApolloCardBody"
-import ExternalLinkIcon from "./icons/ExternalLinkIcon"
+import React, { FC, ReactNode } from 'react';
+import { Box, Flex, Link, Spacer, VStack } from '@chakra-ui/react';
+import ApolloCardHeader from './ApolloCardHeader';
+import ApolloCardBody from './ApolloCardBody';
+import ExternalLinkIcon from './icons/ExternalLinkIcon';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import WidgetContainer from './WidgetContainer';
+import Stack from '@mui/material/Stack';
+import { almostWhite } from '../theme/mui-theme';
 
-type Props = {}
+type Props = {};
 
 const LockdropOverview: FC<Props> = ({}) => {
   return (
-    <VStack my='0' spacing='0' align='stretch'>
-      <ApolloCardHeader>
-        <Flex direction={"row"}>
-          <h2>xASTRO Lockdrop</h2>
-          <Spacer />
-          <Link>Learn more</Link>
-          <ExternalLinkIcon mt={2} />
-        </Flex>
-      </ApolloCardHeader>
-      <ApolloCardBody>Yo</ApolloCardBody>
-    </VStack>
-  )
-}
+    <WidgetContainer
+      title="xASTRO Lockdrop"
+      titleFontVariant="body2"
+      padding={0}
+      style={{ width: '100%' }}>
+      <Stack>
+        <Grid container p={2}>
+          <Grid item xs={12}>
+            <Typography color={almostWhite} variant="caption" component="div">
+              {`No voters found`}
+            </Typography>
+          </Grid>
+        </Grid>
+      </Stack>
+    </WidgetContainer>
+  );
+};
 
-export default LockdropOverview
+export default LockdropOverview;

@@ -1,15 +1,15 @@
-import React, { FC } from "react";
-import { Box, Flex } from "@chakra-ui/react";
-import { Global } from "@emotion/react";
-import { TerraWebappProvider } from "@arthuryeti/terra";
-import { useWallet, WalletStatus } from "@terra-money/wallet-provider";
+import React, { FC } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
+import { Global } from '@emotion/react';
+import { TerraWebappProvider } from '@arthuryeti/terra';
+import { useWallet, WalletStatus } from '@terra-money/wallet-provider';
 
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "../theme/mui-theme";
+import { ThemeProvider } from '@mui/material/styles';
+import { almostBlack, theme } from '../theme/mui-theme';
 
-import Navbar from "components/Navbar";
-import whitelist from "constants/whitelist.json";
-import { AstroAppProvider } from "modules/common";
+import Navbar from 'components/Navbar';
+import whitelist from 'constants/whitelist.json';
+import { AstroAppProvider } from 'modules/common';
 
 const Layout: FC = ({ children }) => {
   const wallet = useWallet();
@@ -19,26 +19,30 @@ const Layout: FC = ({ children }) => {
     <Flex height="100vh" direction="column">
       <Global
         styles={{
-          "html,body": {
+          'html,body': {
             // height: "100%",
-            width: "100%",
-            overflowX: "hidden",
-            position: "relative",
+            width: '100%',
+            overflowX: 'hidden',
+            position: 'relative'
           },
           body: {
-            backgroundColor: "#05080D",
+            backgroundColor: almostBlack
           },
-          "*::-webkit-scrollbar": {
-            width: "6px",
+          '*::-webkit-scrollbar': {
+            width: '6px'
           },
-          "*::-webkit-scrollbar-thumb": {
-            backgroundColor: "#5643F2",
-            borderRadius: "6px",
+          '*::-webkit-scrollbar-thumb': {
+            backgroundColor: '#5643F2',
+            borderRadius: '6px'
           },
-          "#chakra-toast-manager-bottom-right": {
-            right: "32px!important",
-            bottom: "32px!important",
+          '#chakra-toast-manager-bottom-right': {
+            right: '32px!important',
+            bottom: '32px!important'
           },
+          '@font-face': {
+            fontFamily: 'WhyteInktrap',
+            src: "url('/WhyteInktrap-Regular.woff') format('woff')"
+          }
         }}
       />
       {!isInitializing && (

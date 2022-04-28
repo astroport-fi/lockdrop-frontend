@@ -8,9 +8,26 @@ const textPrimary = "rgba(255, 255, 255, 0.85)";
 const textSecondary = "rgba(255, 255, 255, 0.5)";
 const divider = "rgba(255, 255, 255, 0.2)";
 
+// colors from safe app
+export const transparentGold = 'rgba(254,210,0,0.90)';
+export const orangeGoldGradientVert = 'linear-gradient(#fed200 0%, #fd806d 100%)';
+export const orangeGoldGradientHorz = 'linear-gradient(90deg, #fd806d 0%, #fed200 100%)';
+export const transparentGreen = 'rgba(74,218,74,0.90)';
+export const almostBlack = 'rgba(5,8,13,1.0)'; // body bg
+export const darkGrey = '#181b1f';
+export const darkBlue = 'rgba(28,41,62,1.0)';
+export const white = 'rgba(255,255,255,1.0)';
+export const almostWhite = 'rgba(255,255,255,0.6)';
+export const almostAlmostWhite = 'rgba(255,255,255,0.85)';
+export const white20 = 'rgba(255,255,255,.2)';
+export const popOverBlue = 'rgba(7,10,15,1.0)';
+export const borderWhite = 'rgba(255,255,255,0.20)';
+export const red = '#d32f2f';
+export const borderGrey = '#30363e';
+
 // breakpoints
 const xl = 1920;
-const lg = 1280;
+const lg = 1200;
 const md = 968;
 const sm = 720;
 const xs = 0;
