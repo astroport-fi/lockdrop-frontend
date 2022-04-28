@@ -1,11 +1,11 @@
-import React from "react";
-import Head from "next/head";
-import { NextPage } from "next";
+import React from 'react';
+import Head from 'next/head';
+import { NextPage } from 'next';
 
-import { Container } from "@chakra-ui/react";
+import { Container } from '@chakra-ui/react';
 
-import LaunchPlan from "components/pages/LaunchPlan";
-import LaunchTimelineIntro from "components/LaunchTimelineIntro";
+import LaunchPlan from 'components/pages/LaunchPlan';
+import LaunchTimelineIntro from 'components/LaunchTimelineIntro';
 
 const LaunchPlanPage: NextPage = () => {
   return (
@@ -13,7 +13,7 @@ const LaunchPlanPage: NextPage = () => {
       <Head>
         <title>Astroport</title>
       </Head>
-      <Container my="12" px={["6", null, "12"]} maxWidth="container.xl">
+      <Container my="12" px={['6', null, '12']} maxWidth="container.xl">
         <LaunchPlan />
         <LaunchTimelineIntro />
       </Container>

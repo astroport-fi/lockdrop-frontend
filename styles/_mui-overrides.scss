@@ -1,0 +1,15 @@
+@use './variables' as *;
+
+html {
+  .MuiButton-root {
+    border-radius: 15px;
+    font-family: omnes-pro, sans-serif;
+    &.MuiButton-outlined {
+      border: 1px solid $primaryTextColor;
+      color: $primaryTextColor;
+      &:hover {
+        border: 1px solid $primaryTextColor;
+      }
+    }
+  }
+}

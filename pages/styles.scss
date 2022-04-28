@@ -1,3 +1,8 @@
+@use '../styles/variables' as *;
+@use '../styles/fonts' as *;
+@use '../styles/colors' as *;
+@use '../styles/mui-overrides' as *;
+
 .prose {
   h1,
   h2,

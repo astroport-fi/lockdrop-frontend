@@ -1,0 +1,45 @@
+@use './variables' as *;
+
+.bg-1 {
+  background-color: $secondaryBgColor;
+}
+
+.bg-2 {
+  background-color: $gray1;
+}
+
+.bg-3 {
+  background-color: $gray2;
+}
+
+.bg-4 {
+  background-color: $gray4;
+}
+
+.bg-5 {
+  background-color: $primaryTextColor;
+}
+
+.bg-6 {
+  background-color: $gray5;
+}
+
+.bg-gradient1 {
+  background: linear-gradient(to right, $yellow 0%, $yellowDark 100%);
+}
+
+.bg-yellow {
+  background-color: $yellow;
+}
+
+.bg-yellow1 {
+  background-color: $yellow1;
+}
+
+.color-primary {
+  color: $primaryTextColor;
+}
+
+.color-secondary {
+  color: $secondaryTextColor;
+}
