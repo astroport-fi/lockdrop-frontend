@@ -24,6 +24,10 @@ export const popOverBlue = 'rgba(7,10,15,1.0)';
 export const borderWhite = 'rgba(255,255,255,0.20)';
 export const red = '#d32f2f';
 export const borderGrey = '#30363e';
+export const yellow = '#FED200';
+export const peach = '#FD806D';
+export const peach50 = 'rgba(253,128,109,0.5)';
+export const gold50 = 'rgba(254,210,0,0.5)';
 
 // breakpoints
 const xl = 1920;

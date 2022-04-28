@@ -19,12 +19,13 @@ import { almostAlmostWhite, almostWhite } from '../theme/mui-theme';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import ApolloCountdown from './ApolloCountdown';
+import ApolloStageIndicator from './ApolloStageIndicator';
 
 type Props = {};
 
 const LockdropPageHeader: FC<Props> = ({}) => {
   return (
-    <Grid container spacing={2}>
+    <Grid container direction="row" spacing={0}>
       <Grid item lg={4} md={4} xs={4}>
         <Typography variant="subtitle1" sx={{ mb: '10px' }}>
           STAGE I
@@ -42,9 +43,7 @@ const LockdropPageHeader: FC<Props> = ({}) => {
         <ApolloCountdown />
       </Grid>
       <Grid item lg={4} md={4} xs={4}>
-        <Typography variant="h6" color="textPrimary">
-          TIMELINE
-        </Typography>
+        <ApolloStageIndicator />
       </Grid>
     </Grid>
   );
