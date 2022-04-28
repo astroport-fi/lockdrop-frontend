@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
+import { Container } from '@mui/material';
 import { Global } from '@emotion/react';
 import { TerraWebappProvider } from '@arthuryeti/terra';
 import { useWallet, WalletStatus } from '@terra-money/wallet-provider';
@@ -7,7 +8,7 @@ import { useWallet, WalletStatus } from '@terra-money/wallet-provider';
 import { ThemeProvider } from '@mui/material/styles';
 import { almostBlack, theme } from '../theme/mui-theme';
 
-import Navbar from 'components/Navbar';
+import Header from 'components/Header';
 import whitelist from 'constants/whitelist.json';
 import { AstroAppProvider } from 'modules/common';
 
@@ -48,11 +49,9 @@ const Layout: FC = ({ children }) => {
       {!isInitializing && (
         <TerraWebappProvider>
           <AstroAppProvider data={whitelist}>
-            <Box>
-              <Navbar />
-            </Box>
+            <Header />
             <ThemeProvider theme={theme}>
-              <Box flex="1">{children}</Box>
+              <Container>{children}</Container>
             </ThemeProvider>
           </AstroAppProvider>
         </TerraWebappProvider>

@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+
+.header {
+  padding: 8px 16px;
+  border-bottom: 1px solid $darkGray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuItem {
+  display: flex;
+  border-radius: 12px;
+  align-items: center;
+  cursor: pointer;
+  & p{
+    padding: 8px 10px;
+    color: $secondaryTextColor;
+  }
+  & svg {
+    & path {
+      fill: $secondaryTextColor;
+    }
+  } 
+  &.active {
+    background-color: $secondaryBgColor;
+    & p {
+      color: $primaryTextColor;
+    }
+    & svg path {
+      fill: $primaryTextColor;
+    }
+  }
+}
+
+.mobileMenuIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  & svg {
+    & path {
+      fill: $primaryTextColor;
+    }
+  }
+}
+.mobileMenuMain {
+  padding: 8px 16px;
+  border-radius: 15px;
+  background-color: $mainBgColor;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  width: calc(100vw - 32px);
+  height: calc(100vh - 60px);
+  z-index: 3;
+  & > p {
+    margin: 8px 0;
+  }
+}
