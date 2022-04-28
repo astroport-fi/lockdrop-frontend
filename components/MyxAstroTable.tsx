@@ -7,9 +7,10 @@ import ExternalLinkIcon from './icons/ExternalLinkIcon';
 import MyxAstroTableHeader from './MyxAstroTableHeader';
 import WidgetContainer from './WidgetContainer';
 import Stack from '@mui/material/Stack';
-import { almostWhite } from '../theme/mui-theme';
+import { white60 } from '../theme/mui-theme';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import xastroIcon from '../public/xastro.png';
 
 type Props = {};
 
@@ -27,7 +28,7 @@ const MyxAstroTable: FC<Props> = ({}) => {
       title="My xASTRO"
       titleFontVariant="body2"
       padding={0}
-      linkText="Learn more"
+      linkText="Get xAstro"
       linkUrl="#"
       style={{ width: '100%' }}>
       <Stack>
@@ -37,6 +38,7 @@ const MyxAstroTable: FC<Props> = ({}) => {
           return (
             <MyxAstroTableRow
               key={'row-' + i}
+              icon={xastroIcon}
               name={name}
               amount={amount}
               inWallet={inWallet}

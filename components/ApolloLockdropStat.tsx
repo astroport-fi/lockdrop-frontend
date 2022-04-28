@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Flex, Spinner } from '@chakra-ui/react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { almostAlmostWhite, almostWhite } from '../theme/mui-theme';
+import { white95, white60 } from '../theme/mui-theme';
 
 type Props = {
   titleContent: Component;
@@ -16,7 +16,7 @@ const ApolloLockdropStat = ({ titleContent, subtitle, textAlign }) => {
       <Grid item textAlign={textAlign}>
         <Typography
           variant="body2"
-          color={almostWhite}
+          color={white60}
           sx={{
             fontSize: '15px',
             lineHeight: '20px',
@@ -30,7 +30,7 @@ const ApolloLockdropStat = ({ titleContent, subtitle, textAlign }) => {
         <Typography
           variant="h6"
           sx={{ fontWeight: 'normal' }}
-          color={almostAlmostWhite}>
+          color={white95}>
           {titleContent}
         </Typography>
       </Grid>

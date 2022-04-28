@@ -3,9 +3,9 @@ import { Avatar, Flex, Spinner } from '@chakra-ui/react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import {
-  almostAlmostWhite,
+  white95,
   almostBlack,
-  almostWhite,
+  white60,
   borderGrey,
   orangeGoldGradientHorz
 } from '../theme/mui-theme';
@@ -64,7 +64,7 @@ const ApolloLockdropRewardsCard = ({ amount = 100000 }) => {
           <Typography
             variant="body2"
             sx={{ fontSize: '12px', lineHeight: '16px' }}
-            color={almostAlmostWhite}>
+            color={white95}>
             MY EST. APOLLO REWARDS
           </Typography>
         </Box>
@@ -94,7 +94,7 @@ const ApolloLockdropRewardsCard = ({ amount = 100000 }) => {
               <Typography
                 variant="h6"
                 sx={{ fontSize: '30px', fontWeight: 500 }}
-                color={almostAlmostWhite}>
+                color={white95}>
                 {amount.toLocaleString()}
               </Typography>
             </Grid>

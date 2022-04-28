@@ -15,7 +15,7 @@ import Card from './Card';
 import ApolloCardBody from './ApolloCardBody';
 import ApolloCardHeader from './ApolloCardHeader';
 import ExternalLinkIcon from 'components/icons/ExternalLinkIcon';
-import { almostAlmostWhite, almostWhite } from '../theme/mui-theme';
+import { white95, white60 } from '../theme/mui-theme';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import ApolloCountdown from './ApolloCountdown';
@@ -30,7 +30,7 @@ const LockdropPageHeader: FC<Props> = ({}) => {
         <Typography variant="subtitle1" sx={{ mb: '10px' }}>
           STAGE I
         </Typography>
-        <Typography variant="body1" color={almostWhite}>
+        <Typography variant="body1" color={white60}>
           During Stage 1 (Day 1-5) there are no limits on deposits and
           withdrawals of xASTRO. Once Stage 2 (Day 6) begins yo uwill only be
           able to withdraw xASTRO.

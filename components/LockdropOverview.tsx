@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import WidgetContainer from './WidgetContainer';
 import Stack from '@mui/material/Stack';
-import { almostWhite } from '../theme/mui-theme';
+import { white60 } from '../theme/mui-theme';
 import ApolloLockdropStat from './ApolloLockdropStat';
 import ApolloLockdropRewardsCard from './ApolloLockdropRewardsCard';
 import { makeStyles } from '@mui/styles';
@@ -18,7 +18,7 @@ type Props = {};
 
 const useStyles: any = makeStyles((theme: Theme) => ({
   lighter: {
-    color: almostWhite
+    color: white60
   },
   smaller: {
     fontSize: '1.0rem',
@@ -33,6 +33,8 @@ const LockdropOverview: FC<Props> = ({}) => {
       title="xASTRO Lockdrop"
       titleFontVariant="body2"
       padding={0}
+      linkText="Learn More"
+      linkUrl="#" // todo: link to lockdrop page
       style={{ width: '100%' }}>
       <Grid container p={5} justifyContent="center" alignItems="center">
         <Grid item md={4} xs={12} textAlign="center" justifyContent="center">

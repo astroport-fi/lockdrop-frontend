@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import WidgetContainer from './WidgetContainer';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { almostWhite } from '../theme/mui-theme';
+import { white60 } from '../theme/mui-theme';
 import Grid from '@mui/material/Grid';
 
 type Props = {};
@@ -35,8 +35,6 @@ const MyLockdropDeposits: FC<Props> = () => {
       title="My Lockdrop Deposits"
       titleFontVariant="body2"
       padding={0}
-      linkText="Learn more"
-      linkUrl="#"
       style={{ width: '100%' }}>
       <Stack>
         <MyLockdropDepositsHeader />
