@@ -1,11 +1,11 @@
 @use './variables' as *;
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, caption, .caption {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h6, .h6, caption, .caption {
   margin: 0;
   font-family: 'Obviously', sans-serif;
 }
 
-p, .p {
+p, .p, h5, .h5, small, .small {
   margin: 0;
   font-family: 'Inter', sans-serif;
 }
@@ -36,7 +36,12 @@ h6, .h6 {
   line-height: 17px;
 }
 
-p {
+h5, .h5 {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+p, .p {
   font-size: 14px;
   line-height: 20px;
 }
@@ -46,8 +51,8 @@ a {
 }
 
 small, .small {
-  font-size: 15px;
-  line-height: 19px;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .weight-400 {
