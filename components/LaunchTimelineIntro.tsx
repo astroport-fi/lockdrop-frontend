@@ -5,9 +5,6 @@ import { Grid, useMediaQuery, useTheme } from '@mui/material';
 
 import { useAstroApp } from 'modules/common';
 
-import { useRecoilValue } from 'recoil';
-import { addressState } from '../data/wallet';
-
 import DateNumber from 'components/DateNumber';
 import CardHeader from 'components/CardHeader';
 import Card from 'components/Card';
