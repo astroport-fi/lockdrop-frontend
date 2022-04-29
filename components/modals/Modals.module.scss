@@ -1,0 +1,24 @@
+@use '../../styles/variables' as *;
+
+.modalWrapper {
+  max-width: 540.5px;
+  width: 100%;
+  z-index: 2;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalContent {
+  position: relative;
+}
+
+.backDrop {
+  backdrop-filter: blur(10px);
+}

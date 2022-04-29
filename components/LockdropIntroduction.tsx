@@ -1,9 +1,11 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, Grid, useTheme, useMediaQuery } from '@mui/material';
 import { Image } from '@chakra-ui/react';
 import ApolloCountdown from './ApolloCountdown';
 
 const LockdropIntroduction = () => {
+  const { breakpoints } = useTheme();
+  const isMobile = useMediaQuery(breakpoints.down('sm'));
   return (
     <Box>
       <Box position="relative" borderRadius="15px" overflow="hidden">
@@ -12,24 +14,34 @@ const LockdropIntroduction = () => {
           <Image src="/hero_image_characters.png" alt="lockdrop banner" />
         </Box>
       </Box>
-      <Box my={4} display="flex" justifyContent="space-between">
-        <Box>
-          <Box mb={1}>
+      <Grid container spacing={4} my={4}>
+        <Grid item textAlign={isMobile ? 'center' : 'left'} xs={12} sm={6}>
+          <Box
+            display="flex"
+            justifyContent={isMobile ? 'center' : 'flex-start'}
+            mb={1}>
             <Image
               src="/apolloDAO_logo.png"
               height={30}
               alt="Apollo DAO Logo"
             />
           </Box>
-          <h1 className="color-primary">xASTRO Lockdrop</h1>
-        </Box>
-        <Box textAlign="center">
-          <Box mb={1}>
-            <h6 className="color-primary">BEGINS IN</h6>
+          <h1 className="color-primary obviouslyFont">xASTRO Lockdrop</h1>
+        </Grid>
+        <Grid
+          item
+          container
+          justifyContent={isMobile ? 'center' : 'flex-end'}
+          xs={12}
+          sm={6}>
+          <Box textAlign="center">
+            <Box mb={1}>
+              <h6 className="color-primary obviouslyFont">BEGINS IN</h6>
+            </Box>
+            <ApolloCountdown />
           </Box>
-          <ApolloCountdown />
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

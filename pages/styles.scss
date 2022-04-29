@@ -8,3 +8,61 @@
   border-radius: 15px;
   background-color: $panelBgColor;
 }
+
+.panel1 {
+  border: 2px solid $gray3;
+  border-radius: 15px;
+}
+
+// modal back icon
+.backIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  & svg path {
+    fill: $secondaryTextColor;
+  }
+}
+
+// MUI slider
+.styledSlider {
+  & .MuiSlider-root {
+    & .MuiSlider-rail {
+      height: 5px;
+      background-color: $gray4;
+    }
+    & .MuiSlider-track {
+      height: 5px;
+    }
+    & .MuiSlider-thumb {
+      width: 27px;
+      box-shadow: none;
+    }
+  }
+}
+
+.sliderThumb {
+  width: 27px;
+  height: 27px;
+  background-color: white;
+  border-radius: 8px;
+  border: 3px solid $darkGray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderThumbline {
+  width: 1px;
+  height: 9px;
+  background-color: $mainBgColor;
+  opacity: 0.5;
+}
+
+.sliderMark {
+  width: 7px;
+  height: 7px;
+  border-radius: 5px;
+  background: $gray4;
+}

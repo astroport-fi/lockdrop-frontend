@@ -1,0 +1,11 @@
+@use '../../styles/variables' as *;
+
+.numericalInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: $primaryTextColor;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  padding:0;
+}

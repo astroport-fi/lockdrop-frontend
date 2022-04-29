@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, useState } from 'react';
 import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
@@ -16,6 +16,7 @@ import Image from 'next/image';
 import Button from './Button';
 import xAstroIcon from './icons/xAstroIcon';
 import ApolloFormattedStatistic from './ApolloFormattedStatistic';
+import LockAstroModal from 'components/modals/LockAstroModal';
 
 type Props = {
   icon: any;
@@ -31,8 +32,9 @@ const MyxAstroTableRow: FC<Props> = ({
   inWallet
 }: Props) => {
   // todo
+  const [openLockModal, setOpenLockModal] = useState(false);
   const handleLockxAstro = () => {
-    throw new Error('not implemented');
+    setOpenLockModal(true);
   };
 
   return (
@@ -59,6 +61,12 @@ const MyxAstroTableRow: FC<Props> = ({
           borderBottomRightRadius: '16px'
         }
       }}>
+      {openLockModal && (
+        <LockAstroModal
+          isOpen={openLockModal}
+          onClose={() => setOpenLockModal(false)}
+        />
+      )}
       <Grid item md container direction="row" justifyContent="flex-start">
         <Grid item sx={{ marginRight: '8px' }}>
           <Image src={icon} width={20} height={20} alt="xAstro Icon" />

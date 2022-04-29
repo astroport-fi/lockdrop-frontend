@@ -1,5 +1,9 @@
 @use './variables' as *;
 
+.bg-main {
+  background-color: $mainBgColor;
+}
+
 .bg-1 {
   background-color: $secondaryBgColor;
 }
