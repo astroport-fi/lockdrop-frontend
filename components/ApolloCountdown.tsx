@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 type Props = {
   children?: ReactNode;
   isRight?: boolean;
-} & BoxProps;
+};
 
 const COUNTDOWN_DATE = new Date('2022-05-02T00:00:00.000Z');
 
