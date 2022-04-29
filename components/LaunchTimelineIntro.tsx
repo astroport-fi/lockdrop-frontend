@@ -54,9 +54,7 @@ const LaunchTimelineIntro = () => {
   return (
     <Box className="panel">
       <Box p="15px">
-        <h6 className="color-secondary">
-          Information - Wallet Address: {address}
-        </h6>
+        <h6 className="color-secondary">Information</h6>
       </Box>
 
       <Box h="1px" className="border" />
