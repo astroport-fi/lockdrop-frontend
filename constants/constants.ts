@@ -1,9 +1,9 @@
 /* terra:network */
-export const FINDER = "https://finder.terra.money";
-export const EXTENSION = "https://terra.money/extension";
-export const CHROME = "https://google.com/chrome";
-export const DOCS = "https://docs.astroportprotocol.com";
-export const ICON_URL = "https://whitelist.mirror.finance/images";
+export const FINDER = 'https://terrasco.pe';
+export const EXTENSION = 'https://terra.money/extension';
+export const CHROME = 'https://google.com/chrome';
+export const DOCS = 'https://docs.astroportprotocol.com';
+export const ICON_URL = 'https://whitelist.mirror.finance/images';
 
 /* astroport:unit */
 export const SMALLEST = 1e6;
