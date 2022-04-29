@@ -24,6 +24,10 @@
   background-color: $gray5;
 }
 
+.border {
+  background-color: $borderColor;
+}
+
 .bg-gradient1 {
   background: linear-gradient(to right, $yellow 0%, $yellowDark 100%);
 }
@@ -42,4 +46,8 @@
 
 .color-secondary {
   color: $secondaryTextColor;
+}
+
+.color-link {
+  color: $yellow;
 }

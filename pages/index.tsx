@@ -13,7 +13,7 @@ const LaunchPlanPage: NextPage = () => {
       <Head>
         <title>Apollo xAstro Lockdrop</title>
       </Head>
-      <Container my="12" px={['6', null, '12']} maxWidth="container.xl">
+      <Container my="32px" maxWidth="container.xl">
         <LaunchPlan />
         <LaunchTimelineIntro />
       </Container>
