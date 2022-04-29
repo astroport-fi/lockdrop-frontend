@@ -61,44 +61,73 @@ const LaunchTimelineIntro = () => {
       <Grid container>
         <Grid item xs={12} sm={12} md={6}>
           <Box flex="2" p="15px">
-            <p className="color-primary weight-600">Title Goes Here</p>
+            <p className="color-primary weight-600">Apollo Lockdrop</p>
             <p className="color-secondary">
-              Description text about the Lockdrop and any other relevant
-              information is shown here, explaining to users why Apollo DAO is
-              holding the xASTRO Lockdrop event, what the xASTRO will be used
-              for, etc.
+              We recently released{' '}
+              <a
+                className="color-link"
+                href="https://articles.apollo.farm/apollo-daos-convex-model-on-terra/"
+                target="_blank"
+                rel="noreferrer">
+                our post
+              </a>{' '}
+              on how Apollo's Convex model will work. The benefits it will offer
+              and how our primary focus will be on maintaining the apAstro
+              (zxvAstro-xAstro LP) peg, while providing a high yield to users
+              who stake Astro with Apollo.
             </p>
             <br />
             <p className="color-secondary">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              To kick off our Convex model, Apollo will be holding a Lockdrop
+              where users can lock up Astro/xAstro for a period of time to
+              receive bonus Apollo tokens linearly from the end of the Lockdrop.
+              After the lock period ends, depositors will be able to claim their
+              Astro deposit, plus all the accrued yield.
+            </p>
+            <br />
+            <p className="color-primary weight-600">
+              xAstro Lockdrop Overview:
+            </p>
+            <p className="color-secondary">
+              <ul style={{ marginLeft: 20 }}>
+                <li>
+                  Launching on the 2nd of May with deposits open for 5 days{' '}
+                </li>
+                <li>
+                  Deposit and lock up Astro/xAstro for between 3 and 12 months{' '}
+                </li>
+                <li>
+                  5 million Apollo tokens (5% of total supply) shared among
+                  depositors{' '}
+                </li>
+                <li>Apollo tokens vested linearly over 12 months </li>
+                <li>
+                  Receive bonus Apollo tokens linearly from the end of the
+                  Lockdrop and then receive your Astro deposit, plus all the
+                  accrued yield at the end of your lock period.
+                </li>
+              </ul>
             </p>
             <br />
             <p className="color-secondary">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Apollo’s aim with our Convex model is not to just attract large
+              amounts of Astro liquidity upfront, but to ensure we can provide a
+              long term solution allowing users to gain a high yield on their
+              Astro tokens, while always remaining liquid and benefiting Apollo
+              Vaults with increased yield.
             </p>
             <br />
             <p className="color-primary weight-600">More Info</p>
             <p className="color-secondary">
-              For more info on the lockdrop, read this{' '}
+              For more information on the Lockdrop, please read this{' '}
               <a
                 className="color-link"
-                href="https://medium.com"
+                href="https://articles.apollo.farm/the-apollo-xastro-lockdrop/"
                 target="_blank"
                 rel="noreferrer">
                 article
               </a>
+              .
             </p>
           </Box>
         </Grid>
