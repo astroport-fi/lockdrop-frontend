@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Container,
   Flex,
   HStack,
   Image,
@@ -60,7 +59,9 @@ const Header: React.FC = () => {
         </Box>
       </Box>
       <HStack spacing="5" justify="flex-end">
-        <TerraWallet />
+        <Box display={['none', 'none', 'block', 'block']}>
+          <TerraWallet />
+        </Box>
         <Box display={[null, null, null, 'none']}>
           <Button variant="icon" ref={btnRef} onClick={onOpen} pr="0" mr="-2">
             <BurgerIcon color="white" width="1.5rem" height="1.5rem" />

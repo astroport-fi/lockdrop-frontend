@@ -18,3 +18,7 @@
 .modalContent {
   position: relative;
 }
+
+.backDrop {
+  backdrop-filter: blur(10px);
+}

@@ -61,10 +61,12 @@ const MyxAstroTableRow: FC<Props> = ({
           borderBottomRightRadius: '16px'
         }
       }}>
-      <LockAstroModal
-        isOpen={openLockModal}
-        onClose={() => setOpenLockModal(false)}
-      />
+      {openLockModal && (
+        <LockAstroModal
+          isOpen={openLockModal}
+          onClose={() => setOpenLockModal(false)}
+        />
+      )}
       <Grid item md container direction="row" justifyContent="flex-start">
         <Grid item sx={{ marginRight: '8px' }}>
           <Image src={icon} width={20} height={20} alt="xAstro Icon" />

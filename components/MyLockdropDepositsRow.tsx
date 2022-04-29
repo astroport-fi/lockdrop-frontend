@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, useState } from 'react';
 import ApolloCardHeader from './ApolloCardHeader';
 import ApolloCardBody from './ApolloCardBody';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
@@ -9,6 +9,7 @@ import Button from './Button';
 import Image from 'next/image';
 import Typography from '@mui/material/Typography';
 import ApolloFormattedStatistic from './ApolloFormattedStatistic';
+import WithdrawAstroModal from 'components/modals/WithdrawAstroModal';
 
 type Props = {
   icon: any;
@@ -25,9 +26,10 @@ const MyLockdropDepositsRow: FC<Props> = ({
   rewards,
   percentOfRewards
 }: Props) => {
-  // todo
+  const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
+
   const handleWithdraw = () => {
-    throw new Error('not implemented');
+    setOpenWithdrawModal(true);
   };
 
   const daysUntilUnlock = Math.round(
@@ -58,6 +60,12 @@ const MyLockdropDepositsRow: FC<Props> = ({
           borderBottomRightRadius: '16px'
         }
       }}>
+      {openWithdrawModal && (
+        <WithdrawAstroModal
+          isOpen={openWithdrawModal}
+          onClose={() => setOpenWithdrawModal(false)}
+        />
+      )}
       <Grid item md container>
         <Grid item sx={{ marginRight: '8px' }}>
           <Image src={icon} width={20} height={20} alt="xAstro Icon" />

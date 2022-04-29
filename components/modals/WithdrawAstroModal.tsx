@@ -12,9 +12,8 @@ type Props = {
   onClose: () => void;
 };
 
-const LockAstroModal: FC<Props> = ({ isOpen, onClose }) => {
-  const [lockAmount, setLockAmount] = useState('');
-  const [lockPeriod, setLockPeriod] = useState('');
+const WithdrawAstroModal: FC<Props> = ({ isOpen, onClose }) => {
+  const [withdrawAmount, setWithdrawAmount] = useState('');
   const { breakpoints } = useTheme();
   const isMobile = useMediaQuery(breakpoints.down('sm'));
   return (
@@ -25,24 +24,24 @@ const LockAstroModal: FC<Props> = ({ isOpen, onClose }) => {
             <ChevronLeftIcon fontSize={28} />
           </Box>
           <Box textAlign="center">
-            <h6 className="color-primary obviouslyFont">Lock xASTRO</h6>
+            <h6 className="color-primary obviouslyFont">Withdraw xASTRO</h6>
           </Box>
         </Box>
         <Box h={1} className="border"></Box>
         <Box p="16px">
           <p className="color-secondary">
-            Select how much xASTRO you want to deposit into Apollo’s xASTRO
-            Lockdrop and how long you would like to lock it. Note that once
-            Stage 2 begins (Day 6) you will not be able to make any xASTRO
-            deposits into the Lockdrop.
+            Select how much xASTRO you want to withdraw from Apollo’s xASTRO
+            Lockdrop. Starting from day 6, you will only be able to withdraw up
+            to 50% of your xASTRO deposits. On day 7, withdrawal allowance will
+            fall linearly from 50% to 0%.
           </p>
         </Box>
       </Box>
       <Box className="panel" mt="16px" p="16px">
         <Box display="flex" alignItems="center" justifyContent="space-between">
-          <p className="color-primary">Lock Up</p>
+          <p className="color-primary">Withdraw</p>
           <p className="color-secondary">
-            In wallet: <span className="color-link">2,500</span>
+            Withdrawable: <span className="color-link">15,000</span>
           </p>
         </Box>
         <Box
@@ -59,35 +58,31 @@ const LockAstroModal: FC<Props> = ({ isOpen, onClose }) => {
             </Box>
           </Box>
           <Box flex={1} textAlign="right">
-            <NumericalInput value={lockAmount} onUserInput={setLockAmount} />
+            <NumericalInput
+              value={withdrawAmount}
+              onUserInput={setWithdrawAmount}
+            />
             <small className="color-secondary">$4,375.00</small>
           </Box>
         </Box>
         <Box mt="16px">
           <StyledSlider
-            value={Number(lockAmount)}
-            setValue={(val) => setLockAmount(val.toString())}
+            value={Number(withdrawAmount)}
+            setValue={(val) => setWithdrawAmount(val.toString())}
             maxValue={1000}
             maxString="Max"
           />
         </Box>
       </Box>
       <Box className="panel" mt="16px" p="16px">
-        <p className="color-primary">Lock Period</p>
-        <Grid mt={0.5} container spacing={2} alignItems="center">
+        <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} sm={6}>
-            <p className="color-secondary">
-              The longer you lock, the more APOLLO rewards you will receive.
-            </p>
+            <p className="color-primary">Lock Period</p>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Box className="panel1" py="8px" px="12px">
-              <Box display="flex" alignItems="center">
-                <NumericalInput
-                  placeholder=""
-                  value={lockPeriod}
-                  onUserInput={setLockPeriod}
-                />
+              <Box display="flex" alignItems="center" justifyContent="flex-end">
+                <h2 className="color-primary">3</h2>
                 <Box ml="6px">
                   <h5 className="color-secondary">MONTHS</h5>
                 </Box>
@@ -98,14 +93,6 @@ const LockAstroModal: FC<Props> = ({ isOpen, onClose }) => {
             </Box>
           </Grid>
         </Grid>
-        <Box mt="16px">
-          <StyledSlider
-            value={Number(lockPeriod)}
-            setValue={(val) => setLockPeriod(val.toString())}
-            maxValue={12}
-            pointValues={['0 Months', '6 Months', '12 Months']}
-          />
-        </Box>
       </Box>
       <Grid container mt="16px" py="12px" px="16px" className="panel1 bg-main">
         <Grid item xs={12} sm={6}>
@@ -129,7 +116,7 @@ const LockAstroModal: FC<Props> = ({ isOpen, onClose }) => {
       </Grid>
       <Box textAlign="center" mt="16px">
         <Button
-          maxWidth={156}
+          maxWidth={192}
           width="100%"
           borderRadius={15}
           height={45}
@@ -139,7 +126,7 @@ const LockAstroModal: FC<Props> = ({ isOpen, onClose }) => {
           color={almostBlack}
           backgroundHoverColor={buttonGrey}
           hoverColor={white95}>
-          Lock xASTRO
+          Withdraw xASTRO
         </Button>
         <Box mt="8px">
           <small className="color-secondary">TX Fee: 0.25 UST</small>
@@ -149,4 +136,4 @@ const LockAstroModal: FC<Props> = ({ isOpen, onClose }) => {
   );
 };
 
-export default LockAstroModal;
+export default WithdrawAstroModal;

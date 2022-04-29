@@ -1,13 +1,11 @@
 @use './variables' as *;
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h6, .h6, caption, .caption {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h6, .h6, caption, .caption, p, .p, h5, .h5, small, .small {
   margin: 0;
-  font-family: 'Obviously', sans-serif;
 }
 
-p, .p, h5, .h5, small, .small {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
+.obviouslyFont {
+  font-family: 'Obviously', sans-serif;
 }
 
 h1, .h1 {

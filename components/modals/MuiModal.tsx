@@ -9,7 +9,14 @@ type Props = {
 
 const MuiModal: FC<Props> = ({ isOpen, onClose, children }) => {
   return (
-    <Modal open={isOpen} onClose={onClose}>
+    <Modal
+      BackdropProps={{
+        classes: {
+          root: styles.backDrop
+        }
+      }}
+      open={isOpen}
+      onClose={onClose}>
       <Box className={styles.modalWrapper}>
         <Box className={styles.modalContent}>{children}</Box>
       </Box>
