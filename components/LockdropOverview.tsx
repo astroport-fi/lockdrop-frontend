@@ -14,6 +14,8 @@ import ApolloLockdropRewardsCard from './ApolloLockdropRewardsCard';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
 import ApolloFormattedStatistic from './ApolloFormattedStatistic';
+import { addressState } from '../data/wallet';
+import { useRecoilValue } from 'recoil';
 
 type Props = {};
 
@@ -29,6 +31,8 @@ const useStyles: any = makeStyles((theme: Theme) => ({
 
 const LockdropOverview: FC<Props> = ({}) => {
   const classes = useStyles();
+  const userWalletAddr = useRecoilValue(addressState);
+
   return (
     <WidgetContainer
       title="xASTRO Lockdrop"
@@ -70,7 +74,7 @@ const LockdropOverview: FC<Props> = ({}) => {
           </Grid>
         </Grid>
         <Grid item md={4} xs={12} textAlign="center" alignItems="center">
-          <ApolloLockdropRewardsCard amount={100000} />
+          <ApolloLockdropRewardsCard amount={userWalletAddr ? 100000 : 0} />
         </Grid>
         <Grid item md={4} xs={12} textAlign="right">
           <Grid container direction="column" spacing={4}>

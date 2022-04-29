@@ -16,7 +16,7 @@ export default function ExternalLinkIcon(props: any) {
             transform="translate(0.2 7.7) rotate(-45)"
             fill="none"
             stroke="currentColor"
-            stroke-width="1"
+            strokeWidth="1"
           />
           <path
             id="Path"
@@ -24,7 +24,7 @@ export default function ExternalLinkIcon(props: any) {
             transform="translate(476.5 -14936)"
             fill="none"
             stroke="currentColor"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
       </svg>

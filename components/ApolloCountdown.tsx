@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from 'react';
-import { Box, BoxProps } from '@chakra-ui/react';
 import Typography from '@mui/material/Typography';
 import Countdown from 'react-countdown';
 import { makeStyles } from '@mui/styles';
@@ -22,6 +21,7 @@ const useStyles: any = makeStyles((theme: Theme) => ({
     fontWeight: 500,
     textAlign: 'center',
     background: orangeGoldGradientHorz,
+    lineHeight: '1.25em',
     '-webkit-background-clip': 'text',
     '-webkit-text-fill-color': 'transparent'
   },
@@ -31,49 +31,46 @@ const useStyles: any = makeStyles((theme: Theme) => ({
     '-webkit-background-clip': 'text',
     '-webkit-text-fill-color': '#828282',
     fontSize: '9px',
-    textAlign: 'center'
+    textAlign: 'center',
+    lineHeight: '1.25em'
   }
 }));
 
 const ApolloCountdown: FC<Props> = ({}) => {
   const classes = useStyles();
   return (
-    <Typography variant="body2" color="textPrimary">
-      <Countdown
-        date={COUNTDOWN_DATE}
-        renderer={(props) => (
-          <>
-            <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              alignItems="bottom"
-              spacing={0.5}
-              className={classes.countdownText}>
-              <Grid item>
-                <div>{props.days.toString().padStart(2, '0')}</div>
-                <div className={classes.countdownLabel}>DAYS</div>
-              </Grid>
-              <Grid item>:</Grid>
-              <Grid item>
-                <div>{props.hours.toString().padStart(2, '0')}</div>
-                <div className={classes.countdownLabel}>HOURS</div>
-              </Grid>
-              <Grid item>:</Grid>
-              <Grid item>
-                <div>{props.minutes.toString().padStart(2, '0')}</div>
-                <div className={classes.countdownLabel}>MINUTES</div>
-              </Grid>
-              <Grid item>:</Grid>
-              <Grid item>
-                <div>{props.seconds.toString().padStart(2, '0')}</div>
-                <div className={classes.countdownLabel}>SECONDS</div>
-              </Grid>
-            </Grid>
-          </>
-        )}
-      />
-    </Typography>
+    <Countdown
+      date={COUNTDOWN_DATE}
+      renderer={(props) => (
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="bottom"
+          spacing={0.5}
+          className={classes.countdownText}>
+          <Grid item>
+            <div>{props.days.toString().padStart(2, '0')}</div>
+            <div className={classes.countdownLabel}>DAYS</div>
+          </Grid>
+          <Grid item>:</Grid>
+          <Grid item>
+            <div>{props.hours.toString().padStart(2, '0')}</div>
+            <div className={classes.countdownLabel}>HOURS</div>
+          </Grid>
+          <Grid item>:</Grid>
+          <Grid item>
+            <div>{props.minutes.toString().padStart(2, '0')}</div>
+            <div className={classes.countdownLabel}>MINUTES</div>
+          </Grid>
+          <Grid item>:</Grid>
+          <Grid item>
+            <div>{props.seconds.toString().padStart(2, '0')}</div>
+            <div className={classes.countdownLabel}>SECONDS</div>
+          </Grid>
+        </Grid>
+      )}
+    />
   );
 };
 

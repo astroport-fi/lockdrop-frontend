@@ -71,15 +71,12 @@ const MyLockdropDepositsRow: FC<Props> = ({
           <Image src={icon} width={20} height={20} alt="xAstro Icon" />
         </Grid>
         <Grid item>
-          <Typography
-            sx={{ fontSize: '15px', fontWeight: 500 }}
-            color={white95}>
-            <ApolloFormattedStatistic
-              value={amount}
-              decimals={2}
-              decimalsInGrey={true}
-            />
-          </Typography>
+          <ApolloFormattedStatistic
+            value={amount}
+            decimals={2}
+            fontSize="15px"
+            decimalsInGrey={true}
+          />
         </Grid>
       </Grid>
       <Grid item md>
@@ -100,15 +97,12 @@ const MyLockdropDepositsRow: FC<Props> = ({
           <Image src={apolloIcon} width={20} height={20} alt="Apollo Icon" />
         </Grid>
         <Grid item>
-          <Typography
-            sx={{ fontSize: '15px', fontWeight: 500 }}
-            color={white95}>
-            <ApolloFormattedStatistic
-              value={rewards}
-              decimals={2}
-              decimalsInGrey={true}
-            />
-          </Typography>
+          <ApolloFormattedStatistic
+            value={rewards}
+            decimals={2}
+            fontSize="15px"
+            decimalsInGrey={true}
+          />
         </Grid>
       </Grid>
       <Grid item md>
