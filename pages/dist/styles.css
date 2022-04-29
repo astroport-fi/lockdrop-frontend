@@ -1,0 +1,247 @@
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h6, .h6, caption, .caption, p, .p, h5, .h5, small, .small {
+  margin: 0;
+}
+
+.obviouslyFont {
+  font-family: "Obviously", sans-serif;
+}
+
+h1, .h1 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h2, .h2 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+h3, .h3 {
+  font-size: 20px;
+  line-height: 25px;
+}
+
+h4, .h4 {
+  font-size: 15px;
+  line-height: 19px;
+  font-weight: bold;
+}
+
+h6, .h6 {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+h5, .h5 {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+p, .p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+a {
+  text-decoration: underline;
+}
+
+small, .small {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.weight-400 {
+  font-weight: 400;
+}
+
+.weight-600 {
+  font-weight: 600;
+}
+
+caption, .caption {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.bg-main {
+  background-color: #05080D;
+}
+
+.bg-1 {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.bg-2 {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.bg-3 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.bg-4 {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.bg-5 {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.bg-6 {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.border {
+  background-color: #30343E;
+}
+
+.bg-gradient1 {
+  background: linear-gradient(to right, #FED200 0%, #FD806D 100%);
+}
+
+.bg-yellow {
+  background-color: #FED200;
+}
+
+.bg-yellow1 {
+  background-color: #E45A2C;
+}
+
+.color-primary {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.color-secondary {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.color-link {
+  color: #FED200;
+}
+
+html .MuiButton-root {
+  border-radius: 15px;
+  font-family: omnes-pro, sans-serif;
+}
+html .MuiButton-root.MuiButton-outlined {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.85);
+}
+html .MuiButton-root.MuiButton-outlined:hover {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.bg-main {
+  background-color: #05080D;
+}
+
+.bg-1 {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.bg-2 {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.bg-3 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.bg-4 {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.bg-5 {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.bg-6 {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.border {
+  background-color: #30343E;
+}
+
+.bg-gradient1 {
+  background: linear-gradient(to right, #FED200 0%, #FD806D 100%);
+}
+
+.bg-yellow {
+  background-color: #FED200;
+}
+
+.bg-yellow1 {
+  background-color: #E45A2C;
+}
+
+.color-primary {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.color-secondary {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.color-link {
+  color: #FED200;
+}
+
+.panel {
+  width: 100%;
+  border-radius: 15px;
+  background-color: #181B1F;
+}
+
+.panel1 {
+  border: 2px solid #37393D;
+  border-radius: 15px;
+}
+
+.backIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 12px;
+  left: 8px;
+}
+.backIcon svg path {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.styledSlider .MuiSlider-root .MuiSlider-rail {
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.styledSlider .MuiSlider-root .MuiSlider-track {
+  height: 5px;
+}
+.styledSlider .MuiSlider-root .MuiSlider-thumb {
+  width: 27px;
+  box-shadow: none;
+}
+
+.sliderThumb {
+  width: 27px;
+  height: 27px;
+  background-color: white;
+  border-radius: 8px;
+  border: 3px solid #191B20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderThumbline {
+  width: 1px;
+  height: 9px;
+  background-color: #05080D;
+  opacity: 0.5;
+}
+
+.sliderMark {
+  width: 7px;
+  height: 7px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+}

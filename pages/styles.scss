@@ -1,7 +1,8 @@
 @use '../styles/variables' as *;
 @use '../styles/fonts' as *;
-@use '../styles/colors' as *;
-@use '../styles/mui-overrides' as *;
+@use '../styles/colors'as *;
+@use '../styles/mui-overrides'as *;
+@use '../styles/animations'as *;
 
 .panel {
   width: 100%;

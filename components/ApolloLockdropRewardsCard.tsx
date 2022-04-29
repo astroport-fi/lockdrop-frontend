@@ -40,6 +40,7 @@ const useStyles: any = makeStyles((theme: Theme) => ({
     bottom: 0,
     background: orangeGoldGradientHorz,
     zIndex: -1,
+
     filter: 'blur(10px)'
   }
 }));
@@ -100,7 +101,12 @@ const ApolloLockdropRewardsCard = ({ amount = 100000 }) => {
             </Grid>
           </Grid>
         </Box>
-        <div className={classes.gradientBackground} />
+        <Box
+          style={{
+            animation: 'pulsate 3s ease-in-out infinite alternate'
+          }}
+          className={classes.gradientBackground}
+        />
       </Grid>
     </Grid>
   );

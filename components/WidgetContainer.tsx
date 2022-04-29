@@ -103,6 +103,8 @@ const WidgetContainer = ({
             {linkUrl && (
               <Link
                 color={gold}
+                href={linkUrl}
+                target="_blank"
                 sx={{
                   textDecoration: 'none',
                   fontSize: '15px',

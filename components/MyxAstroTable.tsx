@@ -30,8 +30,7 @@ const MyxAstroTable: FC<Props> = ({}) => {
       titleFontVariant="body2"
       padding={0}
       linkText="Get xASTRO"
-      // todo - get real link
-      linkUrl="#"
+      linkUrl="https://app.astroport.fi/governance"
       style={{ width: '100%' }}>
       <Stack>
         <MyxAstroTableHeader />
