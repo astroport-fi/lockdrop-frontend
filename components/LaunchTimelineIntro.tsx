@@ -5,6 +5,9 @@ import { Grid, useMediaQuery, useTheme } from '@mui/material';
 
 import { useAstroApp } from 'modules/common';
 
+import { useRecoilValue } from 'recoil';
+import { addressState } from '../data/wallet';
+
 import DateNumber from 'components/DateNumber';
 import CardHeader from 'components/CardHeader';
 import Card from 'components/Card';
@@ -54,8 +57,11 @@ const LaunchTimelineIntro = () => {
   return (
     <Box className="panel">
       <Box p="15px">
-        <h6 className="color-secondary">Information</h6>
+        <h6 className="color-secondary">
+          Information - Wallet Address: {address}
+        </h6>
       </Box>
+
       <Box h="1px" className="border" />
       <Grid container>
         <Grid item xs={12} sm={12} md={6}>
