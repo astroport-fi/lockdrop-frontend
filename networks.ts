@@ -1,12 +1,13 @@
 import { NetworkInfo } from '@terra-money/wallet-provider';
 
-type ToolboxNetworkInfo = NetworkInfo & LocalNetworkConfig;
+type LockdropNetworkInfo = NetworkInfo & ApolloLocalNetworkConfig;
 
-const networks: Record<string, ToolboxNetworkInfo> = {
+const networks: Record<string, LockdropNetworkInfo> = {
   mainnet: {
     name: 'mainnet',
     chainID: 'columbus-5',
     lcd: 'https://lcd.terra.dev',
+    apolloLcd: 'https://columbus-5-lcd.apollo.farm',
     mantle: 'https://mantle.terra.dev/',
     stats: 'https://graph.mirror.finance/graphql',
     shuttle: {
@@ -19,6 +20,7 @@ const networks: Record<string, ToolboxNetworkInfo> = {
     name: 'testnet',
     chainID: 'bombay-12',
     lcd: 'https://bombay-lcd.terra.dev',
+    apolloLcd: 'https://columbus-5-lcd.apollo.farm',
     mantle: 'https://bombay-mantle.terra.dev/',
     stats: 'https://bombay-mirror-graph.terra.dev/graphql',
     shuttle: {
@@ -31,6 +33,7 @@ const networks: Record<string, ToolboxNetworkInfo> = {
     name: 'moonshine',
     chainID: 'localterra',
     lcd: 'https://moonshine-lcd.terra.dev',
+    apolloLcd: 'https://columbus-5-lcd.apollo.farm',
     mantle: 'https://moonshine-mantle.terra.dev',
     stats: 'https://moonshine-mirror-graph.terra.dev/graphql',
     shuttle: {
