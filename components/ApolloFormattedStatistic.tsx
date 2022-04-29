@@ -3,7 +3,7 @@ import React, { FC, ReactNode } from 'react';
 import { Box, BoxProps } from '@chakra-ui/react';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
-import { white60 } from '../theme/mui-theme';
+import { white60, white95 } from '../theme/mui-theme';
 
 type Props = {
   value: number;
@@ -15,6 +15,9 @@ type Props = {
 };
 
 const useStyles: any = makeStyles((theme: Theme) => ({
+  standard: {
+    color: white95
+  },
   lighter: {
     color: white60
   },
@@ -34,11 +37,11 @@ const ApolloFormattedStatistic: FC<Props> = ({
 }) => {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.standard}>
       <span style={{ fontSize: fontSize, marginRight: '8px' }}>
         {value.toLocaleString('en-US')}
         {decimals > 0 && (
-          <span className={decimalsInGrey && `${classes.lighter} `}>
+          <span className={decimalsInGrey ? `${classes.lighter}` : ''}>
             {'.' + value.toFixed(decimals).toString().split('.')[1]}
           </span>
         )}

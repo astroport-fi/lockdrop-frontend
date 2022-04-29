@@ -1,5 +1,6 @@
-<svg id="Apollo_Logo" data-name="Apollo Logo" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
-  <g id="Rectangle" fill="none" stroke="#707070" stroke-width="1" opacity="0">
+<svg id="Apollo_Logo" data-name="Apollo Logo"
+  xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="Rectangle" fill="none" stroke="#707070" strokeWidth="1" opacity="0">
     <rect width="40" height="40" rx="15" stroke="none"/>
     <rect x="0.5" y="0.5" width="39" height="39" rx="14.5" fill="none"/>
   </g>

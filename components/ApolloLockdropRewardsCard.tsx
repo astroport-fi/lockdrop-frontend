@@ -92,16 +92,11 @@ const ApolloLockdropRewardsCard = ({ amount = 100000 }) => {
               />
             </Grid>
             <Grid item>
-              <Typography
-                variant="h6"
-                sx={{ fontSize: '30px', fontWeight: 500 }}
-                color={white95}>
-                <ApolloFormattedStatistic
-                  value={100000}
-                  decimals={2}
-                  fontSize="26px"
-                />
-              </Typography>
+              <ApolloFormattedStatistic
+                value={100000}
+                decimals={2}
+                fontSize="26px"
+              />
             </Grid>
           </Grid>
         </Box>

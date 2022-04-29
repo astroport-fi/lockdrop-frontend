@@ -42,7 +42,8 @@ const Layout: FC = ({ children }) => {
             width: '6px'
           },
           '*::-webkit-scrollbar-thumb': {
-            backgroundColor: '#5643F2',
+            backgroundColor: '#fed200',
+            background: 'linear-gradient(#fed200 0%, #fd806d 100%)',
             borderRadius: '6px'
           },
           '#chakra-toast-manager-bottom-right': {

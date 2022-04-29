@@ -1,5 +1,4 @@
 import React from 'react';
-import { VStack } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 
 import { useAstroApp } from 'modules/common';
@@ -28,22 +27,6 @@ const Phase2 = () => {
   return (
     <Container>
       <Stack direction="column" spacing={8} mt={8}>
-        {/* <Notification variant="info">
-        Thank you for participating in phase 1, 3,000 ASTRO were added to your
-        ASTRO Balance. <Link>Learn More</Link>
-      </Notification>
-      <Notification variant="error">
-        Thank you for participating in phase 1, 3,000 ASTRO were added to your
-        ASTRO Balance. <Link>Learn More</Link>
-      </Notification>
-      <Notification variant="success">
-        Thank you for participating in phase 1, 3,000 ASTRO were added to your
-        ASTRO Balance. <Link>Learn More</Link>
-      </Notification> */}
-        {/* <LaunchTimeline phase={currentPhase} />
-      <Phase2Bootstrap />
-      <AddLiquidity />
-      <AstroAirdrop /> */}
         <LockdropPageHeader />
         <LockdropOverview />
         <MyxAstroTable />
