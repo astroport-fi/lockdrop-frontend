@@ -15,6 +15,9 @@ import {
 
 import { useAstroApp } from 'modules/common';
 
+import { useRecoilValue } from 'recoil';
+import { addressState } from '../data/wallet';
+
 import DateNumber from 'components/DateNumber';
 import CardHeader from 'components/CardHeader';
 import Card from 'components/Card';
@@ -26,6 +29,9 @@ const LaunchTimelineIntro = () => {
   const startPhase1Date = phase1StartDate?.format('MMM/DD/YY');
   const startPhase2Date = phase2StartDate?.format('MMM/DD/YY');
   const formattedEndDate = endDate?.format('MMM/DD/YY');
+
+  const address = useRecoilValue(addressState);
+  console.log('address', address);
 
   function checkToday(index) {
     const today = dayjs.utc().tz('Europe/London');
@@ -61,8 +67,11 @@ const LaunchTimelineIntro = () => {
   return (
     <Box className="panel">
       <Box p="15px">
-        <h6 className="color-secondary">Information</h6>
+        <h6 className="color-secondary">
+          Information - Wallet Address: {address}
+        </h6>
       </Box>
+
       <Box h="1px" className="border" />
       <Stack
         direction={['column', null, null, 'row']}

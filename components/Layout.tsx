@@ -5,12 +5,21 @@ import { Global } from '@emotion/react';
 import { TerraWebappProvider } from '@arthuryeti/terra';
 import { useWallet, WalletStatus } from '@terra-money/wallet-provider';
 
+import { RecoilRoot } from 'recoil';
+import { useInitAddress, useInitNetwork } from '../data/init';
+
 import { ThemeProvider } from '@mui/material/styles';
 import { almostBlack, theme } from '../theme/mui-theme';
 
 import Header from 'components/Header';
 import whitelist from 'constants/whitelist.json';
 import { AstroAppProvider } from 'modules/common';
+
+const RecoilInit = () => {
+  useInitAddress();
+  useInitNetwork();
+  return <></>;
+};
 
 const Layout: FC = ({ children }) => {
   const wallet = useWallet();
@@ -49,10 +58,13 @@ const Layout: FC = ({ children }) => {
       {!isInitializing && (
         <TerraWebappProvider>
           <AstroAppProvider data={whitelist}>
-            <Header />
-            <ThemeProvider theme={theme}>
-              <Container>{children}</Container>
-            </ThemeProvider>
+            <RecoilRoot>
+              <RecoilInit />
+              <Header />
+              <ThemeProvider theme={theme}>
+                <Container>{children}</Container>
+              </ThemeProvider>
+            </RecoilRoot>
           </AstroAppProvider>
         </TerraWebappProvider>
       )}

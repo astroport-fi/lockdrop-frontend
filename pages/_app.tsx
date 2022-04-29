@@ -1,24 +1,25 @@
-import React from "react";
+import React from 'react';
 import {
   WalletControllerChainOptions,
   getChainOptions,
   StaticWalletProvider,
-  WalletProvider,
-} from "@terra-money/wallet-provider";
-import App, { AppProps } from "next/app";
-import Head from "next/head";
-import { QueryClientProvider, QueryClient } from "react-query";
-import { Hydrate } from "react-query/hydration";
-import { ChakraProvider, CSSReset } from "@chakra-ui/react";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
-import localizedFormat from "dayjs/plugin/localizedFormat";
-import relativeTime from "dayjs/plugin/relativeTime";
-import advancedFormat from "dayjs/plugin/advancedFormat";
-import Layout from "components/Layout";
-import theme from "../theme";
-import "./styles.scss";
+  WalletProvider
+} from '@terra-money/wallet-provider';
+import App, { AppProps } from 'next/app';
+import Head from 'next/head';
+import { QueryClientProvider, QueryClient } from 'react-query';
+
+import { Hydrate } from 'react-query/hydration';
+import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import Layout from 'components/Layout';
+import theme from '../theme';
+import './styles.scss';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -30,7 +31,7 @@ const MyApp = ({
   Component,
   pageProps,
   defaultNetwork,
-  walletConnectChainIds,
+  walletConnectChainIds
 }: AppProps & WalletControllerChainOptions) => {
   const [queryClient] = React.useState(() => new QueryClient());
 
@@ -39,6 +40,7 @@ const MyApp = ({
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
+
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <ChakraProvider theme={theme}>
@@ -55,8 +57,7 @@ const MyApp = ({
   return process.browser ? (
     <WalletProvider
       defaultNetwork={defaultNetwork}
-      walletConnectChainIds={walletConnectChainIds}
-    >
+      walletConnectChainIds={walletConnectChainIds}>
       {main}
     </WalletProvider>
   ) : (
