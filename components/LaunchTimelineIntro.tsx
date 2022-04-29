@@ -1,5 +1,5 @@
-import React from "react";
-import dayjs from "dayjs";
+import React from 'react';
+import dayjs from 'dayjs';
 import {
   Box,
   HStack,
@@ -10,25 +10,26 @@ import {
   Stack,
   VStack,
   UnorderedList,
-  ListItem,
-} from "@chakra-ui/react";
+  ListItem
+} from '@chakra-ui/react';
 
-import { useAstroApp } from "modules/common";
+import { useAstroApp } from 'modules/common';
 
-import DateNumber from "components/DateNumber";
-import CardHeader from "components/CardHeader";
-import Card from "components/Card";
+import DateNumber from 'components/DateNumber';
+import CardHeader from 'components/CardHeader';
+import Card from 'components/Card';
+import ApolloStageIndicator from './ApolloStageIndicator';
 
 const LaunchTimelineIntro = () => {
   const { phase1StartDate, phase2StartDate } = useAstroApp();
-  const endDate = phase1StartDate?.add(14, "day");
-  const startPhase1Date = phase1StartDate?.format("MMM/DD/YY");
-  const startPhase2Date = phase2StartDate?.format("MMM/DD/YY");
-  const formattedEndDate = endDate?.format("MMM/DD/YY");
+  const endDate = phase1StartDate?.add(14, 'day');
+  const startPhase1Date = phase1StartDate?.format('MMM/DD/YY');
+  const startPhase2Date = phase2StartDate?.format('MMM/DD/YY');
+  const formattedEndDate = endDate?.format('MMM/DD/YY');
 
   function checkToday(index) {
-    const today = dayjs.utc().tz("Europe/London");
-    return endDate?.subtract(index, "days").isSame(today, "day");
+    const today = dayjs.utc().tz('Europe/London');
+    return endDate?.subtract(index, 'days').isSame(today, 'day');
   }
 
   function printDate(phaseNumber, start, end) {
@@ -58,170 +59,98 @@ const LaunchTimelineIntro = () => {
   const phase2 = printDate(2, 7, 0);
 
   return (
-    <Box>
-      <CardHeader label="Launch Timeline" />
-      <Card p={["6", null, null, "12"]}>
-        <Stack
-          direction={["column", null, null, "row"]}
-          mt="3"
-          flexWrap="wrap"
-          mx="-4"
-          spacing={["12", null, null, "0"]}
-        >
-          <Box flex="2" px="4">
-            <VStack align="flex-start" spacing="2" flex="2" mb="6">
-              <Text fontSize="20px">Phase 1</Text>
-              <Text fontSize="12px">The Lockdrop</Text>
-            </VStack>
-            <Box>
-              <Text
-                mb="1"
-                fontSize="xs"
-                textTransform="uppercase"
-                fontWeight="bold"
-              >
-                Days
-              </Text>
-              <HStack
-                spacing="0"
-                align="stretch"
-                w="100%"
-                height="5"
-                mb="1"
-                divider={<StackDivider borderColor="#0D1941" />}
-                fontWeight="700"
-              >
-                {phase1}
-              </HStack>
-              <Box>
-                <Text
-                  fontSize="12px"
-                  color="#6C758F"
-                  mb={["0", null, null, "6"]}
-                >
-                  {startPhase1Date}
-                </Text>
-                <VStack spacing="6" align="flex-start" fontSize="15px">
-                  <Text>
-                    Deposit and lock your Terraswap liquidity (LP tokens) on
-                    Astroport and get rewarded with ASTRO governance tokens.
-                  </Text>
-                  <Text>
-                    <strong>Here’s how it works</strong>
-                    <br />
-                    You can “lock” up your Terraswap LP tokens for a fixed
-                    duration. In exchange, you’re “dropped” or rewarded with
-                    ASTRO tokens when Phase 1 ends (see timeline above). The
-                    more LP tokens and the longer you lock them, the more ASTRO
-                    you will receive.
-                  </Text>
-                  <Text>
-                    In addition to the initial ASTRO distribution, anyone who
-                    locks liquidity on Astroport will also accrue trading fees,
-                    ongoing ASTRO emissions and dual rewards where supported.
-                  </Text>
-                </VStack>
-              </Box>
+    <Box className="panel">
+      <Box p="15px">
+        <h6 className="color-secondary">Information</h6>
+      </Box>
+      <Box h="1px" className="border" />
+      <Stack
+        direction={['column', null, null, 'row']}
+        flexWrap="wrap"
+        spacing={['12', null, null, '0']}>
+        <Box flex="2" p="15px">
+          <p className="color-primary weight-600">Title Goes Here</p>
+          <p className="color-secondary">
+            Description text about the Lockdrop and any other relevant
+            information is shown here, explaining to users why Apollo DAO is
+            holding the xASTRO Lockdrop event, what the xASTRO will be used for,
+            etc.
+          </p>
+          <br />
+          <p className="color-secondary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <br />
+          <p className="color-secondary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <br />
+          <p className="color-primary weight-600">More Info</p>
+          <p className="color-secondary">
+            For more info on the lockdrop, read this{' '}
+            <a
+              className="color-link"
+              href="https://medium.com"
+              target="_blank"
+              rel="noreferrer">
+              article
+            </a>
+          </p>
+        </Box>
+        <Box w="1px" className="border" />
+        <Box flex="2" p="15px">
+          <Box display="flex" alignItems="center">
+            <Box mr="8px">
+              <caption className="color-primary">DAYS</caption>
             </Box>
+            <ApolloStageIndicator />
           </Box>
-          <Box flex="2" px="4">
-            <VStack align="flex-start" spacing="2" flex="2" mb="6">
-              <Text fontSize="20px">Phase 2</Text>
-              <Text fontSize="12px">The ASTRO-UST Bootstraping Pool</Text>
-            </VStack>
-            <Box>
-              <Text
-                mb="1"
-                fontSize="xs"
-                textTransform="uppercase"
-                fontWeight="bold"
-              >
-                Days
-              </Text>
-              <HStack
-                spacing="0"
-                align="stretch"
-                w="100%"
-                height="5"
-                mb="1"
-                divider={<StackDivider borderColor="#0D1941" />}
-                fontWeight="700"
-              >
-                {phase2}
-              </HStack>
-              <Box>
-                <Text
-                  fontSize="12px"
-                  color="#6C758F"
-                  mb={["0", null, null, "6"]}
-                >
-                  {startPhase2Date}
-                </Text>
-                <VStack spacing="6" align="flex-start" fontSize="15px">
-                  <Text>
-                    Lock ASTRO and/or UST in the ASTRO-UST bootstrapping pool to
-                    earn the following incentives:
-                  </Text>
-                  <UnorderedList
-                    fontWeight="normal"
-                    fontSize="15px"
-                    paddingLeft="2rem"
-                  >
-                    <ListItem>
-                      An additional one-time reward in ASTRO tokens, which will
-                      be transferable upon launch
-                    </ListItem>
-                    <ListItem>
-                      Ongoing pool fees from the ASTRO-UST pool after launch
-                    </ListItem>
-                    <ListItem>Ongoing ASTRO pool incentives</ListItem>
-                  </UnorderedList>
-                  <Text>
-                    Phase 1 participants can lock their ASTRO in Phase 2. Other
-                    participants can pre-claim ASTRO from the airdrop to join
-                    Phase 2.
-                  </Text>
-                  <Text>
-                    All liquidity provided to the ASTRO-UST pool will unlock
-                    linearly over 3 months. When Phase 2 ends, Astroport
-                    launches and unlocked ASTRO tokens will be fully
-                    transferable.
-                  </Text>
-                </VStack>
-              </Box>
-            </Box>
+          <Box mt="16px">
+            <p className="color-primary weight-600">Here’s how it works</p>
+            <p className="color-secondary">
+              You can “lock” up your xASTRO for a fixed duration up to 12
+              months. In exchange, you’ll receive a “drop” of APOLLO tokens
+              which will be linearly vested over 1 year starting after the
+              completion of the Lockdrop. The more xASTRO and the longer you
+              lock up, the more APOLLO tokens you’ll receive.
+            </p>
+            <br />
+            <p className="color-primary weight-600">Stage 1</p>
+            <p className="color-secondary">
+              During Stage 1 (Day 1-5) there are no limit on deposits and
+              withdrawals of xASTRO. Once Stage 2 (Day 6) begins you will only
+              be able to withdraw xASTRO.
+            </p>
+            <br />
+            <p className="color-primary weight-600">Stage 2</p>
+            <p className="color-secondary">
+              Starting from day 6, you will only be able to withdraw up to 50%
+              of your xASTRO deposits. On day 7, withdrawal allowance will fall
+              linearly from 50% to 0%.
+            </p>
+            <br />
+            <p className="color-primary weight-600">Here’s how it works</p>
+            <p className="color-secondary">
+              Locked up xASTRO will be deposited into the apASTRO vault which
+              will auto-compound your position throughout the lock period. When
+              your lock expires, you will be able to withdraw apASTRO (can be
+              traded for xASTRO or held for continued rewards).
+            </p>
           </Box>
-          <Flex direction="column" flex="1" px="4">
-            <Box>
-              <VStack align="flex-start" spacing="2" flex="1" mb="6">
-                <Text fontSize="20px">Phase 3</Text>
-                <Text fontSize="12px">Astroport launch!</Text>
-              </VStack>
-              <Box pt="22px">
-                <HStack spacing="0" align="stretch" w="100%" height="5" mb="1">
-                  <Box flex="1" bg="#83FFCB"></Box>
-                </HStack>
-                <Box>
-                  <Text
-                    fontSize="12px"
-                    color="#6C758F"
-                    mb={["0", null, null, "6"]}
-                  >
-                    {formattedEndDate}
-                  </Text>
-                </Box>
-              </Box>
-            </Box>
-            <Flex mt={["6", null, null, "auto"]} justify="center">
-              <Image
-                src="/intro-phase-3.png"
-                srcSet="/intro-phase-3@2x.png 2x"
-                alt=""
-              ></Image>
-            </Flex>
-          </Flex>
-        </Stack>
-      </Card>
+        </Box>
+      </Stack>
     </Box>
   );
 };

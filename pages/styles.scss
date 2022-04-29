@@ -3,80 +3,8 @@
 @use '../styles/colors' as *;
 @use '../styles/mui-overrides' as *;
 
-.prose {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: "WhyteInktrap";
-  }
-
-  h1 {
-    font-size: 2.5rem;
-
-    @media screen and (min-width: 62em) {
-      font-size: 3.5rem;
-    }
-  }
-
-  h2 {
-    font-size: 2rem;
-
-    @media screen and (min-width: 62em) {
-      font-size: 2.25rem;
-    }
-  }
-
-  h3 {
-    font-size: 1.5rem;
-
-    @media screen and (min-width: 62em) {
-      font-size: 1.75rem;
-    }
-  }
-
-  h4 {
-    font-size: 1.25rem;
-
-    @media screen and (min-width: 62em) {
-      font-size: 1.25rem;
-    }
-  }
-
-  p {
-    text-align: justify;
-  }
-
-  a {
-    color: #59b7dd;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  ul {
-    padding-left: 1rem;
-    list-style-type: disc;
-
-    &.second {
-      padding-left: 2rem;
-      list-style-type: circle;
-    }
-  }
-
-  p,
-  ul,
-  div {
-    & + h3 {
-      padding-top: 2rem;
-    }
-  }
-
-  p,
-  ul,
-  div {
-    & + h4 {
-      padding-top: 0.5rem;
-    }
-  }
+.panel {
+  width: 100%;
+  border-radius: 15px;
+  background-color: $panelBgColor;
 }
